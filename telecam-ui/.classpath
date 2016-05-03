@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="telecam-ui"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/jfixby-cmns-api"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/red-triplane-api"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/telecam-api"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/red-triplane-scene2d-api"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/rana-api"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
