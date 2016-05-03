@@ -61,7 +61,7 @@ public class RepackTelecamPSD {
 		final File output_folder = LocalFileSystem.newFile(TelecamAssetsConfig.PACKED_ASSETS_HOME).child("bank-telecam");
 		output_folder.makeFolder();
 		// output_folder.clearFolder();
-		final String prefix = "com.jfixby.tinto.";
+		final String prefix = "com.jfixby.telecam.";
 		for (final File psd_file : psd_files) {
 
 			L.d("------------------------------------------------------------------------------------------");
@@ -70,10 +70,10 @@ public class RepackTelecamPSD {
 
 			final AssetID package_name = Names.newAssetID(package_name_string);
 
-			final int max_texture_size = (512 + 256 + 128 + 64 + 16);
+			final int max_texture_size = (256);
 			final int margin = 0;
 			final int texturePadding = 8;
-			final float imageQuality = 1f / 8f;
+			final float imageQuality = 1f;
 			final boolean compressAtlases = !true;
 			final boolean forceRasterDecomposition = !true;
 			final int gemserkPadding = 16;
@@ -96,7 +96,7 @@ public class RepackTelecamPSD {
 				settings.setMargin(margin);
 				settings.setIgonreAtlasFlag(ignore_atlas);
 				settings.setGemserkPadding(gemserkPadding);
-				settings.setAtlasMaxPageSize(2048);
+				settings.setAtlasMaxPageSize(1024);
 				settings.setPadding(texturePadding);
 				settings.setForceRasterDecomposition(forceRasterDecomposition);
 				settings.setImageQuality(imageQuality);

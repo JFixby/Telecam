@@ -20,7 +20,8 @@ import com.jfixby.telecam.ui.game.splash.Splasher;
 
 public class UI extends Unit implements ShadowStateListener, InputManager {
 
-	public static final AssetID scene_asset_id = Names.newAssetID("com.jfixby.telecam.ui.psd");
+// public static final AssetID scene_asset_id = Names.newAssetID("com.jfixby.telecam.ui.psd");
+	public static final AssetID scene_asset_id = Names.newAssetID("com.jfixby.telecam.scene-base.psd");
 
 	private RootLayer root_layer;
 	private Camera camera;
