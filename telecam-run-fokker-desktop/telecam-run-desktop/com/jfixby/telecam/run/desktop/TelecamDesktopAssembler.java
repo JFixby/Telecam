@@ -14,11 +14,10 @@ import com.jfixby.cmns.api.sys.Sys;
 import com.jfixby.cmns.api.sys.settings.ExecutionMode;
 import com.jfixby.cmns.api.sys.settings.SystemSettings;
 import com.jfixby.r3.api.RedTriplane;
-import com.jfixby.r3.api.RedTriplaneFlags;
 import com.jfixby.r3.api.RedTriplaneParams;
 import com.jfixby.r3.api.game.GameLogic;
 import com.jfixby.r3.api.shader.R3Shader;
-import com.jfixby.r3.api.ui.GameUI;
+import com.jfixby.r3.api.ui.UI;
 import com.jfixby.r3.api.ui.UIStarter;
 import com.jfixby.r3.api.ui.unit.layer.LayerUtils;
 import com.jfixby.r3.collide.RedCollisionsAlgebra;
@@ -56,7 +55,7 @@ import com.jfixby.redtriplane.fokker.filesystem.assets.GdxFileSystem;
 import com.jfixby.redtriplane.fokker.fs.AssetsInfo;
 import com.jfixby.telecam.assets.cfg.TelecamAssetsConfig;
 //import com.jfixby.telecam.game.TelecamTheGame;
-import com.jfixby.telecam.game.TelecamTheGame;
+import com.jfixby.telecam.game.TelecamCore;
 
 public class TelecamDesktopAssembler implements FokkerEngineAssembler {
 
@@ -98,17 +97,18 @@ public class TelecamDesktopAssembler implements FokkerEngineAssembler {
 
 		final RedUIManager telecam_ui_starter = new RedUIManager();
 		UIStarter.installComponent(telecam_ui_starter);
-		GameUI.installComponent(telecam_ui_starter);
-		GameLogic.installComponent(new TelecamTheGame());
+		UI.installComponent(telecam_ui_starter);
+		GameLogic.installComponent(new TelecamCore());
 
 		Collisions.installComponent(new RedCollisionsAlgebra());
 		RedTriplane.installComponent(new Fokker());
 
 		SystemSettings.setExecutionMode(ExecutionMode.EARLY_DEVELOPMENT);
-		SystemSettings.setFlag(RedTriplaneFlags.PrintLogMessageOnMissingSprite, true);
-		SystemSettings.setFlag(RedTriplaneFlags.ExitOnMissingSprite, false);
-		SystemSettings.setFlag(RedTriplaneFlags.AllowMissingRaster, true);
+		SystemSettings.setFlag(RedTriplaneParams.PrintLogMessageOnMissingSprite, true);
+		SystemSettings.setFlag(RedTriplaneParams.ExitOnMissingSprite, false);
+		SystemSettings.setFlag(RedTriplaneParams.AllowMissingRaster, true);
 		SystemSettings.setFlag(AssetsManager.UseAssetSandBox, false);
+		SystemSettings.setFlag(RedTriplaneParams.DisableLogo, true);
 		SystemSettings.setFlag(AssetsManagerFlags.AutoresolveDependencies, true);
 		SystemSettings.setFlag(R3Font.RenderRasterStrings, !true);
 		SystemSettings.setStringParameter(RedTriplaneParams.DefaultFont, "Arial");
