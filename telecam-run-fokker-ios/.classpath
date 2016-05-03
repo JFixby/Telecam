@@ -8,7 +8,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/red-triplane-fokker-backend-ios"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/red-triplane-fokker-core"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/telecam-api"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/telecam-game"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/telecam-ui"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/telecam-run-fokker"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/jfixby-cmns-api"/>
@@ -18,6 +17,5 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/red-triplane-fonts-api"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/red-triplane-scene2d-api"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/red-triplane-scene2d-red"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/gdx-jfixby-cmns"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
