@@ -18,41 +18,53 @@ import com.jfixby.r3.api.ui.unit.input.TouchUpEvent;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
 
-public class BlueButton implements MouseEventListener, CollectionScanner<TouchArea> {
+public class SwitchCameraButton implements MouseEventListener, CollectionScanner<TouchArea> {
 
 	private Layer root;
 	private CustomInput input;
-	private Raster white;
-	private Raster blue;
-	private Raster dark_blue;
+	private Raster selfie;
+	private Raster regular;
+	private Raster roll;
+
 	private Collection<TouchArea> touchAreas;
 	private final CollectionScanner<TouchArea> touchAreasAligner = this;
 	private CanvasPosition position;
 
-	public BlueButton (final UserPanel userPanel) {
+	public SwitchCameraButton (final UserPanel userPanel) {
 	}
 
 	public void setup (final Layer root) {
 		this.root = root;
+
 		this.input = (CustomInput)root.listChildren().getElementAt(0);
+		this.roll = (Raster)root.listChildren().getElementAt(1);
+// this.roll.setOpacity(0.5);
 		this.input.setInputListener(this);
 		this.input.setDebugRenderFlag(false);
 		final Collection<Raster> options = this.input.listOptions();
-		this.white = options.getElementAt(0);
-		this.blue = options.getElementAt(1);
-		this.dark_blue = options.getElementAt(2);
+// options.print("options");
+		this.selfie = options.getElementAt(0);
+		this.regular = options.getElementAt(1);
+
 		this.touchAreas = this.input.listTouchAreas();
 
 	}
 
 	public void update (final CanvasPosition position) {
 		this.position = position;
-		this.white.setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
-		this.blue.setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
-		this.dark_blue.setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
-		this.white.setPosition(position);
-		this.blue.setPosition(position);
-		this.dark_blue.setPosition(position);
+		this.selfie.setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
+		this.regular.setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
+		this.roll.setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
+
+		this.selfie.setPositionX(position.getX() / 2d);
+		this.selfie.setPositionY(position.getY());
+
+		this.regular.setPositionX(position.getX() / 2d);
+		this.regular.setPositionY(position.getY());
+
+		this.roll.setPositionX(position.getX() / 2d);
+		this.roll.setPositionY(position.getY() * 1d);
+
 		Collections.scanCollection(this.touchAreas, this.touchAreasAligner);
 	}
 
@@ -81,6 +93,9 @@ public class BlueButton implements MouseEventListener, CollectionScanner<TouchAr
 	public void scanElement (final TouchArea element, final int index) {
 		element.shape().setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
 		element.shape().setPosition(this.position);
+		element.shape().setPositionX(this.position.getX() / 2d);
+		element.shape().setPositionY(this.position.getY());
+
 	}
 
 }

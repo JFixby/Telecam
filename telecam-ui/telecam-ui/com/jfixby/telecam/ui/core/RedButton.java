@@ -16,7 +16,6 @@ import com.jfixby.r3.api.ui.unit.input.TouchDownEvent;
 import com.jfixby.r3.api.ui.unit.input.TouchDraggedEvent;
 import com.jfixby.r3.api.ui.unit.input.TouchUpEvent;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
-import com.jfixby.r3.api.ui.unit.layer.VisibleComponent;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
 
 public class RedButton implements MouseEventListener, CollectionScanner<TouchArea> {
@@ -41,25 +40,25 @@ public class RedButton implements MouseEventListener, CollectionScanner<TouchAre
 		this.input = (CustomInput)root.listChildren().getElementAt(0);
 		this.input.setInputListener(this);
 		this.input.setDebugRenderFlag(false);
-		final Collection<VisibleComponent> options = this.input.listOptions();
-		options.print("options");
+		final Collection<Raster> options = this.input.listOptions();
+// options.print("options");
 // Sys.exit();
-		this.white_bridge = (Raster)options.getElementAt(0);
+		this.white_bridge = options.getElementAt(0);
 		this.white_bridge.setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
 
-		this.whiteL = (Raster)options.getElementAt(1);
-		this.whiteR = (Raster)options.getElementAt(2);
+		this.whiteL = options.getElementAt(1);
+		this.whiteR = options.getElementAt(2);
 
 		this.whiteL.setOriginAbsolute(this.white_bridge.getPosition());
 		this.whiteR.setOriginAbsolute(this.white_bridge.getPosition());
 
-		this.redAnus = (Raster)options.getElementAt(3);
+		this.redAnus = options.getElementAt(3);
 		this.redAnus.setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
 
-		this.redCircle = (Raster)options.getElementAt(4);
+		this.redCircle = options.getElementAt(4);
 		this.redCircle.setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
 
-		this.whiteSquare = (Raster)options.getElementAt(5);
+		this.whiteSquare = options.getElementAt(5);
 		this.whiteSquare.setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
 
 		this.touchAreas = this.input.listTouchAreas();

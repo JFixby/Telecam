@@ -3,6 +3,7 @@ package com.jfixby.telecam.ui.core;
 
 import com.jfixby.cmns.api.assets.AssetID;
 import com.jfixby.cmns.api.assets.Names;
+import com.jfixby.cmns.api.floatn.FixedFloat2;
 import com.jfixby.cmns.api.geometry.Geometry;
 import com.jfixby.cmns.api.geometry.Rectangle;
 import com.jfixby.cmns.api.log.L;
@@ -31,6 +32,8 @@ public class TelecamUnit extends Unit implements InputManager, ScreenChangeListe
 	private UserPanel userPanel;
 	private final ScreenChangeListener screenChangeListener = this;
 	Rectangle screenDimentions = Geometry.newRectangle();
+	FixedFloat2 sceneOriginalDimentions;
+
 	private Camera camera;
 
 	@Override
@@ -53,7 +56,9 @@ public class TelecamUnit extends Unit implements InputManager, ScreenChangeListe
 
 		this.animations_machine.activate();
 
-		this.userPanel = new UserPanel();
+		this.sceneOriginalDimentions = this.scene.getOriginalDimentions();
+
+		this.userPanel = new UserPanel(this);
 		this.userPanel.setup(this.scene.findLayer("user-panel").getElementAt(0), this.scene.getCamera());
 
 	}
@@ -76,6 +81,10 @@ public class TelecamUnit extends Unit implements InputManager, ScreenChangeListe
 		// this.screenDimentions.reScale(scale, scale);
 		this.camera.setSize(this.screenDimentions.getWidth(), this.screenDimentions.getHeight());
 		this.userPanel.updateScreen(this.screenDimentions);
+	}
+
+	public FixedFloat2 getOriginalSceneDimentions () {
+		return this.sceneOriginalDimentions;
 	}
 
 }

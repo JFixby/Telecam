@@ -3,6 +3,7 @@ package com.jfixby.telecam.run.desktop;
 
 import java.io.IOException;
 
+import com.badlogic.gdx.graphics.Texture.TextureFilter;
 import com.jfixby.cmns.api.collisions.Collisions;
 import com.jfixby.cmns.api.file.File;
 import com.jfixby.cmns.api.file.FileSystemSandBox;
@@ -27,6 +28,7 @@ import com.jfixby.r3.ext.api.text.R3Text;
 import com.jfixby.r3.ext.font.gdx.ft.GdxR3Font;
 import com.jfixby.r3.ext.text.red.RedTriplaneText;
 import com.jfixby.r3.fokker.api.FokkerEngineAssembler;
+import com.jfixby.r3.fokker.api.FokkerEngineParams;
 import com.jfixby.r3.fokker.api.UnitsSpawner;
 import com.jfixby.r3.fokker.api.assets.FokkerAtlasLoader;
 import com.jfixby.r3.fokker.api.assets.FokkerRasterDataRegister;
@@ -109,11 +111,17 @@ public class TelecamDesktopAssembler implements FokkerEngineAssembler {
 		SystemSettings.setFlag(RedTriplaneParams.AllowMissingRaster, true);
 		SystemSettings.setFlag(AssetsManager.UseAssetSandBox, false);
 		SystemSettings.setFlag(RedTriplaneParams.DisableLogo, true);
+
+		SystemSettings.setStringParameter(FokkerEngineParams.TextureFilter.Mag, TextureFilter.Nearest + "");
+		SystemSettings.setStringParameter(FokkerEngineParams.TextureFilter.Min, TextureFilter.Nearest + "");
+
+		SystemSettings.setFlag(RedTriplaneParams.DisableLogo, true);
+
 		SystemSettings.setFlag(AssetsManagerFlags.AutoresolveDependencies, true);
 		SystemSettings.setFlag(R3Font.RenderRasterStrings, !true);
 		SystemSettings.setStringParameter(RedTriplaneParams.DefaultFont, "Arial");
 		SystemSettings.setLongParameter(RedTriplaneParams.DEFAULT_LOGO_FADE_TIME, 2000L);
-		SystemSettings.setStringParameter(RedTriplaneParams.CLEAR_SCREEN_COLOR_ARGB, "#FFf0f0f0");
+		SystemSettings.setStringParameter(RedTriplaneParams.CLEAR_SCREEN_COLOR_ARGB, "#FF40408f");
 		SystemSettings.setLongParameter(GCFisher.DefaultBaitSize, 1 * 1024 * 1024);
 
 		UnitsSpawner.installComponent(new DesktopUnitsSpawner());
