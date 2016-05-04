@@ -54,8 +54,7 @@ import com.jfixby.red.util.RedJUtils;
 import com.jfixby.red.util.md5.AlpaeroMD5;
 import com.jfixby.redtriplane.fokker.adaptor.GdxAdaptor;
 
-import android.graphics.PixelFormat;
-import android.view.SurfaceView;
+import android.content.pm.ActivityInfo;
 
 //public class RunTelecamAndroid extends RedTriplaneAndroidApplication {
 public class RunTelecamAndroid extends RedTriplaneAndroidApplication {
@@ -91,6 +90,10 @@ public class RunTelecamAndroid extends RedTriplaneAndroidApplication {
 
 	}
 
+	static {
+		orientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
+	}
+
 	@Override
 	public RedTriplaneAndroidApplicationConfig doGdxDeploy (final RedTriplaneAndroidApplication app) {
 		this.setup();
@@ -116,11 +119,11 @@ public class RunTelecamAndroid extends RedTriplaneAndroidApplication {
 		android_config.b = 8;
 		android_config.a = 8;
 
-		if (this.graphics.getView() instanceof SurfaceView) {
-			final SurfaceView glView = (SurfaceView)this.graphics.getView();
-			// force alpha channel - I'm not sure we need this as the GL surface is already using alpha channel
-			glView.getHolder().setFormat(PixelFormat.TRANSLUCENT);
-		}
+// if (this.graphics.getView() instanceof SurfaceView) {
+// final SurfaceView glView = (SurfaceView)this.graphics.getView();
+// // force alpha channel - I'm not sure we need this as the GL surface is already using alpha channel
+// glView.getHolder().setFormat(PixelFormat.TRANSLUCENT);
+// }
 
 		red_config.setGdxListener(gdx_listener);
 		red_config.setAndroidApplicationConfig(android_config);

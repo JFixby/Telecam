@@ -6,7 +6,7 @@
 	<inherits name='com.badlogic.gdx.physics.box2d.box2d-gwt' />
 
 
-	<inherits name='com.jfixby.tinto.GdxDefinition' />
+	<inherits name='com.jfixby.telecam.GdxDefinition' />
 
 	<collapse-all-properties />
 

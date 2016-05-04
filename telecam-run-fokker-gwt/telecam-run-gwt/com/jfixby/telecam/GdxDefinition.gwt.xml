@@ -7,7 +7,7 @@
     <source path="com/jfixby" />
     
 	<inherits name='GdxEntryPoint' />
-	<entry-point class='com.jfixby.tinto.client.HtmlLauncher' />
+	<entry-point class='com.jfixby.telecam.client.HtmlLauncher' />
 	
 	
 	<set-configuration-property name="gdx.assetpath" value="../android/assets" />
