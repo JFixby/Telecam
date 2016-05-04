@@ -3,6 +3,9 @@ package com.jfixby.telecam.ui.core;
 
 import com.jfixby.cmns.api.assets.AssetID;
 import com.jfixby.cmns.api.assets.Names;
+import com.jfixby.cmns.api.geometry.Geometry;
+import com.jfixby.cmns.api.geometry.Rectangle;
+import com.jfixby.cmns.api.log.L;
 import com.jfixby.r3.api.ui.AnimationsMachine;
 import com.jfixby.r3.api.ui.InputManager;
 import com.jfixby.r3.api.ui.UI;
@@ -10,6 +13,7 @@ import com.jfixby.r3.api.ui.unit.ComponentsFactory;
 import com.jfixby.r3.api.ui.unit.RootLayer;
 import com.jfixby.r3.api.ui.unit.Unit;
 import com.jfixby.r3.api.ui.unit.UnitManager;
+import com.jfixby.r3.api.ui.unit.camera.Camera;
 import com.jfixby.r3.api.ui.unit.camera.ScreenChangeListener;
 import com.jfixby.r3.api.ui.unit.camera.ScreenDimentions;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
@@ -26,6 +30,8 @@ public class TelecamUnit extends Unit implements InputManager, ScreenChangeListe
 	private Layer userPanelLayer;
 	private UserPanel userPanel;
 	private final ScreenChangeListener screenChangeListener = this;
+	Rectangle screenDimentions = Geometry.newRectangle();
+	private Camera camera;
 
 	@Override
 	public void onCreate (final UnitManager unitManager) {
@@ -42,6 +48,7 @@ public class TelecamUnit extends Unit implements InputManager, ScreenChangeListe
 		config.setStructureID(scene_asset_id);
 
 		this.scene = Scene2D.spawnScene(components_factory, config);
+		this.camera = this.scene.getCamera();
 		this.root_layer.attachComponent(this.scene);
 
 		this.animations_machine.activate();
@@ -58,7 +65,17 @@ public class TelecamUnit extends Unit implements InputManager, ScreenChangeListe
 
 	@Override
 	public void onScreenChanged (final ScreenDimentions viewport_update) {
-		this.userPanel.updateScreen(viewport_update);
+		L.d(viewport_update);
+		final double screenWidth = viewport_update.getScreenWidth();
+		final double screenHeight = viewport_update.getScreenHeight();
+		final double w2h = viewport_update.getWidthToHeightRatio();
+		final double targetWidth = 2048 * 3 / 4;
+		final double scale = targetWidth / screenWidth;
+
+		this.screenDimentions.setSize(screenWidth, screenHeight);
+		// this.screenDimentions.reScale(scale, scale);
+		this.camera.setSize(this.screenDimentions.getWidth(), this.screenDimentions.getHeight());
+		this.userPanel.updateScreen(this.screenDimentions);
 	}
 
 }
