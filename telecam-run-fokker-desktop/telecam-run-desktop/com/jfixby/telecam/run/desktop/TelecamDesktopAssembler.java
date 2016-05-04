@@ -111,12 +111,9 @@ public class TelecamDesktopAssembler implements FokkerEngineAssembler {
 		SystemSettings.setFlag(RedTriplaneParams.AllowMissingRaster, true);
 		SystemSettings.setFlag(AssetsManager.UseAssetSandBox, false);
 		SystemSettings.setFlag(RedTriplaneParams.DisableLogo, true);
-
 		SystemSettings.setStringParameter(FokkerEngineParams.TextureFilter.Mag, TextureFilter.Nearest + "");
 		SystemSettings.setStringParameter(FokkerEngineParams.TextureFilter.Min, TextureFilter.Nearest + "");
-
 		SystemSettings.setFlag(RedTriplaneParams.DisableLogo, true);
-
 		SystemSettings.setFlag(AssetsManagerFlags.AutoresolveDependencies, true);
 		SystemSettings.setFlag(R3Font.RenderRasterStrings, !true);
 		SystemSettings.setStringParameter(RedTriplaneParams.DefaultFont, "Arial");

@@ -54,6 +54,9 @@ import com.jfixby.red.util.RedJUtils;
 import com.jfixby.red.util.md5.AlpaeroMD5;
 import com.jfixby.redtriplane.fokker.adaptor.GdxAdaptor;
 
+import android.graphics.PixelFormat;
+import android.view.SurfaceView;
+
 //public class RunTelecamAndroid extends RedTriplaneAndroidApplication {
 public class RunTelecamAndroid extends RedTriplaneAndroidApplication {
 
@@ -77,7 +80,7 @@ public class RunTelecamAndroid extends RedTriplaneAndroidApplication {
 
 		UserInput.installComponent(new RedInput());
 
-		RedGeometry geometry = new RedGeometry();
+		final RedGeometry geometry = new RedGeometry();
 		Geometry.installComponent(geometry);
 		Colors.installComponent(new RedColors());
 		MathTools.installComponent(new RedMathTools());
@@ -89,25 +92,35 @@ public class RunTelecamAndroid extends RedTriplaneAndroidApplication {
 	}
 
 	@Override
-	public RedTriplaneAndroidApplicationConfig doGdxDeploy (RedTriplaneAndroidApplication app) {
-		setup();
-		RedTriplaneAndroidApplicationConfig red_config = new RedTriplaneAndroidApplicationConfig();
+	public RedTriplaneAndroidApplicationConfig doGdxDeploy (final RedTriplaneAndroidApplication app) {
+		this.setup();
+		final RedTriplaneAndroidApplicationConfig red_config = new RedTriplaneAndroidApplicationConfig();
 
-		FokkerStarterConfig config = FokkerStarter.newRedTriplaneConfig();
+		final FokkerStarterConfig config = FokkerStarter.newRedTriplaneConfig();
 		Android.installComponent(this);
-		FokkerEngineAssembler engine_assembler = new TelecamAndroidAssembler();
+		final FokkerEngineAssembler engine_assembler = new TelecamAndroidAssembler();
 		config.setEngineAssembler(engine_assembler);
 
-		FokkerStarter triplane_starter = FokkerStarter.newRedTriplane(config);
-		UnitsMachineExecutor machine = triplane_starter.getUnitsMachineExecutor();
+		final FokkerStarter triplane_starter = FokkerStarter.newRedTriplane(config);
+		final UnitsMachineExecutor machine = triplane_starter.getUnitsMachineExecutor();
 
-		GdxAdaptor adaptor = new GdxAdaptor(machine);
+		final GdxAdaptor adaptor = new GdxAdaptor(machine);
 
-		ApplicationListener gdx_listener = adaptor.getGDXApplicationListener();
+		final ApplicationListener gdx_listener = adaptor.getGDXApplicationListener();
 
-		AndroidApplicationConfiguration android_config = new AndroidApplicationConfiguration();
+		final AndroidApplicationConfiguration android_config = new AndroidApplicationConfiguration();
 
 		android_config.hideStatusBar = true;
+		android_config.r = 8;
+		android_config.g = 8;
+		android_config.b = 8;
+		android_config.a = 8;
+
+		if (this.graphics.getView() instanceof SurfaceView) {
+			final SurfaceView glView = (SurfaceView)this.graphics.getView();
+			// force alpha channel - I'm not sure we need this as the GL surface is already using alpha channel
+			glView.getHolder().setFormat(PixelFormat.TRANSLUCENT);
+		}
 
 		red_config.setGdxListener(gdx_listener);
 		red_config.setAndroidApplicationConfig(android_config);
@@ -115,4 +128,9 @@ public class RunTelecamAndroid extends RedTriplaneAndroidApplication {
 		return red_config;
 
 	}
+
+	public void post (final Runnable r) {
+		this.handler.post(r);
+	}
+
 }
