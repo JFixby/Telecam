@@ -68,7 +68,7 @@ public class BlueButton implements MouseEventListener, CollectionScanner<TouchAr
 
 	@Override
 	public boolean onTouchUp (final TouchUpEvent input_event) {
-		L.d("click!");
+		L.d("click!", this);
 		return true;
 	}
 

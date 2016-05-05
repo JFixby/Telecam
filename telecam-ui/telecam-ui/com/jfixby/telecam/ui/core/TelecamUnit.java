@@ -87,4 +87,12 @@ public class TelecamUnit extends Unit implements InputManager, ScreenChangeListe
 		return this.sceneOriginalDimentions;
 	}
 
+	public TelecamUnit getUnit () {
+		return this;
+	}
+
+	public UnitManager getUnitManager () {
+		return this.unitManager;
+	}
+
 }

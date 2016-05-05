@@ -118,7 +118,7 @@ public class TelecamDesktopAssembler implements FokkerEngineAssembler {
 		SystemSettings.setFlag(R3Font.RenderRasterStrings, !true);
 		SystemSettings.setStringParameter(RedTriplaneParams.DefaultFont, "Arial");
 		SystemSettings.setLongParameter(RedTriplaneParams.DEFAULT_LOGO_FADE_TIME, 2000L);
-		SystemSettings.setStringParameter(RedTriplaneParams.CLEAR_SCREEN_COLOR_ARGB, "#FF40408f");
+		SystemSettings.setStringParameter(RedTriplaneParams.CLEAR_SCREEN_COLOR_ARGB, "#00000000");
 		SystemSettings.setLongParameter(GCFisher.DefaultBaitSize, 1 * 1024 * 1024);
 
 		UnitsSpawner.installComponent(new DesktopUnitsSpawner());

@@ -40,6 +40,5 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/gdx-jnigen"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/telecam-core"/>
-	<classpathentry kind="src" path="experimantal"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

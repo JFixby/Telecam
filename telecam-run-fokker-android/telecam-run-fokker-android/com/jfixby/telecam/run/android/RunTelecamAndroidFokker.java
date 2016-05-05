@@ -92,6 +92,7 @@ public class RunTelecamAndroidFokker extends RedTriplaneAndroidApplication {
 
 	static {
 		orientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT;
+		useCamera = true;
 	}
 
 	@Override
@@ -132,6 +133,7 @@ public class RunTelecamAndroidFokker extends RedTriplaneAndroidApplication {
 
 	}
 
+	@Override
 	public void post (final Runnable r) {
 		this.handler.post(r);
 	}

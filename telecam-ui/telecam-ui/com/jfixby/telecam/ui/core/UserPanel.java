@@ -67,4 +67,8 @@ public class UserPanel {
 		return this.master.getOriginalSceneDimentions();
 	}
 
+	public TelecamUnit getUnit () {
+		return this.master.getUnit();
+	}
+
 }
