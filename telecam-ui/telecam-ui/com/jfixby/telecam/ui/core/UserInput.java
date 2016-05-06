@@ -10,6 +10,7 @@ import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
 import com.jfixby.telecam.ui.core.input.accdecc.AcceptDecline;
 import com.jfixby.telecam.ui.core.input.blue.BlueButton;
+import com.jfixby.telecam.ui.core.input.crop.GoCropButton;
 import com.jfixby.telecam.ui.core.input.flash.SwitchFlashButton;
 import com.jfixby.telecam.ui.core.input.red.RedButton;
 import com.jfixby.telecam.ui.core.input.slider.Slider;
@@ -23,12 +24,14 @@ public class UserInput {
 	private final TelecamUnit master;
 	private final Slider slider;
 	private final AcceptDecline acceptDecline;
+	private final GoCropButton cropButton;
 
 	UserInput (final TelecamUnit telecamUnit) {
 		this.master = telecamUnit;
 		this.blueButton = new BlueButton(this);
 		this.redButton = new RedButton(this);
 		this.switchCameraButton = new SwitchCameraButton(this);
+		this.cropButton = new GoCropButton(this);
 		this.acceptDecline = new AcceptDecline(this);
 		this.switchFlashButton = new SwitchFlashButton(this);
 		this.slider = new Slider(this);
@@ -52,6 +55,10 @@ public class UserInput {
 		{
 			final Layer button_root = root.listChildren().findLayer("btnSwitchCam").getElementAt(0);
 			this.switchCameraButton.setup(button_root);
+		}
+		{
+			final Layer button_root = root.listChildren().findLayer("go-crop").getElementAt(0);
+			this.cropButton.setup(button_root);
 		}
 		{
 			final Layer button_root = root.listChildren().findLayer("accept-decline").getElementAt(0);
@@ -80,6 +87,7 @@ public class UserInput {
 		this.blueButton.update(this.gray.getPosition());
 		this.redButton.update(this.gray.getPosition());
 		this.switchCameraButton.update(this.gray.getPosition());
+		this.cropButton.update(this.gray.getPosition());
 		this.acceptDecline.update(this.gray.getPosition(), viewport_update);
 		this.switchFlashButton.update(viewport_update);
 		this.slider.update(this.gray.getPosition(), viewport_update);
