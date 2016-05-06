@@ -33,6 +33,7 @@ import com.jfixby.r3.fokker.api.UnitsSpawner;
 import com.jfixby.r3.fokker.api.assets.FokkerAtlasLoader;
 import com.jfixby.r3.fokker.api.assets.FokkerRasterDataRegister;
 import com.jfixby.r3.fokker.api.assets.FokkerTextureLoader;
+import com.jfixby.r3.fokker.backend.RedUnitSpawner;
 import com.jfixby.r3.ui.RedUIManager;
 import com.jfixby.rana.api.asset.AssetsManager;
 import com.jfixby.rana.api.asset.AssetsManagerFlags;
@@ -47,7 +48,6 @@ import com.jfixby.red.filesystem.cache.RedFileCache;
 import com.jfixby.red.filesystem.sandbox.RedFileSystemSandBox;
 import com.jfixby.red.filesystem.virtual.VirtualFileSystem;
 import com.jfixby.red.java.gc.RedGCFisher;
-import com.jfixby.red.triplane.fokker.desktop.DesktopUnitsSpawner;
 import com.jfixby.red.triplane.resources.fsbased.FileSystemBasedResource;
 import com.jfixby.red.triplane.resources.fsbased.RedResourcesManager;
 import com.jfixby.redtriplane.fokker.assets.GdxAtlasReader;
@@ -121,7 +121,7 @@ public class TelecamDesktopAssembler implements FokkerEngineAssembler {
 		SystemSettings.setStringParameter(RedTriplaneParams.CLEAR_SCREEN_COLOR_ARGB, "#00000000");
 		SystemSettings.setLongParameter(GCFisher.DefaultBaitSize, 1 * 1024 * 1024);
 
-		UnitsSpawner.installComponent(new DesktopUnitsSpawner());
+		UnitsSpawner.installComponent(new RedUnitSpawner());
 		// /-----------------------------------------
 
 		// ImageProcessing.installComponent(new DesktopImageProcessing());

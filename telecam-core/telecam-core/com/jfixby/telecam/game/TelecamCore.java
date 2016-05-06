@@ -8,7 +8,7 @@ import com.jfixby.r3.api.ui.UI;
 
 public class TelecamCore implements GameLogicComponent {
 
-	public static final AssetID unit_id = Names.newAssetID("com.jfixby.telecam.ui.core.TelecamUnit");
+	public static final AssetID unit_id = Names.newAssetID("com.jfixby.telecam.ui.TelecamUnit");
 
 	@Override
 	public void startGame () {

@@ -1,6 +1,7 @@
 
 package com.jfixby.telecam.ui.input.cropper;
 
+import com.jfixby.cmns.api.floatn.FixedFloat2;
 import com.jfixby.cmns.api.geometry.Rectangle;
 import com.jfixby.r3.api.ui.unit.input.CustomInput;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
@@ -43,6 +44,8 @@ public class Cropper {
 		{
 			final CustomInput button = root.findComponent("btnDone");
 			this.btnDone.setup(button);
+			this.btnDone.setBaseOffsetX(this.baseOffsetX);
+
 		}
 		{
 			final CustomInput button = root.findComponent("btnReset");
@@ -71,6 +74,10 @@ public class Cropper {
 
 	public CropperBackground getBackground () {
 		return this.background;
+	}
+
+	public FixedFloat2 getOriginalSceneDimentions () {
+		return this.master.getOriginalSceneDimentions();
 	}
 
 }

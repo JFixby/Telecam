@@ -1,5 +1,5 @@
 
-package com.jfixby.telecam.ui.input.accdecc;
+package com.jfixby.telecam.ui.input.accept;
 
 import com.jfixby.cmns.api.collections.Collection;
 import com.jfixby.cmns.api.collections.CollectionScanner;
