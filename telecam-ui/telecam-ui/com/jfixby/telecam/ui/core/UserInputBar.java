@@ -2,12 +2,9 @@
 package com.jfixby.telecam.ui.core;
 
 import com.jfixby.cmns.api.floatn.FixedFloat2;
-import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_HORIZONTAL;
-import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_VERTICAL;
 import com.jfixby.cmns.api.geometry.Rectangle;
 import com.jfixby.r3.api.ui.unit.camera.Camera;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
-import com.jfixby.r3.api.ui.unit.raster.Raster;
 import com.jfixby.telecam.ui.core.input.accdecc.AcceptDecline;
 import com.jfixby.telecam.ui.core.input.blue.BlueButton;
 import com.jfixby.telecam.ui.core.input.crop.GoCropButton;
@@ -27,6 +24,8 @@ public class UserInputBar {
 	private final AcceptDecline acceptDecline;
 	private final GoCropButton cropButton;
 	private final VidepPlayPause videpPlayResume;
+	private final BackgroundGray bgGray;
+	private final Cropper cropper;
 
 	UserInputBar (final TelecamUnit telecamUnit) {
 		this.master = telecamUnit;
@@ -38,15 +37,24 @@ public class UserInputBar {
 		this.acceptDecline = new AcceptDecline(this);
 		this.switchFlashButton = new SwitchFlashButton(this);
 		this.slider = new Slider(this);
+		this.bgGray = new BackgroundGray(this);
+		this.cropper = new Cropper(this);
 
 	}
 
 	private Layer root;
-	private Raster gray;
 
 	public void setup (final Layer root, final Camera camera) {
 		this.root = root;
-		this.gray = root.listChildren().findRaster("gray").getElementAt(0);
+
+		{
+			final Layer component_root = root.listChildren().findLayer("bg-gray").getElementAt(0);
+			this.bgGray.setup(component_root);
+		}
+		{
+			final Layer gray_root = root.listChildren().findLayer("cropper").getElementAt(0);
+			this.cropper.setup(gray_root);
+		}
 		{
 			final Layer button_root = root.listChildren().findLayer("blue-button").getElementAt(0);
 			this.blueButton.setup(button_root);
@@ -80,7 +88,7 @@ public class UserInputBar {
 			this.slider.setup(button_root);
 		}
 
-// this.hideAll();
+		this.hideAll();
 
 	}
 
@@ -91,21 +99,22 @@ public class UserInputBar {
 		this.videpPlayResume.hide();
 		this.acceptDecline.hide();
 		this.switchCameraButton.hide();
+		this.bgGray.hide();
 	}
 
 	public void updateScreen (final Rectangle viewport_update) {
-		this.gray.setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.LEFT, ORIGIN_RELATIVE_VERTICAL.BOTTOM);
-		this.gray.setWidth(viewport_update.getWidth());
-		this.gray.setPositionY(viewport_update.getHeight());
-		this.gray.setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
-		this.blueButton.update(this.gray.getPosition());
-		this.redButton.update(this.gray.getPosition());
-		this.switchCameraButton.update(this.gray.getPosition());
-		this.cropButton.update(this.gray.getPosition());
-		this.videpPlayResume.update(this.gray.getPosition());
-		this.acceptDecline.update(this.gray.getPosition(), viewport_update);
+
+		this.bgGray.updateScreen(viewport_update);
+		this.cropper.updateScreen(viewport_update);
+
+		this.blueButton.update(this.bgGray.getPosition());
+		this.redButton.update(this.bgGray.getPosition());
+		this.switchCameraButton.update(this.bgGray.getPosition());
+		this.cropButton.update(this.bgGray.getPosition());
+		this.videpPlayResume.update(this.bgGray.getPosition());
+		this.acceptDecline.update(this.bgGray.getPosition(), viewport_update);
 		this.switchFlashButton.update(viewport_update);
-		this.slider.update(this.gray.getPosition(), viewport_update);
+		this.slider.update(this.bgGray.getPosition(), viewport_update);
 
 	}
 
