@@ -55,33 +55,33 @@ import com.jfixby.red.util.md5.AlpaeroMD5;
 import com.jfixby.redtriplane.fokker.adaptor.GdxAdaptor;
 
 public class RunTelecamDesktop {
-	public static void main (String[] arg) {
+	public static void main (final String[] arg) {
 
 		setupBasicComponents();
-		FokkerStarterConfig config = FokkerStarter.newRedTriplaneConfig();
+		final FokkerStarterConfig config = FokkerStarter.newRedTriplaneConfig();
 
-		FokkerEngineAssembler engine_assembler = new TelecamDesktopAssembler();
+		final FokkerEngineAssembler engine_assembler = new TelecamDesktopAssembler();
 		config.setEngineAssembler(engine_assembler);
 
-		FokkerStarter triplane_starter = FokkerStarter.newRedTriplane(config);
-		UnitsMachineExecutor machine = triplane_starter.getUnitsMachineExecutor();
+		final FokkerStarter triplane_starter = FokkerStarter.newRedTriplane(config);
+		final UnitsMachineExecutor machine = triplane_starter.getUnitsMachineExecutor();
 
-		GdxAdaptor adaptor = new GdxAdaptor(machine);
+		final GdxAdaptor adaptor = new GdxAdaptor(machine);
 
 		final FokkerLwjglApplicationConfiguration cfg = new FokkerLwjglApplicationConfiguration();
 		cfg.title = "Test";
 		cfg.useGL30 = false;
-		cfg.width = 600;
-		cfg.height = 400;
-//		cfg.vSyncEnabled = false;
-//		cfg.r = 1;
-//		cfg.g = 1;
-//		cfg.b = 1;
-//		cfg.a = 1;
-//		cfg.overrideDensity = 10;
+		cfg.width = 480;
+		cfg.height = 800;
+// cfg.vSyncEnabled = false;
+// cfg.r = 1;
+// cfg.g = 1;
+// cfg.b = 1;
+// cfg.a = 1;
+// cfg.overrideDensity = 10;
 // cfg.foregroundFPS = 60;
 
-		ApplicationListener gdx_listener = adaptor.getGDXApplicationListener();
+		final ApplicationListener gdx_listener = adaptor.getGDXApplicationListener();
 
 		// gdx_listener = new HttpRequestTest();
 		// GdxEntryPoint point = new GdxEntryPoint();
@@ -110,7 +110,7 @@ public class RunTelecamDesktop {
 
 		UserInput.installComponent(new RedInput());
 
-		RedGeometry geometry = new RedGeometry();
+		final RedGeometry geometry = new RedGeometry();
 		Geometry.installComponent(geometry);
 		Colors.installComponent(new RedColors());
 		MathTools.installComponent(new RedMathTools());
