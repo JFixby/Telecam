@@ -1,5 +1,5 @@
 
-package com.jfixby.telecam.ui.core;
+package com.jfixby.telecam.ui.core.input;
 
 import com.jfixby.r3.api.ui.unit.raster.Raster;
 

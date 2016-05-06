@@ -1,5 +1,5 @@
 
-package com.jfixby.telecam.ui.core;
+package com.jfixby.telecam.ui.core.input;
 
 import com.jfixby.cmns.api.collections.Collection;
 import com.jfixby.cmns.api.collections.CollectionScanner;
@@ -17,27 +17,30 @@ import com.jfixby.r3.api.ui.unit.input.TouchDraggedEvent;
 import com.jfixby.r3.api.ui.unit.input.TouchUpEvent;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
+import com.jfixby.telecam.ui.core.UserInput;
 
-public class SwitchFlashButton implements MouseEventListener, CollectionScanner<TouchArea> {
+public class Slider implements MouseEventListener, CollectionScanner<TouchArea> {
 
 	private Layer root;
 	private CustomInput input;
-	private FlashIconWrapper flash_on;
-	private FlashIconWrapper flash_off;
-	private FlashIconWrapper flash_auto;
+	private Raster left;
+	private Raster worm;
+	private Raster right;
 
 	private Collection<TouchArea> touchAreas;
 	private final CollectionScanner<TouchArea> touchAreasAligner = this;
-	private final CanvasPosition baseOffset;
-	private final UserPanel master;
+
+	private final UserInput master;
 	private final FixedFloat2 originalSceneDimentions;
+	private CanvasPosition position;
+	private final CanvasPosition baseOffset;
 	private Rectangle screen;
 
-	public SwitchFlashButton (final UserPanel userPanel) {
+	public Slider (final UserInput userPanel) {
 		this.master = userPanel;
-
-		this.originalSceneDimentions = this.master.getOriginalSceneDimentions();
 		this.baseOffset = Geometry.newCanvasPosition();
+		this.originalSceneDimentions = this.master.getOriginalSceneDimentions();
+
 	}
 
 	public void setup (final Layer root) {
@@ -49,25 +52,38 @@ public class SwitchFlashButton implements MouseEventListener, CollectionScanner<
 		this.input.setDebugRenderFlag(false);
 		final Collection<Raster> options = this.input.listOptions();
 
-		options.print("options");
+// options.print("options");
 
-		this.flash_on = new FlashIconWrapper(options.getElementAt(0), this);
-		this.flash_auto = new FlashIconWrapper(options.getElementAt(1), this);
-		this.flash_off = new FlashIconWrapper(options.getElementAt(2), this);
+		this.worm = options.getElementAt(0);
+// this.worm.setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
+
+		this.left = options.getElementAt(1);
+// this.left.setOriginAbsolute(this.worm.getPosition());
+
+		this.right = options.getElementAt(2);
+// this.right.setOriginAbsolute(this.worm.getPosition());
 
 		this.touchAreas = this.input.listTouchAreas();
 
-// this.baseOffset.set(this.input.getPosition());
-		this.baseOffset.setX(this.originalSceneDimentions.getX() - this.input.getPosition().getX());
+		this.baseOffset.setY(this.originalSceneDimentions.getY() - this.input.getPosition().getY());
 
 	}
 
-	public void update (final Rectangle screen) {
+	public void update (final CanvasPosition canvasPosition, final Rectangle screen) {
+		this.position = canvasPosition;
 		this.screen = screen;
-		this.input.setPositionX(this.screen.getWidth() - this.baseOffset.getX());
+
+		this.input.setPosition(this.position);
+		this.input.setPositionY(screen.getHeight() - this.baseOffset.getY());
 
 		this.input.updateChildrenPositionRespectively();
-// Collections.scanCollection(this.touchAreas, this.touchAreasAligner);
+	}
+
+	@Override
+	public void scanElement (final TouchArea element, final int index) {
+		element.shape().setPosition(this.position);
+		element.shape().setPositionY(this.screen.getHeight() - this.baseOffset.getY());
+
 	}
 
 	@Override
@@ -89,11 +105,6 @@ public class SwitchFlashButton implements MouseEventListener, CollectionScanner<
 	@Override
 	public boolean onTouchDragged (final TouchDraggedEvent input_event) {
 		return false;
-	}
-
-	@Override
-	public void scanElement (final TouchArea element, final int index) {
-		element.shape().setPositionX(this.screen.getWidth() - this.baseOffset.getX());
 	}
 
 }

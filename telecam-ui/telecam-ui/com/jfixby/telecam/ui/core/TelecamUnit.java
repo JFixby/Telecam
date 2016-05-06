@@ -29,7 +29,7 @@ public class TelecamUnit extends Unit implements InputManager, ScreenChangeListe
 	public static final AssetID scene_asset_id = Names.newAssetID("com.jfixby.telecam.scene-base.psd");
 	final AnimationsMachine animations_machine = UI.newAnimationsMachine();
 	private Layer userPanelLayer;
-	private UserPanel userPanel;
+	private UserInput userPanel;
 	private final ScreenChangeListener screenChangeListener = this;
 	Rectangle screenDimentions = Geometry.newRectangle();
 	FixedFloat2 sceneOriginalDimentions;
@@ -58,7 +58,7 @@ public class TelecamUnit extends Unit implements InputManager, ScreenChangeListe
 
 		this.sceneOriginalDimentions = this.scene.getOriginalDimentions();
 
-		this.userPanel = new UserPanel(this);
+		this.userPanel = new UserInput(this);
 		this.userPanel.setup(this.scene.findLayer("user-panel").getElementAt(0), this.scene.getCamera());
 
 	}

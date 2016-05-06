@@ -1,5 +1,5 @@
 
-package com.jfixby.telecam.ui.core;
+package com.jfixby.telecam.ui.core.input;
 
 import com.jfixby.cmns.api.collections.Collection;
 import com.jfixby.cmns.api.collections.CollectionScanner;
@@ -17,6 +17,7 @@ import com.jfixby.r3.api.ui.unit.input.TouchDraggedEvent;
 import com.jfixby.r3.api.ui.unit.input.TouchUpEvent;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
+import com.jfixby.telecam.ui.core.UserInput;
 
 public class SwitchCameraButton implements MouseEventListener, CollectionScanner<TouchArea> {
 
@@ -30,7 +31,7 @@ public class SwitchCameraButton implements MouseEventListener, CollectionScanner
 	private final CollectionScanner<TouchArea> touchAreasAligner = this;
 	private CanvasPosition position;
 
-	public SwitchCameraButton (final UserPanel userPanel) {
+	public SwitchCameraButton (final UserInput userPanel) {
 	}
 
 	public void setup (final Layer root) {

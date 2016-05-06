@@ -8,20 +8,30 @@ import com.jfixby.cmns.api.geometry.Rectangle;
 import com.jfixby.r3.api.ui.unit.camera.Camera;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
+import com.jfixby.telecam.ui.core.input.BlueButton;
+import com.jfixby.telecam.ui.core.input.RedButton;
+import com.jfixby.telecam.ui.core.input.Slider;
+import com.jfixby.telecam.ui.core.input.SwitchCameraButton;
+import com.jfixby.telecam.ui.core.input.SwitchFlashButton;
+import com.jfixby.telecam.ui.core.input.accdecc.AcceptDecline;
 
-public class UserPanel {
+public class UserInput {
 	private final BlueButton blueButton;
 	private final RedButton redButton;
 	private final SwitchCameraButton switchCameraButton;
 	private final SwitchFlashButton switchFlashButton;
 	private final TelecamUnit master;
+	private final Slider slider;
+	private final AcceptDecline acceptDecline;
 
-	UserPanel (final TelecamUnit telecamUnit) {
+	UserInput (final TelecamUnit telecamUnit) {
 		this.master = telecamUnit;
 		this.blueButton = new BlueButton(this);
 		this.redButton = new RedButton(this);
 		this.switchCameraButton = new SwitchCameraButton(this);
+		this.acceptDecline = new AcceptDecline(this);
 		this.switchFlashButton = new SwitchFlashButton(this);
+		this.slider = new Slider(this);
 
 	}
 
@@ -44,9 +54,20 @@ public class UserPanel {
 			this.switchCameraButton.setup(button_root);
 		}
 		{
+			final Layer button_root = root.listChildren().findLayer("accept-decline").getElementAt(0);
+			this.acceptDecline.setup(button_root);
+		}
+		{
 			final Layer button_root = root.listChildren().findLayer("flash-button").getElementAt(0);
 			this.switchFlashButton.setup(button_root);
 		}
+		{
+			final Layer button_root = root.listChildren().findLayer("slider").getElementAt(0);
+			this.slider.setup(button_root);
+		}
+
+		this.redButton.hide();
+		this.blueButton.hide();
 
 // L.d(this.blue_button_root);
 	}
@@ -59,7 +80,9 @@ public class UserPanel {
 		this.blueButton.update(this.gray.getPosition());
 		this.redButton.update(this.gray.getPosition());
 		this.switchCameraButton.update(this.gray.getPosition());
+		this.acceptDecline.update(this.gray.getPosition(), viewport_update);
 		this.switchFlashButton.update(viewport_update);
+		this.slider.update(this.gray.getPosition(), viewport_update);
 
 	}
 

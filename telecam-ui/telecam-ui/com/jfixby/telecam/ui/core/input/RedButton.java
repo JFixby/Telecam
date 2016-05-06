@@ -1,5 +1,5 @@
 
-package com.jfixby.telecam.ui.core;
+package com.jfixby.telecam.ui.core.input;
 
 import com.jfixby.cmns.api.collections.Collection;
 import com.jfixby.cmns.api.collections.CollectionScanner;
@@ -23,6 +23,7 @@ import com.jfixby.r3.api.ui.unit.input.TouchDraggedEvent;
 import com.jfixby.r3.api.ui.unit.input.TouchUpEvent;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
+import com.jfixby.telecam.ui.core.UserInput;
 
 public class RedButton implements MouseEventListener, CollectionScanner<TouchArea> {
 
@@ -37,9 +38,9 @@ public class RedButton implements MouseEventListener, CollectionScanner<TouchAre
 	private Raster redAnus;
 	private Raster redCircle;
 	private Raster whiteSquare;
-	private final UserPanel master;
+	private final UserInput master;
 
-	public RedButton (final UserPanel userPanel) {
+	public RedButton (final UserInput userPanel) {
 		this.master = userPanel;
 	}
 
@@ -129,6 +130,10 @@ public class RedButton implements MouseEventListener, CollectionScanner<TouchAre
 	public void scanElement (final TouchArea element, final int index) {
 		element.shape().setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
 		element.shape().setPosition(this.position);
+	}
+
+	public void hide () {
+		this.root.hide();
 	}
 
 }

@@ -1,0 +1,57 @@
+
+package com.jfixby.telecam.ui.core.input.accdecc;
+
+import com.jfixby.cmns.api.collections.Collection;
+import com.jfixby.cmns.api.geometry.CanvasPosition;
+import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_HORIZONTAL;
+import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_VERTICAL;
+import com.jfixby.cmns.api.geometry.Rectangle;
+import com.jfixby.r3.api.ui.unit.input.CustomInput;
+import com.jfixby.r3.api.ui.unit.input.MouseEventListener;
+import com.jfixby.r3.api.ui.unit.input.TouchArea;
+import com.jfixby.r3.api.ui.unit.layer.Layer;
+import com.jfixby.r3.api.ui.unit.raster.Raster;
+
+public abstract class AccDeccButton implements MouseEventListener {
+	private final AcceptDecline master;
+	private Layer root;
+	private CustomInput input;
+	private Collection<TouchArea> touchAreas;
+	private CanvasPosition position;
+	private Raster pressed;
+	private Raster released;
+	private final float horizontalAlignment;
+
+	public AccDeccButton (final AcceptDecline acceptDecline, final float horizontalAlignment) {
+		this.master = acceptDecline;
+		this.horizontalAlignment = horizontalAlignment;
+	}
+
+	public void setup (final Layer root) {
+		this.root = root;
+		this.input = (CustomInput)root.listChildren().getElementAt(0);
+		this.input.setInputListener(this);
+		this.input.setDebugRenderFlag(!false);
+		final Collection<Raster> options = this.input.listOptions();
+		this.touchAreas = this.input.listTouchAreas();
+
+		this.pressed = options.getElementAt(0);
+		this.released = options.getElementAt(1);
+
+// options.print("options");
+// Sys.exit();
+	}
+
+	public void update (final CanvasPosition position, final Rectangle viewport_update) {
+		this.position = position;
+
+		this.pressed.setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
+		this.released.setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
+
+		this.pressed.setPositionX(position.getX() * this.horizontalAlignment);
+		this.pressed.setPositionY(position.getY());
+
+		this.released.setPositionX(position.getX() * this.horizontalAlignment);
+		this.released.setPositionY(position.getY());
+	}
+}
