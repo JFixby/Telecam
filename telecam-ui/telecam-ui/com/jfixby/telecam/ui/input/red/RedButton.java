@@ -1,5 +1,5 @@
 
-package com.jfixby.telecam.ui.core.input.red;
+package com.jfixby.telecam.ui.input.red;
 
 import com.jfixby.cmns.api.collections.Collection;
 import com.jfixby.cmns.api.collections.CollectionScanner;
@@ -23,7 +23,7 @@ import com.jfixby.r3.api.ui.unit.input.TouchDraggedEvent;
 import com.jfixby.r3.api.ui.unit.input.TouchUpEvent;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
-import com.jfixby.telecam.ui.core.UserInputBar;
+import com.jfixby.telecam.ui.UserInputBar;
 
 public class RedButton implements MouseEventListener, CollectionScanner<TouchArea> {
 

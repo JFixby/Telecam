@@ -1,5 +1,5 @@
 
-package com.jfixby.telecam.ui.core;
+package com.jfixby.telecam.ui.input.cropper;
 
 import com.jfixby.cmns.api.geometry.CanvasPosition;
 import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_HORIZONTAL;
@@ -51,5 +51,9 @@ public class CropperBackground {
 
 	public void hide () {
 		this.root.hide();
+	}
+
+	public double getWidth () {
+		return this.black.getWidth();
 	}
 }

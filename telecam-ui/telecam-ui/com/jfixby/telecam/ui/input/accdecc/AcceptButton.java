@@ -1,5 +1,5 @@
 
-package com.jfixby.telecam.ui.core.input.accdecc;
+package com.jfixby.telecam.ui.input.accdecc;
 
 import com.jfixby.cmns.api.log.L;
 import com.jfixby.r3.api.ui.unit.input.MouseMovedEvent;

@@ -1,11 +1,11 @@
 
-package com.jfixby.telecam.ui.core.input.accdecc;
+package com.jfixby.telecam.ui.input.accdecc;
 
 import com.jfixby.cmns.api.geometry.CanvasPosition;
 import com.jfixby.cmns.api.geometry.Rectangle;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
-import com.jfixby.telecam.ui.core.TelecamUnit;
-import com.jfixby.telecam.ui.core.UserInputBar;
+import com.jfixby.telecam.ui.TelecamUnit;
+import com.jfixby.telecam.ui.UserInputBar;
 
 public class AcceptDecline {
 	private Layer root;
@@ -21,7 +21,7 @@ public class AcceptDecline {
 
 	public void setup (final Layer root) {
 		this.root = root;
-		this.root.listChildren().print("this.root.listChildren()");
+
 		{
 			final Layer button_root = this.root.findComponent("accept");
 			this.acceptButton.setup(button_root);

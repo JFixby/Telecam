@@ -1,5 +1,5 @@
 
-package com.jfixby.telecam.ui.core.input.slider;
+package com.jfixby.telecam.ui;
 
 import com.jfixby.cmns.api.collections.Collection;
 import com.jfixby.cmns.api.collections.CollectionScanner;
@@ -17,9 +17,8 @@ import com.jfixby.r3.api.ui.unit.input.TouchDraggedEvent;
 import com.jfixby.r3.api.ui.unit.input.TouchUpEvent;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
-import com.jfixby.telecam.ui.core.UserInputBar;
 
-public class Slider implements MouseEventListener, CollectionScanner<TouchArea> {
+public class VideoTimeBar implements MouseEventListener, CollectionScanner<TouchArea> {
 
 	private Layer root;
 	private CustomInput input;
@@ -36,7 +35,7 @@ public class Slider implements MouseEventListener, CollectionScanner<TouchArea> 
 	private final CanvasPosition baseOffset;
 	private Rectangle screen;
 
-	public Slider (final UserInputBar userPanel) {
+	public VideoTimeBar (final UserInputBar userPanel) {
 		this.master = userPanel;
 		this.baseOffset = Geometry.newCanvasPosition();
 		this.originalSceneDimentions = this.master.getOriginalSceneDimentions();

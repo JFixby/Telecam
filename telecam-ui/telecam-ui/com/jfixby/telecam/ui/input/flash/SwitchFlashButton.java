@@ -1,5 +1,5 @@
 
-package com.jfixby.telecam.ui.core;
+package com.jfixby.telecam.ui.input.flash;
 
 import com.jfixby.cmns.api.collections.Collection;
 import com.jfixby.cmns.api.collections.CollectionScanner;
@@ -17,29 +17,28 @@ import com.jfixby.r3.api.ui.unit.input.TouchDraggedEvent;
 import com.jfixby.r3.api.ui.unit.input.TouchUpEvent;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
+import com.jfixby.telecam.ui.UserInputBar;
 
-public class VideoTimeBar implements MouseEventListener, CollectionScanner<TouchArea> {
+public class SwitchFlashButton implements MouseEventListener, CollectionScanner<TouchArea> {
 
 	private Layer root;
 	private CustomInput input;
-	private Raster left;
-	private Raster worm;
-	private Raster right;
+	private FlashIconWrapper flash_on;
+	private FlashIconWrapper flash_off;
+	private FlashIconWrapper flash_auto;
 
 	private Collection<TouchArea> touchAreas;
 	private final CollectionScanner<TouchArea> touchAreasAligner = this;
-
+	private final CanvasPosition baseOffset;
 	private final UserInputBar master;
 	private final FixedFloat2 originalSceneDimentions;
-	private CanvasPosition position;
-	private final CanvasPosition baseOffset;
 	private Rectangle screen;
 
-	public VideoTimeBar (final UserInputBar userPanel) {
+	public SwitchFlashButton (final UserInputBar userPanel) {
 		this.master = userPanel;
-		this.baseOffset = Geometry.newCanvasPosition();
-		this.originalSceneDimentions = this.master.getOriginalSceneDimentions();
 
+		this.originalSceneDimentions = this.master.getOriginalSceneDimentions();
+		this.baseOffset = Geometry.newCanvasPosition();
 	}
 
 	public void setup (final Layer root) {
@@ -53,36 +52,28 @@ public class VideoTimeBar implements MouseEventListener, CollectionScanner<Touch
 
 // options.print("options");
 
-		this.worm = options.getElementAt(0);
-// this.worm.setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
-
-		this.left = options.getElementAt(1);
-// this.left.setOriginAbsolute(this.worm.getPosition());
-
-		this.right = options.getElementAt(2);
-// this.right.setOriginAbsolute(this.worm.getPosition());
+		this.flash_on = new FlashIconWrapper(options.getElementAt(0), this);
+		this.flash_auto = new FlashIconWrapper(options.getElementAt(1), this);
+		this.flash_off = new FlashIconWrapper(options.getElementAt(2), this);
 
 		this.touchAreas = this.input.listTouchAreas();
 
-		this.baseOffset.setY(this.originalSceneDimentions.getY() - this.input.getPosition().getY());
+// this.baseOffset.set(this.input.getPosition());
+		this.baseOffset.setX(this.originalSceneDimentions.getX() - this.input.getPosition().getX());
 
 	}
 
-	public void update (final CanvasPosition canvasPosition, final Rectangle screen) {
-		this.position = canvasPosition;
+	public void update (final Rectangle screen) {
 		this.screen = screen;
-
-		this.input.setPosition(this.position);
-		this.input.setPositionY(screen.getHeight() - this.baseOffset.getY());
+		this.input.setPositionX(this.screen.getWidth() - this.baseOffset.getX());
 
 		this.input.updateChildrenPositionRespectively();
+// Collections.scanCollection(this.touchAreas, this.touchAreasAligner);
 	}
 
 	@Override
 	public void scanElement (final TouchArea element, final int index) {
-		element.shape().setPosition(this.position);
-		element.shape().setPositionY(this.screen.getHeight() - this.baseOffset.getY());
-
+		element.shape().setPositionX(this.screen.getWidth() - this.baseOffset.getX());
 	}
 
 	@Override

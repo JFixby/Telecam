@@ -1,18 +1,19 @@
 
-package com.jfixby.telecam.ui.core;
+package com.jfixby.telecam.ui;
 
 import com.jfixby.cmns.api.floatn.FixedFloat2;
 import com.jfixby.cmns.api.geometry.Rectangle;
 import com.jfixby.r3.api.ui.unit.camera.Camera;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
-import com.jfixby.telecam.ui.core.input.accdecc.AcceptDecline;
-import com.jfixby.telecam.ui.core.input.blue.BlueButton;
-import com.jfixby.telecam.ui.core.input.crop.GoCropButton;
-import com.jfixby.telecam.ui.core.input.flash.SwitchFlashButton;
-import com.jfixby.telecam.ui.core.input.red.RedButton;
-import com.jfixby.telecam.ui.core.input.slider.Slider;
-import com.jfixby.telecam.ui.core.input.swcam.SwitchCameraButton;
-import com.jfixby.telecam.ui.core.input.vplay.VidepPlayPause;
+import com.jfixby.telecam.ui.input.accdecc.AcceptDecline;
+import com.jfixby.telecam.ui.input.blue.BlueButton;
+import com.jfixby.telecam.ui.input.crop.GoCropButton;
+import com.jfixby.telecam.ui.input.cropper.Cropper;
+import com.jfixby.telecam.ui.input.flash.SwitchFlashButton;
+import com.jfixby.telecam.ui.input.red.RedButton;
+import com.jfixby.telecam.ui.input.slider.Slider;
+import com.jfixby.telecam.ui.input.swcam.SwitchCameraButton;
+import com.jfixby.telecam.ui.input.vplay.VidepPlayPause;
 
 public class UserInputBar {
 	private final BlueButton blueButton;
