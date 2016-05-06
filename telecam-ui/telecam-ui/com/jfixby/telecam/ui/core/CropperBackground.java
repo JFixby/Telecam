@@ -8,34 +8,48 @@ import com.jfixby.cmns.api.geometry.Rectangle;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
 
-public class BackgroundGray {
-	private Raster gray;
-	private final UserInputBar master;
-	private Layer root;
+public class CropperBackground {
 
-	public BackgroundGray (final UserInputBar userInputBar) {
-		this.master = userInputBar;
+	private final Cropper master;
+	private Layer root;
+	private Raster black;
+	private Raster gray;
+
+	public CropperBackground (final Cropper cropper) {
+		this.master = cropper;
 	}
 
-	public void setup (final Layer component_root) {
-		this.root = component_root;
-		this.gray = component_root.findComponent();
+	public void setup (final Layer root) {
+		this.root = root;
+
+		this.black = root.findComponent("black");
+		this.gray = root.findComponent("gray");
+
 	}
 
 	public void updateScreen (final Rectangle viewport_update) {
+
 		this.gray.setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.LEFT, ORIGIN_RELATIVE_VERTICAL.BOTTOM);
 		this.gray.setWidth(viewport_update.getWidth());
 		this.gray.setPositionY(viewport_update.getHeight());
 		this.gray.setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
 
+		this.black.setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.LEFT, ORIGIN_RELATIVE_VERTICAL.BOTTOM);
+		this.black.setWidth(viewport_update.getWidth());
+		this.black.setPositionY(viewport_update.getHeight());
+		this.black.setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
+
 	}
 
-	public CanvasPosition getPosition () {
+	public CanvasPosition getBlackPosition () {
+		return this.black.getPosition();
+	}
+
+	public CanvasPosition getGrayPosition () {
 		return this.gray.getPosition();
 	}
 
 	public void hide () {
 		this.root.hide();
 	}
-
 }

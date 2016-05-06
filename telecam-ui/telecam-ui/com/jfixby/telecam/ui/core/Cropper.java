@@ -13,6 +13,7 @@ public class Cropper {
 	private final CropperButtonWrapper btnCancel;
 	private final CropperButtonWrapper btnRotate;
 	private final CropperButtonWrapper btnReset;
+	private final CropperBackground background;
 
 	public Cropper (final UserInputBar userInputBar) {
 		this.master = userInputBar;
@@ -20,31 +21,47 @@ public class Cropper {
 		this.btnCancel = new CropperButtonWrapper(this);
 		this.btnRotate = new CropperButtonWrapper(this);
 		this.btnReset = new CropperButtonWrapper(this);
+		this.background = new CropperBackground(this);
 	}
 
-	public void setup (final Layer component_root) {
-		this.root = component_root;
-		component_root.listChildren().print("component_root.listChildren()");
+	public void setup (final Layer root) {
+		this.root = root;
+
 		{
-			final Button button = component_root.findComponent("btnRotate");
+			final Button button = root.findComponent("btnRotate");
 			this.btnRotate.setup(button);
 		}
 		{
-			final Button button = component_root.findComponent("btnCancel");
+			final Button button = root.findComponent("btnCancel");
 			this.btnCancel.setup(button);
 		}
 		{
-			final Button button = component_root.findComponent("btnDone");
+			final Button button = root.findComponent("btnDone");
 			this.btnDone.setup(button);
 		}
 		{
-			final Button button = component_root.findComponent("btnReset");
+			final Button button = root.findComponent("btnReset");
 			this.btnReset.setup(button);
+		}
+		{
+			final Layer component_root = this.root.findComponent("bg-black");
+			this.background.setup(component_root);
 		}
 
 	}
 
 	public void updateScreen (final Rectangle viewport_update) {
+		this.background.updateScreen(viewport_update);
+
+		this.btnCancel.update(this.background, viewport_update);
+		this.btnDone.update(this.background, viewport_update);
+		this.btnReset.update(this.background, viewport_update);
+		this.btnRotate.update(this.background, viewport_update);
+
+	}
+
+	public void hide () {
+		this.root.hide();
 	}
 
 }
