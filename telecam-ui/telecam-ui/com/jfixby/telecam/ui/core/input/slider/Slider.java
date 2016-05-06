@@ -1,5 +1,5 @@
 
-package com.jfixby.telecam.ui.core.input;
+package com.jfixby.telecam.ui.core.input.slider;
 
 import com.jfixby.cmns.api.collections.Collection;
 import com.jfixby.cmns.api.collections.CollectionScanner;

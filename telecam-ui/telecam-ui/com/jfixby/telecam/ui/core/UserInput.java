@@ -8,12 +8,12 @@ import com.jfixby.cmns.api.geometry.Rectangle;
 import com.jfixby.r3.api.ui.unit.camera.Camera;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
-import com.jfixby.telecam.ui.core.input.BlueButton;
-import com.jfixby.telecam.ui.core.input.RedButton;
-import com.jfixby.telecam.ui.core.input.Slider;
-import com.jfixby.telecam.ui.core.input.SwitchCameraButton;
-import com.jfixby.telecam.ui.core.input.SwitchFlashButton;
 import com.jfixby.telecam.ui.core.input.accdecc.AcceptDecline;
+import com.jfixby.telecam.ui.core.input.blue.BlueButton;
+import com.jfixby.telecam.ui.core.input.flash.SwitchFlashButton;
+import com.jfixby.telecam.ui.core.input.red.RedButton;
+import com.jfixby.telecam.ui.core.input.slider.Slider;
+import com.jfixby.telecam.ui.core.input.swcam.SwitchCameraButton;
 
 public class UserInput {
 	private final BlueButton blueButton;
