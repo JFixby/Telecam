@@ -1,47 +1,56 @@
 
 package com.jfixby.telecam.ui.input.cropper;
 
-import com.jfixby.cmns.api.floatn.FixedFloat2;
+import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_HORIZONTAL;
+import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_VERTICAL;
 import com.jfixby.cmns.api.geometry.Rectangle;
 import com.jfixby.r3.api.ui.unit.input.CustomInput;
+import com.jfixby.r3.api.ui.unit.input.TouchArea;
+import com.jfixby.r3.api.ui.unit.raster.Raster;
 
 public class CropperButtonDone {
 
 	private CustomInput btn;
 	private final Cropper master;
 
+	private Raster icon;
+	private TouchArea touch;
 	private double baseOffsetX;
-	private double baseOffsetY;
-	private final FixedFloat2 originalSceneDimentions;
+	private final CropperButtonCancel btnCancel;
 
-	public CropperButtonDone (final Cropper cropper) {
+	public CropperButtonDone (final Cropper cropper, final CropperButtonCancel btnCancel) {
 		this.master = cropper;
-		this.originalSceneDimentions = this.master.getOriginalSceneDimentions();
+		this.btnCancel = btnCancel;
 
 	}
 
 	public void setup (final CustomInput btn) {
 		this.btn = btn;
-		btn.setDebugRenderFlag(!false);
-		this.baseOffsetX = this.originalSceneDimentions.getX() - btn.getPositionX();
-		this.baseOffsetY = this.originalSceneDimentions.getY() - btn.getPositionY();
+		btn.setDebugRenderFlag(false);
+		this.icon = btn.listOptions().getLast();
+		this.icon.setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
+
+		this.touch = btn.listTouchAreas().getLast();
+
+		this.touch.shape().setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
 
 	}
 
 	public void update (final Rectangle viewport_update) {
+		this.icon.setPositionY(this.master.getBackground().getGrayPosition().getY());
+		this.icon.setPositionX(viewport_update.getWidth() - this.btnCancel.getBaseOffsetX());
 
-		this.btn.setPositionX(viewport_update.getWidth() - this.baseOffsetX);
-		this.btn.setPositionY(viewport_update.getHeight() - this.baseOffsetY);
-		this.btn.updateChildrenPositionRespectively();
+		this.touch.shape().setPositionY(this.master.getBackground().getGrayPosition().getY());
+		this.touch.shape().setPositionX(viewport_update.getWidth() - this.btnCancel.getBaseOffsetX());
 
 	}
 
-	public double getBaseOffsetX () {
-		return this.baseOffsetX;
+	public double getX () {
+		return this.icon.getPositionX();
 	}
 
-	public void setBaseOffsetX (final double baseOffsetX) {
-		this.baseOffsetX = baseOffsetX;
+	public double getY () {
+		return this.btn.getPositionY();
 	}
 
 }

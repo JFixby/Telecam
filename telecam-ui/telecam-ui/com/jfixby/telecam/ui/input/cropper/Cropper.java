@@ -20,9 +20,11 @@ public class Cropper {
 
 	public Cropper (final UserInputBar userInputBar) {
 		this.master = userInputBar;
-		this.btnDone = new CropperButtonDone(this);
-		this.btnCancel = new CropperButtonCancel(this, this.btnDone);
-		this.btnRotate = new CropperButtonRotate(this);
+
+		this.btnCancel = new CropperButtonCancel(this);
+		this.btnDone = new CropperButtonDone(this, this.btnCancel);
+		this.btnRotate = new CropperButtonRotate(this, this.btnDone);
+
 		this.btnReset = new CropperButtonReset(this, this.btnCancel);
 		this.background = new CropperBackground(this);
 	}
@@ -33,7 +35,7 @@ public class Cropper {
 		{
 			final CustomInput button = root.findComponent("btnCancel");
 			this.btnCancel.setup(button);
-			this.baseOffsetX = this.btnCancel.getBaseOffsetX();
+
 		}
 
 		{
@@ -44,7 +46,6 @@ public class Cropper {
 		{
 			final CustomInput button = root.findComponent("btnDone");
 			this.btnDone.setup(button);
-			this.btnDone.setBaseOffsetX(this.baseOffsetX);
 
 		}
 		{
