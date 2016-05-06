@@ -48,43 +48,43 @@ public class UserInputBar {
 		this.root = root;
 
 		{
-			final Layer component_root = root.listChildren().findLayer("bg-gray").getElementAt(0);
+			final Layer component_root = root.findComponent("bg-gray");
 			this.bgGray.setup(component_root);
 		}
 		{
-			final Layer gray_root = root.listChildren().findLayer("cropper").getElementAt(0);
+			final Layer gray_root = root.findComponent("cropper");
 			this.cropper.setup(gray_root);
 		}
 		{
-			final Layer button_root = root.listChildren().findLayer("blue-button").getElementAt(0);
+			final Layer button_root = root.findComponent("blue-button");
 			this.blueButton.setup(button_root);
 		}
 		{
-			final Layer button_root = root.listChildren().findLayer("red-button").getElementAt(0);
+			final Layer button_root = root.findComponent("red-button");
 			this.redButton.setup(button_root);
 		}
 		{
-			final Layer button_root = root.listChildren().findLayer("switch-cam").getElementAt(0);
+			final Layer button_root = root.findComponent("switch-cam");
 			this.switchCameraButton.setup(button_root);
 		}
 		{
-			final Layer button_root = root.listChildren().findLayer("go-crop").getElementAt(0);
+			final Layer button_root = root.findComponent("go-crop");
 			this.cropButton.setup(button_root);
 		}
 		{
-			final Layer button_root = root.listChildren().findLayer("vide-pause-resume").getElementAt(0);
+			final Layer button_root = root.findComponent("vide-pause-resume");
 			this.videpPlayResume.setup(button_root);
 		}
 		{
-			final Layer button_root = root.listChildren().findLayer("accept-decline").getElementAt(0);
+			final Layer button_root = root.findComponent("accept-decline");
 			this.acceptDecline.setup(button_root);
 		}
 		{
-			final Layer button_root = root.listChildren().findLayer("flash-button").getElementAt(0);
+			final Layer button_root = root.findComponent("flash-button");
 			this.switchFlashButton.setup(button_root);
 		}
 		{
-			final Layer button_root = root.listChildren().findLayer("slider").getElementAt(0);
+			final Layer button_root = root.findComponent("slider");
 			this.slider.setup(button_root);
 		}
 

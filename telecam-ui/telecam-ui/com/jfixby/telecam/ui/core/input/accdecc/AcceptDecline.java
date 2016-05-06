@@ -23,11 +23,11 @@ public class AcceptDecline {
 		this.root = root;
 		this.root.listChildren().print("this.root.listChildren()");
 		{
-			final Layer button_root = this.root.listChildren().findLayer("accept").getElementAt(0);
+			final Layer button_root = this.root.findComponent("accept");
 			this.acceptButton.setup(button_root);
 		}
 		{
-			final Layer button_root = this.root.listChildren().findLayer("decline").getElementAt(0);
+			final Layer button_root = this.root.findComponent("decline");
 			this.declineButton.setup(button_root);
 		}
 	}
