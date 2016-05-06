@@ -17,7 +17,7 @@ import com.jfixby.r3.api.ui.unit.input.TouchDraggedEvent;
 import com.jfixby.r3.api.ui.unit.input.TouchUpEvent;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
-import com.jfixby.telecam.ui.core.UserInput;
+import com.jfixby.telecam.ui.core.UserInputBar;
 
 public class Slider implements MouseEventListener, CollectionScanner<TouchArea> {
 
@@ -30,13 +30,13 @@ public class Slider implements MouseEventListener, CollectionScanner<TouchArea> 
 	private Collection<TouchArea> touchAreas;
 	private final CollectionScanner<TouchArea> touchAreasAligner = this;
 
-	private final UserInput master;
+	private final UserInputBar master;
 	private final FixedFloat2 originalSceneDimentions;
 	private CanvasPosition position;
 	private final CanvasPosition baseOffset;
 	private Rectangle screen;
 
-	public Slider (final UserInput userPanel) {
+	public Slider (final UserInputBar userPanel) {
 		this.master = userPanel;
 		this.baseOffset = Geometry.newCanvasPosition();
 		this.originalSceneDimentions = this.master.getOriginalSceneDimentions();
@@ -98,7 +98,7 @@ public class Slider implements MouseEventListener, CollectionScanner<TouchArea> 
 
 	@Override
 	public boolean onTouchUp (final TouchUpEvent input_event) {
-		L.d("click!");
+		L.d("click", this);
 		return true;
 	}
 

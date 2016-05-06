@@ -29,13 +29,13 @@ public class VideoTimeBar implements MouseEventListener, CollectionScanner<Touch
 	private Collection<TouchArea> touchAreas;
 	private final CollectionScanner<TouchArea> touchAreasAligner = this;
 
-	private final UserInput master;
+	private final UserInputBar master;
 	private final FixedFloat2 originalSceneDimentions;
 	private CanvasPosition position;
 	private final CanvasPosition baseOffset;
 	private Rectangle screen;
 
-	public VideoTimeBar (final UserInput userPanel) {
+	public VideoTimeBar (final UserInputBar userPanel) {
 		this.master = userPanel;
 		this.baseOffset = Geometry.newCanvasPosition();
 		this.originalSceneDimentions = this.master.getOriginalSceneDimentions();
@@ -97,7 +97,7 @@ public class VideoTimeBar implements MouseEventListener, CollectionScanner<Touch
 
 	@Override
 	public boolean onTouchUp (final TouchUpEvent input_event) {
-		L.d("click!");
+		L.d("click", this);
 		return true;
 	}
 

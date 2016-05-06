@@ -1,5 +1,5 @@
 
-package com.jfixby.telecam.ui.core.input.crop;
+package com.jfixby.telecam.ui.core.input.vplay;
 
 import com.jfixby.cmns.api.collections.Collection;
 import com.jfixby.cmns.api.collections.CollectionScanner;
@@ -19,17 +19,18 @@ import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
 import com.jfixby.telecam.ui.core.UserInputBar;
 
-public class GoCropButton implements MouseEventListener, CollectionScanner<TouchArea> {
+public class VidepPlayPause implements MouseEventListener, CollectionScanner<TouchArea> {
 
 	private Layer root;
 	private CustomInput input;
-	private Raster icon;
+	private Raster play;
+	private Raster pause;
 
 	private Collection<TouchArea> touchAreas;
 	private final CollectionScanner<TouchArea> touchAreasAligner = this;
 	private CanvasPosition position;
 
-	public GoCropButton (final UserInputBar userPanel) {
+	public VidepPlayPause (final UserInputBar userPanel) {
 	}
 
 	public void setup (final Layer root) {
@@ -43,7 +44,9 @@ public class GoCropButton implements MouseEventListener, CollectionScanner<Touch
 		this.input.setDebugRenderFlag(false);
 		final Collection<Raster> options = this.input.listOptions();
 // options.print("options");
-		this.icon = options.getElementAt(0);
+// Sys.exit();
+		this.play = options.getElementAt(0);
+		this.pause = options.getElementAt(1);
 
 		this.touchAreas = this.input.listTouchAreas();
 
@@ -51,9 +54,11 @@ public class GoCropButton implements MouseEventListener, CollectionScanner<Touch
 
 	public void update (final CanvasPosition position) {
 		this.position = position;
-		this.icon.setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
+		this.play.setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
+		this.play.setPosition(position);
 
-		this.icon.setPosition(position);
+		this.pause.setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
+		this.pause.setPosition(position);
 
 		Collections.scanCollection(this.touchAreas, this.touchAreasAligner);
 	}

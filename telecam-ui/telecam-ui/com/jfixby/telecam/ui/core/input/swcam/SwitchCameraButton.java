@@ -17,7 +17,7 @@ import com.jfixby.r3.api.ui.unit.input.TouchDraggedEvent;
 import com.jfixby.r3.api.ui.unit.input.TouchUpEvent;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
-import com.jfixby.telecam.ui.core.UserInput;
+import com.jfixby.telecam.ui.core.UserInputBar;
 
 public class SwitchCameraButton implements MouseEventListener, CollectionScanner<TouchArea> {
 
@@ -31,7 +31,7 @@ public class SwitchCameraButton implements MouseEventListener, CollectionScanner
 	private final CollectionScanner<TouchArea> touchAreasAligner = this;
 	private CanvasPosition position;
 
-	public SwitchCameraButton (final UserInput userPanel) {
+	public SwitchCameraButton (final UserInputBar userPanel) {
 	}
 
 	public void setup (final Layer root) {
@@ -81,7 +81,7 @@ public class SwitchCameraButton implements MouseEventListener, CollectionScanner
 
 	@Override
 	public boolean onTouchUp (final TouchUpEvent input_event) {
-		L.d("click!");
+		L.d("click", this);
 		return true;
 	}
 
@@ -97,6 +97,10 @@ public class SwitchCameraButton implements MouseEventListener, CollectionScanner
 		element.shape().setPositionX(this.position.getX() / 2d);
 		element.shape().setPositionY(this.position.getY());
 
+	}
+
+	public void hide () {
+		this.root.hide();
 	}
 
 }

@@ -17,7 +17,7 @@ import com.jfixby.r3.api.ui.unit.input.TouchDraggedEvent;
 import com.jfixby.r3.api.ui.unit.input.TouchUpEvent;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
-import com.jfixby.telecam.ui.core.UserInput;
+import com.jfixby.telecam.ui.core.UserInputBar;
 
 public class BlueButton implements MouseEventListener, CollectionScanner<TouchArea> {
 
@@ -30,7 +30,7 @@ public class BlueButton implements MouseEventListener, CollectionScanner<TouchAr
 	private final CollectionScanner<TouchArea> touchAreasAligner = this;
 	private CanvasPosition position;
 
-	public BlueButton (final UserInput userPanel) {
+	public BlueButton (final UserInputBar userPanel) {
 	}
 
 	public void setup (final Layer root) {
@@ -69,7 +69,7 @@ public class BlueButton implements MouseEventListener, CollectionScanner<TouchAr
 
 	@Override
 	public boolean onTouchUp (final TouchUpEvent input_event) {
-		L.d("click!", this);
+		L.d("click", this);
 		return true;
 	}
 

@@ -15,8 +15,9 @@ import com.jfixby.telecam.ui.core.input.flash.SwitchFlashButton;
 import com.jfixby.telecam.ui.core.input.red.RedButton;
 import com.jfixby.telecam.ui.core.input.slider.Slider;
 import com.jfixby.telecam.ui.core.input.swcam.SwitchCameraButton;
+import com.jfixby.telecam.ui.core.input.vplay.VidepPlayPause;
 
-public class UserInput {
+public class UserInputBar {
 	private final BlueButton blueButton;
 	private final RedButton redButton;
 	private final SwitchCameraButton switchCameraButton;
@@ -25,13 +26,15 @@ public class UserInput {
 	private final Slider slider;
 	private final AcceptDecline acceptDecline;
 	private final GoCropButton cropButton;
+	private final VidepPlayPause videpPlayResume;
 
-	UserInput (final TelecamUnit telecamUnit) {
+	UserInputBar (final TelecamUnit telecamUnit) {
 		this.master = telecamUnit;
 		this.blueButton = new BlueButton(this);
 		this.redButton = new RedButton(this);
 		this.switchCameraButton = new SwitchCameraButton(this);
 		this.cropButton = new GoCropButton(this);
+		this.videpPlayResume = new VidepPlayPause(this);
 		this.acceptDecline = new AcceptDecline(this);
 		this.switchFlashButton = new SwitchFlashButton(this);
 		this.slider = new Slider(this);
@@ -53,12 +56,16 @@ public class UserInput {
 			this.redButton.setup(button_root);
 		}
 		{
-			final Layer button_root = root.listChildren().findLayer("btnSwitchCam").getElementAt(0);
+			final Layer button_root = root.listChildren().findLayer("switch-cam").getElementAt(0);
 			this.switchCameraButton.setup(button_root);
 		}
 		{
 			final Layer button_root = root.listChildren().findLayer("go-crop").getElementAt(0);
 			this.cropButton.setup(button_root);
+		}
+		{
+			final Layer button_root = root.listChildren().findLayer("vide-pause-resume").getElementAt(0);
+			this.videpPlayResume.setup(button_root);
 		}
 		{
 			final Layer button_root = root.listChildren().findLayer("accept-decline").getElementAt(0);
@@ -73,10 +80,17 @@ public class UserInput {
 			this.slider.setup(button_root);
 		}
 
+// this.hideAll();
+
+	}
+
+	public void hideAll () {
 		this.redButton.hide();
 		this.blueButton.hide();
-
-// L.d(this.blue_button_root);
+		this.cropButton.hide();
+		this.videpPlayResume.hide();
+		this.acceptDecline.hide();
+		this.switchCameraButton.hide();
 	}
 
 	public void updateScreen (final Rectangle viewport_update) {
@@ -88,6 +102,7 @@ public class UserInput {
 		this.redButton.update(this.gray.getPosition());
 		this.switchCameraButton.update(this.gray.getPosition());
 		this.cropButton.update(this.gray.getPosition());
+		this.videpPlayResume.update(this.gray.getPosition());
 		this.acceptDecline.update(this.gray.getPosition(), viewport_update);
 		this.switchFlashButton.update(viewport_update);
 		this.slider.update(this.gray.getPosition(), viewport_update);

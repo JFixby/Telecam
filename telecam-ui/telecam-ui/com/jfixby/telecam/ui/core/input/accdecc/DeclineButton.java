@@ -1,6 +1,7 @@
 
 package com.jfixby.telecam.ui.core.input.accdecc;
 
+import com.jfixby.cmns.api.log.L;
 import com.jfixby.r3.api.ui.unit.input.MouseMovedEvent;
 import com.jfixby.r3.api.ui.unit.input.TouchDownEvent;
 import com.jfixby.r3.api.ui.unit.input.TouchDraggedEvent;
@@ -24,6 +25,7 @@ public class DeclineButton extends AccDeccButton {
 
 	@Override
 	public boolean onTouchUp (final TouchUpEvent input_event) {
+		L.d("click", this);
 		return false;
 	}
 

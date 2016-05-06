@@ -23,7 +23,7 @@ import com.jfixby.r3.api.ui.unit.input.TouchDraggedEvent;
 import com.jfixby.r3.api.ui.unit.input.TouchUpEvent;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
-import com.jfixby.telecam.ui.core.UserInput;
+import com.jfixby.telecam.ui.core.UserInputBar;
 
 public class RedButton implements MouseEventListener, CollectionScanner<TouchArea> {
 
@@ -38,9 +38,9 @@ public class RedButton implements MouseEventListener, CollectionScanner<TouchAre
 	private Raster redAnus;
 	private Raster redCircle;
 	private Raster whiteSquare;
-	private final UserInput master;
+	private final UserInputBar master;
 
-	public RedButton (final UserInput userPanel) {
+	public RedButton (final UserInputBar userPanel) {
 		this.master = userPanel;
 	}
 
@@ -116,7 +116,7 @@ public class RedButton implements MouseEventListener, CollectionScanner<TouchAre
 // targetFolder.listChildren().print();
 		final File screenSHotFile = targetFolder.child("screen-" + Sys.SystemTime().currentTimeMillis() + ".png");
 
-		screenShot.saveToFile(screenSHotFile);
+// screenShot.saveToFile(screenSHotFile);
 		L.d("click!", this);
 		return true;
 	}

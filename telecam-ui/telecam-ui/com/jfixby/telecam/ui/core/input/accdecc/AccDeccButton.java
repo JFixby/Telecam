@@ -2,6 +2,8 @@
 package com.jfixby.telecam.ui.core.input.accdecc;
 
 import com.jfixby.cmns.api.collections.Collection;
+import com.jfixby.cmns.api.collections.CollectionScanner;
+import com.jfixby.cmns.api.collections.Collections;
 import com.jfixby.cmns.api.geometry.CanvasPosition;
 import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_HORIZONTAL;
 import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_VERTICAL;
@@ -12,7 +14,7 @@ import com.jfixby.r3.api.ui.unit.input.TouchArea;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
 
-public abstract class AccDeccButton implements MouseEventListener {
+public abstract class AccDeccButton implements MouseEventListener, CollectionScanner<TouchArea> {
 	private final AcceptDecline master;
 	private Layer root;
 	private CustomInput input;
@@ -21,6 +23,7 @@ public abstract class AccDeccButton implements MouseEventListener {
 	private Raster pressed;
 	private Raster released;
 	private final float horizontalAlignment;
+	private final CollectionScanner<TouchArea> touchAreasAligner = this;
 
 	public AccDeccButton (final AcceptDecline acceptDecline, final float horizontalAlignment) {
 		this.master = acceptDecline;
@@ -31,7 +34,7 @@ public abstract class AccDeccButton implements MouseEventListener {
 		this.root = root;
 		this.input = (CustomInput)root.listChildren().getElementAt(0);
 		this.input.setInputListener(this);
-		this.input.setDebugRenderFlag(!false);
+		this.input.setDebugRenderFlag(false);
 		final Collection<Raster> options = this.input.listOptions();
 		this.touchAreas = this.input.listTouchAreas();
 
@@ -53,5 +56,16 @@ public abstract class AccDeccButton implements MouseEventListener {
 
 		this.released.setPositionX(position.getX() * this.horizontalAlignment);
 		this.released.setPositionY(position.getY());
+
+		Collections.scanCollection(this.touchAreas, this.touchAreasAligner);
+	}
+
+	@Override
+	public void scanElement (final TouchArea element, final int index) {
+		element.shape().setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
+		element.shape().setPosition(this.position);
+		element.shape().setPositionX(this.position.getX() * this.horizontalAlignment);
+		element.shape().setPositionY(this.position.getY());
+
 	}
 }
