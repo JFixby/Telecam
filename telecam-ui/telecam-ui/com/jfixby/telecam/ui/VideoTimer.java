@@ -21,8 +21,8 @@ public class VideoTimer {
 	private final UserInputBar master;
 	private Raster background;
 	private RasterizedString string;
-	private final String requiredChars = "0123456789:°";
-	private final AssetID font_id = Names.newAssetID("com.jfixby.telecam.font.prepacked");
+	private final String requiredChars = "0123456789:°+";
+	private final AssetID font_id = Names.newAssetID("otf.Arcon-Rounded-Regular.Arcon-Rounded-Regular");
 
 	public VideoTimer (final UserInputBar userInputBar) {
 		this.master = userInputBar;
@@ -34,25 +34,28 @@ public class VideoTimer {
 		this.background = button_root.findComponent();
 		this.background.setOriginRelativeX(ORIGIN_RELATIVE_HORIZONTAL.CENTER);
 		this.background.setOriginRelativeY(ORIGIN_RELATIVE_VERTICAL.CENTER);
-		this.background.setDebugRenderFlag(true);
+		this.background.setDebugRenderFlag(!true);
 
 		final TextFactory factory = this.root.getComponentsFactory().getTextDepartment();
 		final RasterizedStringSpecs stringSpec = factory.newRasterStringSpecs();
-		stringSpec.setString("00:00");
 
 		final RasterizedFontSpecs font_specs = factory.newFontSpecs();
 		font_specs.setFontName(this.font_id);
-		font_specs.setFontSize(24);
-		font_specs.setFontScale(1);
+		final float m = 0.5f;
+		font_specs.setFontSize(24 / m);
+		font_specs.setFontScale(m);
+		font_specs.setBorderSize(0f);
 		font_specs.setRequiredCharacters(this.requiredChars);
 		font_specs.setColor(Colors.WHITE());
+// font_specs.setBorderColor(Colors.WHITE().mix(Colors.BLACK(), 0.1f));
 
 		final RasterizedFont font = factory.newFont(font_specs);
 		stringSpec.setFont(font);
 
 		this.string = factory.newRasterString(stringSpec);
+		this.string.setValue("00:00");
 		this.root.attachComponent(this.string);
-
+		this.string.setDebugRenderFlag(!true);
 		this.string.setOriginRelativeX(ORIGIN_RELATIVE_HORIZONTAL.CENTER);
 		this.string.setOriginRelativeY(ORIGIN_RELATIVE_VERTICAL.CENTER);
 
