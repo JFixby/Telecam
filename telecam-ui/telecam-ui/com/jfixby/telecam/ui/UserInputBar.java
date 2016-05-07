@@ -27,6 +27,7 @@ public class UserInputBar {
 	private final VidepPlayPause videpPlayResume;
 	private final BackgroundGray bgGray;
 	private final Cropper cropper;
+	private final ScreenTouch screenTouch;
 
 	UserInputBar (final TelecamUnit telecamUnit) {
 		this.master = telecamUnit;
@@ -40,6 +41,7 @@ public class UserInputBar {
 		this.slider = new Slider(this);
 		this.bgGray = new BackgroundGray(this);
 		this.cropper = new Cropper(this);
+		this.screenTouch = new ScreenTouch(this);
 
 	}
 
@@ -68,6 +70,11 @@ public class UserInputBar {
 			final Layer button_root = root.findComponent("switch-cam");
 			this.switchCameraButton.setup(button_root);
 		}
+		{
+			final Layer button_root = root.findComponent("focus-screen");
+			this.screenTouch.setup(button_root);
+		}
+
 		{
 			final Layer button_root = root.findComponent("go-crop");
 			this.cropButton.setup(button_root);
@@ -100,6 +107,7 @@ public class UserInputBar {
 		this.videpPlayResume.hide();
 		this.acceptDecline.hide();
 		this.switchCameraButton.hide();
+		this.screenTouch.hide();
 		this.bgGray.hide();
 	}
 
@@ -111,6 +119,7 @@ public class UserInputBar {
 		this.blueButton.update(this.bgGray.getPosition());
 		this.redButton.update(this.bgGray.getPosition());
 		this.switchCameraButton.update(this.bgGray.getPosition());
+		this.screenTouch.update(viewport_update);
 		this.cropButton.update(this.bgGray.getPosition());
 		this.videpPlayResume.update(this.bgGray.getPosition());
 		this.acceptDecline.update(this.bgGray.getPosition(), viewport_update);

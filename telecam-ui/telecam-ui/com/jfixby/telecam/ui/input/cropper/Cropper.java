@@ -34,6 +34,7 @@ public class Cropper {
 
 		{
 			final CustomInput button = root.findComponent("btnCancel");
+// root.printChildren(this + "");
 			this.btnCancel.setup(button);
 
 		}
