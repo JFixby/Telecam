@@ -121,7 +121,7 @@ public class TelecamAndroidAssembler implements FokkerEngineAssembler {
 		SystemSettings.setStringParameter(FokkerEngineParams.TextureFilter.Min, TextureFilter.Nearest + "");
 		SystemSettings.setFlag(RedTriplaneParams.DisableLogo, true);
 		SystemSettings.setFlag(AssetsManagerFlags.AutoresolveDependencies, true);
-		SystemSettings.setFlag(R3Font.RenderRasterStrings, !true);
+		SystemSettings.setFlag(R3Font.RenderRasterStrings, true);
 		SystemSettings.setStringParameter(RedTriplaneParams.DefaultFont, "Arial");
 		SystemSettings.setLongParameter(RedTriplaneParams.DEFAULT_LOGO_FADE_TIME, 2000L);
 		SystemSettings.setStringParameter(RedTriplaneParams.CLEAR_SCREEN_COLOR_ARGB, "#00000000");
