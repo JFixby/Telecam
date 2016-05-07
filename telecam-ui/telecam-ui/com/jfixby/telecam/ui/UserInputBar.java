@@ -96,7 +96,7 @@ public class UserInputBar {
 			this.slider.setup(button_root);
 		}
 
-		this.hideAll();
+// this.hideAll();
 
 	}
 

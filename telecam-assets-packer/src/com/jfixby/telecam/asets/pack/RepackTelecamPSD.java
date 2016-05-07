@@ -40,7 +40,7 @@ public class RepackTelecamPSD {
 		TextureBleed.installComponent(new RebeccaTextureBleeder());
 
 		final String java_folder = TelecamAssetsConfig.RAW_ASSETS_HOME;
-		final File input_folder = LocalFileSystem.newFile(java_folder);
+		final File input_folder = LocalFileSystem.newFile(java_folder).child("psd");
 		final FileFilter filter = new FileFilter() {
 			@Override
 			public boolean fits (final File child) {
@@ -97,6 +97,8 @@ public class RepackTelecamPSD {
 				settings.setIgonreAtlasFlag(ignore_atlas);
 				settings.setGemserkPadding(gemserkPadding);
 				settings.setAtlasMaxPageSize(1024);
+				settings.setAtlasMinPageSize(1024);
+
 				settings.setPadding(texturePadding);
 				settings.setForceRasterDecomposition(forceRasterDecomposition);
 				settings.setImageQuality(imageQuality);

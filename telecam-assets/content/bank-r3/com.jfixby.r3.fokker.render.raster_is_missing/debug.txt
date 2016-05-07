@@ -1,0 +1,9 @@
+{
+	"format":"libGDX.Texture",
+	"version":"1.0",
+	"timestamp":"1461686850242",
+	"root_file_name":"com.jfixby.r3.fokker.render.raster_is_missing.png",
+	"packed_assets":[
+		"com.jfixby.r3.fokker.render.raster_is_missing"
+		]
+}

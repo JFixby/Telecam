@@ -1,0 +1,32 @@
+{
+"fonts": [
+	{
+		"font_name": "GenericFont.otf",
+		"tile_sets": [
+			{
+				"font_color_r": 255,
+				"font_color_g": 255,
+				"font_color_b": 255,
+				"font_color_a": 255,
+				"tiles": [
+					{
+						"character": "a",
+						"raster_id": "GenericFont.otf.raster.char-97",
+						"font_size": 64,
+						"tile_width": 128,
+						"tile_height": 128,
+						"tile_origin_x": 0.25,
+						"tile_origin_y": 0.75,
+						"char_width": 29,
+						"char_height": 35,
+						"char_origin_x": -1.2068965,
+						"char_origin_y": -1.7428571
+					}
+				]
+			}
+		],
+		"id": "GenericFont.otf",
+		"original_font_file_name": "GenericFont.otf"
+	}
+]
+}

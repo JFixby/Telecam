@@ -91,7 +91,7 @@ public class Rotator {
 		specs.addTouchArea(touchSpecs);
 		final TouchArea touchArea = inputFactory.newTouchArea(touchSpecs);
 		this.touchArea = touchArea;
-		this.touchArea.setDebugRenderFlag(true);
+		this.touchArea.setDebugRenderFlag(!true);
 		this.touchArea.shape().setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
 		this.root.attachComponent(touchArea);
 
