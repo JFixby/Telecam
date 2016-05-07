@@ -5,7 +5,6 @@ import com.jfixby.cmns.api.floatn.FixedFloat2;
 import com.jfixby.cmns.api.geometry.Rectangle;
 import com.jfixby.r3.api.ui.unit.input.CustomInput;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
-import com.jfixby.telecam.ui.CropTouch;
 import com.jfixby.telecam.ui.UserInputBar;
 
 public class Cropper {
@@ -19,6 +18,7 @@ public class Cropper {
 	private final CropperBackground background;
 	private double baseOffsetX;
 	private final CropTouch screenTouch;
+	private final Rotator rotator;
 
 	public Cropper (final UserInputBar userInputBar) {
 		this.master = userInputBar;
@@ -31,6 +31,7 @@ public class Cropper {
 		this.background = new CropperBackground(this);
 
 		this.screenTouch = new CropTouch(this);
+		this.rotator = new Rotator(this, this.btnRotate);
 	}
 
 	public void setup (final Layer root) {
@@ -65,6 +66,10 @@ public class Cropper {
 			final Layer component_root = this.root.findComponent("bg-black");
 			this.background.setup(component_root);
 		}
+		{
+			final Layer component_root = this.root.findComponent("rotator");
+			this.rotator.setup(component_root);
+		}
 
 	}
 
@@ -76,6 +81,7 @@ public class Cropper {
 		this.btnReset.update(viewport_update);
 		this.btnRotate.update(viewport_update);
 		this.screenTouch.update(viewport_update);
+		this.rotator.update(viewport_update);
 
 	}
 

@@ -25,7 +25,6 @@ public class ScreenTouch implements MouseEventListener {
 	}
 
 	public void setup (final Layer button_root) {
-		button_root.printChildren("button_root");
 		this.input = button_root.findComponent();
 		this.input.setInputListener(this);
 		this.input.setDebugRenderFlag(false);

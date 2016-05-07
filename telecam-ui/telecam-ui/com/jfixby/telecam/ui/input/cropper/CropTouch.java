@@ -1,5 +1,5 @@
 
-package com.jfixby.telecam.ui;
+package com.jfixby.telecam.ui.input.cropper;
 
 import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_HORIZONTAL;
 import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_VERTICAL;
@@ -13,7 +13,6 @@ import com.jfixby.r3.api.ui.unit.input.TouchDownEvent;
 import com.jfixby.r3.api.ui.unit.input.TouchDraggedEvent;
 import com.jfixby.r3.api.ui.unit.input.TouchUpEvent;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
-import com.jfixby.telecam.ui.input.cropper.Cropper;
 
 public class CropTouch implements MouseEventListener {
 	CustomInput input;
@@ -28,7 +27,6 @@ public class CropTouch implements MouseEventListener {
 
 	public void setup (final Layer button_root) {
 		this.root = button_root;
-		button_root.printChildren("button_root");
 		this.input = button_root.findComponent();
 		this.input.setInputListener(this);
 		this.input.setDebugRenderFlag(false);

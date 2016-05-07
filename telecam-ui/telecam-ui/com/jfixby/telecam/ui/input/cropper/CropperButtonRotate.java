@@ -26,7 +26,7 @@ public class CropperButtonRotate {
 
 	public void setup (final CustomInput btn) {
 		this.btn = btn;
-		btn.setDebugRenderFlag(false);
+		btn.setDebugRenderFlag(!false);
 		this.icon = btn.listOptions().getLast();
 		this.icon.setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
 		this.baseOffsetY = this.master.getOriginalSceneDimentions().getY() - this.icon.getPositionY();
@@ -46,11 +46,23 @@ public class CropperButtonRotate {
 	}
 
 	public double getX () {
-		return this.btn.getPositionX();
+		return this.icon.getPositionX();
 	}
 
 	public double getY () {
-		return this.btn.getPositionY();
+		return this.icon.getPositionY();
+	}
+
+	public double getRasterWidth () {
+		return this.icon.getWidth();
+	}
+
+	public double getTouchWidth () {
+		return this.touch.shape().getWidth();
+	}
+
+	public double getTouchHeight () {
+		return this.touch.shape().getHeight();
 	}
 
 }
