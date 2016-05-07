@@ -16,7 +16,7 @@ import com.jfixby.telecam.assets.cfg.TelecamAssetsConfig;
 import com.jfixby.tools.gdx.texturepacker.api.indexed.IndexedCompressor;
 import com.jfixby.tools.texturepacker.red.indexed.RedIndexedCompressor;
 
-public class PackTelecamAssets {
+public class PackTelecamAndroidAssets {
 
 	public static void main (final String[] args) throws IOException {
 		if (args != null) {
