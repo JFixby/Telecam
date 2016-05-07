@@ -6,6 +6,7 @@ import com.jfixby.cmns.api.geometry.Rectangle;
 import com.jfixby.r3.api.ui.unit.input.CustomInput;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.telecam.ui.UserInputBar;
+import com.jfixby.telecam.ui.input.cropper.rotator.Rotator;
 
 public class Cropper {
 

@@ -4,6 +4,8 @@ package com.jfixby.telecam.ui;
 import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_HORIZONTAL;
 import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_VERTICAL;
 import com.jfixby.cmns.api.log.L;
+import com.jfixby.cmns.api.util.JUtils;
+import com.jfixby.cmns.api.util.ProgressIndicator;
 import com.jfixby.r3.api.ui.unit.input.MouseEventListener;
 import com.jfixby.r3.api.ui.unit.input.MouseMovedEvent;
 import com.jfixby.r3.api.ui.unit.input.TouchDownEvent;
@@ -18,6 +20,7 @@ public class ProgressBar implements MouseEventListener {
 
 	private Raster line;
 
+	final ProgressIndicator progress = JUtils.newProgressIndicator();
 	private double width;
 
 	public ProgressBar (final UserInputBar userPanel) {
@@ -35,8 +38,14 @@ public class ProgressBar implements MouseEventListener {
 		this.line.setPosition(bgGray.getTopLeftCorner());
 
 		this.width = bgGray.getWidth();
-		this.line.setWidth(this.width);
 
+		this.updateProgress();
+
+	}
+
+	private void updateProgress () {
+		final float progress = 0.75f;
+		this.line.setWidth(this.width * progress);
 	}
 
 	@Override

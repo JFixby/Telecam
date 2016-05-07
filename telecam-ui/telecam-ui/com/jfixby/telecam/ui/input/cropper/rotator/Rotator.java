@@ -1,5 +1,5 @@
 
-package com.jfixby.telecam.ui.input.cropper;
+package com.jfixby.telecam.ui.input.cropper.rotator;
 
 import com.jfixby.cmns.api.collections.Collections;
 import com.jfixby.cmns.api.collections.List;
@@ -16,6 +16,8 @@ import com.jfixby.r3.api.ui.unit.input.TouchAreaSpecs;
 import com.jfixby.r3.api.ui.unit.input.UserInputFactory;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
+import com.jfixby.telecam.ui.input.cropper.Cropper;
+import com.jfixby.telecam.ui.input.cropper.CropperButtonRotate;
 
 public class Rotator {
 
@@ -106,7 +108,7 @@ public class Rotator {
 
 		this.smallWhite = rasters.findComponent("smallWhite");
 		this.smallBlue = rasters.findComponent("smallBlue");
-
+		this.exampleRasters.clear();
 		this.exampleRasters.add(this.bigWhite);
 		this.exampleRasters.add(this.bigBlue);
 

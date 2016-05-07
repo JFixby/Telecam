@@ -29,6 +29,7 @@ public class UserInputBar {
 	private final Cropper cropper;
 	private final ScreenTouch screenTouch;
 	private final ProgressBar progressBar;
+	private final VideoTimer videTimer;
 
 	UserInputBar (final TelecamUnit telecamUnit) {
 		this.master = telecamUnit;
@@ -44,6 +45,7 @@ public class UserInputBar {
 		this.cropper = new Cropper(this);
 		this.screenTouch = new ScreenTouch(this);
 		this.progressBar = new ProgressBar(this);
+		this.videTimer = new VideoTimer(this);
 
 	}
 
@@ -101,6 +103,10 @@ public class UserInputBar {
 			final Layer button_root = root.findComponent("progress-bar");
 			this.progressBar.setup(button_root);
 		}
+		{
+			final Layer button_root = root.findComponent("video-timer");
+			this.videTimer.setup(button_root);
+		}
 
 // this.hideAll();
 
@@ -115,6 +121,7 @@ public class UserInputBar {
 		this.acceptDecline.hide();
 		this.switchCameraButton.hide();
 		this.screenTouch.hide();
+// this.videTimer.hide();
 // this.bgGray.hide();
 		this.cropper.hide();
 	}
@@ -130,6 +137,7 @@ public class UserInputBar {
 		this.screenTouch.update(viewport_update);
 		this.cropButton.update(this.bgGray.getPosition());
 		this.progressBar.update(this.bgGray);
+		this.videTimer.update(this.bgGray.getPosition());
 		this.videpPlayResume.update(this.bgGray.getPosition());
 		this.acceptDecline.update(this.bgGray.getPosition(), viewport_update);
 		this.switchFlashButton.update(viewport_update);
