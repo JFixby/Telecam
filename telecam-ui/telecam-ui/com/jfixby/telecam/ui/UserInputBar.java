@@ -109,7 +109,7 @@ public class UserInputBar {
 		this.switchCameraButton.hide();
 		this.screenTouch.hide();
 // this.bgGray.hide();
-		this.cropper.hide();
+// this.cropper.hide();
 	}
 
 	public void updateScreen (final Rectangle viewport_update) {
