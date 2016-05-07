@@ -96,7 +96,7 @@ public class Rotator {
 		this.root.attachComponent(touchArea);
 
 		final Layer rasters = this.root.findComponent("raster");
-		rasters.listChildren().print("rasters");
+// rasters.listChildren().print("rasters");
 
 		this.bigWhite = rasters.findComponent("bigWhite");
 		this.bigBlue = rasters.findComponent("bigBlue");

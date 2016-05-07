@@ -5,6 +5,7 @@ import com.jfixby.cmns.api.geometry.CanvasPosition;
 import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_HORIZONTAL;
 import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_VERTICAL;
 import com.jfixby.cmns.api.geometry.Rectangle;
+import com.jfixby.cmns.api.geometry.RectangleCorner;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
 
@@ -36,6 +37,14 @@ public class BackgroundGray {
 
 	public void hide () {
 		this.root.hide();
+	}
+
+	public RectangleCorner getTopLeftCorner () {
+		return this.gray.getTopLeftCorner();
+	}
+
+	public double getWidth () {
+		return this.gray.getWidth();
 	}
 
 }
