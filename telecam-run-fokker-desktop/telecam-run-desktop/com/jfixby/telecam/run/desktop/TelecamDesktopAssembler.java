@@ -135,9 +135,6 @@ public class TelecamDesktopAssembler implements FokkerEngineAssembler {
 	private void installResources () {
 		// File dev_assets_home =
 		// LocalFileSystem.newFile(TelecamAssetsConfig.PACKED_ASSETS_HOME);
-// public static final String RAW_ASSETS_HOME = "D:\\[DEV]\\[GIT]\\Telecam\\telecam-assets\\raw";
-// public static final String PACKED_ASSETS_HOME = "D:\\[DEV]\\[GIT]\\Telecam\\telecam-assets\\content";
-// public static final String ANDROID_ASSETS_HOME = "D:\\[DEV]\\[GIT]\\Telecam\\telecam-run-fokker-android\\assets";
 
 		final File dev_assets_home = LocalFileSystem.ApplicationHome().parent().child("telecam-assets").child("content");
 
