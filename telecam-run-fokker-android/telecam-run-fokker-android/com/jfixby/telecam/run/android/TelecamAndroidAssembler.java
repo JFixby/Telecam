@@ -120,6 +120,8 @@ public class TelecamAndroidAssembler implements FokkerEngineAssembler {
 		SystemSettings.setStringParameter(FokkerEngineParams.TextureFilter.Mag, TextureFilter.Nearest + "");
 		SystemSettings.setStringParameter(FokkerEngineParams.TextureFilter.Min, TextureFilter.Nearest + "");
 		SystemSettings.setFlag(RedTriplaneParams.DisableLogo, true);
+
+		L.d();
 		SystemSettings.setFlag(AssetsManagerFlags.AutoresolveDependencies, true);
 		SystemSettings.setFlag(R3Font.RenderRasterStrings, true);
 

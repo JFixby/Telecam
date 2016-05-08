@@ -128,7 +128,7 @@ public class CropperTool {
 		final double activeHeight = (viewport_update.getHeight() - this.master.getBackground().getHeight());
 		this.cropArea.setPositionX(viewport_update.getWidth() / 2);
 		this.cropArea.setPositionY(activeHeight / 2);
-		this.cropArea.setSize(viewport_update.getWidth() / 3, activeHeight / 3);
+		this.cropArea.setSize(viewport_update.getWidth() * 0.8, activeHeight * 0.8);
 // this.cropArea.setRotation(Angles.g45().toRadians() / 8);
 
 		this.cornerTopLeft.update();
