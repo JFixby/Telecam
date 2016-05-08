@@ -8,6 +8,7 @@ import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.telecam.ui.FontSettings;
 import com.jfixby.telecam.ui.UserInputBar;
 import com.jfixby.telecam.ui.input.cropper.rotator.Rotator;
+import com.jfixby.telecam.ui.input.cropper.tool.CropperTool;
 
 public class Cropper {
 
@@ -20,6 +21,7 @@ public class Cropper {
 	private final CropperBackground background;
 	private final CropTouch screenTouch;
 	private final Rotator rotator;
+	private final CropperTool tool;
 
 	public Cropper (final UserInputBar userInputBar) {
 		this.master = userInputBar;
@@ -33,6 +35,7 @@ public class Cropper {
 
 		this.screenTouch = new CropTouch(this);
 		this.rotator = new Rotator(this, this.btnRotate);
+		this.tool = new CropperTool(this);
 
 	}
 
@@ -72,6 +75,10 @@ public class Cropper {
 			final Layer component_root = this.root.findComponent("rotator");
 			this.rotator.setup(component_root);
 		}
+		{
+			final Layer component_root = this.root.findComponent("cropper-tool");
+			this.tool.setup(component_root);
+		}
 
 	}
 
@@ -84,6 +91,7 @@ public class Cropper {
 		this.btnRotate.update(viewport_update);
 		this.screenTouch.update(viewport_update);
 		this.rotator.update(viewport_update);
+		this.tool.update(viewport_update);
 
 	}
 

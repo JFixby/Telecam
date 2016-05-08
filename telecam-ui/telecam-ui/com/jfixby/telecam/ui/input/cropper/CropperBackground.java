@@ -56,4 +56,8 @@ public class CropperBackground {
 	public double getWidth () {
 		return this.black.getWidth();
 	}
+
+	public double getHeight () {
+		return this.black.getHeight();
+	}
 }
