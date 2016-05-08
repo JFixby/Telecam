@@ -83,7 +83,7 @@ com.jfixby.telecam.scene-base.psd.raster_28
   index: -1
 com.jfixby.telecam.scene-base.psd.raster_3
   rotate: false
-  xy: 858, 789
+  xy: 39, 154
   size: 25, 25
   orig: 25, 25
   offset: 0, 0
@@ -104,7 +104,7 @@ com.jfixby.telecam.scene-base.psd.raster_31
   index: -1
 com.jfixby.telecam.scene-base.psd.raster_33
   rotate: false
-  xy: 39, 183
+  xy: 218, 397
   size: 33, 33
   orig: 33, 33
   offset: 0, 0
@@ -118,51 +118,58 @@ com.jfixby.telecam.scene-base.psd.raster_35
   index: -1
 com.jfixby.telecam.scene-base.psd.raster_36
   rotate: false
-  xy: 218, 356
+  xy: 483, 672
   size: 27, 30
   orig: 27, 30
   offset: 0, 0
   index: -1
-com.jfixby.telecam.scene-base.psd.raster_39.tile-0-0
+com.jfixby.telecam.scene-base.psd.raster_39
+  rotate: false
+  xy: 381, 578
+  size: 5, 39
+  orig: 5, 39
+  offset: 0, 0
+  index: -1
+com.jfixby.telecam.scene-base.psd.raster_40
+  rotate: false
+  xy: 464, 651
+  size: 3, 9
+  orig: 3, 9
+  offset: 0, 0
+  index: -1
+com.jfixby.telecam.scene-base.psd.raster_41
+  rotate: false
+  xy: 132, 310
+  size: 2, 9
+  orig: 2, 9
+  offset: 0, 0
+  index: -1
+com.jfixby.telecam.scene-base.psd.raster_42
+  rotate: false
+  xy: 397, 625
+  size: 10, 10
+  orig: 10, 10
+  offset: 0, 0
+  index: -1
+com.jfixby.telecam.scene-base.psd.raster_43.tile-0-0
   rotate: false
   xy: 4, 635
   size: 256, 204
   orig: 256, 204
   offset: 0, 0
   index: -1
-com.jfixby.telecam.scene-base.psd.raster_39.tile-1-0
+com.jfixby.telecam.scene-base.psd.raster_43.tile-1-0
   rotate: false
   xy: 4, 635
   size: 256, 204
   orig: 256, 204
   offset: 0, 0
   index: -1
-com.jfixby.telecam.scene-base.psd.raster_39.tile-2-0
+com.jfixby.telecam.scene-base.psd.raster_43.tile-2-0
   rotate: false
   xy: 4, 635
   size: 256, 204
   orig: 256, 204
-  offset: 0, 0
-  index: -1
-com.jfixby.telecam.scene-base.psd.raster_40.tile-0-0
-  rotate: false
-  xy: 268, 754
-  size: 256, 85
-  orig: 256, 85
-  offset: 0, 0
-  index: -1
-com.jfixby.telecam.scene-base.psd.raster_40.tile-1-0
-  rotate: false
-  xy: 268, 754
-  size: 256, 85
-  orig: 256, 85
-  offset: 0, 0
-  index: -1
-com.jfixby.telecam.scene-base.psd.raster_40.tile-2-0
-  rotate: false
-  xy: 268, 754
-  size: 256, 85
-  orig: 256, 85
   offset: 0, 0
   index: -1
 com.jfixby.telecam.scene-base.psd.raster_11
@@ -172,39 +179,46 @@ com.jfixby.telecam.scene-base.psd.raster_11
   orig: 27, 120
   offset: 0, 0
   index: -1
-com.jfixby.telecam.scene-base.psd.raster_41
+com.jfixby.telecam.scene-base.psd.raster_44.tile-0-0
   rotate: false
-  xy: 39, 146
+  xy: 268, 754
+  size: 256, 85
+  orig: 256, 85
+  offset: 0, 0
+  index: -1
+com.jfixby.telecam.scene-base.psd.raster_44.tile-1-0
+  rotate: false
+  xy: 268, 754
+  size: 256, 85
+  orig: 256, 85
+  offset: 0, 0
+  index: -1
+com.jfixby.telecam.scene-base.psd.raster_44.tile-2-0
+  rotate: false
+  xy: 268, 754
+  size: 256, 85
+  orig: 256, 85
+  offset: 0, 0
+  index: -1
+com.jfixby.telecam.scene-base.psd.raster_45
+  rotate: false
+  xy: 218, 360
   size: 24, 29
   orig: 24, 29
   offset: 0, 0
   index: -1
-com.jfixby.telecam.scene-base.psd.raster_43
+com.jfixby.telecam.scene-base.psd.raster_47
   rotate: false
   xy: 825, 822
   size: 79, 17
   orig: 79, 17
   offset: 0, 0
   index: -1
-com.jfixby.telecam.scene-base.psd.raster_45
+com.jfixby.telecam.scene-base.psd.raster_49
   rotate: false
   xy: 132, 327
   size: 57, 17
   orig: 57, 17
-  offset: 0, 0
-  index: -1
-com.jfixby.telecam.scene-base.psd.raster_47
-  rotate: false
-  xy: 397, 643
-  size: 59, 17
-  orig: 59, 17
-  offset: 0, 0
-  index: -1
-com.jfixby.telecam.scene-base.psd.raster_49
-  rotate: false
-  xy: 381, 578
-  size: 5, 39
-  orig: 5, 39
   offset: 0, 0
   index: -1
 com.jfixby.telecam.scene-base.psd.raster_5
@@ -214,32 +228,18 @@ com.jfixby.telecam.scene-base.psd.raster_5
   orig: 68, 56
   offset: 0, 0
   index: -1
-com.jfixby.telecam.scene-base.psd.raster_50
-  rotate: false
-  xy: 4, 4
-  size: 5, 39
-  orig: 5, 39
-  offset: 0, 0
-  index: -1
 com.jfixby.telecam.scene-base.psd.raster_51
   rotate: false
-  xy: 39, 110
-  size: 3, 28
-  orig: 3, 28
-  offset: 0, 0
-  index: -1
-com.jfixby.telecam.scene-base.psd.raster_52
-  rotate: false
-  xy: 381, 542
-  size: 3, 28
-  orig: 3, 28
+  xy: 397, 643
+  size: 59, 17
+  orig: 59, 17
   offset: 0, 0
   index: -1
 com.jfixby.telecam.scene-base.psd.raster_53
   rotate: false
-  xy: 80, 195
-  size: 1, 21
-  orig: 1, 21
+  xy: 4, 4
+  size: 5, 39
+  orig: 5, 39
   offset: 0, 0
   index: -1
 com.jfixby.telecam.scene-base.psd.raster_12
@@ -265,37 +265,37 @@ com.jfixby.telecam.scene-base.psd.raster_13
   index: -1
 com.jfixby.telecam.scene-base.psd.raster_54
   rotate: false
-  xy: 520, 678
-  size: 1, 21
-  orig: 1, 21
+  xy: 39, 107
+  size: 5, 39
+  orig: 5, 39
   offset: 0, 0
   index: -1
 com.jfixby.telecam.scene-base.psd.raster_55
   rotate: false
-  xy: 483, 707
-  size: 39, 39
-  orig: 39, 39
+  xy: 76, 188
+  size: 3, 28
+  orig: 3, 28
   offset: 0, 0
   index: -1
 com.jfixby.telecam.scene-base.psd.raster_56
   rotate: false
-  xy: 464, 651
-  size: 3, 9
-  orig: 3, 9
+  xy: 381, 542
+  size: 3, 28
+  orig: 3, 28
   offset: 0, 0
   index: -1
 com.jfixby.telecam.scene-base.psd.raster_57
   rotate: false
-  xy: 132, 310
-  size: 2, 9
-  orig: 2, 9
+  xy: 259, 409
+  size: 1, 21
+  orig: 1, 21
   offset: 0, 0
   index: -1
 com.jfixby.telecam.scene-base.psd.raster_58
   rotate: false
-  xy: 397, 625
-  size: 10, 10
-  orig: 10, 10
+  xy: 268, 410
+  size: 1, 21
+  orig: 1, 21
   offset: 0, 0
   index: -1
 com.jfixby.telecam.scene-base.psd.raster_59.tile-0-0
@@ -342,7 +342,7 @@ com.jfixby.telecam.scene-base.psd.raster_9
   index: -1
 com.jfixby.telecam.scene-base.psd.raster_14
   rotate: false
-  xy: 483, 670
+  xy: 39, 187
   size: 29, 29
   orig: 29, 29
   offset: 0, 0
@@ -363,7 +363,7 @@ com.jfixby.telecam.scene-base.psd.raster_16
   index: -1
 com.jfixby.telecam.scene-base.psd.raster_17
   rotate: false
-  xy: 218, 394
+  xy: 483, 710
   size: 35, 36
   orig: 38, 39
   offset: 1, 2
