@@ -1,7 +1,7 @@
 {
 	"format":"RedTriplane.Shader",
 	"version":"1.0",
-	"timestamp":"1462456008309",
+	"timestamp":"1462718170368",
 	"root_file_name":"r3.shader.info",
 	"packed_assets":[
 		"com.badlogic.gdx.graphics.g2d.SpriteBatch.DefaultShader"

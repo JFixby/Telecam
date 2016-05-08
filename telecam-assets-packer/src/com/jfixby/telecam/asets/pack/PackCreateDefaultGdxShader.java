@@ -22,7 +22,6 @@ import com.jfixby.r3.api.shader.srlz.ShadersContainer;
 import com.jfixby.red.desktop.DesktopSetup;
 import com.jfixby.red.engine.core.resources.PackageUtils;
 import com.jfixby.red.engine.core.resources.PackerSpecs;
-import com.jfixby.telecam.assets.cfg.TelecamAssetsConfig;
 import com.jfixby.texture.slicer.api.TextureSlicer;
 import com.jfixby.texture.slicer.red.RedTextureSlicer;
 import com.jfixby.tools.gdx.texturepacker.GdxTexturePacker;
@@ -80,7 +79,7 @@ public class PackCreateDefaultGdxShader {
 
 	public static void pack () {
 
-		final File bank = LocalFileSystem.newFile(TelecamAssetsConfig.PACKED_ASSETS_HOME).child("bank-r3");
+		final File bank = LocalFileSystem.ApplicationHome().parent().child("telecam-assets").child("content").child("bank-r3");
 		final File shaders = LocalFileSystem.ApplicationHome().child("shaders");
 		final ChildrenList folders_list = shaders.listChildren();
 		for (int i = 0; i < folders_list.size(); i++) {

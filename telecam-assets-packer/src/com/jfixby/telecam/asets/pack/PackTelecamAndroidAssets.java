@@ -12,7 +12,6 @@ import com.jfixby.cmns.api.json.Json;
 import com.jfixby.red.desktop.DesktopSetup;
 import com.jfixby.redtriplane.fokker.fs.AssetsInfo;
 import com.jfixby.redtriplane.fokker.fs.GdxAssetsFileSystemPacker;
-import com.jfixby.telecam.assets.cfg.TelecamAssetsConfig;
 import com.jfixby.tools.gdx.texturepacker.api.indexed.IndexedCompressor;
 import com.jfixby.tools.texturepacker.red.indexed.RedIndexedCompressor;
 
@@ -25,8 +24,10 @@ public class PackTelecamAndroidAssets {
 			IndexedCompressor.installComponent(new RedIndexedCompressor());
 		}
 
-		final File input_folder = LocalFileSystem.newFile(TelecamAssetsConfig.PACKED_ASSETS_HOME);
-		final File output_folder = LocalFileSystem.newFile(TelecamAssetsConfig.ANDROID_ASSETS_HOME);
+		final File input_folder = LocalFileSystem.ApplicationHome().parent().child("telecam-assets").child("content");
+		;
+		final File output_folder = LocalFileSystem.ApplicationHome().parent().child("telecam-run-fokker-android").child("assets");
+		;
 		output_folder.makeFolder();
 		output_folder.clearFolder();
 

@@ -16,7 +16,6 @@ import com.jfixby.r3.ext.api.font.FontPackage;
 import com.jfixby.red.desktop.DesktopSetup;
 import com.jfixby.red.engine.core.resources.PackageUtils;
 import com.jfixby.red.engine.core.resources.PackerSpecs;
-import com.jfixby.telecam.assets.cfg.TelecamAssetsConfig;
 import com.jfixby.tools.gdx.texturepacker.api.indexed.IndexedCompressor;
 import com.jfixby.tools.texturepacker.red.indexed.RedIndexedCompressor;
 
@@ -38,7 +37,8 @@ public class PackTelecamFont {
 
 		final File font_file = input_font_folder.child(target_file_name);
 
-		final File bank_folder = LocalFileSystem.newFile(TelecamAssetsConfig.PACKED_ASSETS_HOME).child("bank-telecam");
+		final File bank_folder = LocalFileSystem.ApplicationHome().parent().child("telecam-assets").child("content")
+			.child("bank-telecam");
 		final File package_folder = bank_folder.child(package_name_string);
 
 		package_folder.makeFolder();

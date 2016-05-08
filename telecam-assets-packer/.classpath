@@ -35,6 +35,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/jfixby-tool-texture-compressor-red"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/jfixby-tool-texture-compressor-test"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/jfixby-tool-texture-bleed-red"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/telecam-assets-cfg"/>
+	
 	<classpathentry kind="output" path="bin"/>
 </classpath>

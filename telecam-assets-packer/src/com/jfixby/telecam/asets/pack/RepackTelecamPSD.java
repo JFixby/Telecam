@@ -17,7 +17,6 @@ import com.jfixby.psd.unpacker.api.PSDUnpacker;
 import com.jfixby.psd.unpacker.core.RedPSDUnpacker;
 import com.jfixby.rana.api.pkg.fs.PackageDescriptor;
 import com.jfixby.red.desktop.DesktopSetup;
-import com.jfixby.telecam.assets.cfg.TelecamAssetsConfig;
 import com.jfixby.texture.slicer.api.TextureSlicer;
 import com.jfixby.texture.slicer.red.RedTextureSlicer;
 import com.jfixby.tool.psd2scene2d.PSDRepackSettings;
@@ -39,8 +38,7 @@ public class RepackTelecamPSD {
 		TextureSlicer.installComponent(new RedTextureSlicer());
 		TextureBleed.installComponent(new RebeccaTextureBleeder());
 
-		final String java_folder = TelecamAssetsConfig.RAW_ASSETS_HOME;
-		final File input_folder = LocalFileSystem.newFile(java_folder).child("psd");
+		final File input_folder = LocalFileSystem.ApplicationHome().parent().child("telecam-assets").child("raw").child("psd");
 		final FileFilter filter = new FileFilter() {
 			@Override
 			public boolean fits (final File child) {
@@ -58,7 +56,8 @@ public class RepackTelecamPSD {
 		}
 		psd_files.print("processing");
 
-		final File output_folder = LocalFileSystem.newFile(TelecamAssetsConfig.PACKED_ASSETS_HOME).child("bank-telecam");
+		final File output_folder = LocalFileSystem.ApplicationHome().parent().child("telecam-assets").child("content")
+			.child("bank-telecam");
 		output_folder.makeFolder();
 		// output_folder.clearFolder();
 		final String prefix = "com.jfixby.telecam.";
