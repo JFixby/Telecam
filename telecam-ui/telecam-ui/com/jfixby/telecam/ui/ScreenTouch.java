@@ -19,21 +19,20 @@ public class ScreenTouch implements MouseEventListener {
 	private final UserInputBar master;
 	private double baseOffsetY;
 	private TouchArea touch;
+	private Layer root;
 
 	public ScreenTouch (final UserInputBar userInputBar) {
 		this.master = userInputBar;
 	}
 
 	public void setup (final Layer button_root) {
+		this.root = button_root;
 		this.input = button_root.findComponent();
 		this.input.setInputListener(this);
 		this.input.setDebugRenderFlag(false);
 		this.touch = this.input.listTouchAreas().getLast();
 		this.baseOffsetY = this.master.getOriginalSceneDimentions().getY() - this.touch.shape().getHeight();
 		this.touch.shape().setPosition();
-	}
-
-	public void hide () {
 	}
 
 	public void update (final Rectangle viewport_update) {
@@ -65,6 +64,14 @@ public class ScreenTouch implements MouseEventListener {
 	@Override
 	public boolean onTouchDragged (final TouchDraggedEvent input_event) {
 		return false;
+	}
+
+	public void show () {
+		this.root.show();
+	}
+
+	public void hide () {
+		this.root.hide();
 	}
 
 }

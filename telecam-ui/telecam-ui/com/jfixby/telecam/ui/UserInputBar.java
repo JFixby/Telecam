@@ -108,22 +108,24 @@ public class UserInputBar {
 			this.videTimer.setup(button_root);
 		}
 
-// this.hideAll();
-		this.progressBar.hide();
+		this.hideAll();
+
 	}
 
 	public void hideAll () {
 		this.redButton.hide();
 		this.blueButton.hide();
 		this.cropButton.hide();
-// this.progressBar.hide();
+		this.progressBar.hide();
 		this.videpPlayResume.hide();
 		this.acceptDecline.hide();
 		this.switchCameraButton.hide();
 		this.screenTouch.hide();
-// this.videTimer.hide();
-// this.bgGray.hide();
+		this.videTimer.hide();
+		this.bgGray.hide();
 		this.cropper.hide();
+		this.slider.hide();
+		this.switchFlashButton.hide();
 	}
 
 	public void updateScreen (final Rectangle viewport_update) {
@@ -157,6 +159,17 @@ public class UserInputBar {
 
 	public FontSettings getFontSettings () {
 		return this.fontSettings;
+	}
+
+	public void goPhoto () {
+		this.hideAll();
+
+		this.blueButton.show();
+		this.switchCameraButton.show();
+		this.screenTouch.show();
+		this.bgGray.show();
+		this.slider.show();
+		this.switchFlashButton.show();
 	}
 
 }

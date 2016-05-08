@@ -47,4 +47,8 @@ public class BackgroundGray {
 		return this.gray.getWidth();
 	}
 
+	public void show () {
+		this.root.show();
+	}
+
 }

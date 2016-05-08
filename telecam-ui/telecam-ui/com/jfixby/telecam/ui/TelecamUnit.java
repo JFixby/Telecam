@@ -98,6 +98,8 @@ public class TelecamUnit extends Unit implements TelecamUI, InputManager, Screen
 
 	@Override
 	public void goPhoto () {
+
+		this.userPanel.goPhoto();
 	}
 
 }

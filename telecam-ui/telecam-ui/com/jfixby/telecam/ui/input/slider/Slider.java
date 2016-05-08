@@ -107,4 +107,12 @@ public class Slider implements MouseEventListener, CollectionScanner<TouchArea> 
 		return false;
 	}
 
+	public void hide () {
+		this.root.hide();
+	}
+
+	public void show () {
+		this.root.show();
+	}
+
 }

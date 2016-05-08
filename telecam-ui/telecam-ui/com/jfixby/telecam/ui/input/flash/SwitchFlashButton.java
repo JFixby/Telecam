@@ -97,4 +97,12 @@ public class SwitchFlashButton implements MouseEventListener, CollectionScanner<
 		return false;
 	}
 
+	public void hide () {
+		this.root.hide();
+	}
+
+	public void show () {
+		this.root.show();
+	}
+
 }

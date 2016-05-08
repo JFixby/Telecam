@@ -103,4 +103,8 @@ public class SwitchCameraButton implements MouseEventListener, CollectionScanner
 		this.root.hide();
 	}
 
+	public void show () {
+		this.root.show();
+	}
+
 }

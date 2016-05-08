@@ -88,4 +88,8 @@ public class BlueButton implements MouseEventListener, CollectionScanner<TouchAr
 		this.root.hide();
 	}
 
+	public void show () {
+		this.root.show();
+	}
+
 }
