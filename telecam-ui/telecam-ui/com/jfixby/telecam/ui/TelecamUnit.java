@@ -21,8 +21,9 @@ import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.ext.api.scene2d.Scene;
 import com.jfixby.r3.ext.api.scene2d.Scene2D;
 import com.jfixby.r3.ext.api.scene2d.Scene2DSpawningConfig;
+import com.jfixby.telecam.api.TelecamUI;
 
-public class TelecamUnit extends Unit implements InputManager, ScreenChangeListener {
+public class TelecamUnit extends Unit implements TelecamUI, InputManager, ScreenChangeListener {
 	private UnitManager unitManager;
 	private RootLayer root_layer;
 	private Scene scene;
@@ -93,6 +94,10 @@ public class TelecamUnit extends Unit implements InputManager, ScreenChangeListe
 
 	public UnitManager getUnitManager () {
 		return this.unitManager;
+	}
+
+	@Override
+	public void goPhoto () {
 	}
 
 }

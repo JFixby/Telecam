@@ -16,7 +16,7 @@ import com.jfixby.cmns.api.sys.settings.ExecutionMode;
 import com.jfixby.cmns.api.sys.settings.SystemSettings;
 import com.jfixby.r3.api.RedTriplane;
 import com.jfixby.r3.api.RedTriplaneParams;
-import com.jfixby.r3.api.game.GameLogic;
+import com.jfixby.r3.api.logic.BusinessLogic;
 import com.jfixby.r3.api.shader.R3Shader;
 import com.jfixby.r3.api.ui.UI;
 import com.jfixby.r3.api.ui.UIStarter;
@@ -99,7 +99,7 @@ public class TelecamDesktopAssembler implements FokkerEngineAssembler {
 		final RedUIManager telecam_ui_starter = new RedUIManager();
 		UIStarter.installComponent(telecam_ui_starter);
 		UI.installComponent(telecam_ui_starter);
-		GameLogic.installComponent(new TelecamCore());
+		BusinessLogic.installComponent(new TelecamCore());
 
 		Collisions.installComponent(new RedCollisionsAlgebra());
 		RedTriplane.installComponent(new Fokker());
