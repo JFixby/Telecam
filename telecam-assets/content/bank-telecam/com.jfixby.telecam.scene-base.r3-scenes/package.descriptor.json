@@ -1,7 +1,7 @@
 {
 	"format":"RedTriplane.Scene2D",
 	"version":"1.0",
-	"timestamp":"1462683422880",
+	"timestamp":"1462697597529",
 	"root_file_name":"com.jfixby.telecam.scene-base.r3-scenes",
 	"packed_assets":[
 		"com.jfixby.telecam.scene-base.psd"
@@ -36,13 +36,13 @@
 		"com.jfixby.telecam.scene-base.psd.raster_39",
 		"com.jfixby.telecam.scene-base.psd.raster_40",
 		"com.jfixby.telecam.scene-base.psd.raster_41",
+		"com.jfixby.telecam.scene-base.psd.raster_42",
 		"com.jfixby.telecam.scene-base.psd.raster_43",
+		"com.jfixby.telecam.scene-base.psd.raster_44",
 		"com.jfixby.telecam.scene-base.psd.raster_45",
 		"com.jfixby.telecam.scene-base.psd.raster_47",
 		"com.jfixby.telecam.scene-base.psd.raster_49",
-		"com.jfixby.telecam.scene-base.psd.raster_50",
 		"com.jfixby.telecam.scene-base.psd.raster_51",
-		"com.jfixby.telecam.scene-base.psd.raster_52",
 		"com.jfixby.telecam.scene-base.psd.raster_53",
 		"com.jfixby.telecam.scene-base.psd.raster_54",
 		"com.jfixby.telecam.scene-base.psd.raster_55",
