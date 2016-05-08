@@ -109,7 +109,7 @@ public class UserInputBar {
 		}
 
 // this.hideAll();
-
+		this.progressBar.hide();
 	}
 
 	public void hideAll () {
@@ -151,6 +151,12 @@ public class UserInputBar {
 
 	public TelecamUnit getUnit () {
 		return this.master.getUnit();
+	}
+
+	final FontSettings fontSettings = new FontSettings();
+
+	public FontSettings getFontSettings () {
+		return this.fontSettings;
 	}
 
 }
