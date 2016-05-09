@@ -4,6 +4,7 @@ package com.jfixby.telecam.ui;
 import com.jfixby.cmns.api.floatn.FixedFloat2;
 import com.jfixby.cmns.api.geometry.Rectangle;
 import com.jfixby.r3.api.ui.UIAction;
+import com.jfixby.r3.api.ui.unit.animation.OnAnimationDoneListener;
 import com.jfixby.r3.api.ui.unit.camera.Camera;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.telecam.ui.input.accept.AcceptDecline;
@@ -203,6 +204,10 @@ public class UserInputBar {
 		this.hideAll();
 		this.cropper.show();
 		this.cropper.resetCroppingArea();
+	}
+
+	public void switchFlashMode (final OnAnimationDoneListener animation_done_listener) {
+		this.switchFlashButton.switchFlashMode(animation_done_listener);
 	}
 
 }

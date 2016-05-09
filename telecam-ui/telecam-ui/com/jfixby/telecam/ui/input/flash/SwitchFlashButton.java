@@ -7,7 +7,8 @@ import com.jfixby.cmns.api.floatn.FixedFloat2;
 import com.jfixby.cmns.api.geometry.CanvasPosition;
 import com.jfixby.cmns.api.geometry.Geometry;
 import com.jfixby.cmns.api.geometry.Rectangle;
-import com.jfixby.cmns.api.log.L;
+import com.jfixby.r3.api.ui.UI;
+import com.jfixby.r3.api.ui.unit.animation.OnAnimationDoneListener;
 import com.jfixby.r3.api.ui.unit.input.CustomInput;
 import com.jfixby.r3.api.ui.unit.input.MouseEventListener;
 import com.jfixby.r3.api.ui.unit.input.MouseMovedEvent;
@@ -18,6 +19,7 @@ import com.jfixby.r3.api.ui.unit.input.TouchUpEvent;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
 import com.jfixby.telecam.ui.UserInputBar;
+import com.jfixby.telecam.ui.actions.TelecamUIAction;
 
 public class SwitchFlashButton implements MouseEventListener, CollectionScanner<TouchArea> {
 
@@ -33,6 +35,9 @@ public class SwitchFlashButton implements MouseEventListener, CollectionScanner<
 	private final UserInputBar master;
 	private final FixedFloat2 originalSceneDimentions;
 	private Rectangle screen;
+
+	SwitchFlashButtonAnimator animator = new SwitchFlashButtonAnimator(this);
+	private TouchArea touch;
 
 	public SwitchFlashButton (final UserInputBar userPanel) {
 		this.master = userPanel;
@@ -56,19 +61,37 @@ public class SwitchFlashButton implements MouseEventListener, CollectionScanner<
 		this.flash_auto = new FlashIconWrapper(options.getElementAt(1), this);
 		this.flash_off = new FlashIconWrapper(options.getElementAt(2), this);
 
+		this.animator.add(this.flash_auto);
+		this.animator.add(this.flash_on);
+		this.animator.add(this.flash_off);
+
 		this.touchAreas = this.input.listTouchAreas();
+		this.touch = this.touchAreas.getLast();
 
-// this.baseOffset.set(this.input.getPosition());
 		this.baseOffset.setX(this.originalSceneDimentions.getX() - this.input.getPosition().getX());
+		this.baseOffset.setY(this.input.getPosition().getY());
+		this.animator.setup(root);
 
+	}
+
+	public double getHeight () {
+		return this.input.listTouchAreas().getLast().getHeight();
 	}
 
 	public void update (final Rectangle screen) {
 		this.screen = screen;
-		this.input.setPositionX(this.screen.getWidth() - this.baseOffset.getX());
+		this.touch.shape().setPositionX(this.screen.getWidth() - this.baseOffset.getX());
+		this.animator.updateX(this.screen.getWidth() - this.baseOffset.getX());
 
-		this.input.updateChildrenPositionRespectively();
-// Collections.scanCollection(this.touchAreas, this.touchAreasAligner);
+	}
+
+	public double getBaseOffsetY () {
+		return this.input.getPositionY();
+	}
+
+	private void animateIcons (final OnAnimationDoneListener animation_done_listener) {
+		this.animator.animate(animation_done_listener);
+
 	}
 
 	@Override
@@ -83,13 +106,14 @@ public class SwitchFlashButton implements MouseEventListener, CollectionScanner<
 
 	@Override
 	public boolean onTouchDown (final TouchDownEvent input_event) {
-		return false;
+		UI.pushAction(TelecamUIAction.switchFlashMode);
+		return true;
 	}
 
 	@Override
 	public boolean onTouchUp (final TouchUpEvent input_event) {
-		L.d("click", this);
-		return true;
+
+		return false;
 	}
 
 	@Override
@@ -103,6 +127,18 @@ public class SwitchFlashButton implements MouseEventListener, CollectionScanner<
 
 	public void show () {
 		this.root.show();
+	}
+
+	public Layer getRoot () {
+		return this.root;
+	}
+
+	public double getPositionY () {
+		return this.input.getPositionY();
+	}
+
+	public void switchFlashMode (final OnAnimationDoneListener animation_done_listener) {
+		this.animateIcons(animation_done_listener);
 	}
 
 }

@@ -15,6 +15,7 @@ import com.jfixby.r3.api.ui.unit.ComponentsFactory;
 import com.jfixby.r3.api.ui.unit.RootLayer;
 import com.jfixby.r3.api.ui.unit.Unit;
 import com.jfixby.r3.api.ui.unit.UnitManager;
+import com.jfixby.r3.api.ui.unit.animation.OnAnimationDoneListener;
 import com.jfixby.r3.api.ui.unit.camera.Camera;
 import com.jfixby.r3.api.ui.unit.camera.ScreenChangeListener;
 import com.jfixby.r3.api.ui.unit.camera.ScreenDimentions;
@@ -130,6 +131,10 @@ public class TelecamUnit extends Unit implements TelecamUI, InputManager, Screen
 
 	public void goCropper () {
 		this.userPanel.goCropper();
+	}
+
+	public void switchFlashMode (final OnAnimationDoneListener animation_done_listener) {
+		this.userPanel.switchFlashMode(animation_done_listener);
 	}
 
 }
