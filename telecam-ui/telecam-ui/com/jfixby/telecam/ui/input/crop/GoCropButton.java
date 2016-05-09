@@ -18,7 +18,7 @@ import com.jfixby.r3.api.ui.unit.input.TouchUpEvent;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
 import com.jfixby.telecam.ui.UserInputBar;
-import com.jfixby.telecam.ui.actions.UIOperations;
+import com.jfixby.telecam.ui.actions.TelecamUIAction;
 
 public class GoCropButton implements MouseEventListener, CollectionScanner<TouchArea> {
 
@@ -64,7 +64,7 @@ public class GoCropButton implements MouseEventListener, CollectionScanner<Touch
 
 	@Override
 	public boolean onTouchDown (final TouchDownEvent input_event) {
-		UI.pushAction(UIOperations.goCropper);
+		UI.pushAction(TelecamUIAction.goCropper);
 		return true;
 	}
 

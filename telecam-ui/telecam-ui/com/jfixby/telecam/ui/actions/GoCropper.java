@@ -1,10 +1,9 @@
 
 package com.jfixby.telecam.ui.actions;
 
-import com.jfixby.r3.api.ui.UIAction;
 import com.jfixby.telecam.ui.TelecamUnit;
 
-public class GoCropper implements UIAction<TelecamUnit> {
+public class GoCropper extends TelecamUIAction {
 
 	@Override
 	public void start (final TelecamUnit ui) {

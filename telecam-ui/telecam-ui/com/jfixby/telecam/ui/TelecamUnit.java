@@ -23,7 +23,7 @@ import com.jfixby.r3.ext.api.scene2d.Scene;
 import com.jfixby.r3.ext.api.scene2d.Scene2D;
 import com.jfixby.r3.ext.api.scene2d.Scene2DSpawningConfig;
 import com.jfixby.telecam.api.TelecamUI;
-import com.jfixby.telecam.ui.actions.UIOperations;
+import com.jfixby.telecam.ui.actions.TelecamUIAction;
 
 public class TelecamUnit extends Unit implements TelecamUI, InputManager, ScreenChangeListener {
 	private UnitManager unitManager;
@@ -63,7 +63,7 @@ public class TelecamUnit extends Unit implements TelecamUI, InputManager, Screen
 
 		this.userPanel = new UserInputBar(this);
 		this.userPanel.setup(this.scene.findLayer("user-panel").getElementAt(0), this.scene.getCamera());
-		UI.pushAction(UIOperations.goPhotoShoot);
+		UI.pushAction(TelecamUIAction.goPhotoShoot);
 		this.root.closeInputValve();
 	}
 

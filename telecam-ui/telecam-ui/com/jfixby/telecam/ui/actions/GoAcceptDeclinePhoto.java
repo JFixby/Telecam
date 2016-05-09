@@ -1,10 +1,9 @@
 
 package com.jfixby.telecam.ui.actions;
 
-import com.jfixby.r3.api.ui.UIAction;
 import com.jfixby.telecam.ui.TelecamUnit;
 
-public class GoAcceptDeclinePhoto implements UIAction<TelecamUnit> {
+public class GoAcceptDeclinePhoto extends TelecamUIAction {
 
 	@Override
 	public void perform (final TelecamUnit ui) {
@@ -17,7 +16,7 @@ public class GoAcceptDeclinePhoto implements UIAction<TelecamUnit> {
 
 	@Override
 	public boolean isDone (final TelecamUnit ui) {
-		ui.goAcceptDecline(UIOperations.doDiscardPhoto, UIOperations.goAndroidImageGallery);
+		ui.goAcceptDecline(TelecamUIAction.doDiscardPhoto, TelecamUIAction.goAndroidImageGallery);
 		ui.showGoCrop();
 		return true;
 	}

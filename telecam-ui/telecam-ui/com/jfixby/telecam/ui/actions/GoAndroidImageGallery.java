@@ -1,11 +1,10 @@
 
 package com.jfixby.telecam.ui.actions;
 
-import com.jfixby.cmns.api.sys.Sys;
-import com.jfixby.r3.api.ui.UIAction;
+import com.jfixby.r3.api.ui.UI;
 import com.jfixby.telecam.ui.TelecamUnit;
 
-public class GoAndroidImageGallery implements UIAction<TelecamUnit> {
+public class GoAndroidImageGallery extends TelecamUIAction {
 	{
 // Intent intent = new Intent();
 // intent.setAction(Intent.ACTION_VIEW);
@@ -23,7 +22,7 @@ public class GoAndroidImageGallery implements UIAction<TelecamUnit> {
 
 	@Override
 	public boolean isDone (final TelecamUnit ui) {
-		Sys.exit();
+		UI.pushAction(goPhotoShoot);
 		return true;
 	}
 }

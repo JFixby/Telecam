@@ -1,10 +1,9 @@
 
 package com.jfixby.telecam.ui.actions;
 
-import com.jfixby.r3.api.ui.UIAction;
 import com.jfixby.telecam.ui.TelecamUnit;
 
-public class GoPhotoShoot implements UIAction<TelecamUnit> {
+public class GoPhotoShoot extends TelecamUIAction {
 
 	@Override
 	public void perform (final TelecamUnit ui) {

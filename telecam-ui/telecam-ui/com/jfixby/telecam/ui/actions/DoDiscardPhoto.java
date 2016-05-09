@@ -2,10 +2,9 @@
 package com.jfixby.telecam.ui.actions;
 
 import com.jfixby.r3.api.ui.UI;
-import com.jfixby.r3.api.ui.UIAction;
 import com.jfixby.telecam.ui.TelecamUnit;
 
-public class DoDiscardPhoto implements UIAction<TelecamUnit> {
+public class DoDiscardPhoto extends TelecamUIAction {
 
 	@Override
 	public void start (final TelecamUnit ui) {
@@ -18,7 +17,7 @@ public class DoDiscardPhoto implements UIAction<TelecamUnit> {
 
 	@Override
 	public boolean isDone (final TelecamUnit ui) {
-		UI.pushAction(UIOperations.goPhotoShoot);
+		UI.pushAction(TelecamUIAction.goPhotoShoot);
 		return true;
 	}
 

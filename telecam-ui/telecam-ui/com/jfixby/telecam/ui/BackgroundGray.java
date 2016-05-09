@@ -76,7 +76,6 @@ public class BackgroundGray {
 	}
 
 	public void setBlinkOpacity (final float f) {
-
 		this.blinker.setOpacity(f);
 	}
 

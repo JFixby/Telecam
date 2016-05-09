@@ -13,7 +13,7 @@ import com.jfixby.r3.api.ui.unit.input.TouchDownEvent;
 import com.jfixby.r3.api.ui.unit.input.TouchDraggedEvent;
 import com.jfixby.r3.api.ui.unit.input.TouchUpEvent;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
-import com.jfixby.telecam.ui.actions.UIOperations;
+import com.jfixby.telecam.ui.actions.TelecamUIAction;
 
 public class CropperButtonCancel implements MouseEventListener {
 
@@ -69,7 +69,7 @@ public class CropperButtonCancel implements MouseEventListener {
 
 	@Override
 	public boolean onTouchDown (final TouchDownEvent input_event) {
-		UI.pushAction(UIOperations.goAcceptDeclinePhoto);
+		UI.pushAction(TelecamUIAction.goAcceptDeclinePhoto);
 		return true;
 	}
 

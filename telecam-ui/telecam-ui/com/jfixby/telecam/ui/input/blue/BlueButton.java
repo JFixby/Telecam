@@ -18,7 +18,7 @@ import com.jfixby.r3.api.ui.unit.input.TouchUpEvent;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
 import com.jfixby.telecam.ui.UserInputBar;
-import com.jfixby.telecam.ui.actions.UIOperations;
+import com.jfixby.telecam.ui.actions.TelecamUIAction;
 
 public class BlueButton implements MouseEventListener, CollectionScanner<TouchArea> {
 
@@ -72,7 +72,7 @@ public class BlueButton implements MouseEventListener, CollectionScanner<TouchAr
 
 	@Override
 	public boolean onTouchUp (final TouchUpEvent input_event) {
-		UI.pushAction(UIOperations.doShootPhoto);
+		UI.pushAction(TelecamUIAction.doShootPhoto);
 		return true;
 	}
 
