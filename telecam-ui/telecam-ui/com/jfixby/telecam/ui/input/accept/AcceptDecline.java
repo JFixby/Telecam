@@ -3,6 +3,7 @@ package com.jfixby.telecam.ui.input.accept;
 
 import com.jfixby.cmns.api.geometry.CanvasPosition;
 import com.jfixby.cmns.api.geometry.Rectangle;
+import com.jfixby.r3.api.ui.UIAction;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.telecam.ui.TelecamUnit;
 import com.jfixby.telecam.ui.UserInputBar;
@@ -12,6 +13,8 @@ public class AcceptDecline {
 	private final AcceptButton acceptButton;
 	private final DeclineButton declineButton;
 	private final UserInputBar master;
+	private UIAction<TelecamUnit> yesAction;
+	private UIAction<TelecamUnit> noAction;
 
 	public AcceptDecline (final UserInputBar userPanel) {
 		this.master = userPanel;
@@ -43,5 +46,26 @@ public class AcceptDecline {
 
 	public void hide () {
 		this.root.hide();
+	}
+
+	public void show () {
+		this.root.show();
+	}
+
+	public void bindNoAction (final UIAction<TelecamUnit> noAction) {
+		this.noAction = noAction;
+	}
+
+	public void bindYesAction (final UIAction<TelecamUnit> yesAction) {
+		this.yesAction = yesAction;
+
+	}
+
+	public UIAction<TelecamUnit> getYesAction () {
+		return this.yesAction;
+	}
+
+	public UIAction<TelecamUnit> getNoAction () {
+		return this.noAction;
 	}
 }

@@ -7,7 +7,7 @@ import com.jfixby.cmns.api.collections.Collections;
 import com.jfixby.cmns.api.geometry.CanvasPosition;
 import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_HORIZONTAL;
 import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_VERTICAL;
-import com.jfixby.cmns.api.log.L;
+import com.jfixby.r3.api.ui.UI;
 import com.jfixby.r3.api.ui.unit.input.CustomInput;
 import com.jfixby.r3.api.ui.unit.input.MouseEventListener;
 import com.jfixby.r3.api.ui.unit.input.MouseMovedEvent;
@@ -18,6 +18,7 @@ import com.jfixby.r3.api.ui.unit.input.TouchUpEvent;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
 import com.jfixby.telecam.ui.UserInputBar;
+import com.jfixby.telecam.ui.actions.UIOperations;
 
 public class BlueButton implements MouseEventListener, CollectionScanner<TouchArea> {
 
@@ -29,8 +30,10 @@ public class BlueButton implements MouseEventListener, CollectionScanner<TouchAr
 	private Collection<TouchArea> touchAreas;
 	private final CollectionScanner<TouchArea> touchAreasAligner = this;
 	private CanvasPosition position;
+	private final UserInputBar master;
 
 	public BlueButton (final UserInputBar userPanel) {
+		this.master = userPanel;
 	}
 
 	public void setup (final Layer root) {
@@ -69,7 +72,7 @@ public class BlueButton implements MouseEventListener, CollectionScanner<TouchAr
 
 	@Override
 	public boolean onTouchUp (final TouchUpEvent input_event) {
-		L.d("click", this);
+		UI.pushAction(UIOperations.doShootPhoto);
 		return true;
 	}
 

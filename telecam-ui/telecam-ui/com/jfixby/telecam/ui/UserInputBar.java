@@ -3,6 +3,7 @@ package com.jfixby.telecam.ui;
 
 import com.jfixby.cmns.api.floatn.FixedFloat2;
 import com.jfixby.cmns.api.geometry.Rectangle;
+import com.jfixby.r3.api.ui.UIAction;
 import com.jfixby.r3.api.ui.unit.camera.Camera;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.telecam.ui.input.accept.AcceptDecline;
@@ -170,6 +171,28 @@ public class UserInputBar {
 		this.bgGray.show();
 		this.slider.show();
 		this.switchFlashButton.show();
+	}
+
+	public void showBlink () {
+		this.bgGray.showBlink();
+	}
+
+	public void setBlinkOpacity (final float f) {
+		this.bgGray.setBlinkOpacity(f);
+	}
+
+	public void hideBlink () {
+		this.bgGray.hideBlink();
+	}
+
+	public void goAcceptDecline (final UIAction<TelecamUnit> noAction, final UIAction<TelecamUnit> yesAction) {
+		this.hideAll();
+
+		this.screenTouch.show();
+		this.bgGray.show();
+		this.acceptDecline.show();
+		this.acceptDecline.bindYesAction(yesAction);
+		this.acceptDecline.bindNoAction(noAction);
 	}
 
 }

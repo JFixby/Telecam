@@ -25,6 +25,10 @@ public abstract class AccDeccButton implements MouseEventListener, CollectionSca
 	private final float horizontalAlignment;
 	private final CollectionScanner<TouchArea> touchAreasAligner = this;
 
+	public AcceptDecline getMaster () {
+		return this.master;
+	}
+
 	public AccDeccButton (final AcceptDecline acceptDecline, final float horizontalAlignment) {
 		this.master = acceptDecline;
 		this.horizontalAlignment = horizontalAlignment;
