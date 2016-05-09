@@ -7,5 +7,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/telecam-api"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/red-triplane-scene2d-api"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/rana-api"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/jfixby-cmns-api-android"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

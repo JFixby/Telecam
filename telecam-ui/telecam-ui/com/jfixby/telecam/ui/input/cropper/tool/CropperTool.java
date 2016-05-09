@@ -71,6 +71,10 @@ public class CropperTool {
 	private final Shadow shadowRight;
 	private final Shadow shadowTop;
 	private final Shadow shadowBottom;
+	private double maxWidth;
+	private double maxHeight;
+	private double currentRelativeX = 0.8;
+	private double currentRelativeY = 0.8;
 
 	public void setup (final Layer component_root) {
 		this.root = component_root;
@@ -128,9 +132,21 @@ public class CropperTool {
 		final double activeHeight = (viewport_update.getHeight() - this.master.getBackground().getHeight());
 		this.cropArea.setPositionX(viewport_update.getWidth() / 2);
 		this.cropArea.setPositionY(activeHeight / 2);
-		this.cropArea.setSize(viewport_update.getWidth() * 0.8, activeHeight * 0.8);
+		this.maxWidth = viewport_update.getWidth();
+		this.maxHeight = activeHeight;
+		this.updateCropArea();
+
 // this.cropArea.setRotation(Angles.g45().toRadians() / 8);
 
+		this.updateCorners();
+
+	}
+
+	private void updateCropArea () {
+		this.cropArea.setSize(this.maxWidth * this.currentRelativeX, this.maxHeight * this.currentRelativeY);
+	}
+
+	private void updateCorners () {
 		this.cornerTopLeft.update();
 		this.cornerTopRight.update();
 		this.cornerBottomLeft.update();
@@ -150,7 +166,6 @@ public class CropperTool {
 		this.shadowLeft.update();
 		this.shadowTop.update();
 		this.shadowBottom.update();
-
 	}
 
 	public Layer getRasterList () {
@@ -163,6 +178,13 @@ public class CropperTool {
 
 	public Rectangle getArea () {
 		return this.cropArea;
+	}
+
+	public void reset () {
+		this.currentRelativeX = 1;
+		this.currentRelativeY = 1;
+		this.updateCropArea();
+		this.updateCorners();
 	}
 
 }

@@ -54,4 +54,8 @@ public class CropperButtonReset {
 		return this.baseOffsetX;
 	}
 
+	public void hide () {
+		this.btn.hide();
+	}
+
 }

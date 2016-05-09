@@ -195,4 +195,14 @@ public class UserInputBar {
 		this.acceptDecline.bindNoAction(noAction);
 	}
 
+	public void showGoCrop () {
+		this.cropButton.show();
+	}
+
+	public void goCropper () {
+		this.hideAll();
+		this.cropper.show();
+		this.cropper.resetCroppingArea();
+	}
+
 }

@@ -124,4 +124,12 @@ public class TelecamUnit extends Unit implements TelecamUI, InputManager, Screen
 		this.root.closeInputValve();
 	}
 
+	public void showGoCrop () {
+		this.userPanel.showGoCrop();
+	}
+
+	public void goCropper () {
+		this.userPanel.goCropper();
+	}
+
 }

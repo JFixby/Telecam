@@ -111,4 +111,18 @@ public class Cropper {
 		return this.master.getFontSettings();
 	}
 
+	public void show () {
+		this.root.show();
+	}
+
+	public void resetCroppingArea () {
+		this.tool.reset();
+		this.rotator.reset();
+
+	}
+
+	public CropperButtonReset getResetButton () {
+		return this.btnReset;
+	}
+
 }

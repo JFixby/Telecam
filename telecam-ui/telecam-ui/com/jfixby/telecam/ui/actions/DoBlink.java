@@ -7,7 +7,7 @@ import com.jfixby.telecam.ui.TelecamUnit;
 
 public class DoBlink implements UIAction<TelecamUnit> {
 	long endBy = 0;
-	long delta = 700;
+	long delta = 150;
 	long start = 0;
 
 	@Override

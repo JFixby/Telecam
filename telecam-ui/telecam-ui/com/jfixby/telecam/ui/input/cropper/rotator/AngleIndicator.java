@@ -5,6 +5,7 @@ import com.jfixby.cmns.api.color.Colors;
 import com.jfixby.cmns.api.geometry.CanvasPosition;
 import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_HORIZONTAL;
 import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_VERTICAL;
+import com.jfixby.cmns.api.math.CustomAngle;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.txt.RasterizedFont;
 import com.jfixby.r3.api.ui.unit.txt.RasterizedFontSpecs;
@@ -53,6 +54,19 @@ public class AngleIndicator {
 		this.string.setPosition(position);
 		this.string.setPositionY(this.string.getPositionY() - height / 2);
 
+	}
+
+	public void updateValue (final CustomAngle angle) {
+		final int degrees = (int)angle.toDegrees();
+		if (degrees == 0) {
+			this.string.setValue("");
+			return;
+		}
+		String value = degrees + "°";
+		if (degrees < 0) {
+			value = "-" + value;
+		}
+		this.string.setValue(value);
 	}
 
 }

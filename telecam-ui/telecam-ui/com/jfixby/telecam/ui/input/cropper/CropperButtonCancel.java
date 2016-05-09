@@ -4,11 +4,18 @@ package com.jfixby.telecam.ui.input.cropper;
 import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_HORIZONTAL;
 import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_VERTICAL;
 import com.jfixby.cmns.api.geometry.Rectangle;
+import com.jfixby.r3.api.ui.UI;
 import com.jfixby.r3.api.ui.unit.input.CustomInput;
+import com.jfixby.r3.api.ui.unit.input.MouseEventListener;
+import com.jfixby.r3.api.ui.unit.input.MouseMovedEvent;
 import com.jfixby.r3.api.ui.unit.input.TouchArea;
+import com.jfixby.r3.api.ui.unit.input.TouchDownEvent;
+import com.jfixby.r3.api.ui.unit.input.TouchDraggedEvent;
+import com.jfixby.r3.api.ui.unit.input.TouchUpEvent;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
+import com.jfixby.telecam.ui.actions.UIOperations;
 
-public class CropperButtonCancel {
+public class CropperButtonCancel implements MouseEventListener {
 
 	private CustomInput btn;
 	private final Cropper master;
@@ -33,6 +40,7 @@ public class CropperButtonCancel {
 		this.touch.shape().setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
 
 		this.baseOffsetX = this.icon.getPositionX();
+		btn.setInputListener(this);
 
 	}
 
@@ -52,6 +60,27 @@ public class CropperButtonCancel {
 
 	public double getBaseOffsetX () {
 		return this.baseOffsetX;
+	}
+
+	@Override
+	public boolean onMouseMoved (final MouseMovedEvent input_event) {
+		return false;
+	}
+
+	@Override
+	public boolean onTouchDown (final TouchDownEvent input_event) {
+		UI.pushAction(UIOperations.goAcceptDeclinePhoto);
+		return true;
+	}
+
+	@Override
+	public boolean onTouchUp (final TouchUpEvent input_event) {
+		return false;
+	}
+
+	@Override
+	public boolean onTouchDragged (final TouchDraggedEvent input_event) {
+		return false;
 	}
 
 }

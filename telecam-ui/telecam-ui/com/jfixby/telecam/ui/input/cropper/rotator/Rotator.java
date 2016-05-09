@@ -1,6 +1,7 @@
 
 package com.jfixby.telecam.ui.input.cropper.rotator;
 
+import com.jfixby.cmns.api.angles.Angles;
 import com.jfixby.cmns.api.collections.Collections;
 import com.jfixby.cmns.api.collections.List;
 import com.jfixby.cmns.api.err.Err;
@@ -8,6 +9,7 @@ import com.jfixby.cmns.api.geometry.CanvasPosition;
 import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_HORIZONTAL;
 import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_VERTICAL;
 import com.jfixby.cmns.api.geometry.Rectangle;
+import com.jfixby.cmns.api.math.CustomAngle;
 import com.jfixby.cmns.api.math.FloatMath;
 import com.jfixby.r3.api.ui.unit.ComponentsFactory;
 import com.jfixby.r3.api.ui.unit.input.CustomInputSpecs;
@@ -26,6 +28,7 @@ public class Rotator {
 	private final List<Raster> exampleRasters;
 	private final AngleIndicator angleIndicator;
 	private final Cropper master;
+	private final CustomAngle angle = Angles.newAngle();
 
 	public Rotator (final Cropper cropper, final CropperButtonRotate btnRotate) {
 		this.btnRotate = btnRotate;
@@ -146,6 +149,17 @@ public class Rotator {
 
 	public FontSettings getFontSettings () {
 		return this.master.getFontSettings();
+	}
+
+	public void reset () {
+		this.master.getResetButton().hide();
+		this.angle.setValue(0);
+		this.updateAngleCaption();
+
+	}
+
+	private void updateAngleCaption () {
+		this.angleIndicator.updateValue(this.angle);
 	}
 
 // public double getPositionY () {
