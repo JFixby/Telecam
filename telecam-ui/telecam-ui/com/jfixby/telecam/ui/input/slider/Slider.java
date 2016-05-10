@@ -28,6 +28,8 @@ public class Slider implements MouseEventListener, CollectionScanner<TouchArea> 
 	private CustomInput input;
 	private final DotLeft left = new DotLeft(this);
 	private final DotRigh right = new DotRigh(this);
+	private final DotLeft wormLeft = new DotLeft(this);
+	private final DotRigh wormRight = new DotRigh(this);
 	private final DotIndicator indicator = new DotIndicator(this, this.left, this.right);
 	private final DotWorm worm = new DotWorm(this, this.indicator);
 
@@ -61,13 +63,14 @@ public class Slider implements MouseEventListener, CollectionScanner<TouchArea> 
 		this.input.setDebugRenderFlag(false);
 
 		this.rasterlayer = root.findComponent("raster");
-
-		this.worm.setup((Raster)this.rasterlayer.findComponent("worm"), root);
-
 		this.left.setup((Raster)this.rasterlayer.findComponent("L"), root);
 		this.right.setup((Raster)this.rasterlayer.findComponent("R"), root);
 
+		this.wormLeft.setup((Raster)this.rasterlayer.findComponent("worm-L"), root);
+		this.wormRight.setup((Raster)this.rasterlayer.findComponent("worm-R"), root);
+
 		this.indicator.setup((Raster)this.rasterlayer.findComponent("I"), root);
+		this.worm.setup((Raster)this.rasterlayer.findComponent("worm"), root);
 
 		this.touchAreas = this.input.listTouchAreas();
 
@@ -90,13 +93,13 @@ public class Slider implements MouseEventListener, CollectionScanner<TouchArea> 
 
 	public void setPhotoMode () {
 		this.state = PHOTO;
-		this.worm.hide();
+		this.worm.stretchTo(-1, -1);
 		this.indicator.setSliderState(-1);
 	}
 
 	public void setVideoMode () {
 		this.state = VIDEO;
-		this.worm.hide();
+		this.worm.stretchTo(+1, +1);
 		this.indicator.setSliderState(+1);
 	}
 
@@ -110,9 +113,11 @@ public class Slider implements MouseEventListener, CollectionScanner<TouchArea> 
 		this.position.setPosition(this.input.getPosition());
 
 		this.touchAreas.getLast().shape().setPosition(this.position);
-		this.worm.setCenter(this.position);
+		this.worm.setCenter(this.position, screen);
 		this.left.setCenter(this.position);
 		this.right.setCenter(this.position);
+		this.wormLeft.setCenter(this.position);
+		this.wormRight.setCenter(this.position);
 		this.indicator.setCenter(this.position);
 
 	}

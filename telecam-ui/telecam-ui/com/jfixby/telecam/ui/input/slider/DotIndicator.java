@@ -44,4 +44,8 @@ public class DotIndicator extends DotComponent implements OnUpdateListener {
 		this.setOffsetX(position * this.componentWidth / 2);
 	}
 
+	public double getComponentWidth () {
+		return this.componentWidth;
+	}
+
 }

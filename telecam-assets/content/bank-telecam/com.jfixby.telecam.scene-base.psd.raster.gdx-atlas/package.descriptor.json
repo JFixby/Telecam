@@ -1,7 +1,7 @@
 {
 	"format":"libGDX.Atlas.Gwt",
 	"version":"1.0",
-	"timestamp":"1462886320684",
+	"timestamp":"1462908707162",
 	"root_file_name":"com.jfixby.telecam.scene-base.psd.raster.gdx-atlas",
 	"packed_assets":[
 		"com.jfixby.telecam.scene-base.psd.raster_0.tile-0-0",
@@ -54,6 +54,8 @@
 		"com.jfixby.telecam.scene-base.psd.raster_59",
 		"com.jfixby.telecam.scene-base.psd.raster_60",
 		"com.jfixby.telecam.scene-base.psd.raster_61",
+		"com.jfixby.telecam.scene-base.psd.raster_62",
+		"com.jfixby.telecam.scene-base.psd.raster_63",
 		"com.jfixby.telecam.scene-base.psd.raster_7",
 		"com.jfixby.telecam.scene-base.psd.raster_8",
 		"com.jfixby.telecam.scene-base.psd.raster_9"

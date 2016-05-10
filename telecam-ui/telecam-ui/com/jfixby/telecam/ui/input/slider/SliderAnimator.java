@@ -9,7 +9,7 @@ import com.jfixby.r3.api.ui.unit.update.UnitClocks;
 
 public class SliderAnimator implements OnUpdateListener {
 	private final OnUpdateListener listener = this;
-	private static final long DELTA = 200;
+	private static final long DELTA = 2000;
 	private final Slider master;
 
 	long beginTime;
@@ -24,10 +24,12 @@ public class SliderAnimator implements OnUpdateListener {
 	private double progress;
 	private final DotIndicator indicator;
 	private OnAnimationDoneListener animation_done_listener;
+	private final DotWorm worm;
 
 	public SliderAnimator (final Slider slider, final DotIndicator indicator, final DotWorm worm) {
 		this.master = slider;
 		this.indicator = indicator;
+		this.worm = worm;
 	}
 
 	public void setup () {
@@ -47,6 +49,8 @@ public class SliderAnimator implements OnUpdateListener {
 		this.progress = (this.currentTime - this.beginTime) * 1d / DELTA;
 		this.currentPosition = this.beginPosition + (this.targetPosition - this.beginPosition) * this.progress;
 		this.indicator.setSliderState(this.currentPosition);
+		this.worm.stretchTo(this.beginPosition, this.currentPosition);
+
 		if (this.animating == false) {
 			this.animation_done_listener.onAnimationDone(null);
 		}
@@ -71,6 +75,7 @@ public class SliderAnimator implements OnUpdateListener {
 		this.animating = true;
 		this.beginPosition = beginPosition;
 		this.targetPosition = targetPosition;
+
 	}
 
 }
