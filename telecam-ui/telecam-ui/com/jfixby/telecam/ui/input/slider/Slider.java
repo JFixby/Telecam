@@ -7,6 +7,7 @@ import com.jfixby.cmns.api.floatn.FixedFloat2;
 import com.jfixby.cmns.api.geometry.CanvasPosition;
 import com.jfixby.cmns.api.geometry.Geometry;
 import com.jfixby.cmns.api.geometry.Rectangle;
+import com.jfixby.r3.api.ui.unit.animation.OnAnimationDoneListener;
 import com.jfixby.r3.api.ui.unit.input.CustomInput;
 import com.jfixby.r3.api.ui.unit.input.MouseEventListener;
 import com.jfixby.r3.api.ui.unit.input.MouseMovedEvent;
@@ -29,6 +30,8 @@ public class Slider implements MouseEventListener, CollectionScanner<TouchArea> 
 	private final DotRigh right = new DotRigh(this);
 	private final DotIndicator indicator = new DotIndicator(this, this.left, this.right);
 	private final DotWorm worm = new DotWorm(this, this.indicator);
+
+	private final SliderAnimator animator = new SliderAnimator(this, this.indicator, this.worm);
 
 	String state = PHOTO;
 
@@ -55,21 +58,46 @@ public class Slider implements MouseEventListener, CollectionScanner<TouchArea> 
 		this.input = (CustomInput)root.listChildren().getElementAt(0);
 		this.position.setPosition(this.input.getPosition());
 		this.input.setInputListener(this);
-		this.input.setDebugRenderFlag(!false);
+		this.input.setDebugRenderFlag(false);
 
 		this.rasterlayer = root.findComponent("raster");
 
-		this.worm.setup((Raster)this.rasterlayer.findComponent("worm"));
+		this.worm.setup((Raster)this.rasterlayer.findComponent("worm"), root);
 
-		this.left.setup((Raster)this.rasterlayer.findComponent("L"));
-		this.right.setup((Raster)this.rasterlayer.findComponent("R"));
+		this.left.setup((Raster)this.rasterlayer.findComponent("L"), root);
+		this.right.setup((Raster)this.rasterlayer.findComponent("R"), root);
 
-		this.indicator.setup((Raster)this.rasterlayer.findComponent("I"));
+		this.indicator.setup((Raster)this.rasterlayer.findComponent("I"), root);
 
 		this.touchAreas = this.input.listTouchAreas();
 
 		this.baseOffset.setY(this.originalSceneDimentions.getY() - this.input.getPosition().getY());
 // this.worm.hide();
+		this.animator.setup();
+		this.setPhotoMode();
+// this.setVideoMode();
+	}
+
+	public void sendSliderToVideo (final OnAnimationDoneListener animation_done_listener) {
+		this.animator.sendSliderToVideo(animation_done_listener);
+		this.state = VIDEO;
+	}
+
+	public void sendSliderToPhoto (final OnAnimationDoneListener animation_done_listener) {
+		this.animator.sendSliderToPhoto(animation_done_listener);
+		this.state = PHOTO;
+	}
+
+	public void setPhotoMode () {
+		this.state = PHOTO;
+		this.worm.hide();
+		this.indicator.setSliderState(-1);
+	}
+
+	public void setVideoMode () {
+		this.state = VIDEO;
+		this.worm.hide();
+		this.indicator.setSliderState(+1);
 	}
 
 	public void update (final CanvasPosition canvasPosition, final Rectangle screen) {
@@ -107,7 +135,6 @@ public class Slider implements MouseEventListener, CollectionScanner<TouchArea> 
 			TelecamUIAction.switchToVideoShoot.push();
 		} else {
 			TelecamUIAction.switchToPhotoShoot.push();
-
 		}
 		return true;
 	}
@@ -133,6 +160,10 @@ public class Slider implements MouseEventListener, CollectionScanner<TouchArea> 
 
 	public CanvasPosition getPosition () {
 		return this.position;
+	}
+
+	public Layer getRoot () {
+		return this.root;
 	}
 
 }

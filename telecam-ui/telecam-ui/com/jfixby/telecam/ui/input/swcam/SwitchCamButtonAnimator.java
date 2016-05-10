@@ -1,7 +1,6 @@
 
 package com.jfixby.telecam.ui.input.swcam;
 
-import com.jfixby.cmns.api.log.L;
 import com.jfixby.cmns.api.sys.Sys;
 import com.jfixby.r3.api.ui.unit.animation.OnAnimationDoneListener;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
@@ -67,7 +66,7 @@ public class SwitchCamButtonAnimator implements OnUpdateListener {
 		final double angle = -rotation * Math.PI;
 		this.roll.setRotation(angle);
 		final double size = (int)(Math.sin(angle / 2) * this.original_size);
-		L.d("size", size);
+// L.d("size", size);
 		this.center.setSize(size, size);
 // this.regular.setSize(size, size);
 	}

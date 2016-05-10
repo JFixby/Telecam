@@ -123,7 +123,7 @@ public class CropperTool {
 // this.root.attachComponent(this.cropAreaDebug);
 //
 
-		this.rasterList.print();
+// this.rasterList.print();
 // Sys.exit();
 	}
 

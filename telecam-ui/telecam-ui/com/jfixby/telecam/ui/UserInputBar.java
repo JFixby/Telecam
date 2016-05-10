@@ -219,4 +219,12 @@ public class UserInputBar {
 		this.acceptDecline.animate(animation_done_listener);
 	}
 
+	public void sendSliderToVideo (final OnAnimationDoneListener animation_done_listener) {
+		this.slider.sendSliderToVideo(animation_done_listener);
+	}
+
+	public void sendSliderToPhoto (final OnAnimationDoneListener animation_done_listener) {
+		this.slider.sendSliderToPhoto(animation_done_listener);
+	}
+
 }

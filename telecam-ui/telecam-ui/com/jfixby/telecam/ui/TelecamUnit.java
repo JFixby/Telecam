@@ -145,4 +145,12 @@ public class TelecamUnit extends Unit implements TelecamUI, InputManager, Screen
 		this.userPanel.animateAcceptDecline(animation_done_listener);
 	}
 
+	public void sendSliderToVideo (final OnAnimationDoneListener animation_done_listener) {
+		this.userPanel.sendSliderToVideo(animation_done_listener);
+	}
+
+	public void sendSliderToPhoto (final OnAnimationDoneListener animation_done_listener) {
+		this.userPanel.sendSliderToPhoto(animation_done_listener);
+	}
+
 }
