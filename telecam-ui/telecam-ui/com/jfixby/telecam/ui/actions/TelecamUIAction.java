@@ -8,6 +8,9 @@ import com.jfixby.telecam.ui.TelecamUnit;
 public abstract class TelecamUIAction implements UIAction<TelecamUnit> {
 
 	static public final TelecamUIAction goPhotoShoot = new GoPhotoShoot();
+	static public final TelecamUIAction switchToVideoShoot = new SwitchToVideoShoot();
+	static public final TelecamUIAction switchToPhotoShoot = new SwitchToPhotoShoot();
+
 	static public final TelecamUIAction goAndroidImageGallery = new GoAndroidImageGallery();
 
 	static public final TelecamUIAction doShootPhoto = new DoShootPhoto();

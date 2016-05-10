@@ -7,7 +7,6 @@ import com.jfixby.cmns.api.floatn.FixedFloat2;
 import com.jfixby.cmns.api.geometry.CanvasPosition;
 import com.jfixby.cmns.api.geometry.Geometry;
 import com.jfixby.cmns.api.geometry.Rectangle;
-import com.jfixby.cmns.api.log.L;
 import com.jfixby.r3.api.ui.unit.input.CustomInput;
 import com.jfixby.r3.api.ui.unit.input.MouseEventListener;
 import com.jfixby.r3.api.ui.unit.input.MouseMovedEvent;
@@ -18,23 +17,30 @@ import com.jfixby.r3.api.ui.unit.input.TouchUpEvent;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
 import com.jfixby.telecam.ui.UserInputBar;
+import com.jfixby.telecam.ui.actions.TelecamUIAction;
 
 public class Slider implements MouseEventListener, CollectionScanner<TouchArea> {
 
+	private static final String PHOTO = "PHOTO";
+	private static final String VIDEO = "VIDEO";
 	private Layer root;
 	private CustomInput input;
-	private Raster left;
-	private Raster worm;
-	private Raster right;
+	private final DotLeft left = new DotLeft(this);
+	private final DotRigh right = new DotRigh(this);
+	private final DotIndicator indicator = new DotIndicator(this, this.left, this.right);
+	private final DotWorm worm = new DotWorm(this, this.indicator);
+
+	String state = PHOTO;
 
 	private Collection<TouchArea> touchAreas;
 	private final CollectionScanner<TouchArea> touchAreasAligner = this;
 
 	private final UserInputBar master;
 	private final FixedFloat2 originalSceneDimentions;
-	private CanvasPosition position;
+	private final CanvasPosition position = Geometry.newCanvasPosition();
 	private final CanvasPosition baseOffset;
 	private Rectangle screen;
+	private Layer rasterlayer;
 
 	public Slider (final UserInputBar userPanel) {
 		this.master = userPanel;
@@ -47,36 +53,40 @@ public class Slider implements MouseEventListener, CollectionScanner<TouchArea> 
 		this.root = root;
 
 		this.input = (CustomInput)root.listChildren().getElementAt(0);
-
+		this.position.setPosition(this.input.getPosition());
 		this.input.setInputListener(this);
-		this.input.setDebugRenderFlag(false);
-		final Collection<Raster> options = this.input.listOptions();
+		this.input.setDebugRenderFlag(!false);
 
-// options.print("options");
+		this.rasterlayer = root.findComponent("raster");
 
-		this.worm = options.getElementAt(0);
-// this.worm.setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
+		this.worm.setup((Raster)this.rasterlayer.findComponent("worm"));
 
-		this.left = options.getElementAt(1);
-// this.left.setOriginAbsolute(this.worm.getPosition());
+		this.left.setup((Raster)this.rasterlayer.findComponent("L"));
+		this.right.setup((Raster)this.rasterlayer.findComponent("R"));
 
-		this.right = options.getElementAt(2);
-// this.right.setOriginAbsolute(this.worm.getPosition());
+		this.indicator.setup((Raster)this.rasterlayer.findComponent("I"));
 
 		this.touchAreas = this.input.listTouchAreas();
 
 		this.baseOffset.setY(this.originalSceneDimentions.getY() - this.input.getPosition().getY());
-
+// this.worm.hide();
 	}
 
 	public void update (final CanvasPosition canvasPosition, final Rectangle screen) {
-		this.position = canvasPosition;
+
 		this.screen = screen;
 
-		this.input.setPosition(this.position);
+		this.input.setPosition(canvasPosition);
 		this.input.setPositionY(screen.getHeight() - this.baseOffset.getY());
 
-		this.input.updateChildrenPositionRespectively();
+		this.position.setPosition(this.input.getPosition());
+
+		this.touchAreas.getLast().shape().setPosition(this.position);
+		this.worm.setCenter(this.position);
+		this.left.setCenter(this.position);
+		this.right.setCenter(this.position);
+		this.indicator.setCenter(this.position);
+
 	}
 
 	@Override
@@ -93,13 +103,19 @@ public class Slider implements MouseEventListener, CollectionScanner<TouchArea> 
 
 	@Override
 	public boolean onTouchDown (final TouchDownEvent input_event) {
-		return false;
+		if (this.state == PHOTO) {
+			TelecamUIAction.switchToVideoShoot.push();
+		} else {
+			TelecamUIAction.switchToPhotoShoot.push();
+
+		}
+		return true;
 	}
 
 	@Override
 	public boolean onTouchUp (final TouchUpEvent input_event) {
-		L.d("click", this);
-		return true;
+
+		return false;
 	}
 
 	@Override
@@ -113,6 +129,10 @@ public class Slider implements MouseEventListener, CollectionScanner<TouchArea> 
 
 	public void show () {
 		this.root.show();
+	}
+
+	public CanvasPosition getPosition () {
+		return this.position;
 	}
 
 }
