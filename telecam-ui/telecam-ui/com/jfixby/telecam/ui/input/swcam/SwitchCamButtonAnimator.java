@@ -18,7 +18,7 @@ public class SwitchCamButtonAnimator implements OnUpdateListener {
 		this.master = switchCameraButton;
 	}
 
-	long delta = 250;
+	long delta = 150;
 	private long begin;
 	private long end;
 	private OnAnimationDoneListener animation_done_listener;

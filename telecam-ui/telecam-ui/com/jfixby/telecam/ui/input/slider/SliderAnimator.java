@@ -8,7 +8,7 @@ import com.jfixby.r3.api.ui.unit.update.UnitClocks;
 
 public class SliderAnimator implements OnUpdateListener {
 	private final OnUpdateListener listener = this;
-	private static final long DELTA = 150;
+	private static final long DELTA = 150 / 2;
 	private final Slider master;
 
 	long beginTime;
