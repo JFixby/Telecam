@@ -73,8 +73,10 @@ public class DotWorm extends DotComponent {
 		final double offsetX = (delta + tail * this.indicatorPathLength / 2d);
 
 		this.setOffsetX(offsetX);
-		this.wormLeft.getRaster().setPositionX(myRaster.getTopLeftCorner().getX());
-		this.wormRight.getRaster().setPositionX(myRaster.getTopRightCorner().getX());
+		final double centerX = this.getCenter().getX();
+
+		this.wormLeft.setOffsetX(myRaster.getTopLeftCorner().getX() - centerX);
+		this.wormRight.setOffsetX(myRaster.getTopRightCorner().getX() - centerX);
 
 	}
 

@@ -95,12 +95,16 @@ public class Slider implements MouseEventListener, CollectionScanner<TouchArea> 
 	}
 
 	public void setPhotoMode () {
-		this.animator.sendSliderToPhotoFast();
+// this.animator.sendSliderToPhotoFast();
+		this.indicator.setSliderState(-1);
+		this.worm.stretchTo(+1, +1);
 		this.state = PHOTO;
 	}
 
 	public void setVideoMode () {
-		this.animator.sendSliderToVideoFast();
+// this.animator.sendSliderToVideoFast();
+		this.indicator.setSliderState(+1);
+		this.worm.stretchTo(-1, -1);
 		this.state = VIDEO;
 	}
 
