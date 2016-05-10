@@ -210,4 +210,8 @@ public class UserInputBar {
 		this.switchFlashButton.switchFlashMode(animation_done_listener);
 	}
 
+	public void switchCamera (final OnAnimationDoneListener animation_done_listener) {
+		this.switchCameraButton.switchCamera(animation_done_listener);
+	}
+
 }

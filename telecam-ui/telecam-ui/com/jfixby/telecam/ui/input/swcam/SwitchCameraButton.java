@@ -7,7 +7,7 @@ import com.jfixby.cmns.api.collections.Collections;
 import com.jfixby.cmns.api.geometry.CanvasPosition;
 import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_HORIZONTAL;
 import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_VERTICAL;
-import com.jfixby.cmns.api.log.L;
+import com.jfixby.r3.api.ui.unit.animation.OnAnimationDoneListener;
 import com.jfixby.r3.api.ui.unit.input.CustomInput;
 import com.jfixby.r3.api.ui.unit.input.MouseEventListener;
 import com.jfixby.r3.api.ui.unit.input.MouseMovedEvent;
@@ -18,18 +18,20 @@ import com.jfixby.r3.api.ui.unit.input.TouchUpEvent;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
 import com.jfixby.telecam.ui.UserInputBar;
+import com.jfixby.telecam.ui.actions.TelecamUIAction;
 
 public class SwitchCameraButton implements MouseEventListener, CollectionScanner<TouchArea> {
 
 	private Layer root;
 	private CustomInput input;
-	private Raster selfie;
-	private Raster regular;
+	private Raster center;
+	private Raster ring;
 	private Raster roll;
 
 	private Collection<TouchArea> touchAreas;
 	private final CollectionScanner<TouchArea> touchAreasAligner = this;
 	private CanvasPosition position;
+	SwitchCamButtonAnimator animator = new SwitchCamButtonAnimator(this);
 
 	public SwitchCameraButton (final UserInputBar userPanel) {
 	}
@@ -42,26 +44,25 @@ public class SwitchCameraButton implements MouseEventListener, CollectionScanner
 // this.roll.setOpacity(0.5);
 		this.input.setInputListener(this);
 		this.input.setDebugRenderFlag(false);
-		final Collection<Raster> options = this.input.listOptions();
-// options.print("options");
-		this.selfie = options.getElementAt(0);
-		this.regular = options.getElementAt(1);
+
+		this.center = this.input.listOptions().getElementAt(1);
+		this.ring = this.input.listOptions().getElementAt(0);
 
 		this.touchAreas = this.input.listTouchAreas();
-
+		this.animator.setup(root, this.center, this.ring, this.roll);
 	}
 
 	public void update (final CanvasPosition position) {
 		this.position = position;
-		this.selfie.setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
-		this.regular.setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
+		this.center.setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
+		this.ring.setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
 		this.roll.setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
 
-		this.selfie.setPositionX(position.getX() / 2d);
-		this.selfie.setPositionY(position.getY());
+		this.center.setPositionX(position.getX() / 2d);
+		this.center.setPositionY(position.getY());
 
-		this.regular.setPositionX(position.getX() / 2d);
-		this.regular.setPositionY(position.getY());
+		this.ring.setPositionX(position.getX() / 2d);
+		this.ring.setPositionY(position.getY());
 
 		this.roll.setPositionX(position.getX() / 2d);
 		this.roll.setPositionY(position.getY() * 1d);
@@ -76,13 +77,14 @@ public class SwitchCameraButton implements MouseEventListener, CollectionScanner
 
 	@Override
 	public boolean onTouchDown (final TouchDownEvent input_event) {
-		return false;
+		TelecamUIAction.doSwitchCam.push();
+		return true;
 	}
 
 	@Override
 	public boolean onTouchUp (final TouchUpEvent input_event) {
-		L.d("click", this);
-		return true;
+
+		return false;
 	}
 
 	@Override
@@ -105,6 +107,10 @@ public class SwitchCameraButton implements MouseEventListener, CollectionScanner
 
 	public void show () {
 		this.root.show();
+	}
+
+	public void switchCamera (final OnAnimationDoneListener animation_done_listener) {
+		this.animator.roll(animation_done_listener);
 	}
 
 }

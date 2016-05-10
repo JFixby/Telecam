@@ -1,6 +1,7 @@
 
 package com.jfixby.telecam.ui.actions;
 
+import com.jfixby.r3.api.ui.UI;
 import com.jfixby.r3.api.ui.UIAction;
 import com.jfixby.telecam.ui.TelecamUnit;
 
@@ -15,5 +16,10 @@ public abstract class TelecamUIAction implements UIAction<TelecamUnit> {
 	static public final TelecamUIAction goAcceptDeclinePhoto = new GoAcceptDeclinePhoto();
 	public static final TelecamUIAction goCropper = new GoCropper();
 	public static final TelecamUIAction switchFlashMode = new SwitchFlashMode();
+	public static final TelecamUIAction doSwitchCam = new DoSwitchCam();
+
+	public void push () {
+		UI.pushAction(this);
+	}
 
 }

@@ -137,4 +137,8 @@ public class TelecamUnit extends Unit implements TelecamUI, InputManager, Screen
 		this.userPanel.switchFlashMode(animation_done_listener);
 	}
 
+	public void switchCamera (final OnAnimationDoneListener animation_done_listener) {
+		this.userPanel.switchCamera(animation_done_listener);
+	}
+
 }
