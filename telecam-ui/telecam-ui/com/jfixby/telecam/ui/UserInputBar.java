@@ -186,12 +186,8 @@ public class UserInputBar {
 		this.bgGray.hideBlink();
 	}
 
-	public void goAcceptDecline (final UIAction<TelecamUnit> noAction, final UIAction<TelecamUnit> yesAction) {
-		this.hideAll();
+	public void bindAcceptDecline (final UIAction<TelecamUnit> noAction, final UIAction<TelecamUnit> yesAction) {
 
-		this.screenTouch.show();
-		this.bgGray.show();
-		this.acceptDecline.show();
 		this.acceptDecline.bindYesAction(yesAction);
 		this.acceptDecline.bindNoAction(noAction);
 	}
@@ -212,6 +208,15 @@ public class UserInputBar {
 
 	public void switchCamera (final OnAnimationDoneListener animation_done_listener) {
 		this.switchCameraButton.switchCamera(animation_done_listener);
+	}
+
+	public void animateAcceptDecline (final OnAnimationDoneListener animation_done_listener) {
+		this.hideAll();
+
+		this.screenTouch.show();
+		this.bgGray.show();
+		this.acceptDecline.show();
+		this.acceptDecline.animate(animation_done_listener);
 	}
 
 }

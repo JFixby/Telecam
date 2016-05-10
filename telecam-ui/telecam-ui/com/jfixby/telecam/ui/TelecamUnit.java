@@ -117,8 +117,8 @@ public class TelecamUnit extends Unit implements TelecamUI, InputManager, Screen
 		this.userPanel.hideBlink();
 	}
 
-	public void goAcceptDecline (final UIAction<TelecamUnit> noAction, final UIAction<TelecamUnit> yesAction) {
-		this.userPanel.goAcceptDecline(noAction, yesAction);
+	public void bindAcceptDecline (final UIAction<TelecamUnit> noAction, final UIAction<TelecamUnit> yesAction) {
+		this.userPanel.bindAcceptDecline(noAction, yesAction);
 	}
 
 	public void disableInput () {
@@ -139,6 +139,10 @@ public class TelecamUnit extends Unit implements TelecamUI, InputManager, Screen
 
 	public void switchCamera (final OnAnimationDoneListener animation_done_listener) {
 		this.userPanel.switchCamera(animation_done_listener);
+	}
+
+	public void animateAcceptDecline (final OnAnimationDoneListener animation_done_listener) {
+		this.userPanel.animateAcceptDecline(animation_done_listener);
 	}
 
 }

@@ -24,6 +24,7 @@ public abstract class AccDeccButton implements MouseEventListener, CollectionSca
 	private Raster released;
 	private final float horizontalAlignment;
 	private final CollectionScanner<TouchArea> touchAreasAligner = this;
+	private double originalSize;
 
 	public AcceptDecline getMaster () {
 		return this.master;
@@ -44,6 +45,7 @@ public abstract class AccDeccButton implements MouseEventListener, CollectionSca
 
 		this.pressed = options.getElementAt(0);
 		this.released = options.getElementAt(1);
+		this.originalSize = this.released.shape().getWidth();
 
 // options.print("options");
 // Sys.exit();
@@ -71,5 +73,11 @@ public abstract class AccDeccButton implements MouseEventListener, CollectionSca
 		element.shape().setPositionX(this.position.getX() * this.horizontalAlignment);
 		element.shape().setPositionY(this.position.getY());
 
+	}
+
+	public void setRadius (final double radius) {
+		final int size = (int)(this.originalSize * radius);
+		this.released.setSize(size, size);
+		this.pressed.setSize(size, size);
 	}
 }

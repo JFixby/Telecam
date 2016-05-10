@@ -3,12 +3,16 @@ package com.jfixby.telecam.ui.input.accept;
 
 import com.jfixby.cmns.api.geometry.CanvasPosition;
 import com.jfixby.cmns.api.geometry.Rectangle;
+import com.jfixby.cmns.api.sys.Sys;
 import com.jfixby.r3.api.ui.UIAction;
+import com.jfixby.r3.api.ui.unit.animation.OnAnimationDoneListener;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
+import com.jfixby.r3.api.ui.unit.update.OnUpdateListener;
+import com.jfixby.r3.api.ui.unit.update.UnitClocks;
 import com.jfixby.telecam.ui.TelecamUnit;
 import com.jfixby.telecam.ui.UserInputBar;
 
-public class AcceptDecline {
+public class AcceptDecline implements OnUpdateListener {
 	private Layer root;
 	private final AcceptButton acceptButton;
 	private final DeclineButton declineButton;
@@ -33,6 +37,7 @@ public class AcceptDecline {
 			final Layer button_root = this.root.findComponent("decline");
 			this.declineButton.setup(button_root);
 		}
+		root.attachComponent(this.animator);
 	}
 
 	public void update (final CanvasPosition position, final Rectangle viewport_update) {
@@ -67,5 +72,51 @@ public class AcceptDecline {
 
 	public UIAction<TelecamUnit> getNoAction () {
 		return this.noAction;
+	}
+
+	long delta = 100;
+	private long begin;
+	private long end;
+	private OnAnimationDoneListener animation_done_listener;
+	private boolean animating;
+	private double beginRoll;
+	private double current_roll = 0;
+	OnUpdateListener animator = this;
+	private long currentTime;
+	private double progress;
+
+	public void animate (final OnAnimationDoneListener animation_done_listener) {
+		this.current_roll = 0;
+		this.begin = Sys.SystemTime().currentTimeMillis();
+		this.end = this.begin + this.delta;
+		this.animation_done_listener = animation_done_listener;
+		this.animating = true;
+		this.beginRoll = this.current_roll;
+		this.roll(this.current_roll);
+	}
+
+	@Override
+	public void onUpdate (final UnitClocks unit_clock) {
+		if (!this.animating) {
+			return;
+		}
+		this.currentTime = Sys.SystemTime().currentTimeMillis() - this.begin;
+
+		this.progress = this.currentTime * 1d / this.delta;
+
+		if (this.progress > 1) {
+			this.animating = false;
+			this.animation_done_listener.onAnimationDone(null);
+			this.current_roll = 1;
+			this.roll(this.current_roll);
+			return;
+		}
+		this.roll(this.current_roll + this.progress);
+	}
+
+	private void roll (final double radius) {
+
+		this.acceptButton.setRadius(radius);
+		this.declineButton.setRadius(radius);
 	}
 }

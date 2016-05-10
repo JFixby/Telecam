@@ -41,4 +41,7 @@ public class DeclineButton extends AccDeccButton {
 		return false;
 	}
 
+	public void setRadius (final int radius) {
+	}
+
 }
