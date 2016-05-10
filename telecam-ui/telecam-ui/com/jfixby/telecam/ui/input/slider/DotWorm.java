@@ -15,10 +15,14 @@ public class DotWorm extends DotComponent {
 	private double l;
 	private double r;
 	private double screenWidth;
+	private final DotRigh wormRight;
+	private final DotLeft wormLeft;
 
-	public DotWorm (final Slider slider, final DotIndicator indicator) {
+	public DotWorm (final Slider slider, final DotIndicator indicator, final DotLeft wormLeft, final DotRigh wormRight) {
 		super(slider);
 		this.indicator = indicator;
+		this.wormLeft = wormLeft;
+		this.wormRight = wormRight;
 
 	}
 
@@ -31,9 +35,20 @@ public class DotWorm extends DotComponent {
 		this.l = -this.indicatorPathLength / 2;
 		this.r = -this.l;
 		myRaster.setDebugRenderFlag(!true);
-		myRaster.setOriginRelativeX(0);
+		myRaster.setOriginRelativeX(1);
+// this.wormLeft.getRaster().setOriginRelativeX(0);
+// this.wormRight.hide();
+
+		this.wormLeft.getRaster().setOriginRelativeX(1);
+		this.wormLeft.setOffsetX(-1 * this.indicatorPathLength / 2d);
+		this.wormLeft.getRaster().setDebugRenderFlag(!true);
+
+		this.wormRight.getRaster().setOriginRelativeX(0);
+		this.wormRight.setOffsetX(+1 * this.indicatorPathLength / 2d);
+		this.wormRight.getRaster().setDebugRenderFlag(!true);
 	}
 
+	@Override
 	public void hide () {
 		final Raster myRaster = this.getRaster();
 		myRaster.hide();
@@ -41,18 +56,25 @@ public class DotWorm extends DotComponent {
 	}
 
 	public void stretchTo (final double tail, final double head) {
+		if (tail < head) {
+			this.stretchTo(head, tail);
+			return;
+		}
 		final Raster myRaster = this.getRaster();
 
-		final double center = (tail + head) / 2d;
 		double delta = 0;
 		if (this.screenWidth % 2 == 0) {
 			delta = -0.5;// ugly hack!
 		}
-		myRaster.setWidth(-(this.indicatorPathLength * (tail - head) / 2d));
+		final double width = (this.indicatorPathLength * (tail - head) / 2d);
+
+		myRaster.setWidth(width);
 
 		final double offsetX = (delta + tail * this.indicatorPathLength / 2d);
 
 		this.setOffsetX(offsetX);
+		this.wormLeft.getRaster().setPositionX(myRaster.getTopLeftCorner().getX());
+		this.wormRight.getRaster().setPositionX(myRaster.getTopRightCorner().getX());
 
 	}
 

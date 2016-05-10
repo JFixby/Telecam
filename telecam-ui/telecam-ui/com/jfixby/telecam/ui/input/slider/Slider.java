@@ -31,7 +31,7 @@ public class Slider implements MouseEventListener, CollectionScanner<TouchArea> 
 	private final DotLeft wormLeft = new DotLeft(this);
 	private final DotRigh wormRight = new DotRigh(this);
 	private final DotIndicator indicator = new DotIndicator(this, this.left, this.right);
-	private final DotWorm worm = new DotWorm(this, this.indicator);
+	private final DotWorm worm = new DotWorm(this, this.indicator, this.wormLeft, this.wormRight);
 
 	private final SliderAnimator animator = new SliderAnimator(this, this.indicator, this.worm);
 
@@ -64,7 +64,10 @@ public class Slider implements MouseEventListener, CollectionScanner<TouchArea> 
 
 		this.rasterlayer = root.findComponent("raster");
 		this.left.setup((Raster)this.rasterlayer.findComponent("L"), root);
+		this.left.hide();
+
 		this.right.setup((Raster)this.rasterlayer.findComponent("R"), root);
+		this.right.hide();
 
 		this.wormLeft.setup((Raster)this.rasterlayer.findComponent("worm-L"), root);
 		this.wormRight.setup((Raster)this.rasterlayer.findComponent("worm-R"), root);
@@ -92,15 +95,13 @@ public class Slider implements MouseEventListener, CollectionScanner<TouchArea> 
 	}
 
 	public void setPhotoMode () {
+		this.animator.sendSliderToPhotoFast();
 		this.state = PHOTO;
-		this.worm.stretchTo(-1, -1);
-		this.indicator.setSliderState(-1);
 	}
 
 	public void setVideoMode () {
+		this.animator.sendSliderToVideoFast();
 		this.state = VIDEO;
-		this.worm.stretchTo(+1, +1);
-		this.indicator.setSliderState(+1);
 	}
 
 	public void update (final CanvasPosition canvasPosition, final Rectangle screen) {

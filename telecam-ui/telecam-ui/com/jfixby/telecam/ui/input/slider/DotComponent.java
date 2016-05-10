@@ -32,6 +32,10 @@ public class DotComponent {
 		return this.parentRoot;
 	}
 
+	public void hide () {
+		this.raster.hide();
+	}
+
 	public DotComponent (final Slider slider) {
 		this.master = slider;
 		this.originalOffset = Geometry.newCanvasPosition();

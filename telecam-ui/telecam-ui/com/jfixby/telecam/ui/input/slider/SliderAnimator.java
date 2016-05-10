@@ -1,7 +1,6 @@
 
 package com.jfixby.telecam.ui.input.slider;
 
-import com.jfixby.cmns.api.log.L;
 import com.jfixby.cmns.api.sys.Sys;
 import com.jfixby.r3.api.ui.unit.animation.OnAnimationDoneListener;
 import com.jfixby.r3.api.ui.unit.update.OnUpdateListener;
@@ -9,7 +8,7 @@ import com.jfixby.r3.api.ui.unit.update.UnitClocks;
 
 public class SliderAnimator implements OnUpdateListener {
 	private final OnUpdateListener listener = this;
-	private static final long DELTA = 2000;
+	private static final long DELTA = 200;
 	private final Slider master;
 
 	long beginTime;
@@ -25,6 +24,8 @@ public class SliderAnimator implements OnUpdateListener {
 	private final DotIndicator indicator;
 	private OnAnimationDoneListener animation_done_listener;
 	private final DotWorm worm;
+	private boolean animatingHead;
+	private long delta;
 
 	public SliderAnimator (final Slider slider, final DotIndicator indicator, final DotWorm worm) {
 		this.master = slider;
@@ -46,36 +47,61 @@ public class SliderAnimator implements OnUpdateListener {
 			this.currentTime = this.targetTime;
 			this.animating = false;
 		}
-		this.progress = (this.currentTime - this.beginTime) * 1d / DELTA;
+		this.progress = (this.currentTime - this.beginTime) * 1d / this.delta;
 		this.currentPosition = this.beginPosition + (this.targetPosition - this.beginPosition) * this.progress;
-		this.indicator.setSliderState(this.currentPosition);
-		this.worm.stretchTo(this.beginPosition, this.currentPosition);
+		if (this.animatingHead) {
+			this.indicator.setSliderState(this.currentPosition);
+			this.worm.stretchTo(this.beginPosition, this.currentPosition);
+		} else {
+			this.worm.stretchTo(this.targetPosition, this.currentPosition);
+		}
 
 		if (this.animating == false) {
-			this.animation_done_listener.onAnimationDone(null);
+			if (this.animatingHead) {
+				this.send(this.animation_done_listener, this.targetPosition, this.beginPosition, false, this.delta);
+			} else {
+				if (this.animation_done_listener != null) {
+					this.animation_done_listener.onAnimationDone(null);
+				}
+			}
 		}
 	}
 
 	public void sendSliderToPhoto (final OnAnimationDoneListener animation_done_listener) {
 		this.master.setVideoMode();
-		L.d("sendSliderToPhoto");
-		this.send(animation_done_listener, +1, -1);
+		this.send(animation_done_listener, +1, -1, true);
 	}
 
 	public void sendSliderToVideo (final OnAnimationDoneListener animation_done_listener) {
 		this.master.setPhotoMode();
-		L.d("sendSliderToVideo");
-		this.send(animation_done_listener, -1, +1);
+		this.send(animation_done_listener, -1, +1, true);
 	}
 
-	private void send (final OnAnimationDoneListener animation_done_listener, final int beginPosition, final int targetPosition) {
+	private void send (final OnAnimationDoneListener animation_done_listener, final double beginPosition,
+		final double targetPosition, final boolean head) {
+		this.send(animation_done_listener, beginPosition, targetPosition, head, DELTA);
+
+	}
+
+	private void send (final OnAnimationDoneListener animation_done_listener, final double beginPosition,
+		final double targetPosition, final boolean head, final long delta) {
 		this.animation_done_listener = animation_done_listener;
 		this.beginTime = Sys.SystemTime().currentTimeMillis();
-		this.targetTime = this.beginTime + DELTA;
+		this.targetTime = this.beginTime + delta;
 		this.animating = true;
 		this.beginPosition = beginPosition;
 		this.targetPosition = targetPosition;
+		this.animatingHead = head;
+		this.delta = delta;
 
+	}
+
+	public void sendSliderToPhotoFast () {
+		this.send(this.animation_done_listener, +1, -1, true, 1);
+	}
+
+	public void sendSliderToVideoFast () {
+		this.send(this.animation_done_listener, -1, +1, true, 1);
 	}
 
 }
