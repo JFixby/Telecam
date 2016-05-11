@@ -21,6 +21,7 @@ import com.jfixby.telecam.ui.BackgroundGray;
 import com.jfixby.telecam.ui.UserInputBar;
 import com.jfixby.telecam.ui.actions.TelecamUIAction;
 import com.jfixby.telecam.ui.input.blue.BlueButton;
+import com.jfixby.telecam.ui.input.flash.SwitchFlashButton;
 import com.jfixby.telecam.ui.input.red.RedButton;
 import com.jfixby.telecam.ui.input.swcam.SwitchCameraButton;
 
@@ -54,9 +55,11 @@ public class Slider implements MouseEventListener, CollectionScanner<TouchArea> 
 // private final BlueButton blueButton;
 // private final RedButton redButton;
 	private final SwitchCameraButton switchCameraButton;
+	private final SwitchFlashButton switchFlashButton;
 
 	public Slider (final UserInputBar userPanel, final BackgroundGray bgGray, final BlueButton blueButton,
-		final RedButton redButton, final SwitchCameraButton switchCameraButton) {
+		final RedButton redButton, final SwitchCameraButton switchCameraButton, final SwitchFlashButton switchFlashButton) {
+		this.switchFlashButton = switchFlashButton;
 		this.master = userPanel;
 		this.baseOffset = Geometry.newCanvasPosition();
 		this.originalSceneDimentions = this.master.getOriginalSceneDimentions();
@@ -65,7 +68,7 @@ public class Slider implements MouseEventListener, CollectionScanner<TouchArea> 
 // this.redButton = redButton;
 		this.switchCameraButton = switchCameraButton;
 		this.worm = new DotWorm(this, this.indicator, this.wormLeft, this.wormRight, bgGray);
-		this.animator = new SliderAnimator(this, this.indicator, this.worm, bgGray, blueButton, redButton);
+		this.animator = new SliderAnimator(this, this.indicator, this.worm, bgGray, blueButton, redButton, switchFlashButton);
 	}
 
 	public void setup (final Layer root) {
@@ -101,6 +104,7 @@ public class Slider implements MouseEventListener, CollectionScanner<TouchArea> 
 	public void sendSliderToVideo (final OnAnimationDoneListener animation_done_listener) {
 		this.animator.sendSliderToVideo(animation_done_listener);
 		this.state = VIDEO;
+		this.switchFlashButton.hide();
 // this.blueButton.hide();
 // this.redButton.show();
 // this.switchCameraButton.hide();
@@ -109,6 +113,7 @@ public class Slider implements MouseEventListener, CollectionScanner<TouchArea> 
 	public void sendSliderToPhoto (final OnAnimationDoneListener animation_done_listener) {
 		this.animator.sendSliderToPhoto(animation_done_listener);
 		this.state = PHOTO;
+		this.switchFlashButton.show();
 // this.blueButton.show();
 // this.redButton.hide();
 // this.switchCameraButton.show();
@@ -118,6 +123,7 @@ public class Slider implements MouseEventListener, CollectionScanner<TouchArea> 
 		this.indicator.setSliderState(-1);
 		this.worm.stretchTo(+1, +1);
 		this.bgGray.setBackgroundOpacity(1f);
+
 // this.redButton.setWideMin();
 // this.blueButton.show();
 // this.redButton.hide();
@@ -127,6 +133,7 @@ public class Slider implements MouseEventListener, CollectionScanner<TouchArea> 
 	public void setVideoMode () {
 		this.indicator.setSliderState(+1);
 		this.worm.stretchTo(-1, -1);
+
 		this.bgGray.setBackgroundOpacity(0.5f);
 		this.state = VIDEO;
 // this.redButton.setWideMax();

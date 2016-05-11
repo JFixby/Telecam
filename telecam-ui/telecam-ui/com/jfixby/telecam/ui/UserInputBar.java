@@ -49,7 +49,8 @@ public class UserInputBar {
 		this.progressBar = new ProgressBar(this);
 		this.videTimer = new VideoTimer(this);
 		this.switchCameraButton = new SwitchCameraButton(this, this.bgGray, this.blueButton, this.redButton);
-		this.slider = new Slider(this, this.bgGray, this.blueButton, this.redButton, this.switchCameraButton);
+		this.slider = new Slider(this, this.bgGray, this.blueButton, this.redButton, this.switchCameraButton,
+			this.switchFlashButton);
 	}
 
 	private Layer root;

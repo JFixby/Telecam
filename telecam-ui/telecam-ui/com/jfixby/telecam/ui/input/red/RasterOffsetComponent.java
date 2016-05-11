@@ -58,6 +58,7 @@ public class RasterOffsetComponent {
 		this.originalOffset.subtract(this.master.getPosition());
 		this.currentCenter.set(this.raster.getPosition());
 		this.currentOffset.setPosition(this.originalOffset);
+		findComponent.setDebugRenderFlag(!true);
 	}
 
 	public void setCenter (final Float2 position) {

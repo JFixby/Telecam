@@ -48,7 +48,7 @@ public class RedButton implements MouseEventListener, CollectionScanner<TouchAre
 		this.root = root;
 		this.input = (CustomInput)root.listChildren().getElementAt(0);
 		this.input.setInputListener(this);
-		this.input.setDebugRenderFlag(!false);
+		this.input.setDebugRenderFlag(false);
 		this.position.set(this.input.getPosition());
 
 		final Collection<Raster> options = this.input.listOptions();
@@ -78,12 +78,20 @@ public class RedButton implements MouseEventListener, CollectionScanner<TouchAre
 // whiteSquare.setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
 
 		this.whiteSquare.setup(whiteSquare, root);
-
+		whiteSquare.hide();
 		this.touchAreas = this.input.listTouchAreas();
 
 	}
 
 	public void setWide (final double redToWide) {// [0,1]
+		final double m = 1 / 4d;
+		final double targetWidth = this.white_bridge.getComponentWidth() / 4 * m;
+		final double shift = targetWidth / 4d;
+		this.whiteR.setOffsetX(shift * redToWide);
+		this.whiteL.setOffsetX(-shift * redToWide);
+		this.white_bridge.getRaster().setWidth(targetWidth * redToWide * 4 / m);
+		final double radius = 1 - redToWide * 0.75;
+		this.redCircle.setRelativeRadius(radius);
 
 	}
 
@@ -93,9 +101,8 @@ public class RedButton implements MouseEventListener, CollectionScanner<TouchAre
 
 	public void update (final CanvasPosition position) {
 		this.position.set(position);
-		L.d("WB", this.white_bridge.getRaster());
+
 		this.white_bridge.setCenter(this.position);
-		L.d("WB", this.white_bridge.getRaster());
 
 		this.whiteL.setCenter(this.position);
 		this.whiteR.setCenter(this.position);
