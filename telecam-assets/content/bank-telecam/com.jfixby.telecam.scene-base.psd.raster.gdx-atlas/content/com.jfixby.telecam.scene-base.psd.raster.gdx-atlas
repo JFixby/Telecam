@@ -284,14 +284,14 @@ com.jfixby.telecam.scene-base.psd.raster_54
   orig: 120, 120
   offset: 0, 0
   index: -1
-com.jfixby.telecam.scene-base.psd.raster_59
+com.jfixby.telecam.scene-base.psd.raster_60
   rotate: false
   xy: 4, 310
   size: 120, 120
   orig: 120, 120
   offset: 0, 0
   index: -1
-com.jfixby.telecam.scene-base.psd.raster_60
+com.jfixby.telecam.scene-base.psd.raster_61
   rotate: false
   xy: 4, 310
   size: 120, 120
@@ -312,7 +312,7 @@ com.jfixby.telecam.scene-base.psd.raster_56
   orig: 65, 65
   offset: 0, 0
   index: -1
-com.jfixby.telecam.scene-base.psd.raster_58
+com.jfixby.telecam.scene-base.psd.raster_59
   rotate: false
   xy: 4, 96
   size: 27, 120
@@ -326,21 +326,21 @@ com.jfixby.telecam.scene-base.psd.raster_13
   orig: 33, 33
   offset: 0, 0
   index: -1
-com.jfixby.telecam.scene-base.psd.raster_61
+com.jfixby.telecam.scene-base.psd.raster_62
   rotate: false
   xy: 39, 187
   size: 29, 29
   orig: 29, 29
   offset: 0, 0
   index: -1
-com.jfixby.telecam.scene-base.psd.raster_62
+com.jfixby.telecam.scene-base.psd.raster_63
   rotate: false
   xy: 268, 625
   size: 121, 121
   orig: 121, 121
   offset: 0, 0
   index: -1
-com.jfixby.telecam.scene-base.psd.raster_63
+com.jfixby.telecam.scene-base.psd.raster_64
   rotate: false
   xy: 767, 789
   size: 50, 50
