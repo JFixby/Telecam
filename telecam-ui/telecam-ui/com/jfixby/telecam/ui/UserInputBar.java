@@ -228,11 +228,15 @@ public class UserInputBar {
 
 	public void sendSliderToVideo (final OnAnimationDoneListener animation_done_listener) {
 // this.goPhoto();
+		this.blueButton.hide();
+		this.redButton.show();
 		this.slider.sendSliderToVideo(animation_done_listener);
 	}
 
 	public void sendSliderToPhoto (final OnAnimationDoneListener animation_done_listener) {
 		this.slider.sendSliderToPhoto(animation_done_listener);
+		this.blueButton.show();
+		this.redButton.hide();
 // this.goVideo();
 	}
 

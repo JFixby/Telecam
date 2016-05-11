@@ -48,13 +48,13 @@ public class RedButton implements MouseEventListener, CollectionScanner<TouchAre
 		this.root = root;
 		this.input = (CustomInput)root.listChildren().getElementAt(0);
 		this.input.setInputListener(this);
-		this.input.setDebugRenderFlag(false);
+		this.input.setDebugRenderFlag(!false);
 		this.position.set(this.input.getPosition());
 
 		final Collection<Raster> options = this.input.listOptions();
 
 		final Raster white_bridge = options.getElementAt(0);
-		white_bridge.setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
+// white_bridge.setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
 
 		final Raster whiteL = options.getElementAt(1);
 		final Raster whiteR = options.getElementAt(2);
@@ -67,15 +67,15 @@ public class RedButton implements MouseEventListener, CollectionScanner<TouchAre
 		whiteR.setOriginAbsolute(this.position);
 
 		this.redAnus = options.getElementAt(3);
-		this.redAnus.setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
+// this.redAnus.setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
 		this.redAnus.hide();
 
 		final Raster redCircle = options.getElementAt(4);
-		redCircle.setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
+// redCircle.setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
 		this.redCircle.setup(redCircle, root);
 
 		final Raster whiteSquare = options.getElementAt(5);
-		whiteSquare.setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
+// whiteSquare.setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
 
 		this.whiteSquare.setup(whiteSquare, root);
 
@@ -93,8 +93,10 @@ public class RedButton implements MouseEventListener, CollectionScanner<TouchAre
 
 	public void update (final CanvasPosition position) {
 		this.position.set(position);
-
+		L.d("WB", this.white_bridge.getRaster());
 		this.white_bridge.setCenter(this.position);
+		L.d("WB", this.white_bridge.getRaster());
+
 		this.whiteL.setCenter(this.position);
 		this.whiteR.setCenter(this.position);
 		this.redAnus.setPosition(this.position);
