@@ -32,6 +32,7 @@ public class UserInputBar {
 	private final ScreenTouch screenTouch;
 	private final ProgressBar progressBar;
 	private final VideoTimer videTimer;
+	private final GoVideoRecordingAnimator goVideoRecordingAnimator = new GoVideoRecordingAnimator(this);
 
 	UserInputBar (final TelecamUnit telecamUnit) {
 		this.master = telecamUnit;
@@ -112,6 +113,8 @@ public class UserInputBar {
 			this.videTimer.setup(button_root);
 		}
 
+		this.goVideoRecordingAnimator.setup(root);
+
 		this.hideAll();
 
 	}
@@ -137,17 +140,17 @@ public class UserInputBar {
 		this.bgGray.updateScreen(viewport_update);
 		this.cropper.updateScreen(viewport_update);
 
-		this.blueButton.update(this.bgGray.getPosition());
-		this.redButton.update(this.bgGray.getPosition());
-		this.switchCameraButton.update(this.bgGray.getPosition());
+		this.blueButton.update(this.bgGray.getCenter());
+		this.redButton.update(this.bgGray.getCenter());
+		this.switchCameraButton.update(this.bgGray.getCenter());
 		this.screenTouch.update(viewport_update);
-		this.cropButton.update(this.bgGray.getPosition());
+		this.cropButton.update(this.bgGray.getCenter());
 		this.progressBar.update(this.bgGray);
-		this.videTimer.update(this.bgGray.getPosition());
-		this.videpPlayResume.update(this.bgGray.getPosition());
-		this.acceptDecline.update(this.bgGray.getPosition(), viewport_update);
+		this.videTimer.update(this.bgGray.getCenter());
+		this.videpPlayResume.update(this.bgGray.getCenter());
+		this.acceptDecline.update(this.bgGray.getCenter(), viewport_update);
 		this.switchFlashButton.update(viewport_update);
-		this.slider.update(this.bgGray.getPosition(), viewport_update);
+		this.slider.update(this.bgGray.getCenter(), viewport_update);
 
 	}
 
@@ -177,6 +180,18 @@ public class UserInputBar {
 		this.switchFlashButton.show();
 // this.slider.sendSliderToPhoto(null);
 
+	}
+
+	public void goVideo () {
+		this.hideAll();
+		//
+// this.blueButton.show();
+		this.redButton.show();
+		this.switchCameraButton.show();
+		this.screenTouch.show();
+		this.bgGray.show();
+		this.slider.show();
+// this.switchFlashButton.show();
 	}
 
 	public void setShootProgressBegin () {
@@ -239,6 +254,35 @@ public class UserInputBar {
 		this.blueButton.show();
 		this.redButton.hide();
 // this.goVideo();
+	}
+
+	public Layer getRoot () {
+		return this.root;
+	}
+
+	public BackgroundGray getBackgroundGray () {
+		return this.bgGray;
+	}
+
+	public RedButton getRedButton () {
+		return this.redButton;
+	}
+
+	public void goVideoRecording (final OnAnimationDoneListener animation_done_listener) {
+		this.goVideoRecordingAnimator.goVideoRecording(animation_done_listener);
+		this.switchCameraButton.hide();
+		this.slider.hide();
+// this.redButton.setMode();
+	}
+
+	public void goVideoIdle (final OnAnimationDoneListener animation_done_listener) {
+		this.slider.show();
+		this.switchCameraButton.show();
+		this.goVideoRecordingAnimator.goVideoIdle(animation_done_listener);
+	}
+
+	public void showPlayStop () {
+		this.videpPlayResume.show();
 	}
 
 }

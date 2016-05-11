@@ -36,6 +36,10 @@ public class RasterOffsetComponent {
 		this.raster.hide();
 	}
 
+	public void show () {
+		this.raster.show();
+	}
+
 	public RasterOffsetComponent (final RedButton slider) {
 		this.master = slider;
 		this.originalOffset = Geometry.newCanvasPosition();

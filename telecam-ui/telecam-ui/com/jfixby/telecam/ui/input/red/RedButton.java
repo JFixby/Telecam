@@ -8,7 +8,6 @@ import com.jfixby.cmns.api.geometry.CanvasPosition;
 import com.jfixby.cmns.api.geometry.Geometry;
 import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_HORIZONTAL;
 import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_VERTICAL;
-import com.jfixby.cmns.api.log.L;
 import com.jfixby.r3.api.ui.unit.input.CustomInput;
 import com.jfixby.r3.api.ui.unit.input.MouseEventListener;
 import com.jfixby.r3.api.ui.unit.input.MouseMovedEvent;
@@ -19,6 +18,7 @@ import com.jfixby.r3.api.ui.unit.input.TouchUpEvent;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
 import com.jfixby.telecam.ui.UserInputBar;
+import com.jfixby.telecam.ui.actions.TelecamUIAction;
 
 public class RedButton implements MouseEventListener, CollectionScanner<TouchArea> {
 
@@ -34,6 +34,7 @@ public class RedButton implements MouseEventListener, CollectionScanner<TouchAre
 	private final RedCircle redCircle;
 	private final WhiteSquare whiteSquare;
 	private final UserInputBar master;
+	private String mode = READY_TO_RECORD;
 
 	public RedButton (final UserInputBar userPanel) {
 		this.master = userPanel;
@@ -120,7 +121,15 @@ public class RedButton implements MouseEventListener, CollectionScanner<TouchAre
 
 	@Override
 	public boolean onTouchDown (final TouchDownEvent input_event) {
-		L.d(this + "", input_event);
+		if (this.mode == READY_TO_RECORD) {
+			TelecamUIAction.goVideoRecording.push();
+			TelecamUIAction.doRecordVideo.push();
+		} else {
+			TelecamUIAction.doStopRecordVideo.push();
+			TelecamUIAction.goVideoIdle.push();
+			TelecamUIAction.goAcceptDeclineVideo.push();
+		}
+
 		return true;
 	}
 
@@ -168,4 +177,38 @@ public class RedButton implements MouseEventListener, CollectionScanner<TouchAre
 		this.root.show();
 	}
 
+	public void convertToSquare (final double progress) {
+		final double redToWide = 1d - progress;
+		this.setWide(redToWide);
+	}
+
+	public void convertToSquare () {
+		this.setWide(0);
+		this.whiteL.hide();
+		this.whiteR.hide();
+		this.white_bridge.hide();
+		this.whiteSquare.show();
+		this.setMode(RECORDING);
+	}
+
+	private void setMode (final String mode) {
+		this.mode = mode;
+	}
+
+	static final public String RECORDING = "RECORDING";
+	static final public String READY_TO_RECORD = "READY_TO_RECORD";
+
+	public void convertBack (final double progress) {
+		final double redToWide = progress;
+		this.setWide(redToWide);
+	}
+
+	public void convertBack () {
+		this.setWide(0);
+		this.whiteL.show();
+		this.whiteR.show();
+		this.white_bridge.show();
+		this.whiteSquare.hide();
+		this.setMode(READY_TO_RECORD);
+	}
 }

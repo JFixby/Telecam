@@ -106,6 +106,10 @@ public class TelecamUnit extends Unit implements TelecamUI, InputManager, Screen
 		this.userPanel.goPhoto();
 	}
 
+	public void goVideoShoot () {
+		this.userPanel.goVideo();
+	}
+
 	public void setShootProgress (final float f) {
 		this.userPanel.setShootProgress(f);
 	}
@@ -152,6 +156,18 @@ public class TelecamUnit extends Unit implements TelecamUI, InputManager, Screen
 
 	public void sendSliderToPhoto (final OnAnimationDoneListener animation_done_listener) {
 		this.userPanel.sendSliderToPhoto(animation_done_listener);
+	}
+
+	public void goVideoRecording (final OnAnimationDoneListener animation_done_listener) {
+		this.userPanel.goVideoRecording(animation_done_listener);
+	}
+
+	public void goVideoIdle (final OnAnimationDoneListener animation_done_listener) {
+		this.userPanel.goVideoIdle(animation_done_listener);
+	}
+
+	public void showPlayStop () {
+		this.userPanel.showPlayStop();
 	}
 
 }

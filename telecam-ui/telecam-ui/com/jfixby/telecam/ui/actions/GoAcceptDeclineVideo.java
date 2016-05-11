@@ -5,7 +5,7 @@ import com.jfixby.r3.api.ui.unit.animation.Animation;
 import com.jfixby.r3.api.ui.unit.animation.OnAnimationDoneListener;
 import com.jfixby.telecam.ui.TelecamUnit;
 
-public class GoAcceptDeclinePhoto extends TelecamUIAction implements OnAnimationDoneListener {
+public class GoAcceptDeclineVideo extends TelecamUIAction implements OnAnimationDoneListener {
 	final OnAnimationDoneListener animation_done_listener = this;
 	private boolean done;
 
@@ -25,8 +25,9 @@ public class GoAcceptDeclinePhoto extends TelecamUIAction implements OnAnimation
 	public boolean isDone (final TelecamUnit ui) {
 
 		if (this.done) {
-			ui.bindAcceptDecline(TelecamUIAction.doDiscardPhoto, TelecamUIAction.doDiscardPhoto);
-			ui.showGoCrop();
+			ui.bindAcceptDecline(TelecamUIAction.doDiscardVideo, TelecamUIAction.doDiscardVideo);
+// ui.showGoCrop();
+			ui.showPlayStop();
 			ui.enableInput();
 		}
 
@@ -37,4 +38,5 @@ public class GoAcceptDeclinePhoto extends TelecamUIAction implements OnAnimation
 	public void onAnimationDone (final Animation animation) {
 		this.done = true;
 	}
+
 }
