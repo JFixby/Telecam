@@ -170,4 +170,14 @@ public class TelecamUnit extends Unit implements TelecamUI, InputManager, Screen
 		this.userPanel.showPlayStop();
 	}
 
+	final VideoPlayer player = new VideoPlayer();
+
+	public VideoPlayer getVideoPlayer () {
+		return this.player;
+	}
+
+	public void uploadVideoToPlayer () {
+		this.player.reset();
+	}
+
 }

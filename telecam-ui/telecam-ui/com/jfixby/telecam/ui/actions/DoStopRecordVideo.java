@@ -15,6 +15,7 @@ public class DoStopRecordVideo extends TelecamUIAction {
 
 	@Override
 	public boolean isDone (final TelecamUnit ui) {
+		ui.uploadVideoToPlayer();
 		return true;
 	}
 

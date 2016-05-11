@@ -282,7 +282,22 @@ public class UserInputBar {
 	}
 
 	public void showPlayStop () {
+		this.master.getVideoPlayer().setProgressListener(this.progressBar);
+		this.master.getVideoPlayer().stop();
 		this.videpPlayResume.show();
+		this.progressBar.show();
+	}
+
+	public ProgressBar getProgress () {
+		return this.progressBar;
+	}
+
+	public VideoPlayer getVideoPlayer () {
+		return this.master.getVideoPlayer();
+	}
+
+	public VidepPlayPause getVidepPlayPause () {
+		return this.videpPlayResume;
 	}
 
 }

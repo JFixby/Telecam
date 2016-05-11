@@ -3,33 +3,42 @@ package com.jfixby.telecam.ui;
 
 import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_HORIZONTAL;
 import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_VERTICAL;
-import com.jfixby.cmns.api.log.L;
 import com.jfixby.cmns.api.util.JUtils;
 import com.jfixby.cmns.api.util.ProgressIndicator;
-import com.jfixby.r3.api.ui.unit.input.MouseEventListener;
-import com.jfixby.r3.api.ui.unit.input.MouseMovedEvent;
-import com.jfixby.r3.api.ui.unit.input.TouchDownEvent;
-import com.jfixby.r3.api.ui.unit.input.TouchDraggedEvent;
-import com.jfixby.r3.api.ui.unit.input.TouchUpEvent;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
+import com.jfixby.r3.api.ui.unit.update.OnUpdateListener;
+import com.jfixby.r3.api.ui.unit.update.UnitClocks;
+import com.jfixby.telecam.ui.input.vplay.VidepPlayPause;
 
-public class ProgressBar implements MouseEventListener {
+public class ProgressBar implements OnUpdateListener {
 
 	private Layer root;
+	OnUpdateListener updater = this;
 
 	private Raster line;
 
 	final ProgressIndicator progress = JUtils.newProgressIndicator();
-	private double width;
+
+	private double progressValue;
+
+	private double maxWidth;
+
+	private final VidepPlayPause playResume;
+	private final UserInputBar master;
+	private VideoPlayerState videoPlayerState;
 
 	public ProgressBar (final UserInputBar userPanel) {
+		this.master = userPanel;
+		this.playResume = userPanel.getVidepPlayPause();
 	}
 
 	public void setup (final Layer root) {
 		this.root = root;
+		root.attachComponent(this.updater);
 		this.line = root.findComponent();
-
+		this.progressValue = 0;
+		this.updateRaster();
 	}
 
 	public void update (final BackgroundGray bgGray) {
@@ -37,36 +46,10 @@ public class ProgressBar implements MouseEventListener {
 
 		this.line.setPosition(bgGray.getTopLeftCorner());
 
-		this.width = bgGray.getWidth();
+		this.maxWidth = bgGray.getWidth();
 
-		this.updateProgress();
+		this.updateRaster();
 
-	}
-
-	private void updateProgress () {
-		final float progress = 0.75f;
-		this.line.setWidth(this.width * progress);
-	}
-
-	@Override
-	public boolean onMouseMoved (final MouseMovedEvent input_event) {
-		return false;
-	}
-
-	@Override
-	public boolean onTouchDown (final TouchDownEvent input_event) {
-		return false;
-	}
-
-	@Override
-	public boolean onTouchUp (final TouchUpEvent input_event) {
-		L.d("click", this);
-		return true;
-	}
-
-	@Override
-	public boolean onTouchDragged (final TouchDraggedEvent input_event) {
-		return false;
 	}
 
 	public void hide () {
@@ -75,6 +58,35 @@ public class ProgressBar implements MouseEventListener {
 
 	public void show () {
 		this.root.show();
+	}
+
+	public void updateRaster () {
+		this.line.shape().setWidth(this.maxWidth * this.progressValue);
+	}
+
+	public void setProgress (final double progressValue) {
+		this.progressValue = progressValue;
+	}
+
+	public void updateState (final VideoPlayerState videoPlayerState) {
+		this.videoPlayerState = videoPlayerState;
+		this.playResume.update(videoPlayerState);
+		this.readProgress();
+	}
+
+	@Override
+	public void onUpdate (final UnitClocks unit_clock) {
+		if (this.videoPlayerState == VideoPlayerState.PLAYING) {
+			this.readProgress();
+		}
+	}
+
+	private void readProgress () {
+		final double position = this.master.getVideoPlayer().getCurrentVideoPosition();
+		final double length = this.master.getVideoPlayer().getVideoTotalLenght();
+		final double progress = position / length;
+		this.setProgress(progress);
+		this.updateRaster();
 	}
 
 }

@@ -7,7 +7,6 @@ import com.jfixby.cmns.api.collections.Collections;
 import com.jfixby.cmns.api.geometry.CanvasPosition;
 import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_HORIZONTAL;
 import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_VERTICAL;
-import com.jfixby.cmns.api.log.L;
 import com.jfixby.r3.api.ui.unit.input.CustomInput;
 import com.jfixby.r3.api.ui.unit.input.MouseEventListener;
 import com.jfixby.r3.api.ui.unit.input.MouseMovedEvent;
@@ -17,10 +16,15 @@ import com.jfixby.r3.api.ui.unit.input.TouchDraggedEvent;
 import com.jfixby.r3.api.ui.unit.input.TouchUpEvent;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
+import com.jfixby.telecam.ui.ProgressBar;
 import com.jfixby.telecam.ui.UserInputBar;
+import com.jfixby.telecam.ui.VideoPlayer;
+import com.jfixby.telecam.ui.VideoPlayerState;
 
 public class VidepPlayPause implements MouseEventListener, CollectionScanner<TouchArea> {
 
+	private static final String PAUSED = "PAUSED";
+	private static final String PLAYING = "PLAYING";
 	private Layer root;
 	private CustomInput input;
 	private Raster play;
@@ -29,8 +33,12 @@ public class VidepPlayPause implements MouseEventListener, CollectionScanner<Tou
 	private Collection<TouchArea> touchAreas;
 	private final CollectionScanner<TouchArea> touchAreasAligner = this;
 	private CanvasPosition position;
+	private final ProgressBar progressBar;
+	private final UserInputBar master;
 
 	public VidepPlayPause (final UserInputBar userPanel) {
+		this.master = userPanel;
+		this.progressBar = userPanel.getProgress();
 	}
 
 	public void setup (final Layer root) {
@@ -63,23 +71,30 @@ public class VidepPlayPause implements MouseEventListener, CollectionScanner<Tou
 
 	@Override
 	public boolean onMouseMoved (final MouseMovedEvent input_event) {
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean onTouchDown (final TouchDownEvent input_event) {
-		return false;
+		final VideoPlayer player = this.master.getVideoPlayer();
+		if (player.isPlaying()) {
+			player.pause();
+		} else if (player.isPaused()) {
+			player.resume();
+		} else if (player.isStopped()) {
+			player.start();
+		}
+		return true;
 	}
 
 	@Override
 	public boolean onTouchUp (final TouchUpEvent input_event) {
-		L.d("click", this);
 		return true;
 	}
 
 	@Override
 	public boolean onTouchDragged (final TouchDraggedEvent input_event) {
-		return false;
+		return true;
 	}
 
 	@Override
@@ -95,6 +110,16 @@ public class VidepPlayPause implements MouseEventListener, CollectionScanner<Tou
 
 	public void show () {
 		this.root.show();
+	}
+
+	public void update (final VideoPlayerState videoPlayerState) {
+		if (videoPlayerState == VideoPlayerState.PLAYING) {
+			this.play.hide();
+			this.pause.show();
+		} else {
+			this.play.show();
+			this.pause.hide();
+		}
 	}
 
 }
