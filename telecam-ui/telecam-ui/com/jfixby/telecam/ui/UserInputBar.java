@@ -122,7 +122,7 @@ public class UserInputBar {
 		this.progressBar.hide();
 		this.videpPlayResume.hide();
 		this.acceptDecline.hide();
-// this.switchCameraButton.hide();
+		this.switchCameraButton.hide();
 		this.screenTouch.hide();
 		this.videTimer.hide();
 		this.bgGray.hide();
@@ -166,13 +166,16 @@ public class UserInputBar {
 
 	public void goPhoto () {
 		this.hideAll();
-
+//
 		this.blueButton.show();
-// this.switchCameraButton.show();
+//// this.redButton.show();
+		this.switchCameraButton.show();
 		this.screenTouch.show();
 		this.bgGray.show();
 		this.slider.show();
 		this.switchFlashButton.show();
+// this.slider.sendSliderToPhoto(null);
+
 	}
 
 	public void setShootProgressBegin () {
@@ -224,11 +227,13 @@ public class UserInputBar {
 	}
 
 	public void sendSliderToVideo (final OnAnimationDoneListener animation_done_listener) {
+// this.goPhoto();
 		this.slider.sendSliderToVideo(animation_done_listener);
 	}
 
 	public void sendSliderToPhoto (final OnAnimationDoneListener animation_done_listener) {
 		this.slider.sendSliderToPhoto(animation_done_listener);
+// this.goVideo();
 	}
 
 }

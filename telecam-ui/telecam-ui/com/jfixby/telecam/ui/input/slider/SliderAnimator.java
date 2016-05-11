@@ -31,7 +31,7 @@ public class SliderAnimator implements OnUpdateListener {
 	private boolean animatingHead;
 	private long delta;
 	private final BackgroundGray bgGray;
-	private final RedButton redButton;
+// private final RedButton redButton;
 
 	public SliderAnimator (final Slider slider, final DotIndicator indicator, final DotWorm worm, final BackgroundGray bgGray,
 		final BlueButton blueButton, final RedButton redButton) {
@@ -39,7 +39,7 @@ public class SliderAnimator implements OnUpdateListener {
 		this.indicator = indicator;
 		this.worm = worm;
 		this.bgGray = bgGray;
-		this.redButton = redButton;
+// this.redButton = redButton;
 	}
 
 	public void setup () {
@@ -64,7 +64,7 @@ public class SliderAnimator implements OnUpdateListener {
 			final double bgOpacity = 1d - (this.currentPosition + 1d) / 4d * 1.2d;
 			this.bgGray.setBackgroundOpacity(bgOpacity);
 			final double redToWide = (this.currentPosition + 1d) / 2d;
-			this.redButton.setWide(redToWide);
+// this.redButton.setWide(redToWide);
 		} else {
 			this.worm.stretchTo(this.targetPosition, this.currentPosition);
 		}

@@ -7,6 +7,7 @@ import com.jfixby.cmns.api.collections.Collections;
 import com.jfixby.cmns.api.geometry.CanvasPosition;
 import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_HORIZONTAL;
 import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_VERTICAL;
+import com.jfixby.cmns.api.log.L;
 import com.jfixby.r3.api.ui.UI;
 import com.jfixby.r3.api.ui.unit.input.CustomInput;
 import com.jfixby.r3.api.ui.unit.input.MouseEventListener;
@@ -52,7 +53,7 @@ public class BlueButton implements MouseEventListener, CollectionScanner<TouchAr
 
 		this.blueRadiusNormal = this.blue.shape().getWidth();
 		this.blueRadiusSquized = this.dark_blue.shape().getWidth() * 1.1;
-
+// root.detatchAllComponents();
 	}
 
 	public void update (final CanvasPosition position) {
@@ -73,6 +74,7 @@ public class BlueButton implements MouseEventListener, CollectionScanner<TouchAr
 
 	@Override
 	public boolean onTouchDown (final TouchDownEvent input_event) {
+		L.d(input_event);
 		return true;
 	}
 

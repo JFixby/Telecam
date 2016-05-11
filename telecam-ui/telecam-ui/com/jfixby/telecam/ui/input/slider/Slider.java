@@ -51,8 +51,8 @@ public class Slider implements MouseEventListener, CollectionScanner<TouchArea> 
 	private Rectangle screen;
 	private Layer rasterlayer;
 	private final BackgroundGray bgGray;
-	private final BlueButton blueButton;
-	private final RedButton redButton;
+// private final BlueButton blueButton;
+// private final RedButton redButton;
 	private final SwitchCameraButton switchCameraButton;
 
 	public Slider (final UserInputBar userPanel, final BackgroundGray bgGray, final BlueButton blueButton,
@@ -61,8 +61,8 @@ public class Slider implements MouseEventListener, CollectionScanner<TouchArea> 
 		this.baseOffset = Geometry.newCanvasPosition();
 		this.originalSceneDimentions = this.master.getOriginalSceneDimentions();
 		this.bgGray = bgGray;
-		this.blueButton = blueButton;
-		this.redButton = redButton;
+// this.blueButton = blueButton;
+// this.redButton = redButton;
 		this.switchCameraButton = switchCameraButton;
 		this.worm = new DotWorm(this, this.indicator, this.wormLeft, this.wormRight, bgGray);
 		this.animator = new SliderAnimator(this, this.indicator, this.worm, bgGray, blueButton, redButton);
@@ -101,31 +101,38 @@ public class Slider implements MouseEventListener, CollectionScanner<TouchArea> 
 	public void sendSliderToVideo (final OnAnimationDoneListener animation_done_listener) {
 		this.animator.sendSliderToVideo(animation_done_listener);
 		this.state = VIDEO;
-		this.switchCameraButton.hide();
+// this.blueButton.hide();
+// this.redButton.show();
+// this.switchCameraButton.hide();
 	}
 
 	public void sendSliderToPhoto (final OnAnimationDoneListener animation_done_listener) {
 		this.animator.sendSliderToPhoto(animation_done_listener);
 		this.state = PHOTO;
-		this.switchCameraButton.show();
+// this.blueButton.show();
+// this.redButton.hide();
+// this.switchCameraButton.show();
 	}
 
 	public void setPhotoMode () {
-// this.animator.sendSliderToPhotoFast();
 		this.indicator.setSliderState(-1);
 		this.worm.stretchTo(+1, +1);
 		this.bgGray.setBackgroundOpacity(1f);
-		this.switchCameraButton.show();
+// this.redButton.setWideMin();
+// this.blueButton.show();
+// this.redButton.hide();
 		this.state = PHOTO;
 	}
 
 	public void setVideoMode () {
-// this.animator.sendSliderToVideoFast();
 		this.indicator.setSliderState(+1);
 		this.worm.stretchTo(-1, -1);
 		this.bgGray.setBackgroundOpacity(0.5f);
 		this.state = VIDEO;
-		this.switchCameraButton.hide();
+// this.redButton.setWideMax();
+// this.blueButton.hide();
+// this.redButton.show();
+
 	}
 
 	public void update (final CanvasPosition canvasPosition, final Rectangle screen) {
@@ -161,6 +168,7 @@ public class Slider implements MouseEventListener, CollectionScanner<TouchArea> 
 
 	@Override
 	public boolean onTouchDown (final TouchDownEvent input_event) {
+
 		if (this.state == PHOTO) {
 			TelecamUIAction.switchToVideoShoot.push();
 		} else {

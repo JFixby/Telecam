@@ -8,6 +8,7 @@ import com.jfixby.cmns.api.geometry.CanvasPosition;
 import com.jfixby.cmns.api.geometry.Geometry;
 import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_HORIZONTAL;
 import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_VERTICAL;
+import com.jfixby.cmns.api.log.L;
 import com.jfixby.r3.api.ui.unit.input.CustomInput;
 import com.jfixby.r3.api.ui.unit.input.MouseEventListener;
 import com.jfixby.r3.api.ui.unit.input.MouseMovedEvent;
@@ -62,8 +63,8 @@ public class RedButton implements MouseEventListener, CollectionScanner<TouchAre
 		this.whiteL.setup(whiteL, root);
 		this.white_bridge.setup(white_bridge, root);
 
-// this.whiteL.setOriginAbsolute(this.white_bridge.getPosition());
-// this.whiteR.setOriginAbsolute(this.white_bridge.getPosition());
+		whiteL.setOriginAbsolute(this.position);
+		whiteR.setOriginAbsolute(this.position);
 
 		this.redAnus = options.getElementAt(3);
 		this.redAnus.setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
@@ -83,6 +84,7 @@ public class RedButton implements MouseEventListener, CollectionScanner<TouchAre
 	}
 
 	public void setWide (final double redToWide) {// [0,1]
+
 	}
 
 	public CanvasPosition getPosition () {
@@ -92,17 +94,12 @@ public class RedButton implements MouseEventListener, CollectionScanner<TouchAre
 	public void update (final CanvasPosition position) {
 		this.position.set(position);
 
-		this.white_bridge.setCenter(position);
-
-		this.whiteL.setCenter(position);
-
-		this.whiteR.setCenter(position);
-
-		this.redAnus.setPosition(position);
-
-		this.redCircle.setCenter(position);
-
-		this.whiteSquare.setCenter(position);
+		this.white_bridge.setCenter(this.position);
+		this.whiteL.setCenter(this.position);
+		this.whiteR.setCenter(this.position);
+		this.redAnus.setPosition(this.position);
+		this.redCircle.setCenter(this.position);
+		this.whiteSquare.setCenter(this.position);
 
 		Collections.scanCollection(this.touchAreas, this.touchAreasAligner);
 	}
@@ -114,6 +111,7 @@ public class RedButton implements MouseEventListener, CollectionScanner<TouchAre
 
 	@Override
 	public boolean onTouchDown (final TouchDownEvent input_event) {
+		L.d(this + "", input_event);
 		return true;
 	}
 
@@ -149,6 +147,16 @@ public class RedButton implements MouseEventListener, CollectionScanner<TouchAre
 
 	public void hide () {
 		this.root.hide();
+	}
+
+	public void setWideMin () {
+	}
+
+	public void setWideMax () {
+	}
+
+	public void show () {
+		this.root.show();
 	}
 
 }
