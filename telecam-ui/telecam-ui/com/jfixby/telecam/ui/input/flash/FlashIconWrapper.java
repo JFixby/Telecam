@@ -4,10 +4,11 @@ package com.jfixby.telecam.ui.input.flash;
 import com.jfixby.cmns.api.floatn.Float2;
 import com.jfixby.cmns.api.geometry.Geometry;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
+import com.jfixby.telecam.ui.TelecamUnit;
 
 public class FlashIconWrapper {
 
-	private static final double DELTA = 100;
+	private static final double DELTA = TelecamUnit.ANIMATION_DELTA;
 	private static final int INDEX_OFFSET = -1;
 	private final Raster raster;
 	private final SwitchFlashButton master;

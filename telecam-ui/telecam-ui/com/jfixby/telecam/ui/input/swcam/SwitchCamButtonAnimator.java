@@ -7,6 +7,7 @@ import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
 import com.jfixby.r3.api.ui.unit.update.OnUpdateListener;
 import com.jfixby.r3.api.ui.unit.update.UnitClocks;
+import com.jfixby.telecam.ui.TelecamUnit;
 
 public class SwitchCamButtonAnimator implements OnUpdateListener {
 
@@ -18,7 +19,7 @@ public class SwitchCamButtonAnimator implements OnUpdateListener {
 		this.master = switchCameraButton;
 	}
 
-	long delta = 150;
+	long delta = TelecamUnit.ANIMATION_DELTA;
 	private long begin;
 	private long end;
 	private OnAnimationDoneListener animation_done_listener;

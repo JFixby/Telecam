@@ -31,6 +31,7 @@ public class TelecamUnit extends Unit implements TelecamUI, InputManager, Screen
 	private RootLayer root;
 	private Scene scene;
 	public static final AssetID scene_asset_id = Names.newAssetID("com.jfixby.telecam.scene-base.psd");
+	public static final long ANIMATION_DELTA = 150;
 	final AnimationsMachine animations_machine = UI.newAnimationsMachine();
 	private Layer userPanelLayer;
 	private UserInputBar userPanel;

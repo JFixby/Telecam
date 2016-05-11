@@ -5,10 +5,11 @@ import com.jfixby.cmns.api.sys.Sys;
 import com.jfixby.r3.api.ui.unit.animation.OnAnimationDoneListener;
 import com.jfixby.r3.api.ui.unit.update.OnUpdateListener;
 import com.jfixby.r3.api.ui.unit.update.UnitClocks;
+import com.jfixby.telecam.ui.TelecamUnit;
 
 public class SliderAnimator implements OnUpdateListener {
 	private final OnUpdateListener listener = this;
-	private static final long DELTA = 150 / 2;
+	private static final long DELTA = TelecamUnit.ANIMATION_DELTA / 2;
 	private final Slider master;
 
 	long beginTime;

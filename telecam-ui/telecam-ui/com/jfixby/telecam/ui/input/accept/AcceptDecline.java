@@ -74,7 +74,7 @@ public class AcceptDecline implements OnUpdateListener {
 		return this.noAction;
 	}
 
-	long delta = 100;
+	long delta = TelecamUnit.ANIMATION_DELTA;
 	private long begin;
 	private long end;
 	private OnAnimationDoneListener animation_done_listener;
