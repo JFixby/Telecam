@@ -31,6 +31,8 @@ public class BlueButton implements MouseEventListener, CollectionScanner<TouchAr
 	private final CollectionScanner<TouchArea> touchAreasAligner = this;
 	private CanvasPosition position;
 	private final UserInputBar master;
+	private double blueRadiusNormal;
+	private double blueRadiusSquized;
 
 	public BlueButton (final UserInputBar userPanel) {
 		this.master = userPanel;
@@ -44,8 +46,12 @@ public class BlueButton implements MouseEventListener, CollectionScanner<TouchAr
 		final Collection<Raster> options = this.input.listOptions();
 		this.white = options.getElementAt(0);
 		this.blue = options.getElementAt(1);
+
 		this.dark_blue = options.getElementAt(2);
 		this.touchAreas = this.input.listTouchAreas();
+
+		this.blueRadiusNormal = this.blue.shape().getWidth();
+		this.blueRadiusSquized = this.dark_blue.shape().getWidth() * 1.1;
 
 	}
 
@@ -62,12 +68,12 @@ public class BlueButton implements MouseEventListener, CollectionScanner<TouchAr
 
 	@Override
 	public boolean onMouseMoved (final MouseMovedEvent input_event) {
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean onTouchDown (final TouchDownEvent input_event) {
-		return false;
+		return true;
 	}
 
 	@Override
@@ -78,7 +84,7 @@ public class BlueButton implements MouseEventListener, CollectionScanner<TouchAr
 
 	@Override
 	public boolean onTouchDragged (final TouchDraggedEvent input_event) {
-		return false;
+		return true;
 	}
 
 	@Override
@@ -93,6 +99,19 @@ public class BlueButton implements MouseEventListener, CollectionScanner<TouchAr
 
 	public void show () {
 		this.root.show();
+	}
+
+	public void setShootProgressBegin () {
+		this.blue.shape().setSize(this.blueRadiusSquized, this.blueRadiusSquized);
+	}
+
+	public void setShootProgress (final float f) {
+		final double radius = this.blueRadiusSquized + (this.blueRadiusNormal - this.blueRadiusSquized) * (1d - f);
+		this.blue.shape().setSize(radius, radius);
+	}
+
+	public void setShootProgressDone () {
+		this.blue.shape().setSize(this.blueRadiusNormal, this.blueRadiusNormal);
 	}
 
 }

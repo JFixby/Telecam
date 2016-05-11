@@ -70,18 +70,22 @@ public class BackgroundGray {
 		this.root.show();
 	}
 
-	public void showBlink () {
+	public void setShootProgressBegin () {
 		this.blinker.show();
 		this.blinker.setOpacity(1);
 	}
 
-	public void setBlinkOpacity (final float f) {
+	public void setShootProgress (final double f) {
 		this.blinker.setOpacity(f);
 	}
 
-	public void hideBlink () {
+	public void setShootProgressDone () {
 		this.blinker.hide();
 		this.blinker.setOpacity(1f);
+	}
+
+	public void setBackgroundOpacity (final double f) {
+		this.gray.setOpacity(f);
 	}
 
 }

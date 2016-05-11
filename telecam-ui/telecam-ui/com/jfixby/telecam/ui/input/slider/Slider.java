@@ -17,8 +17,12 @@ import com.jfixby.r3.api.ui.unit.input.TouchDraggedEvent;
 import com.jfixby.r3.api.ui.unit.input.TouchUpEvent;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
+import com.jfixby.telecam.ui.BackgroundGray;
 import com.jfixby.telecam.ui.UserInputBar;
 import com.jfixby.telecam.ui.actions.TelecamUIAction;
+import com.jfixby.telecam.ui.input.blue.BlueButton;
+import com.jfixby.telecam.ui.input.red.RedButton;
+import com.jfixby.telecam.ui.input.swcam.SwitchCameraButton;
 
 public class Slider implements MouseEventListener, CollectionScanner<TouchArea> {
 
@@ -31,9 +35,9 @@ public class Slider implements MouseEventListener, CollectionScanner<TouchArea> 
 	private final DotLeft wormLeft = new DotLeft(this);
 	private final DotRigh wormRight = new DotRigh(this);
 	private final DotIndicator indicator = new DotIndicator(this, this.left, this.right);
-	private final DotWorm worm = new DotWorm(this, this.indicator, this.wormLeft, this.wormRight);
+	private final DotWorm worm;
 
-	private final SliderAnimator animator = new SliderAnimator(this, this.indicator, this.worm);
+	private final SliderAnimator animator;
 
 	String state = PHOTO;
 
@@ -46,12 +50,22 @@ public class Slider implements MouseEventListener, CollectionScanner<TouchArea> 
 	private final CanvasPosition baseOffset;
 	private Rectangle screen;
 	private Layer rasterlayer;
+	private final BackgroundGray bgGray;
+	private final BlueButton blueButton;
+	private final RedButton redButton;
+	private final SwitchCameraButton switchCameraButton;
 
-	public Slider (final UserInputBar userPanel) {
+	public Slider (final UserInputBar userPanel, final BackgroundGray bgGray, final BlueButton blueButton,
+		final RedButton redButton, final SwitchCameraButton switchCameraButton) {
 		this.master = userPanel;
 		this.baseOffset = Geometry.newCanvasPosition();
 		this.originalSceneDimentions = this.master.getOriginalSceneDimentions();
-
+		this.bgGray = bgGray;
+		this.blueButton = blueButton;
+		this.redButton = redButton;
+		this.switchCameraButton = switchCameraButton;
+		this.worm = new DotWorm(this, this.indicator, this.wormLeft, this.wormRight, bgGray);
+		this.animator = new SliderAnimator(this, this.indicator, this.worm, bgGray, blueButton, redButton);
 	}
 
 	public void setup (final Layer root) {
@@ -87,17 +101,21 @@ public class Slider implements MouseEventListener, CollectionScanner<TouchArea> 
 	public void sendSliderToVideo (final OnAnimationDoneListener animation_done_listener) {
 		this.animator.sendSliderToVideo(animation_done_listener);
 		this.state = VIDEO;
+		this.switchCameraButton.hide();
 	}
 
 	public void sendSliderToPhoto (final OnAnimationDoneListener animation_done_listener) {
 		this.animator.sendSliderToPhoto(animation_done_listener);
 		this.state = PHOTO;
+		this.switchCameraButton.show();
 	}
 
 	public void setPhotoMode () {
 // this.animator.sendSliderToPhotoFast();
 		this.indicator.setSliderState(-1);
 		this.worm.stretchTo(+1, +1);
+		this.bgGray.setBackgroundOpacity(1f);
+		this.switchCameraButton.show();
 		this.state = PHOTO;
 	}
 
@@ -105,7 +123,9 @@ public class Slider implements MouseEventListener, CollectionScanner<TouchArea> 
 // this.animator.sendSliderToVideoFast();
 		this.indicator.setSliderState(+1);
 		this.worm.stretchTo(-1, -1);
+		this.bgGray.setBackgroundOpacity(0.5f);
 		this.state = VIDEO;
+		this.switchCameraButton.hide();
 	}
 
 	public void update (final CanvasPosition canvasPosition, final Rectangle screen) {

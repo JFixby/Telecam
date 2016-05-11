@@ -7,17 +7,18 @@ public class GoPhotoShoot extends TelecamUIAction {
 
 	@Override
 	public void perform (final TelecamUnit ui) {
-		ui.disableInput();
-		ui.goPhotoShoot();
-		ui.enableInput();
+
 	}
 
 	@Override
 	public void start (final TelecamUnit ui) {
+		ui.disableInput();
 	}
 
 	@Override
 	public boolean isDone (final TelecamUnit ui) {
+		ui.goPhotoShoot();
+		ui.enableInput();
 		return true;
 	}
 

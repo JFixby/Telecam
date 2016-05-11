@@ -106,16 +106,16 @@ public class TelecamUnit extends Unit implements TelecamUI, InputManager, Screen
 		this.userPanel.goPhoto();
 	}
 
-	public void setBlinkOpacity (final float f) {
-		this.userPanel.setBlinkOpacity(f);
+	public void setShootProgress (final float f) {
+		this.userPanel.setShootProgress(f);
 	}
 
-	public void showBlink () {
-		this.userPanel.showBlink();
+	public void setShootProgressBegin () {
+		this.userPanel.setShootProgressBegin();
 	}
 
-	public void hideBlink () {
-		this.userPanel.hideBlink();
+	public void setShootProgressDone () {
+		this.userPanel.setShootProgressDone();
 	}
 
 	public void bindAcceptDecline (final UIAction<TelecamUnit> noAction, final UIAction<TelecamUnit> yesAction) {

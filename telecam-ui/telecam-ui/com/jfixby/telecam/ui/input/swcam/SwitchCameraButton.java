@@ -17,8 +17,11 @@ import com.jfixby.r3.api.ui.unit.input.TouchDraggedEvent;
 import com.jfixby.r3.api.ui.unit.input.TouchUpEvent;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
+import com.jfixby.telecam.ui.BackgroundGray;
 import com.jfixby.telecam.ui.UserInputBar;
 import com.jfixby.telecam.ui.actions.TelecamUIAction;
+import com.jfixby.telecam.ui.input.blue.BlueButton;
+import com.jfixby.telecam.ui.input.red.RedButton;
 
 public class SwitchCameraButton implements MouseEventListener, CollectionScanner<TouchArea> {
 
@@ -32,8 +35,15 @@ public class SwitchCameraButton implements MouseEventListener, CollectionScanner
 	private final CollectionScanner<TouchArea> touchAreasAligner = this;
 	private CanvasPosition position;
 	SwitchCamButtonAnimator animator = new SwitchCamButtonAnimator(this);
+	private final BackgroundGray bgGray;
+	private final BlueButton blueButton;
+	private final RedButton redButton;
 
-	public SwitchCameraButton (final UserInputBar userPanel) {
+	public SwitchCameraButton (final UserInputBar userPanel, final BackgroundGray bgGray, final BlueButton blueButton,
+		final RedButton redButton) {
+		this.bgGray = bgGray;
+		this.blueButton = blueButton;
+		this.redButton = redButton;
 	}
 
 	public void setup (final Layer root) {
@@ -72,7 +82,7 @@ public class SwitchCameraButton implements MouseEventListener, CollectionScanner
 
 	@Override
 	public boolean onMouseMoved (final MouseMovedEvent input_event) {
-		return false;
+		return true;
 	}
 
 	@Override
@@ -84,12 +94,12 @@ public class SwitchCameraButton implements MouseEventListener, CollectionScanner
 	@Override
 	public boolean onTouchUp (final TouchUpEvent input_event) {
 
-		return false;
+		return true;
 	}
 
 	@Override
 	public boolean onTouchDragged (final TouchDraggedEvent input_event) {
-		return false;
+		return true;
 	}
 
 	@Override

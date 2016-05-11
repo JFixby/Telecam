@@ -5,6 +5,7 @@ import com.jfixby.cmns.api.geometry.CanvasPosition;
 import com.jfixby.cmns.api.geometry.Rectangle;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
+import com.jfixby.telecam.ui.BackgroundGray;
 
 public class DotWorm extends DotComponent {
 
@@ -17,12 +18,15 @@ public class DotWorm extends DotComponent {
 	private double screenWidth;
 	private final DotRigh wormRight;
 	private final DotLeft wormLeft;
+	private final BackgroundGray bgGray;
 
-	public DotWorm (final Slider slider, final DotIndicator indicator, final DotLeft wormLeft, final DotRigh wormRight) {
+	public DotWorm (final Slider slider, final DotIndicator indicator, final DotLeft wormLeft, final DotRigh wormRight,
+		final BackgroundGray bgGray) {
 		super(slider);
 		this.indicator = indicator;
 		this.wormLeft = wormLeft;
 		this.wormRight = wormRight;
+		this.bgGray = bgGray;
 
 	}
 

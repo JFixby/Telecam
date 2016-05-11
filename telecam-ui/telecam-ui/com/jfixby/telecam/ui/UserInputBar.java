@@ -37,18 +37,19 @@ public class UserInputBar {
 		this.master = telecamUnit;
 		this.blueButton = new BlueButton(this);
 		this.redButton = new RedButton(this);
-		this.switchCameraButton = new SwitchCameraButton(this);
+
 		this.cropButton = new GoCropButton(this);
 		this.videpPlayResume = new VidepPlayPause(this);
 		this.acceptDecline = new AcceptDecline(this);
 		this.switchFlashButton = new SwitchFlashButton(this);
-		this.slider = new Slider(this);
+
 		this.bgGray = new BackgroundGray(this);
 		this.cropper = new Cropper(this);
 		this.screenTouch = new ScreenTouch(this);
 		this.progressBar = new ProgressBar(this);
 		this.videTimer = new VideoTimer(this);
-
+		this.switchCameraButton = new SwitchCameraButton(this, this.bgGray, this.blueButton, this.redButton);
+		this.slider = new Slider(this, this.bgGray, this.blueButton, this.redButton, this.switchCameraButton);
 	}
 
 	private Layer root;
@@ -121,7 +122,7 @@ public class UserInputBar {
 		this.progressBar.hide();
 		this.videpPlayResume.hide();
 		this.acceptDecline.hide();
-		this.switchCameraButton.hide();
+// this.switchCameraButton.hide();
 		this.screenTouch.hide();
 		this.videTimer.hide();
 		this.bgGray.hide();
@@ -167,23 +168,26 @@ public class UserInputBar {
 		this.hideAll();
 
 		this.blueButton.show();
-		this.switchCameraButton.show();
+// this.switchCameraButton.show();
 		this.screenTouch.show();
 		this.bgGray.show();
 		this.slider.show();
 		this.switchFlashButton.show();
 	}
 
-	public void showBlink () {
-		this.bgGray.showBlink();
+	public void setShootProgressBegin () {
+		this.bgGray.setShootProgressBegin();
+		this.blueButton.setShootProgressBegin();
 	}
 
-	public void setBlinkOpacity (final float f) {
-		this.bgGray.setBlinkOpacity(f);
+	public void setShootProgress (final float f) {
+		this.bgGray.setShootProgress(f);
+		this.blueButton.setShootProgress(f);
 	}
 
-	public void hideBlink () {
-		this.bgGray.hideBlink();
+	public void setShootProgressDone () {
+		this.bgGray.setShootProgressDone();
+		this.blueButton.setShootProgressDone();
 	}
 
 	public void bindAcceptDecline (final UIAction<TelecamUnit> noAction, final UIAction<TelecamUnit> yesAction) {

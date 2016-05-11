@@ -21,13 +21,13 @@ public class DoBlink extends TelecamUIAction {
 // value = value * value;
 		value = 1 - value;
 
-		ui.setBlinkOpacity(value);
+		ui.setShootProgress(value);
 	}
 
 	@Override
 	public void start (final TelecamUnit ui) {
-		ui.showBlink();
-		ui.setBlinkOpacity(1f);
+		ui.setShootProgressBegin();
+		ui.setShootProgress(1f);
 		this.start = Sys.SystemTime().currentTimeMillis();
 		this.endBy = this.start + this.delta;
 	}
@@ -36,8 +36,8 @@ public class DoBlink extends TelecamUIAction {
 	public boolean isDone (final TelecamUnit ui) {
 		final boolean done = Sys.SystemTime().currentTimeMillis() >= this.endBy;
 		if (done) {
-			ui.setBlinkOpacity(0f);
-			ui.hideBlink();
+			ui.setShootProgress(0f);
+			ui.setShootProgressDone();
 		}
 		return done;
 	}

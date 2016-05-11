@@ -5,7 +5,10 @@ import com.jfixby.cmns.api.sys.Sys;
 import com.jfixby.r3.api.ui.unit.animation.OnAnimationDoneListener;
 import com.jfixby.r3.api.ui.unit.update.OnUpdateListener;
 import com.jfixby.r3.api.ui.unit.update.UnitClocks;
+import com.jfixby.telecam.ui.BackgroundGray;
 import com.jfixby.telecam.ui.TelecamUnit;
+import com.jfixby.telecam.ui.input.blue.BlueButton;
+import com.jfixby.telecam.ui.input.red.RedButton;
 
 public class SliderAnimator implements OnUpdateListener {
 	private final OnUpdateListener listener = this;
@@ -27,11 +30,16 @@ public class SliderAnimator implements OnUpdateListener {
 	private final DotWorm worm;
 	private boolean animatingHead;
 	private long delta;
+	private final BackgroundGray bgGray;
+	private final RedButton redButton;
 
-	public SliderAnimator (final Slider slider, final DotIndicator indicator, final DotWorm worm) {
+	public SliderAnimator (final Slider slider, final DotIndicator indicator, final DotWorm worm, final BackgroundGray bgGray,
+		final BlueButton blueButton, final RedButton redButton) {
 		this.master = slider;
 		this.indicator = indicator;
 		this.worm = worm;
+		this.bgGray = bgGray;
+		this.redButton = redButton;
 	}
 
 	public void setup () {
@@ -53,6 +61,10 @@ public class SliderAnimator implements OnUpdateListener {
 		if (this.animatingHead) {
 			this.indicator.setSliderState(this.currentPosition);
 			this.worm.stretchTo(this.beginPosition, this.currentPosition);
+			final double bgOpacity = 1d - (this.currentPosition + 1d) / 4d * 1.2d;
+			this.bgGray.setBackgroundOpacity(bgOpacity);
+			final double redToWide = (this.currentPosition + 1d) / 2d;
+			this.redButton.setWide(redToWide);
 		} else {
 			this.worm.stretchTo(this.targetPosition, this.currentPosition);
 		}
