@@ -71,7 +71,7 @@ public class RepackTelecamPSD {
 
 			final int max_texture_size = (256);
 			final int margin = 0;
-			final int texturePadding = 8;
+			final int texturePadding = 16;
 			final float imageQuality = 1f;
 			final boolean compressAtlases = !true;
 			final boolean forceRasterDecomposition = !true;

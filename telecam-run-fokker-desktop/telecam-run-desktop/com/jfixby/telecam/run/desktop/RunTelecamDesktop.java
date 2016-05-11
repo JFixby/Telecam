@@ -71,8 +71,8 @@ public class RunTelecamDesktop {
 		final FokkerLwjglApplicationConfiguration cfg = new FokkerLwjglApplicationConfiguration();
 		cfg.title = "Test";
 		cfg.useGL30 = false;
-		cfg.width = 480;
-		cfg.height = 800;
+		cfg.width = 800;
+		cfg.height = 1232;
 // cfg.vSyncEnabled = false;
 // cfg.r = 1;
 // cfg.g = 1;

@@ -102,14 +102,12 @@ public class RedButton implements MouseEventListener, CollectionScanner<TouchAre
 
 	public void update (final CanvasPosition position) {
 		this.position.set(position);
-
-		this.white_bridge.setCenter(this.position);
-
 		this.whiteL.setCenter(this.position);
 		this.whiteR.setCenter(this.position);
 		this.redAnus.setPosition(this.position);
 		this.redCircle.setCenter(this.position);
 		this.whiteSquare.setCenter(this.position);
+		this.white_bridge.setCenter(this.position);
 
 		Collections.scanCollection(this.touchAreas, this.touchAreasAligner);
 	}
