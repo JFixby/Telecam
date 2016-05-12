@@ -9,7 +9,6 @@ import com.jfixby.cmns.api.geometry.CanvasPosition;
 import com.jfixby.cmns.api.geometry.Geometry;
 import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_HORIZONTAL;
 import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_VERTICAL;
-import com.jfixby.cmns.api.log.L;
 import com.jfixby.cmns.api.sys.Sys;
 import com.jfixby.r3.api.ui.UI;
 import com.jfixby.r3.api.ui.unit.input.CustomInput;
@@ -105,18 +104,21 @@ public class BlueButton implements MouseEventListener, CollectionScanner<TouchAr
 		@Override
 		public void onUpdate (final UnitClocks unit_clock) {
 			BlueButton.this.touchCurrentTime = Sys.SystemTime().currentTimeMillis();
-			if (BlueButton.this.pressed) {
-				if (BlueButton.this.touchCurrentTime < BlueButton.this.touchLongTap) {
-					return;
-				} else {
-					BlueButton.this.pressed = false;
-// TelecamUIAction.disableInput.push();
-					TelecamUIAction.switchToVideoShoot.push();
-					TelecamUIAction.goVideoRecording.push();
-					TelecamUIAction.doRecordVideo.push();
-// TelecamUIAction.enableInput.push();
-				}
+			if (!BlueButton.this.pressed) {
+				return;
 			}
+
+			if (BlueButton.this.touchCurrentTime < BlueButton.this.touchLongTap) {
+				return;
+			} else {
+				BlueButton.this.pressed = false;
+// TelecamUIAction.disableInput.push();
+				TelecamUIAction.switchToVideoShoot.push();
+				TelecamUIAction.goVideoRecording.push();
+				TelecamUIAction.doRecordVideo.push();
+// TelecamUIAction.enableInput.push();
+			}
+
 		}
 	};
 
@@ -139,7 +141,7 @@ public class BlueButton implements MouseEventListener, CollectionScanner<TouchAr
 		}
 		this.touchCurrent.set(input_event.getCanvasPosition());
 		final double TOUCH_MAX_DELTA = this.blueWidth / 8 * 0 + 0;
-		L.d(this.blueWidth);
+// L.d(this.blueWidth);
 		if (this.touchCurrent.distanceTo(this.touchBegin) >= TOUCH_MAX_DELTA) {
 			this.clickBlue();
 		}
