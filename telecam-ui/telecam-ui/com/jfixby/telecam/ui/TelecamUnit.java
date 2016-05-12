@@ -110,18 +110,6 @@ public class TelecamUnit extends Unit implements TelecamUI, InputManager, Screen
 		this.userPanel.goVideo();
 	}
 
-	public void setShootProgress (final float f) {
-		this.userPanel.setShootProgress(f);
-	}
-
-	public void setShootProgressBegin () {
-		this.userPanel.setShootProgressBegin();
-	}
-
-	public void setShootProgressDone () {
-		this.userPanel.setShootProgressDone();
-	}
-
 	public void bindAcceptDecline (final UIAction<TelecamUnit> noAction, final UIAction<TelecamUnit> yesAction) {
 		this.userPanel.bindAcceptDecline(noAction, yesAction);
 	}
@@ -178,6 +166,26 @@ public class TelecamUnit extends Unit implements TelecamUI, InputManager, Screen
 
 	public void uploadVideoToPlayer () {
 		this.player.reset();
+	}
+
+	public void pressBlueButton () {
+		this.userPanel.pressBlueButton();
+	}
+
+	public void setBlink (final float f) {
+		this.userPanel.setBlink(f);
+	}
+
+	public void setBlinkBegin () {
+		this.userPanel.setBlinkBegin();
+	}
+
+	public void setBlinkEnd () {
+		this.userPanel.setBlinkEnd();
+	}
+
+	public void releaseBlueButton () {
+		this.userPanel.releaseBlueButton();
 	}
 
 }

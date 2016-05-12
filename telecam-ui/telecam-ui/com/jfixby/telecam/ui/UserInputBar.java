@@ -194,21 +194,6 @@ public class UserInputBar {
 // this.switchFlashButton.show();
 	}
 
-	public void setShootProgressBegin () {
-		this.bgGray.setShootProgressBegin();
-		this.blueButton.setShootProgressBegin();
-	}
-
-	public void setShootProgress (final float f) {
-		this.bgGray.setShootProgress(f);
-		this.blueButton.setShootProgress(f);
-	}
-
-	public void setShootProgressDone () {
-		this.bgGray.setShootProgressDone();
-		this.blueButton.setShootProgressDone();
-	}
-
 	public void bindAcceptDecline (final UIAction<TelecamUnit> noAction, final UIAction<TelecamUnit> yesAction) {
 
 		this.acceptDecline.bindYesAction(yesAction);
@@ -300,4 +285,26 @@ public class UserInputBar {
 		return this.videpPlayResume;
 	}
 
+	public void pressBlueButton () {
+		this.blueButton.press();
+	}
+
+	public void releaseBlueButton () {
+		this.blueButton.release();
+	}
+
+	public void setBlinkBegin () {
+		this.bgGray.setBlinkBegin();
+
+	}
+
+	public void setBlink (final float f) {
+		this.bgGray.setShootProgress(f);
+		this.blueButton.setShootProgress(f);
+	}
+
+	public void setBlinkEnd () {
+		this.bgGray.setShootProgressDone();
+
+	}
 }

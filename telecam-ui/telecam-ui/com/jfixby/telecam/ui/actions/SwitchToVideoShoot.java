@@ -13,6 +13,7 @@ public class SwitchToVideoShoot extends TelecamUIAction implements OnAnimationDo
 	@Override
 	public void start (final TelecamUnit ui) {
 		this.done = false;
+		ui.disableInput();
 		ui.sendSliderToVideo(this.animation_done_listener);
 	}
 
@@ -22,6 +23,9 @@ public class SwitchToVideoShoot extends TelecamUIAction implements OnAnimationDo
 
 	@Override
 	public boolean isDone (final TelecamUnit ui) {
+		if (this.done) {
+			ui.enableInput();
+		}
 		return this.done;
 	}
 

@@ -14,7 +14,6 @@ public abstract class TelecamUIAction implements UIAction<TelecamUnit> {
 
 	static public final TelecamUIAction goAndroidImageGallery = new GoAndroidImageGallery();
 
-	static public final TelecamUIAction doShootPhoto = new DoShootPhoto();
 	static public final TelecamUIAction doBlink = new DoBlink();
 	static public final TelecamUIAction doDiscardPhoto = new DoDiscardPhoto();
 	static public final TelecamUIAction doDiscardVideo = new DoDiscardVideo();
@@ -27,6 +26,12 @@ public abstract class TelecamUIAction implements UIAction<TelecamUnit> {
 	public static final TelecamUIAction doStopRecordVideo = new DoStopRecordVideo();
 	public static final TelecamUIAction goVideoIdle = new GoVideoIdle();
 	static public final TelecamUIAction goAcceptDeclineVideo = new GoAcceptDeclineVideo();
+
+	public static final TelecamUIAction pressBlueButton = new PressBlueButton();
+	public static final TelecamUIAction releaseBlueButton = new ReleaseBlueButton();
+
+	public static final TelecamUIAction disableInput = new DisableInput();
+	public static final TelecamUIAction enableInput = new EnableInput();
 
 	public void push () {
 		UI.pushAction(this);

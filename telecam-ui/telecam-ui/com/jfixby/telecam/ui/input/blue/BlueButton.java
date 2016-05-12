@@ -4,10 +4,13 @@ package com.jfixby.telecam.ui.input.blue;
 import com.jfixby.cmns.api.collections.Collection;
 import com.jfixby.cmns.api.collections.CollectionScanner;
 import com.jfixby.cmns.api.collections.Collections;
+import com.jfixby.cmns.api.floatn.Float2;
 import com.jfixby.cmns.api.geometry.CanvasPosition;
+import com.jfixby.cmns.api.geometry.Geometry;
 import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_HORIZONTAL;
 import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_VERTICAL;
 import com.jfixby.cmns.api.log.L;
+import com.jfixby.cmns.api.sys.Sys;
 import com.jfixby.r3.api.ui.UI;
 import com.jfixby.r3.api.ui.unit.input.CustomInput;
 import com.jfixby.r3.api.ui.unit.input.MouseEventListener;
@@ -18,6 +21,8 @@ import com.jfixby.r3.api.ui.unit.input.TouchDraggedEvent;
 import com.jfixby.r3.api.ui.unit.input.TouchUpEvent;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
+import com.jfixby.r3.api.ui.unit.update.OnUpdateListener;
+import com.jfixby.r3.api.ui.unit.update.UnitClocks;
 import com.jfixby.telecam.ui.UserInputBar;
 import com.jfixby.telecam.ui.actions.TelecamUIAction;
 
@@ -34,6 +39,7 @@ public class BlueButton implements MouseEventListener, CollectionScanner<TouchAr
 	private final UserInputBar master;
 	private double blueRadiusNormal;
 	private double blueRadiusSquized;
+	private double blueWidth;
 
 	public BlueButton (final UserInputBar userPanel) {
 		this.master = userPanel;
@@ -47,12 +53,14 @@ public class BlueButton implements MouseEventListener, CollectionScanner<TouchAr
 		final Collection<Raster> options = this.input.listOptions();
 		this.white = options.getElementAt(0);
 		this.blue = options.getElementAt(1);
+		this.blueWidth = this.blue.getWidth();
 
 		this.dark_blue = options.getElementAt(2);
 		this.touchAreas = this.input.listTouchAreas();
 
 		this.blueRadiusNormal = this.blue.shape().getWidth();
 		this.blueRadiusSquized = this.dark_blue.shape().getWidth() * 1.1;
+		this.root.attachComponent(this.updater);
 // root.detatchAllComponents();
 	}
 
@@ -67,26 +75,84 @@ public class BlueButton implements MouseEventListener, CollectionScanner<TouchAr
 		Collections.scanCollection(this.touchAreas, this.touchAreasAligner);
 	}
 
+	long touchBeginTime;
+	long touchCurrentTime;
+	long touchLongTap;
+	long LONG_TAP_DELPTA_PERIOD = 1500;
+	boolean pressed = false;
+	final Float2 touchBegin = Geometry.newFloat2();
+	final Float2 touchCurrent = Geometry.newFloat2();
+
 	@Override
 	public boolean onMouseMoved (final MouseMovedEvent input_event) {
+		this.pressed = false;
 		return true;
 	}
 
 	@Override
 	public boolean onTouchDown (final TouchDownEvent input_event) {
-		L.d(input_event);
+		this.touchBeginTime = Sys.SystemTime().currentTimeMillis();
+		this.touchLongTap = this.touchBeginTime + this.LONG_TAP_DELPTA_PERIOD;
+		this.pressed = true;
+
+		UI.pushAction(TelecamUIAction.pressBlueButton);
+		this.touchBegin.set(input_event.getCanvasPosition());
+
 		return true;
 	}
 
+	final OnUpdateListener updater = new OnUpdateListener() {
+		@Override
+		public void onUpdate (final UnitClocks unit_clock) {
+			BlueButton.this.touchCurrentTime = Sys.SystemTime().currentTimeMillis();
+			if (BlueButton.this.pressed) {
+				if (BlueButton.this.touchCurrentTime < BlueButton.this.touchLongTap) {
+					return;
+				} else {
+					BlueButton.this.pressed = false;
+// TelecamUIAction.disableInput.push();
+					TelecamUIAction.switchToVideoShoot.push();
+					TelecamUIAction.goVideoRecording.push();
+					TelecamUIAction.doRecordVideo.push();
+// TelecamUIAction.enableInput.push();
+				}
+			}
+		}
+	};
+
 	@Override
 	public boolean onTouchUp (final TouchUpEvent input_event) {
-		UI.pushAction(TelecamUIAction.doShootPhoto);
+		if (!this.pressed) {
+			return false;
+		}
+		this.pressed = false;
+		if (this.touchCurrentTime < this.touchLongTap) {
+			this.clickBlue();
+		}
 		return true;
 	}
 
 	@Override
 	public boolean onTouchDragged (final TouchDraggedEvent input_event) {
+		if (!this.pressed) {
+			return false;
+		}
+		this.touchCurrent.set(input_event.getCanvasPosition());
+		final double TOUCH_MAX_DELTA = this.blueWidth / 8 * 0 + 0;
+		L.d(this.blueWidth);
+		if (this.touchCurrent.distanceTo(this.touchBegin) >= TOUCH_MAX_DELTA) {
+			this.clickBlue();
+		}
 		return true;
+	}
+
+	private void clickBlue () {
+		this.pressed = false;
+		TelecamUIAction.disableInput.push();
+		TelecamUIAction.doBlink.push();
+		TelecamUIAction.releaseBlueButton.push();
+		TelecamUIAction.goAcceptDeclinePhoto.push();
+		TelecamUIAction.enableInput.push();
 	}
 
 	@Override
@@ -103,7 +169,7 @@ public class BlueButton implements MouseEventListener, CollectionScanner<TouchAr
 		this.root.show();
 	}
 
-	public void setShootProgressBegin () {
+	public void press () {
 		this.blue.shape().setSize(this.blueRadiusSquized, this.blueRadiusSquized);
 	}
 
@@ -112,7 +178,7 @@ public class BlueButton implements MouseEventListener, CollectionScanner<TouchAr
 		this.blue.shape().setSize(radius, radius);
 	}
 
-	public void setShootProgressDone () {
+	public void release () {
 		this.blue.shape().setSize(this.blueRadiusNormal, this.blueRadiusNormal);
 	}
 

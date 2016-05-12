@@ -175,12 +175,13 @@ public class Slider implements MouseEventListener, CollectionScanner<TouchArea> 
 
 	@Override
 	public boolean onTouchDown (final TouchDownEvent input_event) {
-
+		TelecamUIAction.disableInput.push();
 		if (this.state == PHOTO) {
 			TelecamUIAction.switchToVideoShoot.push();
 		} else {
 			TelecamUIAction.switchToPhotoShoot.push();
 		}
+		TelecamUIAction.enableInput.push();
 		return true;
 	}
 

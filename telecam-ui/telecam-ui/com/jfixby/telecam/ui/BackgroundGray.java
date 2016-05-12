@@ -78,7 +78,7 @@ public class BackgroundGray {
 		this.root.show();
 	}
 
-	public void setShootProgressBegin () {
+	public void setBlinkBegin () {
 		this.blinker.show();
 		this.blinker.setOpacity(1);
 	}

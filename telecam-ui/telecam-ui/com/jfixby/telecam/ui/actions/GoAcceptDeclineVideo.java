@@ -18,7 +18,7 @@ public class GoAcceptDeclineVideo extends TelecamUIAction implements OnAnimation
 	public void start (final TelecamUnit ui) {
 		this.done = false;
 		ui.animateAcceptDecline(this);
-		ui.disableInput();
+
 	}
 
 	@Override
