@@ -46,7 +46,7 @@ import com.jfixby.red.engine.core.unit.shader.R3FokkerShader;
 import com.jfixby.red.engine.scene2d.RedScene2D;
 import com.jfixby.red.filesystem.cache.RedFileCache;
 import com.jfixby.red.filesystem.sandbox.RedFileSystemSandBox;
-import com.jfixby.red.filesystem.virtual.VirtualFileSystem;
+import com.jfixby.red.filesystem.virtual.InMemoryFileSystem;
 import com.jfixby.red.java.gc.RedGCFisher;
 import com.jfixby.red.triplane.resources.fsbased.FileSystemBasedResource;
 import com.jfixby.red.triplane.resources.fsbased.RedResourcesManager;
@@ -166,7 +166,7 @@ public class TelecamDesktopAssembler implements FokkerEngineAssembler {
 	}
 
 	private File preload (File dev_assets_home) {
-		final VirtualFileSystem virtualFS = new VirtualFileSystem();
+		final InMemoryFileSystem virtualFS = new InMemoryFileSystem();
 		try {
 			virtualFS.copyFolderContentsToFolder(dev_assets_home, virtualFS.ROOT());
 			dev_assets_home = virtualFS.ROOT();
