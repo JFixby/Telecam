@@ -58,8 +58,8 @@ import com.jfixby.red.filesystem.sandbox.RedFileSystemSandBox;
 import com.jfixby.red.java.gc.RedGCFisher;
 import com.jfixby.red.triplane.resources.fsbased.FileSystemBasedResource;
 import com.jfixby.red.triplane.resources.fsbased.RedResourcesManager;
-import com.jfixby.redtriplane.fokker.assets.GwtAtlasReader;
-import com.jfixby.redtriplane.fokker.assets.GwtTextureReader;
+import com.jfixby.redtriplane.fokker.assets.GdxAtlasReader;
+import com.jfixby.redtriplane.fokker.assets.GdxTextureReader;
 import com.jfixby.redtriplane.fokker.assets.RedFokkerRasterDataRegister;
 import com.jfixby.redtriplane.fokker.filesystem.assets.fs.GdxAssetsFileSystem;
 import com.jfixby.redtriplane.fokker.fs.AssetsInfo;
@@ -92,8 +92,9 @@ public class TelecamAndroidAssembler implements FokkerEngineAssembler {
 		FileCache.installComponent(new RedFileCache());
 		FokkerRasterDataRegister.installComponent(new RedFokkerRasterDataRegister());
 
-		FokkerAtlasLoader.installComponent(new GwtAtlasReader());
-		FokkerTextureLoader.installComponent(new GwtTextureReader());
+		FokkerAtlasLoader.installComponent(new GdxAtlasReader());
+		FokkerTextureLoader.installComponent(new GdxTextureReader());
+
 		AssetsManager.installComponent(new RedAssetsManager());
 		FokkerAtlasLoader.register();
 		FokkerTextureLoader.register();
@@ -116,6 +117,8 @@ public class TelecamAndroidAssembler implements FokkerEngineAssembler {
 		SystemSettings.setFlag(RedTriplaneParams.ExitOnMissingSprite, false);
 		SystemSettings.setFlag(RedTriplaneParams.AllowMissingRaster, true);
 		SystemSettings.setFlag(AssetsManager.UseAssetSandBox, false);
+
+		SystemSettings.setFlag(AssetsManager.ReportUnusedAssets, false);
 		SystemSettings.setFlag(RedTriplaneParams.DisableLogo, true);
 		SystemSettings.setStringParameter(FokkerEngineParams.TextureFilter.Mag, TextureFilter.Nearest + "");
 		SystemSettings.setStringParameter(FokkerEngineParams.TextureFilter.Min, TextureFilter.Nearest + "");
