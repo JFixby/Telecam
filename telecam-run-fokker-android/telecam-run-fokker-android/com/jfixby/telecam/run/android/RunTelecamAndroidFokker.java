@@ -54,8 +54,6 @@ import com.jfixby.red.util.RedJUtils;
 import com.jfixby.red.util.md5.AlpaeroMD5;
 import com.jfixby.redtriplane.fokker.adaptor.GdxAdaptor;
 
-import android.content.pm.ActivityInfo;
-
 //public class RunTelecamAndroid extends RedTriplaneAndroidApplication {
 public class RunTelecamAndroidFokker extends RedTriplaneAndroidApplication {
 
@@ -96,6 +94,7 @@ public class RunTelecamAndroidFokker extends RedTriplaneAndroidApplication {
 	}
 
 	@Override
+	@Override
 	public RedTriplaneAndroidApplicationConfig doGdxDeploy (final RedTriplaneAndroidApplication app) {
 		this.setup();
 		final RedTriplaneAndroidApplicationConfig red_config = new RedTriplaneAndroidApplicationConfig();
@@ -113,7 +112,7 @@ public class RunTelecamAndroidFokker extends RedTriplaneAndroidApplication {
 		final ApplicationListener gdx_listener = adaptor.getGDXApplicationListener();
 
 		final AndroidApplicationConfiguration android_config = new AndroidApplicationConfiguration();
-
+		android_config.useGL30 = false;
 		android_config.hideStatusBar = true;
 		android_config.r = 8;
 		android_config.g = 8;
