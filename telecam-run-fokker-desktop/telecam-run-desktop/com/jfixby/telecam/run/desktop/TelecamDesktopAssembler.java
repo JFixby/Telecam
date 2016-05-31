@@ -129,7 +129,7 @@ public class TelecamDesktopAssembler implements FokkerEngineAssembler {
 		// ImageGWT.installComponent(new RedImageGWT());
 		// JsonTest.test();
 		GCFisher.installComponent(new RedGCFisher());
-		GCFisher.setGCDelay(GCFisher.ANDROID_GC_DELAY);
+		GCFisher.setGCDelay(GCFisher.AVERAGE_ANDROID_GC_DELAY * 0);
 		final BaitInfo bait_info = GCFisher.throwBait();
 		// L.d("throw GC bait", bait_info);
 	}
