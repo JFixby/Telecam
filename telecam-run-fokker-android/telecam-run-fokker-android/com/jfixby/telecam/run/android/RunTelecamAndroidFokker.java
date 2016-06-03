@@ -51,8 +51,10 @@ import com.jfixby.red.sys.RedTaskManager;
 import com.jfixby.red.triplane.fokker.android.RedTriplaneAndroidApplication;
 import com.jfixby.red.triplane.fokker.android.RedTriplaneAndroidApplicationConfig;
 import com.jfixby.red.util.RedJUtils;
-import com.jfixby.red.util.md5.AlpaeroMD5;
+import com.jfixby.red.util.md5.RSADataSecurityIncMD5;
 import com.jfixby.redtriplane.fokker.adaptor.GdxAdaptor;
+
+import android.content.pm.ActivityInfo;
 
 //public class RunTelecamAndroid extends RedTriplaneAndroidApplication {
 public class RunTelecamAndroidFokker extends RedTriplaneAndroidApplication {
@@ -84,7 +86,7 @@ public class RunTelecamAndroidFokker extends RedTriplaneAndroidApplication {
 
 		Json.installComponent(new RedJson());
 		Base64.installComponent(new GdxBase64());
-		MD5.installComponent(new AlpaeroMD5());
+		MD5.installComponent(new RSADataSecurityIncMD5());
 
 	}
 
@@ -93,7 +95,6 @@ public class RunTelecamAndroidFokker extends RedTriplaneAndroidApplication {
 		useCamera = true;
 	}
 
-	@Override
 	@Override
 	public RedTriplaneAndroidApplicationConfig doGdxDeploy (final RedTriplaneAndroidApplication app) {
 		this.setup();

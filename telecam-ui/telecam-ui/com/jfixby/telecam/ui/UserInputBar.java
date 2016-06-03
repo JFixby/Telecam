@@ -206,6 +206,7 @@ public class UserInputBar {
 
 	public void goCropper () {
 		this.hideAll();
+
 		this.cropper.show();
 		this.cropper.resetCroppingArea();
 	}

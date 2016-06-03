@@ -51,7 +51,7 @@ import com.jfixby.red.name.RedAssetsNamespace;
 import com.jfixby.red.sys.RedSystemSettings;
 import com.jfixby.red.sys.RedTaskManager;
 import com.jfixby.red.util.RedJUtils;
-import com.jfixby.red.util.md5.AlpaeroMD5;
+import com.jfixby.red.util.md5.RSADataSecurityIncMD5;
 import com.jfixby.redtriplane.fokker.adaptor.GdxAdaptor;
 
 public class RunTelecamDesktop {
@@ -117,6 +117,6 @@ public class RunTelecamDesktop {
 		// --
 		Json.installComponent(new RedJson());
 		Base64.installComponent(new GdxBase64());
-		MD5.installComponent(new AlpaeroMD5());
+		MD5.installComponent(new RSADataSecurityIncMD5());
 	}
 }

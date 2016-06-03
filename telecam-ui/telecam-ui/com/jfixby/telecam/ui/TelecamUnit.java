@@ -66,6 +66,7 @@ public class TelecamUnit extends Unit implements TelecamUI, InputManager, Screen
 		this.userPanel = new UserInputBar(this);
 		this.userPanel.setup(this.scene.findLayer("user-panel").getElementAt(0), this.scene.getCamera());
 		UI.pushAction(TelecamUIAction.goPhotoShoot);
+		UI.pushAction(TelecamUIAction.goCropper);
 		this.root.closeInputValve();
 	}
 

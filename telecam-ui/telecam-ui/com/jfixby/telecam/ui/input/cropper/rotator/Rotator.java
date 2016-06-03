@@ -2,8 +2,6 @@
 package com.jfixby.telecam.ui.input.cropper.rotator;
 
 import com.jfixby.cmns.api.angles.Angles;
-import com.jfixby.cmns.api.collections.Collections;
-import com.jfixby.cmns.api.collections.List;
 import com.jfixby.cmns.api.err.Err;
 import com.jfixby.cmns.api.geometry.CanvasPosition;
 import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_HORIZONTAL;
@@ -18,6 +16,7 @@ import com.jfixby.r3.api.ui.unit.input.TouchAreaSpecs;
 import com.jfixby.r3.api.ui.unit.input.UserInputFactory;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
+import com.jfixby.r3.api.ui.unit.raster.RasterPool;
 import com.jfixby.telecam.ui.FontSettings;
 import com.jfixby.telecam.ui.input.cropper.Cropper;
 import com.jfixby.telecam.ui.input.cropper.CropperButtonRotate;
@@ -25,14 +24,14 @@ import com.jfixby.telecam.ui.input.cropper.CropperButtonRotate;
 public class Rotator {
 
 	private final CropperButtonRotate btnRotate;
-	private final List<Raster> exampleRasters;
+// private final List<Raster> exampleRasters;
 	private final AngleIndicator angleIndicator;
 	private final Cropper master;
 	private final CustomAngle angle = Angles.newAngle();
 
 	public Rotator (final Cropper cropper, final CropperButtonRotate btnRotate) {
 		this.btnRotate = btnRotate;
-		this.exampleRasters = Collections.newList();
+// this.exampleRasters = Collections.newList();
 		this.angleIndicator = new AngleIndicator(this);
 		this.master = cropper;
 	}
@@ -45,12 +44,12 @@ public class Rotator {
 	boolean needToDeploy = true;
 	private Layer root;
 	private TouchArea touchArea;
-	private Raster bigWhite;
-	private Raster bigBlue;
-	private Raster mediumBlue;
-	private Raster mediumWhite;
-	private Raster smallWhite;
-	private Raster smallBlue;
+	private RasterPool bigWhite;
+	private RasterPool bigBlue;
+	private RasterPool mediumBlue;
+	private RasterPool mediumWhite;
+	private RasterPool smallWhite;
+	private RasterPool smallBlue;
 	private double touchHeight;
 	private double touchWidth;
 
@@ -82,25 +81,29 @@ public class Rotator {
 		this.root.attachComponent(touchArea);
 
 		final Layer rasters = this.root.findComponent("raster");
-// rasters.listChildren().print("rasters");
+		rasters.detatchAllComponents();
+		final Raster bigWhite = rasters.findComponent("bigWhite");
+		final Raster bigBlue = rasters.findComponent("bigBlue");
+		final Raster mediumWhite = rasters.findComponent("mediumWhite");
+		final Raster mediumBlue = rasters.findComponent("mediumBlue");
+		final Raster smallWhite = rasters.findComponent("smallWhite");
+		final Raster smallBlue = rasters.findComponent("smallBlue");
 
-		this.bigWhite = rasters.findComponent("bigWhite");
-		this.bigBlue = rasters.findComponent("bigBlue");
+		this.bigWhite = factory.getRasterDepartment().newRasterPool(bigWhite.getAssetID());
+		this.bigBlue = factory.getRasterDepartment().newRasterPool(bigBlue.getAssetID());
+		this.mediumWhite = factory.getRasterDepartment().newRasterPool(mediumWhite.getAssetID());
+		this.mediumBlue = factory.getRasterDepartment().newRasterPool(mediumBlue.getAssetID());
+		this.smallWhite = factory.getRasterDepartment().newRasterPool(smallWhite.getAssetID());
+		this.smallBlue = factory.getRasterDepartment().newRasterPool(smallBlue.getAssetID());
 
-		this.mediumWhite = rasters.findComponent("mediumWhite");
-		this.mediumBlue = rasters.findComponent("mediumBlue");
+		rasters.attachComponent(this.bigWhite);
+		rasters.attachComponent(this.bigBlue);
 
-		this.smallWhite = rasters.findComponent("smallWhite");
-		this.smallBlue = rasters.findComponent("smallBlue");
-		this.exampleRasters.clear();
-		this.exampleRasters.add(this.bigWhite);
-		this.exampleRasters.add(this.bigBlue);
+		rasters.attachComponent(this.mediumWhite);
+		rasters.attachComponent(this.mediumBlue);
 
-		this.exampleRasters.add(this.mediumWhite);
-		this.exampleRasters.add(this.mediumBlue);
-
-		this.exampleRasters.add(this.smallWhite);
-		this.exampleRasters.add(this.smallBlue);
+		rasters.attachComponent(this.smallWhite);
+		rasters.attachComponent(this.smallBlue);
 
 // rasters.detatchAllComponents();
 	}
@@ -128,18 +131,18 @@ public class Rotator {
 		final double componentWidth = FloatMath.min(distanceToRotateButton * 2, otherWidth);
 
 		this.touchArea.shape().setWidth(componentWidth);
+		final CanvasPosition center = this.touchArea.shape().getPosition();
+// this.setRasterPosition(this.bigWhite, center);
+// this.setRasterPosition(this.bigBlue, this.touchArea.shape().getPosition());
+// this.setRasterPosition(this.mediumBlue, this.touchArea.shape().getPosition());
+// this.setRasterPosition(this.mediumWhite, this.touchArea.shape().getPosition());
+// this.setRasterPosition(this.smallWhite, this.touchArea.shape().getPosition());
+// this.setRasterPosition(this.smallBlue, this.touchArea.shape().getPosition());
 
-		this.setRasterPosition(this.bigWhite, this.touchArea.shape().getPosition());
-		this.setRasterPosition(this.bigBlue, this.touchArea.shape().getPosition());
-		this.setRasterPosition(this.mediumBlue, this.touchArea.shape().getPosition());
-		this.setRasterPosition(this.mediumWhite, this.touchArea.shape().getPosition());
-		this.setRasterPosition(this.smallWhite, this.touchArea.shape().getPosition());
-		this.setRasterPosition(this.smallBlue, this.touchArea.shape().getPosition());
-
-		for (int i = 0; i < this.exampleRasters.size(); i++) {
-			final Raster raster_i = this.exampleRasters.getElementAt(i);
-			raster_i.setPositionX(raster_i.getPositionX() + this.HUGE_STEPPING * i);
-		}
+// for (int i = 0; i < this.exampleRasters.size(); i++) {
+// final Raster raster_i = this.exampleRasters.getElementAt(i);
+// raster_i.setPositionX(raster_i.getPositionX() + this.HUGE_STEPPING * i);
+// }
 
 		this.angleIndicator.update(this.touchArea.shape().getPosition());
 
