@@ -81,13 +81,15 @@ public class Rotator {
 		this.root.attachComponent(touchArea);
 
 		final Layer rasters = this.root.findComponent("raster");
-		rasters.detatchAllComponents();
+
 		final Raster bigWhite = rasters.findComponent("bigWhite");
 		final Raster bigBlue = rasters.findComponent("bigBlue");
 		final Raster mediumWhite = rasters.findComponent("mediumWhite");
 		final Raster mediumBlue = rasters.findComponent("mediumBlue");
 		final Raster smallWhite = rasters.findComponent("smallWhite");
 		final Raster smallBlue = rasters.findComponent("smallBlue");
+
+		rasters.detatchAllComponents();
 
 		this.bigWhite = factory.getRasterDepartment().newRasterPool(bigWhite.getAssetID());
 		this.bigBlue = factory.getRasterDepartment().newRasterPool(bigBlue.getAssetID());
