@@ -2,6 +2,8 @@
 package com.jfixby.telecam.ui.input.cropper.rotator;
 
 import com.jfixby.cmns.api.angles.Angles;
+import com.jfixby.cmns.api.collections.Collections;
+import com.jfixby.cmns.api.collections.List;
 import com.jfixby.cmns.api.err.Err;
 import com.jfixby.cmns.api.geometry.CanvasPosition;
 import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_HORIZONTAL;
@@ -9,6 +11,8 @@ import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_VERTICAL;
 import com.jfixby.cmns.api.geometry.Rectangle;
 import com.jfixby.cmns.api.math.CustomAngle;
 import com.jfixby.cmns.api.math.FloatMath;
+import com.jfixby.cmns.api.math.MathTools;
+import com.jfixby.cmns.api.math.VectorTool;
 import com.jfixby.r3.api.ui.unit.ComponentsFactory;
 import com.jfixby.r3.api.ui.unit.input.CustomInputSpecs;
 import com.jfixby.r3.api.ui.unit.input.TouchArea;
@@ -23,6 +27,7 @@ import com.jfixby.telecam.ui.input.cropper.CropperButtonRotate;
 
 public class Rotator {
 
+	private static final double NUMBER_OF_SMALL_WHITES = 60d / 5d;
 	private final CropperButtonRotate btnRotate;
 // private final List<Raster> exampleRasters;
 	private final AngleIndicator angleIndicator;
@@ -106,9 +111,19 @@ public class Rotator {
 
 		rasters.attachComponent(this.smallWhite);
 		rasters.attachComponent(this.smallBlue);
+		for (int i = 0; i < NUMBER_OF_SMALL_WHITES; i++) {
+			final Raster raster = this.smallWhite.newInstance();
 
+			raster.shape().setup(smallWhite.shape());
+
+			raster.setOriginRelativeX(ORIGIN_RELATIVE_HORIZONTAL.CENTER);
+			raster.setOriginRelativeY(ORIGIN_RELATIVE_VERTICAL.CENTER);
+			this.smallWhiteList.add(raster);
+		}
 // rasters.detatchAllComponents();
 	}
+
+	final List<Raster> smallWhiteList = Collections.newList();
 
 	public double getWidth () {
 		return this.touchWidth;
@@ -146,9 +161,31 @@ public class Rotator {
 // raster_i.setPositionX(raster_i.getPositionX() + this.HUGE_STEPPING * i);
 // }
 
+		for (int i = 0; i < NUMBER_OF_SMALL_WHITES; i++) {
+			Raster raster;
+
+			if (i % (NUMBER_OF_SMALL_WHITES / 12) == 0) {
+				raster = this.smallWhiteList.getElementAt(i);
+			} else {
+				raster = this.smallWhiteList.getElementAt(i);
+
+			}
+
+			raster.setPosition(center);
+
+			this.tool.R = 50;
+			this.tool.A = i * FloatMath.PI() * 2 / NUMBER_OF_SMALL_WHITES;
+			raster.setRotation(this.tool.A + FloatMath.PI() / 2d);
+			this.tool.ARtoXY();
+
+			raster.offset(this.tool.X, this.tool.Y);
+		}
+
 		this.angleIndicator.update(this.touchArea.shape().getPosition());
 
 	}
+
+	final VectorTool tool = MathTools.newVectorTool();
 
 	double HUGE_STEPPING;
 
