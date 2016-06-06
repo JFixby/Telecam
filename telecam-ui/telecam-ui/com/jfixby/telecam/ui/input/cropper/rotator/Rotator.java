@@ -29,21 +29,14 @@ public class Rotator {
 
 	private static final double NUMBER_OF_SMALL_WHITES = 60d / 2d;
 	private final CropperButtonRotate btnRotate;
-// private final List<Raster> exampleRasters;
 	private final AngleIndicator angleIndicator;
 	private final Cropper master;
 	private final CustomAngle angle = Angles.newAngle();
 
 	public Rotator (final Cropper cropper, final CropperButtonRotate btnRotate) {
 		this.btnRotate = btnRotate;
-// this.exampleRasters = Collections.newList();
 		this.angleIndicator = new AngleIndicator(this);
 		this.master = cropper;
-	}
-
-	private void setRasterPosition (final Raster raster, final CanvasPosition position) {
-		raster.setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
-		raster.setPosition(position);
 	}
 
 	boolean needToDeploy = true;
