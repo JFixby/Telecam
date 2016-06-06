@@ -83,7 +83,7 @@ public class BackgroundGray {
 		this.blinker.setOpacity(1);
 	}
 
-	public void setShootProgress (final double f) {
+	public void setShootProgress (final float f) {
 		this.blinker.setOpacity(f);
 	}
 
@@ -92,7 +92,7 @@ public class BackgroundGray {
 		this.blinker.setOpacity(1f);
 	}
 
-	public void setBackgroundOpacity (final double f) {
+	public void setBackgroundOpacity (final float f) {
 		this.gray.setOpacity(f);
 	}
 

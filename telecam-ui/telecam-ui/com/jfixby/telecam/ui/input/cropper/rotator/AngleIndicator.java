@@ -49,7 +49,7 @@ public class AngleIndicator {
 	}
 
 	public void update (final CanvasPosition position) {
-		final double width = this.master.getWidth();
+// final double width = this.master.getWidth();
 		final double height = this.master.getHeight();
 		this.string.setPosition(position);
 		this.string.setPositionY(this.string.getPositionY() - height / 2);

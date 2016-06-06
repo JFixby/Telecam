@@ -27,7 +27,7 @@ import com.jfixby.telecam.ui.input.cropper.CropperButtonRotate;
 
 public class Rotator {
 
-	private static final double NUMBER_OF_SMALL_WHITES = 60d / 5d;
+	private static final double NUMBER_OF_SMALL_WHITES = 60d / 2d;
 	private final CropperButtonRotate btnRotate;
 // private final List<Raster> exampleRasters;
 	private final AngleIndicator angleIndicator;
@@ -55,8 +55,9 @@ public class Rotator {
 	private RasterPool mediumWhite;
 	private RasterPool smallWhite;
 	private RasterPool smallBlue;
-	private double touchHeight;
-	private double touchWidth;
+	private double buttonTouchHeight;
+	private double buttonTouchWidth;
+// private double rotorTouchWidth;
 
 	public void setup (final Layer component_root) {
 		this.root = component_root;
@@ -81,7 +82,8 @@ public class Rotator {
 		specs.addTouchArea(touchSpecs);
 		final TouchArea touchArea = inputFactory.newTouchArea(touchSpecs);
 		this.touchArea = touchArea;
-		this.touchArea.setDebugRenderFlag(!true);
+		this.touchArea.setDebugRenderFlag(true);
+// this.rotorTouchWidth = touchArea.getWidth();
 		this.touchArea.shape().setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
 		this.root.attachComponent(touchArea);
 
@@ -124,43 +126,37 @@ public class Rotator {
 	}
 
 	final List<Raster> smallWhiteList = Collections.newList();
-
-	public double getWidth () {
-		return this.touchWidth;
-	}
+	private double componentWidth;
 
 	public double getHeight () {
-		return this.touchHeight;
+		return this.buttonTouchHeight;
 	}
 
 	public void update (final Rectangle viewport_update) {
 		final double btnRotateX = this.btnRotate.getX();
 		final double rasterWidth = this.btnRotate.getRasterWidth();
-		this.touchWidth = this.btnRotate.getTouchWidth();
-		this.touchHeight = this.btnRotate.getTouchHeight();
+		this.buttonTouchWidth = this.btnRotate.getTouchWidth();
+		this.buttonTouchHeight = this.btnRotate.getTouchHeight();
+// this.rotorTouchWidth = this.touchArea.getWidth();
 
-		final double distanceToRotateButton = btnRotateX - viewport_update.getWidth() / 2 - this.touchWidth;
+		final double distanceToRotateButton = btnRotateX - viewport_update.getWidth() / 2 - this.buttonTouchWidth;
 		this.touchArea.shape().setPositionX(viewport_update.getWidth() / 2);
 		this.touchArea.shape().setPositionY(this.btnRotate.getY());
-		this.touchArea.shape().setHeight(this.touchHeight);
+		this.touchArea.shape().setHeight(this.buttonTouchHeight);
 		final double otherWidth = rasterWidth * 8 * 2;
 		this.HUGE_STEPPING = rasterWidth / 2;
 		final double componentWidth = FloatMath.min(distanceToRotateButton * 2, otherWidth);
 
 		this.touchArea.shape().setWidth(componentWidth);
+		this.componentWidth = componentWidth;
 		final CanvasPosition center = this.touchArea.shape().getPosition();
-// this.setRasterPosition(this.bigWhite, center);
-// this.setRasterPosition(this.bigBlue, this.touchArea.shape().getPosition());
-// this.setRasterPosition(this.mediumBlue, this.touchArea.shape().getPosition());
-// this.setRasterPosition(this.mediumWhite, this.touchArea.shape().getPosition());
-// this.setRasterPosition(this.smallWhite, this.touchArea.shape().getPosition());
-// this.setRasterPosition(this.smallBlue, this.touchArea.shape().getPosition());
 
-// for (int i = 0; i < this.exampleRasters.size(); i++) {
-// final Raster raster_i = this.exampleRasters.getElementAt(i);
-// raster_i.setPositionX(raster_i.getPositionX() + this.HUGE_STEPPING * i);
-// }
+		this.updateRotationRisks(center);
+		this.angleIndicator.update(this.touchArea.shape().getPosition());
 
+	}
+
+	private void updateRotationRisks (final CanvasPosition center) {
 		for (int i = 0; i < NUMBER_OF_SMALL_WHITES; i++) {
 			Raster raster;
 
@@ -173,16 +169,33 @@ public class Rotator {
 
 			raster.setPosition(center);
 
-			this.tool.R = 50;
+			this.tool.R = Math.abs(this.getWidth() - this.getHeight() / 2d) * 0.5;
 			this.tool.A = i * FloatMath.PI() * 2 / NUMBER_OF_SMALL_WHITES;
-			raster.setRotation(this.tool.A + FloatMath.PI() / 2d);
+			final double rotation = this.tool.A + FloatMath.PI() / 2d;
+			if (this.isVisibleRotation(this.tool.A + FloatMath.PI() / 2d)) {
+				raster.show();
+// raster.setOpacity(1f);
+			} else {
+				raster.hide();
+// raster.setOpacity(0.5f);
+			}
+// raster.setRotation(rotation);
 			this.tool.ARtoXY();
 
-			raster.offset(this.tool.X, this.tool.Y);
+// raster.offset(this.tool.X, this.tool.Y);
+
+			raster.offset(this.tool.X, 0);
+
 		}
 
-		this.angleIndicator.update(this.touchArea.shape().getPosition());
+	}
 
+	public double getWidth () {
+		return this.componentWidth;
+	}
+
+	private boolean isVisibleRotation (final double d) {
+		return FloatMath.abs(d - FloatMath.PI()) <= FloatMath.PI() / 1;
 	}
 
 	final VectorTool tool = MathTools.newVectorTool();

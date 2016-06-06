@@ -64,7 +64,7 @@ public class SliderAnimator implements OnUpdateListener {
 		if (this.animatingHead) {
 			this.indicator.setSliderState(this.currentPosition);
 			this.worm.stretchTo(this.beginPosition, this.currentPosition);
-			final double bgOpacity = 1d - (this.currentPosition + 1d) / 4d * 1.2d;
+			final float bgOpacity = (float)(1d - (this.currentPosition + 1d) / 4d * 1.2d);
 			final double flashOpacity = 1d - (this.currentPosition + 1d) / 2d;
 			this.bgGray.setBackgroundOpacity(bgOpacity);
 

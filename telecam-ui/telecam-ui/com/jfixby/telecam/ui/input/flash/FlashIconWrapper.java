@@ -54,7 +54,7 @@ public class FlashIconWrapper {
 		this.raster.setOriginAbsoluteY(y);
 	}
 
-	public void setOpacity (final double d) {
+	public void setOpacity (final float d) {
 		this.raster.setOpacity(d);
 	}
 
@@ -83,7 +83,7 @@ public class FlashIconWrapper {
 		if (distance > 1) {
 			distance = 1;
 		}
-		final double alpha = 1 - distance * distance;
+		final float alpha = (float)(1 - distance * distance);
 		this.raster.setOpacity(alpha);
 
 	}
