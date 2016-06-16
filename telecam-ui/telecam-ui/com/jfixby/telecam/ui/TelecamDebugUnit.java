@@ -12,13 +12,13 @@ import com.jfixby.r3.api.ui.InputManager;
 import com.jfixby.r3.api.ui.UI;
 import com.jfixby.r3.api.ui.unit.ComponentsFactory;
 import com.jfixby.r3.api.ui.unit.RootLayer;
-import com.jfixby.r3.api.ui.unit.Unit;
+import com.jfixby.r3.api.ui.unit.DefaultUnit;
 import com.jfixby.r3.api.ui.unit.UnitManager;
 import com.jfixby.r3.api.ui.unit.camera.ScreenChangeListener;
 import com.jfixby.r3.api.ui.unit.camera.ScreenDimentions;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
 
-public class TelecamDebugUnit extends Unit implements InputManager, ScreenChangeListener {
+public class TelecamDebugUnit extends DefaultUnit implements InputManager, ScreenChangeListener {
 	private UnitManager unitManager;
 	private RootLayer root_layer;
 	public static final AssetID scene_asset_id = Names.newAssetID("com.jfixby.telecam.scene-base.psd");

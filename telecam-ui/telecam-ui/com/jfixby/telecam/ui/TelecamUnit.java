@@ -13,7 +13,7 @@ import com.jfixby.r3.api.ui.UI;
 import com.jfixby.r3.api.ui.UIAction;
 import com.jfixby.r3.api.ui.unit.ComponentsFactory;
 import com.jfixby.r3.api.ui.unit.RootLayer;
-import com.jfixby.r3.api.ui.unit.Unit;
+import com.jfixby.r3.api.ui.unit.DefaultUnit;
 import com.jfixby.r3.api.ui.unit.UnitManager;
 import com.jfixby.r3.api.ui.unit.animation.OnAnimationDoneListener;
 import com.jfixby.r3.api.ui.unit.camera.Camera;
@@ -26,7 +26,7 @@ import com.jfixby.r3.ext.api.scene2d.Scene2DSpawningConfig;
 import com.jfixby.telecam.api.TelecamUI;
 import com.jfixby.telecam.ui.actions.TelecamUIAction;
 
-public class TelecamUnit extends Unit implements TelecamUI, InputManager, ScreenChangeListener {
+public class TelecamUnit extends DefaultUnit implements TelecamUI, InputManager, ScreenChangeListener {
 	private UnitManager unitManager;
 	private RootLayer root;
 	private Scene scene;
