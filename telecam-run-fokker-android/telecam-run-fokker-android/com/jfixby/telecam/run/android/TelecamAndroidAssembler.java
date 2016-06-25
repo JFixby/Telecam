@@ -15,7 +15,6 @@ import com.jfixby.cmns.api.file.LocalFileSystem;
 import com.jfixby.cmns.api.file.cache.FileCache;
 import com.jfixby.cmns.api.io.IO;
 import com.jfixby.cmns.api.java.ByteArray;
-import com.jfixby.cmns.api.java.gc.BaitInfo;
 import com.jfixby.cmns.api.java.gc.GCFisher;
 import com.jfixby.cmns.api.log.L;
 import com.jfixby.cmns.api.memory.MemoryManager;
@@ -140,8 +139,8 @@ public class TelecamAndroidAssembler implements FokkerEngineAssembler {
 		L.d("Recommended heap size: ", MemoryManager.getRecommendedHeapSize() + "Mb");
 
 		GCFisher.installComponent(new RedGCFisher());
-		final BaitInfo bait_info = GCFisher.throwBait();
-		L.d("throw GC bait", bait_info);
+// final BaitInfo bait_info = GCFisher.throwBait();
+// L.d("throw GC bait", bait_info);
 
 	}
 

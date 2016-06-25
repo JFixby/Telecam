@@ -9,7 +9,6 @@ import com.jfixby.cmns.api.file.File;
 import com.jfixby.cmns.api.file.FileSystemSandBox;
 import com.jfixby.cmns.api.file.LocalFileSystem;
 import com.jfixby.cmns.api.file.cache.FileCache;
-import com.jfixby.cmns.api.java.gc.BaitInfo;
 import com.jfixby.cmns.api.java.gc.GCFisher;
 import com.jfixby.cmns.api.sys.Sys;
 import com.jfixby.cmns.api.sys.settings.ExecutionMode;
@@ -129,9 +128,8 @@ public class TelecamDesktopAssembler implements FokkerEngineAssembler {
 		// ImageGWT.installComponent(new RedImageGWT());
 		// JsonTest.test();
 		GCFisher.installComponent(new RedGCFisher());
-		GCFisher.setGCDelay(GCFisher.AVERAGE_ANDROID_GC_DELAY * 0);
-		final BaitInfo bait_info = GCFisher.throwBait();
-		// L.d("throw GC bait", bait_info);
+		// final BaitInfo bait_info = GCFisher.throwBait();
+// L.d("throw GC bait", bait_info);
 	}
 
 	private void installResources () {
