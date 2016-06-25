@@ -30,7 +30,7 @@ public class VideoPlayer {
 		}
 
 		@Override
-		public void doDo () throws Throwable {
+		public void doPush () throws Throwable {
 			if (VideoPlayer.this.state.stateIs(VideoPlayerState.PLAYING)) {
 				this.delta = 0;
 				this.current = Sys.SystemTime().currentTimeMillis();
