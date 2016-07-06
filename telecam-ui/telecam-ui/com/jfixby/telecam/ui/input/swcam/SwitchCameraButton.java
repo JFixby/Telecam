@@ -87,7 +87,7 @@ public class SwitchCameraButton implements MouseEventListener, CollectionScanner
 
 	@Override
 	public boolean onTouchDown (final TouchDownEvent input_event) {
-		TelecamUIAction.doSwitchCam.push();
+		TelecamUIAction.doSwitchCam.submit();
 		return true;
 	}
 

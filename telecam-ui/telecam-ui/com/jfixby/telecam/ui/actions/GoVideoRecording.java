@@ -18,7 +18,7 @@ public class GoVideoRecording extends TelecamUIAction implements OnAnimationDone
 	}
 
 	@Override
-	public void perform (final TelecamUnit ui) {
+	public void push (final TelecamUnit ui) {
 
 	}
 

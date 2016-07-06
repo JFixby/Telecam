@@ -119,16 +119,16 @@ public class RedButton implements MouseEventListener, CollectionScanner<TouchAre
 
 	@Override
 	public boolean onTouchDown (final TouchDownEvent input_event) {
-		TelecamUIAction.disableInput.push();
+		TelecamUIAction.disableInput.submit();
 		if (this.mode == READY_TO_RECORD) {
-			TelecamUIAction.goVideoRecording.push();
-			TelecamUIAction.doRecordVideo.push();
+			TelecamUIAction.goVideoRecording.submit();
+			TelecamUIAction.doRecordVideo.submit();
 		} else {
-			TelecamUIAction.doStopRecordVideo.push();
-			TelecamUIAction.goVideoIdle.push();
-			TelecamUIAction.goAcceptDeclineVideo.push();
+			TelecamUIAction.doStopRecordVideo.submit();
+			TelecamUIAction.goVideoIdle.submit();
+			TelecamUIAction.goAcceptDeclineVideo.submit();
 		}
-		TelecamUIAction.enableInput.push();
+		TelecamUIAction.enableInput.submit();
 
 		return true;
 	}

@@ -11,7 +11,7 @@ public class ReleaseBlueButton extends TelecamUIAction {
 	}
 
 	@Override
-	public void perform (final TelecamUnit ui) {
+	public void push (final TelecamUnit ui) {
 	}
 
 	@Override

@@ -33,7 +33,7 @@ public abstract class TelecamUIAction implements UIAction<TelecamUnit> {
 	public static final TelecamUIAction disableInput = new DisableInput();
 	public static final TelecamUIAction enableInput = new EnableInput();
 
-	public void push () {
+	public void submit () {
 		UI.pushAction(this);
 	}
 

@@ -18,7 +18,7 @@ public class GoVideoIdle extends TelecamUIAction implements OnAnimationDoneListe
 	}
 
 	@Override
-	public void perform (final TelecamUnit ui) {
+	public void push (final TelecamUnit ui) {
 
 	}
 

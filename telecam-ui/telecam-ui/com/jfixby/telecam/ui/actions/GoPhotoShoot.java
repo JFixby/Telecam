@@ -6,7 +6,7 @@ import com.jfixby.telecam.ui.TelecamUnit;
 public class GoPhotoShoot extends TelecamUIAction {
 
 	@Override
-	public void perform (final TelecamUnit ui) {
+	public void push (final TelecamUnit ui) {
 
 	}
 

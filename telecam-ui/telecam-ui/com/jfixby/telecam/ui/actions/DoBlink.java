@@ -10,7 +10,7 @@ public class DoBlink extends TelecamUIAction {
 	long start = 0;
 
 	@Override
-	public void perform (final TelecamUnit ui) {
+	public void push (final TelecamUnit ui) {
 		float value = (Sys.SystemTime().currentTimeMillis() - this.start) * 1f / this.delta;
 		if (value > 1f) {
 			value = 1;

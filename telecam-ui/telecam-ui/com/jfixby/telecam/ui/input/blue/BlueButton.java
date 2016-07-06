@@ -113,9 +113,9 @@ public class BlueButton implements MouseEventListener, CollectionScanner<TouchAr
 			} else {
 				BlueButton.this.pressed = false;
 // TelecamUIAction.disableInput.push();
-				TelecamUIAction.switchToVideoShoot.push();
-				TelecamUIAction.goVideoRecording.push();
-				TelecamUIAction.doRecordVideo.push();
+				TelecamUIAction.switchToVideoShoot.submit();
+				TelecamUIAction.goVideoRecording.submit();
+				TelecamUIAction.doRecordVideo.submit();
 // TelecamUIAction.enableInput.push();
 			}
 
@@ -150,11 +150,11 @@ public class BlueButton implements MouseEventListener, CollectionScanner<TouchAr
 
 	private void clickBlue () {
 		this.pressed = false;
-		TelecamUIAction.disableInput.push();
-		TelecamUIAction.doBlink.push();
-		TelecamUIAction.releaseBlueButton.push();
-		TelecamUIAction.goAcceptDeclinePhoto.push();
-		TelecamUIAction.enableInput.push();
+		TelecamUIAction.disableInput.submit();
+		TelecamUIAction.doBlink.submit();
+		TelecamUIAction.releaseBlueButton.submit();
+		TelecamUIAction.goAcceptDeclinePhoto.submit();
+		TelecamUIAction.enableInput.submit();
 	}
 
 	@Override

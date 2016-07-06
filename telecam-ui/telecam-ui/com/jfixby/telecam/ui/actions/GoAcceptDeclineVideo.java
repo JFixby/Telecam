@@ -10,7 +10,7 @@ public class GoAcceptDeclineVideo extends TelecamUIAction implements OnAnimation
 	private boolean done;
 
 	@Override
-	public void perform (final TelecamUnit ui) {
+	public void push (final TelecamUnit ui) {
 
 	}
 

@@ -18,7 +18,7 @@ public class SwitchToVideoShoot extends TelecamUIAction implements OnAnimationDo
 	}
 
 	@Override
-	public void perform (final TelecamUnit ui) {
+	public void push (final TelecamUnit ui) {
 	}
 
 	@Override
