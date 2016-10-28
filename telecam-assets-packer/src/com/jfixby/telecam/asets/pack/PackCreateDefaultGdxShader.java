@@ -49,7 +49,7 @@ public class PackCreateDefaultGdxShader {
 		final PackerSpecs specs = new PackerSpecs();
 		specs.setPackageFolder(asset_folder);
 
-		final ChildrenList files = folder.listChildren();
+		final ChildrenList files = folder.listDirectChildren();
 		specs.addPackedFiles(files);
 
 		specs.setRootFileName(R3_SHADER_SETTINGS.ROOT_FILE_NAME);
@@ -81,7 +81,7 @@ public class PackCreateDefaultGdxShader {
 
 		final File bank = LocalFileSystem.ApplicationHome().parent().child("telecam-assets").child("content").child("bank-r3");
 		final File shaders = LocalFileSystem.ApplicationHome().child("shaders");
-		final ChildrenList folders_list = shaders.listChildren();
+		final ChildrenList folders_list = shaders.listDirectChildren();
 		for (int i = 0; i < folders_list.size(); i++) {
 			final File folder = folders_list.getElementAt(i);
 			try {

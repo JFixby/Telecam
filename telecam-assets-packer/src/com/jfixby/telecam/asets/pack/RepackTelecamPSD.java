@@ -48,10 +48,10 @@ public class RepackTelecamPSD {
 				return name.endsWith(".psd");
 			}
 		};
-		final ChildrenList psd_files = input_folder.listChildren().filterFiles(filter);
+		final ChildrenList psd_files = input_folder.listDirectChildren().filterFiles(filter);
 		if (psd_files.size() == 0) {
 			L.d("No files found.");
-			input_folder.listChildren().print("content");
+			input_folder.listDirectChildren().print("content");
 			Sys.exit();
 		}
 		psd_files.print("processing");

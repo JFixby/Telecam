@@ -47,7 +47,7 @@ public class PackTelecamFont {
 		final PackerSpecs specs = new PackerSpecs();
 		specs.setPackageFolder(package_folder);
 
-		final ChildrenList files = input_font_folder.listChildren();
+		final ChildrenList files = input_font_folder.listDirectChildren();
 		specs.addPackedFiles(files);
 
 		final AssetID package_name = Names.newAssetID(package_name_string);
