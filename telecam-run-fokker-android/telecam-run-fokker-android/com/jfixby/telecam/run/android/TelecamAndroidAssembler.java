@@ -100,7 +100,7 @@ public class TelecamAndroidAssembler implements FokkerEngineAssembler {
 
 		ResourcesManager.registerPackageReader(Scene2D.getPackageReader());
 		ResourcesManager.registerPackageReader(R3Font.getPackageReader());
-		ResourcesManager.registerPackageReader(R3Text.getPackageReader());
+		ResourcesManager.registerPackageReader(R3Text.getStringsPackageReader());
 		ResourcesManager.registerPackageReader(R3Shader.getPackageReader());
 
 		final RedUIManager telecam_ui_starter = new RedUIManager();
