@@ -7,8 +7,6 @@ import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_HORIZONTAL;
 import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_VERTICAL;
 import com.jfixby.cmns.api.math.CustomAngle;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
-import com.jfixby.r3.api.ui.unit.txt.RasterizedFont;
-import com.jfixby.r3.api.ui.unit.txt.RasterizedFontSpecs;
 import com.jfixby.r3.api.ui.unit.txt.RasterizedString;
 import com.jfixby.r3.api.ui.unit.txt.RasterizedStringSpecs;
 import com.jfixby.r3.api.ui.unit.txt.TextFactory;
@@ -28,17 +26,17 @@ public class AngleIndicator {
 		final TextFactory factory = this.root.getComponentsFactory().getTextDepartment();
 		final RasterizedStringSpecs stringSpec = factory.newRasterStringSpecs();
 
-		final RasterizedFontSpecs font_specs = factory.newFontSpecs();
-		font_specs.setFontName(this.master.getFontSettings().getName());
+// final RasterizedFontSpecs font_specs = factory.newFontSpecs();
+		stringSpec.setFontName(this.master.getFontSettings().getName());
 		final float m = this.master.getFontSettings().getMultiplier();
-		font_specs.setFontSize(24 / m);
-		font_specs.setFontScale(m);
-		font_specs.setBorderSize(0f);
-		font_specs.setRequiredCharacters(this.master.getFontSettings().getRequiredChars());
-		font_specs.setColor(Colors.WHITE());
+		stringSpec.setFontSize(24 / m);
+		stringSpec.setFontScale(m);
+		stringSpec.setBorderSize(0f);
+		stringSpec.addRequiredCharacters(this.master.getFontSettings().getRequiredChars());
+		stringSpec.setColor(Colors.WHITE());
 
-		final RasterizedFont font = factory.newFont(font_specs);
-		stringSpec.setFont(font);
+// final RasterizedFont font = factory.newFont(font_specs);
+// stringSpec.setFont(font);
 
 		this.string = factory.newRasterString(stringSpec);
 		this.string.setValue("+44.99°");
