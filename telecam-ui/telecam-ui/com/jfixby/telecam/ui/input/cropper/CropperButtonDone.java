@@ -6,16 +6,16 @@ import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_VERTICAL;
 import com.jfixby.cmns.api.geometry.Rectangle;
 import com.jfixby.r3.api.ui.UI;
 import com.jfixby.r3.api.ui.unit.input.CustomInput;
-import com.jfixby.r3.api.ui.unit.input.MouseEventListener;
 import com.jfixby.r3.api.ui.unit.input.MouseMovedEvent;
 import com.jfixby.r3.api.ui.unit.input.TouchArea;
 import com.jfixby.r3.api.ui.unit.input.TouchDownEvent;
 import com.jfixby.r3.api.ui.unit.input.TouchDraggedEvent;
 import com.jfixby.r3.api.ui.unit.input.TouchUpEvent;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
+import com.jfixby.r3.api.ui.unit.user.MouseInputEventListener;
 import com.jfixby.telecam.ui.actions.TelecamUIAction;
 
-public class CropperButtonDone implements MouseEventListener {
+public class CropperButtonDone implements MouseInputEventListener {
 
 	private CustomInput btn;
 	private final Cropper master;

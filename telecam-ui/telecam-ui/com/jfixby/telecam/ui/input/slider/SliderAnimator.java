@@ -3,16 +3,16 @@ package com.jfixby.telecam.ui.input.slider;
 
 import com.jfixby.cmns.api.sys.Sys;
 import com.jfixby.r3.api.ui.unit.animation.OnAnimationDoneListener;
-import com.jfixby.r3.api.ui.unit.update.OnUpdateListener;
 import com.jfixby.r3.api.ui.unit.update.UnitClocks;
+import com.jfixby.r3.api.ui.unit.user.UpdateListener;
 import com.jfixby.telecam.ui.BackgroundGray;
 import com.jfixby.telecam.ui.TelecamUnit;
 import com.jfixby.telecam.ui.input.blue.BlueButton;
 import com.jfixby.telecam.ui.input.flash.SwitchFlashButton;
 import com.jfixby.telecam.ui.input.red.RedButton;
 
-public class SliderAnimator implements OnUpdateListener {
-	private final OnUpdateListener listener = this;
+public class SliderAnimator implements UpdateListener {
+	private final UpdateListener listener = this;
 	private static final long DELTA = TelecamUnit.ANIMATION_DELTA / 2;
 	private final Slider master;
 

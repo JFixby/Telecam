@@ -6,15 +6,15 @@ import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_VERTICAL;
 import com.jfixby.cmns.api.geometry.Rectangle;
 import com.jfixby.cmns.api.log.L;
 import com.jfixby.r3.api.ui.unit.input.CustomInput;
-import com.jfixby.r3.api.ui.unit.input.MouseEventListener;
 import com.jfixby.r3.api.ui.unit.input.MouseMovedEvent;
 import com.jfixby.r3.api.ui.unit.input.TouchArea;
 import com.jfixby.r3.api.ui.unit.input.TouchDownEvent;
 import com.jfixby.r3.api.ui.unit.input.TouchDraggedEvent;
 import com.jfixby.r3.api.ui.unit.input.TouchUpEvent;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
+import com.jfixby.r3.api.ui.unit.user.MouseInputEventListener;
 
-public class CropTouch implements MouseEventListener {
+public class CropTouch implements MouseInputEventListener {
 	CustomInput input;
 	private final Cropper master;
 	private double baseOffsetY;

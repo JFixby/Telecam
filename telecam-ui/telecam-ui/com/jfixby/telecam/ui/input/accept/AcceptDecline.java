@@ -7,12 +7,12 @@ import com.jfixby.cmns.api.sys.Sys;
 import com.jfixby.r3.api.ui.UIAction;
 import com.jfixby.r3.api.ui.unit.animation.OnAnimationDoneListener;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
-import com.jfixby.r3.api.ui.unit.update.OnUpdateListener;
 import com.jfixby.r3.api.ui.unit.update.UnitClocks;
+import com.jfixby.r3.api.ui.unit.user.UpdateListener;
 import com.jfixby.telecam.ui.TelecamUnit;
 import com.jfixby.telecam.ui.UserInputBar;
 
-public class AcceptDecline implements OnUpdateListener {
+public class AcceptDecline implements UpdateListener {
 	private Layer root;
 	private final AcceptButton acceptButton;
 	private final DeclineButton declineButton;
@@ -81,7 +81,7 @@ public class AcceptDecline implements OnUpdateListener {
 	private boolean animating;
 	private double beginRoll;
 	private double current_roll = 0;
-	OnUpdateListener animator = this;
+	UpdateListener animator = this;
 	private long currentTime;
 	private double progress;
 

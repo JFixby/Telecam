@@ -6,11 +6,11 @@ import com.jfixby.cmns.api.collections.Set;
 import com.jfixby.cmns.api.sys.Sys;
 import com.jfixby.r3.api.ui.unit.animation.OnAnimationDoneListener;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
-import com.jfixby.r3.api.ui.unit.update.OnUpdateListener;
 import com.jfixby.r3.api.ui.unit.update.UnitClocks;
+import com.jfixby.r3.api.ui.unit.user.UpdateListener;
 import com.jfixby.telecam.ui.TelecamUnit;
 
-public class SwitchFlashButtonAnimator implements OnUpdateListener {
+public class SwitchFlashButtonAnimator implements UpdateListener {
 
 	private static final int INDEX_OFFSET = 0;
 	final Set<FlashIconWrapper> list = Collections.newSet();
@@ -23,7 +23,7 @@ public class SwitchFlashButtonAnimator implements OnUpdateListener {
 
 	}
 
-	OnUpdateListener animator = this;
+	UpdateListener animator = this;
 	private long currentTime;
 	private double progress;
 

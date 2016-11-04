@@ -9,7 +9,6 @@ import com.jfixby.cmns.api.geometry.Geometry;
 import com.jfixby.cmns.api.geometry.Rectangle;
 import com.jfixby.r3.api.ui.unit.animation.OnAnimationDoneListener;
 import com.jfixby.r3.api.ui.unit.input.CustomInput;
-import com.jfixby.r3.api.ui.unit.input.MouseEventListener;
 import com.jfixby.r3.api.ui.unit.input.MouseMovedEvent;
 import com.jfixby.r3.api.ui.unit.input.TouchArea;
 import com.jfixby.r3.api.ui.unit.input.TouchDownEvent;
@@ -17,6 +16,7 @@ import com.jfixby.r3.api.ui.unit.input.TouchDraggedEvent;
 import com.jfixby.r3.api.ui.unit.input.TouchUpEvent;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
+import com.jfixby.r3.api.ui.unit.user.MouseInputEventListener;
 import com.jfixby.telecam.ui.BackgroundGray;
 import com.jfixby.telecam.ui.UserInputBar;
 import com.jfixby.telecam.ui.actions.TelecamUIAction;
@@ -25,7 +25,7 @@ import com.jfixby.telecam.ui.input.flash.SwitchFlashButton;
 import com.jfixby.telecam.ui.input.red.RedButton;
 import com.jfixby.telecam.ui.input.swcam.SwitchCameraButton;
 
-public class Slider implements MouseEventListener, CollectionScanner<TouchArea> {
+public class Slider implements MouseInputEventListener, CollectionScanner<TouchArea> {
 
 	private static final String PHOTO = "PHOTO";
 	private static final String VIDEO = "VIDEO";

@@ -9,7 +9,6 @@ import com.jfixby.cmns.api.geometry.Geometry;
 import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_HORIZONTAL;
 import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_VERTICAL;
 import com.jfixby.r3.api.ui.unit.input.CustomInput;
-import com.jfixby.r3.api.ui.unit.input.MouseEventListener;
 import com.jfixby.r3.api.ui.unit.input.MouseMovedEvent;
 import com.jfixby.r3.api.ui.unit.input.TouchArea;
 import com.jfixby.r3.api.ui.unit.input.TouchDownEvent;
@@ -17,10 +16,11 @@ import com.jfixby.r3.api.ui.unit.input.TouchDraggedEvent;
 import com.jfixby.r3.api.ui.unit.input.TouchUpEvent;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
+import com.jfixby.r3.api.ui.unit.user.MouseInputEventListener;
 import com.jfixby.telecam.ui.UserInputBar;
 import com.jfixby.telecam.ui.actions.TelecamUIAction;
 
-public class RedButton implements MouseEventListener, CollectionScanner<TouchArea> {
+public class RedButton implements MouseInputEventListener, CollectionScanner<TouchArea> {
 
 	private Layer root;
 	private CustomInput input;

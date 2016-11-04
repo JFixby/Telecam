@@ -7,14 +7,14 @@ import com.jfixby.cmns.api.util.JUtils;
 import com.jfixby.cmns.api.util.ProgressIndicator;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
-import com.jfixby.r3.api.ui.unit.update.OnUpdateListener;
 import com.jfixby.r3.api.ui.unit.update.UnitClocks;
+import com.jfixby.r3.api.ui.unit.user.UpdateListener;
 import com.jfixby.telecam.ui.input.vplay.VidepPlayPause;
 
-public class ProgressBar implements OnUpdateListener {
+public class ProgressBar implements UpdateListener {
 
 	private Layer root;
-	OnUpdateListener updater = this;
+	UpdateListener updater = this;
 
 	private Raster line;
 

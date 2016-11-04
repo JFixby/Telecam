@@ -7,14 +7,14 @@ import com.jfixby.cmns.api.geometry.Geometry;
 import com.jfixby.cmns.api.sys.Sys;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
-import com.jfixby.r3.api.ui.unit.update.OnUpdateListener;
 import com.jfixby.r3.api.ui.unit.update.UnitClocks;
+import com.jfixby.r3.api.ui.unit.user.UpdateListener;
 
-public class DotIndicator extends DotComponent implements OnUpdateListener {
+public class DotIndicator extends DotComponent implements UpdateListener {
 
 	private final FixedFloat2 leftOffset;
 	private final FixedFloat2 rightOffset;
-	OnUpdateListener animator = this;
+	UpdateListener animator = this;
 	private final CanvasPosition tmp;
 	private double componentWidth;
 
