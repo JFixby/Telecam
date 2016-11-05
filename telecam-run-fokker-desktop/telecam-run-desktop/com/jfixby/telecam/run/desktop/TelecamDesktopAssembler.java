@@ -29,8 +29,6 @@ import com.jfixby.r3.ext.text.red.RedTriplaneText;
 import com.jfixby.r3.fokker.api.FokkerEngineAssembler;
 import com.jfixby.r3.fokker.api.FokkerEngineParams;
 import com.jfixby.r3.fokker.api.UnitsSpawner;
-import com.jfixby.r3.fokker.api.assets.FokkerAtlasLoader;
-import com.jfixby.r3.fokker.api.assets.FokkerRasterDataRegister;
 import com.jfixby.r3.fokker.api.assets.FokkerTextureLoader;
 import com.jfixby.r3.fokker.backend.RedUnitSpawner;
 import com.jfixby.r3.ui.RedUIManager;
@@ -49,9 +47,7 @@ import com.jfixby.red.filesystem.virtual.InMemoryFileSystem;
 import com.jfixby.red.java.gc.RedGCFisher;
 import com.jfixby.red.triplane.resources.fsbased.FileSystemBasedResource;
 import com.jfixby.red.triplane.resources.fsbased.RedResourcesManager;
-import com.jfixby.redtriplane.fokker.assets.GdxAtlasReader;
-import com.jfixby.redtriplane.fokker.assets.GdxTextureReader;
-import com.jfixby.redtriplane.fokker.assets.RedFokkerRasterDataRegister;
+import com.jfixby.redtriplane.fokker.assets.RedFokkerTextureLoader;
 import com.jfixby.redtriplane.fokker.filesystem.assets.GdxFileSystem;
 import com.jfixby.redtriplane.fokker.fs.AssetsInfo;
 //import com.jfixby.telecam.game.TelecamTheGame;
@@ -82,12 +78,9 @@ public class TelecamDesktopAssembler implements FokkerEngineAssembler {
 		// cache_path = vfs;
 		LayerUtils.installComponent(new RedLayerUtils());
 		FileCache.installComponent(new RedFileCache());
-		FokkerRasterDataRegister.installComponent(new RedFokkerRasterDataRegister());
 
-		FokkerAtlasLoader.installComponent(new GdxAtlasReader());
-		FokkerTextureLoader.installComponent(new GdxTextureReader());
+		FokkerTextureLoader.installComponent(new RedFokkerTextureLoader());
 		AssetsManager.installComponent(new RedAssetsManager());
-		FokkerAtlasLoader.register();
 		FokkerTextureLoader.register();
 
 		ResourcesManager.registerPackageReader(Scene2D.getPackageReader());
