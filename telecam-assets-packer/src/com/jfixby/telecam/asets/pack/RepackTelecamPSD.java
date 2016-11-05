@@ -100,7 +100,7 @@ public class RepackTelecamPSD {
 
 				settings.setPadding(texturePadding);
 				settings.setForceRasterDecomposition(forceRasterDecomposition);
-				settings.setImageQuality(imageQuality);
+// settings.setImageQuality(imageQuality);
 
 				final PSDRepackerResult repackingResult = PSDRepacker.repackPSD(settings, status);
 
