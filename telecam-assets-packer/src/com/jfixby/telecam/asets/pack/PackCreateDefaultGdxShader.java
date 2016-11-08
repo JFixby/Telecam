@@ -77,7 +77,7 @@ public class PackCreateDefaultGdxShader {
 		return IO.deserialize(ShadersContainer.class, root_file.readBytes());
 	}
 
-	public static void pack () {
+	public static void pack () throws IOException {
 
 		final File bank = LocalFileSystem.ApplicationHome().parent().child("telecam-assets").child("content").child("bank-r3");
 		final File shaders = LocalFileSystem.ApplicationHome().child("shaders");

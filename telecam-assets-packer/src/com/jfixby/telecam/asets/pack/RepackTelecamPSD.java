@@ -1,6 +1,8 @@
 
 package com.jfixby.telecam.asets.pack;
 
+import java.io.IOException;
+
 import com.github.wrebecca.bleed.RebeccaTextureBleeder;
 import com.jfixby.cmns.adopted.gdx.json.RedJson;
 import com.jfixby.cmns.api.assets.AssetID;
@@ -30,7 +32,7 @@ import com.jfixby.tools.gdx.texturepacker.api.TexturePacker;
 public class RepackTelecamPSD {
 	private static boolean deleteGarbage = false;
 
-	public static void main (final String[] args) {
+	public static void main (final String[] args) throws IOException {
 		DesktopSetup.deploy();
 		PSDUnpacker.installComponent(new RedPSDUnpacker());
 		Json.installComponent(new RedJson());

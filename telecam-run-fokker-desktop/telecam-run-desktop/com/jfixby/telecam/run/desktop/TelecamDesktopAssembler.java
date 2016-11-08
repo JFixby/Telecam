@@ -60,7 +60,11 @@ public class TelecamDesktopAssembler implements FokkerEngineAssembler {
 
 		LocalFileSystem.installComponent(new WinFileSystem());
 
-		this.installResources();
+		try {
+			this.installResources();
+		} catch (final IOException e) {
+			e.printStackTrace();
+		}
 
 		Scene2D.installComponent(new RedScene2D());
 		R3Font.installComponent(new GdxR3Font());
@@ -125,7 +129,7 @@ public class TelecamDesktopAssembler implements FokkerEngineAssembler {
 // L.d("throw GC bait", bait_info);
 	}
 
-	private void installResources () {
+	private void installResources () throws IOException {
 		// File dev_assets_home =
 		// LocalFileSystem.newFile(TelecamAssetsConfig.PACKED_ASSETS_HOME);
 
@@ -170,7 +174,7 @@ public class TelecamDesktopAssembler implements FokkerEngineAssembler {
 		return dev_assets_home;
 	}
 
-	private void printAssetsInfo (final File dev_assets_home) {
+	private void printAssetsInfo (final File dev_assets_home) throws IOException {
 
 		final File assets_file = dev_assets_home.child(AssetsInfo.FILE_NAME);
 		// String super_file = fh.file().getAbsolutePath();
