@@ -45,7 +45,6 @@ import com.jfixby.red.filesystem.cache.RedFileCache;
 import com.jfixby.red.filesystem.sandbox.RedFileSystemSandBox;
 import com.jfixby.red.filesystem.virtual.InMemoryFileSystem;
 import com.jfixby.red.java.gc.RedGCFisher;
-import com.jfixby.red.triplane.resources.fsbased.FileSystemBasedResource;
 import com.jfixby.red.triplane.resources.fsbased.RedResourcesManager;
 import com.jfixby.redtriplane.fokker.assets.RedFokkerTextureLoader;
 import com.jfixby.redtriplane.fokker.filesystem.assets.GdxFileSystem;
@@ -146,18 +145,12 @@ public class TelecamDesktopAssembler implements FokkerEngineAssembler {
 		{
 			final File bank_folder = dev_assets_home.child("bank-telecam");
 
-			if (bank_folder.exists()) {
-				final FileSystemBasedResource resource = new FileSystemBasedResource(bank_folder);
-				res_manager.installResource(resource);
-			}
+			res_manager.findAndInstallResources(bank_folder);
 		}
 		{
 			final File bank_folder = dev_assets_home.child("bank-r3");
 
-			if (bank_folder.exists()) {
-				final FileSystemBasedResource resource = new FileSystemBasedResource(bank_folder);
-				res_manager.installResource(resource);
-			}
+			res_manager.findAndInstallResources(bank_folder);
 		}
 
 	}
