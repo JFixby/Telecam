@@ -16,8 +16,8 @@ import com.jfixby.cmns.api.log.L;
 import com.jfixby.r3.api.shader.srlz.R3_SHADER_SETTINGS;
 import com.jfixby.r3.api.shader.srlz.ShaderInfo;
 import com.jfixby.r3.api.shader.srlz.ShadersContainer;
+import com.jfixby.r3.engine.core.unit.raster.FOKKER_SYSTEM_ASSETS;
 import com.jfixby.red.desktop.DesktopSetup;
-import com.jfixby.red.engine.core.unit.raster.FOKKER_SYSTEM_ASSETS;
 
 public class CreateDefaultGdxShader {
 

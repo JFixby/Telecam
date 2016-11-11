@@ -29,6 +29,9 @@ import com.jfixby.cmns.api.sys.Sys;
 import com.jfixby.cmns.api.sys.settings.SystemSettings;
 import com.jfixby.cmns.api.taskman.TaskManager;
 import com.jfixby.cmns.api.util.JUtils;
+import com.jfixby.r3.engine.core.FokkerStarter;
+import com.jfixby.r3.engine.core.FokkerStarterConfig;
+import com.jfixby.r3.fokker.adaptor.GdxAdaptor;
 import com.jfixby.r3.fokker.api.FokkerEngineAssembler;
 import com.jfixby.r3.fokker.api.UnitsMachineExecutor;
 import com.jfixby.red.color.RedColors;
@@ -37,8 +40,6 @@ import com.jfixby.red.desktop.collections.DesktopCollections;
 import com.jfixby.red.desktop.log.DesktopLogger;
 import com.jfixby.red.desktop.math.DesktopFloatMath;
 import com.jfixby.red.desktop.sys.DesktopSystem;
-import com.jfixby.red.engine.core.FokkerStarter;
-import com.jfixby.red.engine.core.FokkerStarterConfig;
 import com.jfixby.red.err.RedError;
 import com.jfixby.red.geometry.RedGeometry;
 import com.jfixby.red.graphs.RedGraphs;
@@ -52,7 +53,6 @@ import com.jfixby.red.sys.RedSystemSettings;
 import com.jfixby.red.sys.RedTaskManager;
 import com.jfixby.red.util.RedJUtils;
 import com.jfixby.red.util.md5.RSADataSecurityIncMD5;
-import com.jfixby.redtriplane.fokker.adaptor.GdxAdaptor;
 
 public class RunTelecamDesktop {
 	public static void main (final String[] arg) {
