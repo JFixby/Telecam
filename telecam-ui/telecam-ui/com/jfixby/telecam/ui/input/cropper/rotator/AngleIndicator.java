@@ -33,13 +33,13 @@ public class AngleIndicator {
 		stringSpec.setFontScale(m);
 		stringSpec.setBorderSize(0f);
 		stringSpec.addRequiredCharacters(this.master.getFontSettings().getRequiredChars());
-		stringSpec.setColor(Colors.WHITE());
+		stringSpec.setFontColor(Colors.WHITE());
 
 // final RasterizedFont font = factory.newFont(font_specs);
 // stringSpec.setFont(font);
 
 		this.string = factory.newRasterString(stringSpec);
-		this.string.setValue("+44.99°");
+		this.string.setChars("+44.99°");
 		this.root.attachComponent(this.string);
 		this.string.setDebugRenderFlag(!true);
 		this.string.setOriginRelativeX(ORIGIN_RELATIVE_HORIZONTAL.CENTER);
@@ -57,14 +57,14 @@ public class AngleIndicator {
 	public void updateValue (final CustomAngle angle) {
 		final int degrees = (int)angle.toDegrees();
 		if (degrees == 0) {
-			this.string.setValue("");
+			this.string.setChars("");
 			return;
 		}
 		String value = degrees + "°";
 		if (degrees < 0) {
 			value = "-" + value;
 		}
-		this.string.setValue(value);
+		this.string.setChars(value);
 	}
 
 }

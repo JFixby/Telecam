@@ -40,14 +40,14 @@ public class VideoTimer {
 		stringSpec.setFontScale(m);
 		stringSpec.setBorderSize(0f);
 		stringSpec.addRequiredCharacters(this.master.getFontSettings().getRequiredChars());
-		stringSpec.setColor(Colors.WHITE());
+		stringSpec.setFontColor(Colors.WHITE());
 // stringSpec.setBorderColor(Colors.WHITE().mix(Colors.BLACK(), 0.1f));
 
 // final RasterizedFont font = factory.newFont(stringSpec);
 // stringSpec.setFont(font);
 
 		this.string = factory.newRasterString(stringSpec);
-		this.string.setValue("00:00");
+		this.string.setChars("00:00");
 		this.root.attachComponent(this.string);
 		this.string.setDebugRenderFlag(!true);
 		this.string.setOriginRelativeX(ORIGIN_RELATIVE_HORIZONTAL.CENTER);

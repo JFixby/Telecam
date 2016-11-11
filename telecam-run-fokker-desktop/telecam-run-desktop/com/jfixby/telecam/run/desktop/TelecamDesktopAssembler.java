@@ -24,10 +24,8 @@ import com.jfixby.r3.collide.RedCollisionsAlgebra;
 import com.jfixby.r3.engine.core.Fokker;
 import com.jfixby.r3.engine.core.unit.layers.RedLayerUtils;
 import com.jfixby.r3.engine.core.unit.shader.R3FokkerShader;
-import com.jfixby.r3.ext.api.font.R3Font;
 import com.jfixby.r3.ext.api.scene2d.Scene2D;
 import com.jfixby.r3.ext.api.text.R3Text;
-import com.jfixby.r3.ext.font.gdx.ft.GdxR3Font;
 import com.jfixby.r3.ext.text.red.RedTriplaneText;
 import com.jfixby.r3.fokker.api.FokkerEngineAssembler;
 import com.jfixby.r3.fokker.api.FokkerEngineParams;
@@ -66,7 +64,6 @@ public class TelecamDesktopAssembler implements FokkerEngineAssembler {
 		}
 
 		Scene2D.installComponent(new RedScene2D());
-		R3Font.installComponent(new GdxR3Font());
 		R3Text.installComponent(new RedTriplaneText());
 		R3Shader.installComponent(new R3FokkerShader());
 
@@ -87,7 +84,7 @@ public class TelecamDesktopAssembler implements FokkerEngineAssembler {
 		FokkerTextureLoader.register();
 
 		ResourcesManager.registerPackageReader(Scene2D.getPackageReader());
-		ResourcesManager.registerPackageReader(R3Font.getPackageReader());
+		ResourcesManager.registerPackageReader(R3Text.getTTFFontPackageReader());
 		ResourcesManager.registerPackageReader(R3Text.getStringsPackageReader());
 		ResourcesManager.registerPackageReader(R3Shader.getPackageReader());
 
@@ -111,7 +108,7 @@ public class TelecamDesktopAssembler implements FokkerEngineAssembler {
 		SystemSettings.setStringParameter(FokkerEngineParams.TextureFilter.Min, TextureFilter.Nearest + "");
 		SystemSettings.setFlag(RedTriplaneParams.DisableLogo, true);
 		SystemSettings.setFlag(AssetsManagerFlags.AutoresolveDependencies, true);
-		SystemSettings.setFlag(R3Font.RenderRasterStrings, true);
+		SystemSettings.setFlag(R3Text.RenderRasterStrings, true);
 		SystemSettings.setStringParameter(RedTriplaneParams.DefaultFont, "Arial");
 		SystemSettings.setLongParameter(RedTriplaneParams.DEFAULT_LOGO_FADE_TIME, 2000L);
 		SystemSettings.setStringParameter(RedTriplaneParams.CLEAR_SCREEN_COLOR_ARGB, "#00000000");
