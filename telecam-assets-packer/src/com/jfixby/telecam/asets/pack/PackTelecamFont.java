@@ -12,7 +12,7 @@ import com.jfixby.cmns.api.file.ChildrenList;
 import com.jfixby.cmns.api.file.File;
 import com.jfixby.cmns.api.file.LocalFileSystem;
 import com.jfixby.cmns.api.json.Json;
-import com.jfixby.r3.ext.api.font.FontPackage;
+import com.jfixby.r3.api.resources.StandardPackageFormats;
 import com.jfixby.red.desktop.DesktopSetup;
 import com.jfixby.red.engine.core.resources.PackageUtils;
 import com.jfixby.red.engine.core.resources.PackerSpecs;
@@ -57,7 +57,7 @@ public class PackTelecamFont {
 		specs.setRootFileName(target_file_name);
 		specs.setPackedAssets(packed);
 
-		specs.setPackageFormat(FontPackage.FONT_PACKAGE_FORMAT_TTF);
+		specs.setPackageFormat(StandardPackageFormats.libGDX.TTFFont);
 		specs.setVersion("1.0");
 
 		final List<AssetID> required = Collections.newList();
