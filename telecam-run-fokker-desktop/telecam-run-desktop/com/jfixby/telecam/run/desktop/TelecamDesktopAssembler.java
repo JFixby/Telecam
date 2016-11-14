@@ -34,6 +34,7 @@ import com.jfixby.r3.fokker.api.assets.FokkerTextureLoader;
 import com.jfixby.r3.fokker.assets.RedFokkerTextureLoader;
 import com.jfixby.r3.fokker.backend.RedUnitSpawner;
 import com.jfixby.r3.fokker.filesystem.assets.GdxFileSystem;
+import com.jfixby.r3.fokker.fs.AssetsInfo;
 import com.jfixby.r3.ui.RedUIManager;
 import com.jfixby.rana.api.asset.AssetsManager;
 import com.jfixby.rana.api.asset.AssetsManagerFlags;
@@ -46,7 +47,6 @@ import com.jfixby.red.filesystem.sandbox.RedFileSystemSandBox;
 import com.jfixby.red.filesystem.virtual.InMemoryFileSystem;
 import com.jfixby.red.java.gc.RedGCFisher;
 import com.jfixby.red.triplane.resources.fsbased.RedResourcesManager;
-import com.jfixby.redtriplane.fokker.fs.AssetsInfo;
 //import com.jfixby.telecam.game.TelecamTheGame;
 import com.jfixby.telecam.game.TelecamCore;
 
