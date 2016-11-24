@@ -14,7 +14,9 @@ import com.jfixby.cmns.api.sys.Sys;
 import com.jfixby.cmns.api.sys.settings.ExecutionMode;
 import com.jfixby.cmns.api.sys.settings.SystemSettings;
 import com.jfixby.r3.api.RedTriplane;
-import com.jfixby.r3.api.RedTriplaneParams;
+import com.jfixby.r3.api.EngineParams;
+import com.jfixby.r3.api.EngineParams.Assets;
+import com.jfixby.r3.api.EngineParams.Settings;
 import com.jfixby.r3.api.logic.BusinessLogic;
 import com.jfixby.r3.api.shader.R3Shader;
 import com.jfixby.r3.api.ui.UI;
@@ -97,21 +99,21 @@ public class TelecamDesktopAssembler implements FokkerEngineAssembler {
 		RedTriplane.installComponent(new Fokker());
 
 		SystemSettings.setExecutionMode(ExecutionMode.EARLY_DEVELOPMENT);
-		SystemSettings.setFlag(RedTriplaneParams.PrintLogMessageOnMissingSprite, true);
-		SystemSettings.setFlag(RedTriplaneParams.ExitOnMissingSprite, false);
-		SystemSettings.setFlag(RedTriplaneParams.AllowMissingRaster, true);
+		SystemSettings.setFlag(Settings.PrintLogMessageOnMissingSprite, true);
+		SystemSettings.setFlag(Settings.ExitOnMissingSprite, false);
+		SystemSettings.setFlag(Settings.AllowMissingRaster, true);
 		SystemSettings.setFlag(AssetsManager.UseAssetSandBox, false);
 
 		SystemSettings.setFlag(AssetsManager.ReportUnusedAssets, false);
-		SystemSettings.setFlag(RedTriplaneParams.DisableLogo, true);
+		SystemSettings.setFlag(Settings.DisableLogo, true);
 		SystemSettings.setStringParameter(FokkerEngineParams.TextureFilter.Mag, TextureFilter.Nearest + "");
 		SystemSettings.setStringParameter(FokkerEngineParams.TextureFilter.Min, TextureFilter.Nearest + "");
-		SystemSettings.setFlag(RedTriplaneParams.DisableLogo, true);
+		SystemSettings.setFlag(Settings.DisableLogo, true);
 		SystemSettings.setFlag(AssetsManagerFlags.AutoresolveDependencies, true);
 		SystemSettings.setFlag(R3Text.RenderRasterStrings, true);
-		SystemSettings.setStringParameter(RedTriplaneParams.DefaultFont, "Arial");
-		SystemSettings.setLongParameter(RedTriplaneParams.DEFAULT_LOGO_FADE_TIME, 2000L);
-		SystemSettings.setStringParameter(RedTriplaneParams.CLEAR_SCREEN_COLOR_ARGB, "#00000000");
+		SystemSettings.setStringParameter(Assets.DefaultFont, "Arial");
+		SystemSettings.setLongParameter(Assets.DEFAULT_LOGO_FADE_TIME, 2000L);
+		SystemSettings.setStringParameter(Assets.CLEAR_SCREEN_COLOR_ARGB, "#00000000");
 		SystemSettings.setLongParameter(GCFisher.DefaultBaitSize, 1 * 1024 * 1024);
 
 		UnitsSpawner.installComponent(new RedUnitSpawner());
@@ -131,7 +133,7 @@ public class TelecamDesktopAssembler implements FokkerEngineAssembler {
 
 		final File dev_assets_home = LocalFileSystem.ApplicationHome().parent().child("telecam-assets").child("content");
 
-		SystemSettings.setStringParameter(RedTriplaneParams.ASSET_INFO_TAG, "" + dev_assets_home);
+		SystemSettings.setStringParameter(Assets.ASSET_INFO_TAG, "" + dev_assets_home);
 		this.printAssetsInfo(dev_assets_home);
 
 		final RedResourcesManager res_manager = new RedResourcesManager();
@@ -181,7 +183,7 @@ public class TelecamDesktopAssembler implements FokkerEngineAssembler {
 			return;
 		}
 
-		SystemSettings.setStringParameter(RedTriplaneParams.ASSET_INFO_TAG, info.toString());
+		SystemSettings.setStringParameter(EngineParams.Assets.ASSET_INFO_TAG, info.toString());
 
 		info.print();
 	}
