@@ -1,7 +1,7 @@
 
 package com.jfixby.telecam.ui;
 
-import com.jfixby.cmns.api.assets.AssetID;
+import com.jfixby.cmns.api.assets.ID;
 import com.jfixby.cmns.api.assets.Names;
 import com.jfixby.cmns.api.floatn.FixedFloat2;
 import com.jfixby.cmns.api.geometry.Geometry;
@@ -30,7 +30,7 @@ public class TelecamUnit extends DefaultUnit implements TelecamUI, InputManager,
 	private UnitManager unitManager;
 	private RootLayer root;
 	private Scene scene;
-	public static final AssetID scene_asset_id = Names.newAssetID("com.jfixby.telecam.scene-base.psd");
+	public static final ID scene_asset_id = Names.newAssetID("com.jfixby.telecam.scene-base.psd");
 	public static final long ANIMATION_DELTA = 150;
 	final AnimationsMachine animations_machine = UI.newAnimationsMachine();
 	private Layer userPanelLayer;

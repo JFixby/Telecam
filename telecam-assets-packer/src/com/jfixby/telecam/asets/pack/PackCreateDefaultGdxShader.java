@@ -4,7 +4,7 @@ package com.jfixby.telecam.asets.pack;
 import java.io.IOException;
 
 import com.jfixby.cmns.adopted.gdx.json.RedJson;
-import com.jfixby.cmns.api.assets.AssetID;
+import com.jfixby.cmns.api.assets.ID;
 import com.jfixby.cmns.api.assets.Names;
 import com.jfixby.cmns.api.collections.Collections;
 import com.jfixby.cmns.api.collections.List;
@@ -43,7 +43,7 @@ public class PackCreateDefaultGdxShader {
 
 	private static void packShader (final File bank, final File folder) throws IOException {
 		final String id_string = folder.getName();
-		final AssetID asset = Names.newAssetID(id_string);
+		final ID asset = Names.newAssetID(id_string);
 		final File asset_folder = bank.child(id_string);
 
 		final PackerSpecs specs = new PackerSpecs();
@@ -55,16 +55,16 @@ public class PackCreateDefaultGdxShader {
 		specs.setRootFileName(R3_SHADER_SETTINGS.ROOT_FILE_NAME);
 
 		final File root_file = folder.child(specs.getRootFileName());
-		final List<AssetID> packed = Collections.newList();
+		final List<ID> packed = Collections.newList();
 		final ShadersContainer container = readInfo(root_file);
 		for (final ShaderInfo shader : container.shaders) {
-			final AssetID id_i = Names.newAssetID(shader.shader_id);
+			final ID id_i = Names.newAssetID(shader.shader_id);
 			packed.add(id_i);
 		}
 
 		specs.setPackedAssets(packed);
 
-		final List<AssetID> required = Collections.newList();
+		final List<ID> required = Collections.newList();
 		specs.setRequiredAssets(required);
 
 		specs.setPackageFormat(StandardPackageFormats.RedTriplane.Shader);

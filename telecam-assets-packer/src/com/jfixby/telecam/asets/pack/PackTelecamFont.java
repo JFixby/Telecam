@@ -4,7 +4,7 @@ package com.jfixby.telecam.asets.pack;
 import java.io.IOException;
 
 import com.jfixby.cmns.adopted.gdx.json.RedJson;
-import com.jfixby.cmns.api.assets.AssetID;
+import com.jfixby.cmns.api.assets.ID;
 import com.jfixby.cmns.api.assets.Names;
 import com.jfixby.cmns.api.collections.Collections;
 import com.jfixby.cmns.api.collections.List;
@@ -50,9 +50,9 @@ public class PackTelecamFont {
 		final ChildrenList files = input_font_folder.listDirectChildren();
 		specs.addPackedFiles(files);
 
-		final AssetID package_name = Names.newAssetID(package_name_string);
-		final AssetID font_name = package_name.child(font_file.nameWithoutExtension());
-		final List<AssetID> packed = Collections.newList();
+		final ID package_name = Names.newAssetID(package_name_string);
+		final ID font_name = package_name.child(font_file.nameWithoutExtension());
+		final List<ID> packed = Collections.newList();
 		packed.add(font_name);
 		specs.setRootFileName(target_file_name);
 		specs.setPackedAssets(packed);
@@ -60,7 +60,7 @@ public class PackTelecamFont {
 		specs.setPackageFormat(StandardPackageFormats.libGDX.TTFFont);
 		specs.setVersion("1.0");
 
-		final List<AssetID> required = Collections.newList();
+		final List<ID> required = Collections.newList();
 		specs.setRequiredAssets(required);
 
 		PackageUtils.pack(specs);

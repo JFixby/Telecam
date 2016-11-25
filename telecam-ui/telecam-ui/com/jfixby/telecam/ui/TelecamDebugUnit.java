@@ -1,7 +1,7 @@
 
 package com.jfixby.telecam.ui;
 
-import com.jfixby.cmns.api.assets.AssetID;
+import com.jfixby.cmns.api.assets.ID;
 import com.jfixby.cmns.api.assets.Names;
 import com.jfixby.cmns.api.floatn.FixedFloat2;
 import com.jfixby.cmns.api.geometry.Geometry;
@@ -21,7 +21,7 @@ import com.jfixby.r3.api.ui.unit.raster.Raster;
 public class TelecamDebugUnit extends DefaultUnit implements InputManager, ScreenChangeListener {
 	private UnitManager unitManager;
 	private RootLayer root_layer;
-	public static final AssetID scene_asset_id = Names.newAssetID("com.jfixby.telecam.scene-base.psd");
+	public static final ID scene_asset_id = Names.newAssetID("com.jfixby.telecam.scene-base.psd");
 	final AnimationsMachine animations_machine = UI.newAnimationsMachine();
 	private final ScreenChangeListener screenChangeListener = this;
 	Rectangle screenDimentions = Geometry.newRectangle();
@@ -38,7 +38,7 @@ public class TelecamDebugUnit extends DefaultUnit implements InputManager, Scree
 
 		this.root_layer.attachComponent(this.screenChangeListener);
 
-		final AssetID asset_id = Names.newAssetID("com.jfixby.r3.fokker.render.raster_is_missing");
+		final ID asset_id = Names.newAssetID("com.jfixby.r3.fokker.render.raster_is_missing");
 		final Raster raster = components_factory.getRasterDepartment().newRaster(asset_id);
 		this.root_layer.attachComponent(raster);
 		raster.setSize(300, 300);

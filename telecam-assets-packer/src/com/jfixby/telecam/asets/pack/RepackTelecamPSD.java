@@ -5,7 +5,7 @@ import java.io.IOException;
 
 import com.github.wrebecca.bleed.RebeccaTextureBleeder;
 import com.jfixby.cmns.adopted.gdx.json.RedJson;
-import com.jfixby.cmns.api.assets.AssetID;
+import com.jfixby.cmns.api.assets.ID;
 import com.jfixby.cmns.api.assets.Names;
 import com.jfixby.cmns.api.collections.Collection;
 import com.jfixby.cmns.api.file.ChildrenList;
@@ -69,7 +69,7 @@ public class RepackTelecamPSD {
 			String package_name_string = prefix + psd_file.getName().replaceAll(" animated", "").replaceAll("border ", "scene-");
 			package_name_string = package_name_string.substring(0, package_name_string.length() - ".psd".length());
 
-			final AssetID package_name = Names.newAssetID(package_name_string);
+			final ID package_name = Names.newAssetID(package_name_string);
 
 			final int max_texture_size = (256);
 			final int margin = 0;

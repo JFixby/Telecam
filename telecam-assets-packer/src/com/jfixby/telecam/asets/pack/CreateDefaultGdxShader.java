@@ -5,7 +5,7 @@ import java.io.IOException;
 
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
 import com.jfixby.cmns.adopted.gdx.json.RedJson;
-import com.jfixby.cmns.api.assets.AssetID;
+import com.jfixby.cmns.api.assets.ID;
 import com.jfixby.cmns.api.file.File;
 import com.jfixby.cmns.api.file.LocalFileSystem;
 import com.jfixby.cmns.api.io.IO;
@@ -86,7 +86,7 @@ public class CreateDefaultGdxShader {
 
 	private static void add (final String name, final ShadersContainer container) {
 		final ShaderInfo info = new ShaderInfo();
-		final AssetID shader_id = FOKKER_SYSTEM_ASSETS.SHADER_GDX_DEFAULT;
+		final ID shader_id = FOKKER_SYSTEM_ASSETS.SHADER_GDX_DEFAULT;
 		info.shader_id = shader_id.toString();
 		info.shader_folder_name = name;
 		container.shaders.add(info);

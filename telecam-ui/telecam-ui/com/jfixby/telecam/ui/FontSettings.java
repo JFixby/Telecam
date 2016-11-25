@@ -1,13 +1,13 @@
 
 package com.jfixby.telecam.ui;
 
-import com.jfixby.cmns.api.assets.AssetID;
+import com.jfixby.cmns.api.assets.ID;
 import com.jfixby.cmns.api.assets.Names;
 
 public class FontSettings {
-	private final AssetID font_id = Names.newAssetID("otf.Arcon-Rounded-Regular.Arcon-Rounded-Regular");
+	private final ID font_id = Names.newAssetID("otf.Arcon-Rounded-Regular.Arcon-Rounded-Regular");
 
-	public AssetID getName () {
+	public ID getName () {
 		return this.font_id;
 	}
 
