@@ -162,7 +162,7 @@ public class Slider implements MouseInputEventListener, CollectionScanner<TouchA
 	}
 
 	@Override
-	public void scanElement (final TouchArea element, final int index) {
+	public void scanElement (final TouchArea element, final long index) {
 		element.shape().setPosition(this.position);
 		element.shape().setPositionY(this.screen.getHeight() - this.baseOffset.getY());
 

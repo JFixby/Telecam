@@ -95,7 +95,7 @@ public class SwitchFlashButton implements MouseInputEventListener, CollectionSca
 	}
 
 	@Override
-	public void scanElement (final TouchArea element, final int index) {
+	public void scanElement (final TouchArea element, final long index) {
 		element.shape().setPositionX(this.screen.getWidth() - this.baseOffset.getX());
 	}
 

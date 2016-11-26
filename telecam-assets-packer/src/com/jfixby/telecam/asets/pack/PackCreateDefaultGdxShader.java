@@ -43,7 +43,7 @@ public class PackCreateDefaultGdxShader {
 
 	private static void packShader (final File bank, final File folder) throws IOException {
 		final String id_string = folder.getName();
-		final ID asset = Names.newAssetID(id_string);
+		final ID asset = Names.newID(id_string);
 		final File asset_folder = bank.child(id_string);
 
 		final PackerSpecs specs = new PackerSpecs();
@@ -58,7 +58,7 @@ public class PackCreateDefaultGdxShader {
 		final List<ID> packed = Collections.newList();
 		final ShadersContainer container = readInfo(root_file);
 		for (final ShaderInfo shader : container.shaders) {
-			final ID id_i = Names.newAssetID(shader.shader_id);
+			final ID id_i = Names.newID(shader.shader_id);
 			packed.add(id_i);
 		}
 

@@ -98,7 +98,7 @@ public class VidepPlayPause implements MouseInputEventListener, CollectionScanne
 	}
 
 	@Override
-	public void scanElement (final TouchArea element, final int index) {
+	public void scanElement (final TouchArea element, final long index) {
 		element.shape().setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
 		element.shape().setPosition(this.position);
 

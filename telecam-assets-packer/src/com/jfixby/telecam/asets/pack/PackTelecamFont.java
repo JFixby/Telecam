@@ -50,7 +50,7 @@ public class PackTelecamFont {
 		final ChildrenList files = input_font_folder.listDirectChildren();
 		specs.addPackedFiles(files);
 
-		final ID package_name = Names.newAssetID(package_name_string);
+		final ID package_name = Names.newID(package_name_string);
 		final ID font_name = package_name.child(font_file.nameWithoutExtension());
 		final List<ID> packed = Collections.newList();
 		packed.add(font_name);

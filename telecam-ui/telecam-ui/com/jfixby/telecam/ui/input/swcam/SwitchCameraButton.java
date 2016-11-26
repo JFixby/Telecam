@@ -103,7 +103,7 @@ public class SwitchCameraButton implements MouseInputEventListener, CollectionSc
 	}
 
 	@Override
-	public void scanElement (final TouchArea element, final int index) {
+	public void scanElement (final TouchArea element, final long index) {
 		element.shape().setOriginRelative(ORIGIN_RELATIVE_HORIZONTAL.CENTER, ORIGIN_RELATIVE_VERTICAL.CENTER);
 		element.shape().setPosition(this.position);
 		element.shape().setPositionX(this.position.getX() / 2d);
