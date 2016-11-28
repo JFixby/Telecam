@@ -24,5 +24,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/gdx-backend-headless"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/telecam-core"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/gdx-backend-lwjgl"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/jfixby-cmns-api-desktop"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
