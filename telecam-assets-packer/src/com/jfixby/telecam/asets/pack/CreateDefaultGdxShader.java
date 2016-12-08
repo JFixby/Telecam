@@ -4,8 +4,8 @@ package com.jfixby.telecam.asets.pack;
 import java.io.IOException;
 
 import com.badlogic.gdx.graphics.glutils.ShaderProgram;
-import com.jfixby.cmns.adopted.gdx.json.RedJson;
 import com.jfixby.cmns.api.assets.ID;
+import com.jfixby.cmns.api.desktop.DesktopSetup;
 import com.jfixby.cmns.api.file.File;
 import com.jfixby.cmns.api.file.LocalFileSystem;
 import com.jfixby.cmns.api.io.IO;
@@ -17,7 +17,6 @@ import com.jfixby.r3.api.shader.srlz.R3_SHADER_SETTINGS;
 import com.jfixby.r3.api.shader.srlz.ShaderInfo;
 import com.jfixby.r3.api.shader.srlz.ShadersContainer;
 import com.jfixby.r3.engine.core.unit.raster.FOKKER_SYSTEM_ASSETS;
-import com.jfixby.red.desktop.DesktopSetup;
 
 public class CreateDefaultGdxShader {
 
@@ -51,7 +50,7 @@ public class CreateDefaultGdxShader {
 
 	public static void main (final String[] args) throws IOException {
 		DesktopSetup.deploy();
-		Json.installComponent(new RedJson());
+		Json.installComponent("com.jfixby.cmns.adopted.gdx.json.RedJson");
 		L.d("creating shader", FOKKER_SYSTEM_ASSETS.SHADER_GDX_DEFAULT);
 		final File output_folder = LocalFileSystem.ApplicationHome().child("shaders")
 			.child("" + FOKKER_SYSTEM_ASSETS.SHADER_GDX_DEFAULT.parent());
