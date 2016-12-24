@@ -1,13 +1,6 @@
 
 package com.jfixby.telecam.ui.input.red;
 
-import com.jfixby.cmns.api.collections.Collection;
-import com.jfixby.cmns.api.collections.CollectionScanner;
-import com.jfixby.cmns.api.collections.Collections;
-import com.jfixby.cmns.api.geometry.CanvasPosition;
-import com.jfixby.cmns.api.geometry.Geometry;
-import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_HORIZONTAL;
-import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_VERTICAL;
 import com.jfixby.r3.api.ui.unit.input.CustomInput;
 import com.jfixby.r3.api.ui.unit.input.MouseMovedEvent;
 import com.jfixby.r3.api.ui.unit.input.TouchArea;
@@ -17,6 +10,13 @@ import com.jfixby.r3.api.ui.unit.input.TouchUpEvent;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
 import com.jfixby.r3.api.ui.unit.user.MouseInputEventListener;
+import com.jfixby.scarabei.api.collections.Collection;
+import com.jfixby.scarabei.api.collections.CollectionScanner;
+import com.jfixby.scarabei.api.collections.Collections;
+import com.jfixby.scarabei.api.geometry.CanvasPosition;
+import com.jfixby.scarabei.api.geometry.Geometry;
+import com.jfixby.scarabei.api.geometry.ORIGIN_RELATIVE_HORIZONTAL;
+import com.jfixby.scarabei.api.geometry.ORIGIN_RELATIVE_VERTICAL;
 import com.jfixby.telecam.ui.UserInputBar;
 import com.jfixby.telecam.ui.actions.TelecamUIAction;
 

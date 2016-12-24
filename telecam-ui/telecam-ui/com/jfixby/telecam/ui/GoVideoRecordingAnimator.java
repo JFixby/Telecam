@@ -1,11 +1,11 @@
 
 package com.jfixby.telecam.ui;
 
-import com.jfixby.cmns.api.sys.Sys;
 import com.jfixby.r3.api.ui.unit.animation.OnAnimationDoneListener;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.update.UnitClocks;
 import com.jfixby.r3.api.ui.unit.user.UpdateListener;
+import com.jfixby.scarabei.api.sys.Sys;
 import com.jfixby.telecam.ui.input.red.RedButton;
 
 public class GoVideoRecordingAnimator implements UpdateListener {

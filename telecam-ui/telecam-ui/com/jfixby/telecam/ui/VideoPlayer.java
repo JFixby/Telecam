@@ -1,12 +1,12 @@
 
 package com.jfixby.telecam.ui;
 
-import com.jfixby.cmns.api.sys.Sys;
-import com.jfixby.cmns.api.taskman.Job;
-import com.jfixby.cmns.api.taskman.Task;
-import com.jfixby.cmns.api.taskman.TaskManager;
-import com.jfixby.cmns.api.util.JUtils;
-import com.jfixby.cmns.api.util.StateSwitcher;
+import com.jfixby.scarabei.api.sys.Sys;
+import com.jfixby.scarabei.api.taskman.Job;
+import com.jfixby.scarabei.api.taskman.Task;
+import com.jfixby.scarabei.api.taskman.TaskManager;
+import com.jfixby.scarabei.api.util.JUtils;
+import com.jfixby.scarabei.api.util.StateSwitcher;
 
 public class VideoPlayer {
 	private final StateSwitcher<VideoPlayerState> state;

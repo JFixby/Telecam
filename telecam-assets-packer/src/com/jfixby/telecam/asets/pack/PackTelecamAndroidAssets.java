@@ -3,15 +3,15 @@ package com.jfixby.telecam.asets.pack;
 
 import java.io.IOException;
 
-import com.jfixby.cmns.adopted.gdx.json.RedJson;
-import com.jfixby.cmns.api.desktop.DesktopSetup;
-import com.jfixby.cmns.api.file.File;
-import com.jfixby.cmns.api.file.LocalFileSystem;
-import com.jfixby.cmns.api.io.IO;
-import com.jfixby.cmns.api.java.ByteArray;
-import com.jfixby.cmns.api.json.Json;
 import com.jfixby.r3.fokker.fs.AssetsInfo;
 import com.jfixby.r3.fokker.fs.GdxAssetsFileSystemPacker;
+import com.jfixby.scarabei.adopted.gdx.json.RedJson;
+import com.jfixby.scarabei.api.desktop.DesktopSetup;
+import com.jfixby.scarabei.api.file.File;
+import com.jfixby.scarabei.api.file.LocalFileSystem;
+import com.jfixby.scarabei.api.io.IO;
+import com.jfixby.scarabei.api.java.ByteArray;
+import com.jfixby.scarabei.api.json.Json;
 import com.jfixby.tools.gdx.texturepacker.api.indexed.IndexedCompressor;
 import com.jfixby.tools.texturepacker.red.indexed.RedIndexedCompressor;
 

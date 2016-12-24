@@ -1,12 +1,12 @@
 
 package com.jfixby.telecam.ui.input.swcam;
 
-import com.jfixby.cmns.api.sys.Sys;
 import com.jfixby.r3.api.ui.unit.animation.OnAnimationDoneListener;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
 import com.jfixby.r3.api.ui.unit.update.UnitClocks;
 import com.jfixby.r3.api.ui.unit.user.UpdateListener;
+import com.jfixby.scarabei.api.sys.Sys;
 import com.jfixby.telecam.ui.TelecamUnit;
 
 public class SwitchCamButtonAnimator implements UpdateListener {

@@ -1,9 +1,9 @@
 
 package com.jfixby.telecam.ui.input.red;
 
-import com.jfixby.cmns.api.floatn.FixedFloat2;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
+import com.jfixby.scarabei.api.floatn.FixedFloat2;
 
 public class Brigde extends RasterOffsetComponent {
 

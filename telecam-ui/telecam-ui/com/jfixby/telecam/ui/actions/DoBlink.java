@@ -1,7 +1,7 @@
 
 package com.jfixby.telecam.ui.actions;
 
-import com.jfixby.cmns.api.sys.Sys;
+import com.jfixby.scarabei.api.sys.Sys;
 import com.jfixby.telecam.ui.TelecamUnit;
 
 public class DoBlink extends TelecamUIAction {

@@ -1,7 +1,7 @@
 package com.jfixby.telecam.run.fokker;
 
-import com.jfixby.cmns.api.json.Json;
-import com.jfixby.cmns.api.log.L;
+import com.jfixby.scarabei.api.json.Json;
+import com.jfixby.scarabei.api.log.L;
 
 public class JsonTest {
 

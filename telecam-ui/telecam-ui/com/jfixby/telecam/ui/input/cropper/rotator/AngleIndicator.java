@@ -1,15 +1,15 @@
 
 package com.jfixby.telecam.ui.input.cropper.rotator;
 
-import com.jfixby.cmns.api.color.Colors;
-import com.jfixby.cmns.api.geometry.CanvasPosition;
-import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_HORIZONTAL;
-import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_VERTICAL;
-import com.jfixby.cmns.api.math.CustomAngle;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.txt.RasterizedString;
 import com.jfixby.r3.api.ui.unit.txt.RasterizedStringSpecs;
 import com.jfixby.r3.api.ui.unit.txt.TextFactory;
+import com.jfixby.scarabei.api.color.Colors;
+import com.jfixby.scarabei.api.geometry.CanvasPosition;
+import com.jfixby.scarabei.api.geometry.ORIGIN_RELATIVE_HORIZONTAL;
+import com.jfixby.scarabei.api.geometry.ORIGIN_RELATIVE_VERTICAL;
+import com.jfixby.scarabei.api.math.CustomAngle;
 
 public class AngleIndicator {
 

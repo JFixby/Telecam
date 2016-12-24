@@ -1,14 +1,14 @@
 
 package com.jfixby.telecam.ui.input.accept;
 
-import com.jfixby.cmns.api.geometry.CanvasPosition;
-import com.jfixby.cmns.api.geometry.Rectangle;
-import com.jfixby.cmns.api.sys.Sys;
 import com.jfixby.r3.api.ui.UIAction;
 import com.jfixby.r3.api.ui.unit.animation.OnAnimationDoneListener;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.update.UnitClocks;
 import com.jfixby.r3.api.ui.unit.user.UpdateListener;
+import com.jfixby.scarabei.api.geometry.CanvasPosition;
+import com.jfixby.scarabei.api.geometry.Rectangle;
+import com.jfixby.scarabei.api.sys.Sys;
 import com.jfixby.telecam.ui.TelecamUnit;
 import com.jfixby.telecam.ui.UserInputBar;
 

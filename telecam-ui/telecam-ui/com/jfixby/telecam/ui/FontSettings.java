@@ -1,8 +1,8 @@
 
 package com.jfixby.telecam.ui;
 
-import com.jfixby.cmns.api.assets.ID;
-import com.jfixby.cmns.api.assets.Names;
+import com.jfixby.scarabei.api.assets.ID;
+import com.jfixby.scarabei.api.assets.Names;
 
 public class FontSettings {
 	private final ID font_id = Names.newID("otf.Arcon-Rounded-Regular.Arcon-Rounded-Regular");

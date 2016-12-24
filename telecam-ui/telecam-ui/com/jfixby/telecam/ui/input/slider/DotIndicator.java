@@ -1,14 +1,14 @@
 
 package com.jfixby.telecam.ui.input.slider;
 
-import com.jfixby.cmns.api.floatn.FixedFloat2;
-import com.jfixby.cmns.api.geometry.CanvasPosition;
-import com.jfixby.cmns.api.geometry.Geometry;
-import com.jfixby.cmns.api.sys.Sys;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
 import com.jfixby.r3.api.ui.unit.update.UnitClocks;
 import com.jfixby.r3.api.ui.unit.user.UpdateListener;
+import com.jfixby.scarabei.api.floatn.FixedFloat2;
+import com.jfixby.scarabei.api.geometry.CanvasPosition;
+import com.jfixby.scarabei.api.geometry.Geometry;
+import com.jfixby.scarabei.api.sys.Sys;
 
 public class DotIndicator extends DotComponent implements UpdateListener {
 

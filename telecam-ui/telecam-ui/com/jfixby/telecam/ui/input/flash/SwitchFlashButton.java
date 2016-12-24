@@ -1,12 +1,6 @@
 
 package com.jfixby.telecam.ui.input.flash;
 
-import com.jfixby.cmns.api.collections.Collection;
-import com.jfixby.cmns.api.collections.CollectionScanner;
-import com.jfixby.cmns.api.floatn.FixedFloat2;
-import com.jfixby.cmns.api.geometry.CanvasPosition;
-import com.jfixby.cmns.api.geometry.Geometry;
-import com.jfixby.cmns.api.geometry.Rectangle;
 import com.jfixby.r3.api.ui.UI;
 import com.jfixby.r3.api.ui.unit.animation.OnAnimationDoneListener;
 import com.jfixby.r3.api.ui.unit.input.CustomInput;
@@ -18,6 +12,12 @@ import com.jfixby.r3.api.ui.unit.input.TouchUpEvent;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
 import com.jfixby.r3.api.ui.unit.user.MouseInputEventListener;
+import com.jfixby.scarabei.api.collections.Collection;
+import com.jfixby.scarabei.api.collections.CollectionScanner;
+import com.jfixby.scarabei.api.floatn.FixedFloat2;
+import com.jfixby.scarabei.api.geometry.CanvasPosition;
+import com.jfixby.scarabei.api.geometry.Geometry;
+import com.jfixby.scarabei.api.geometry.Rectangle;
 import com.jfixby.telecam.ui.UserInputBar;
 import com.jfixby.telecam.ui.actions.TelecamUIAction;
 

@@ -1,10 +1,10 @@
 
 package com.jfixby.telecam.ui.input.cropper.tool;
 
-import com.jfixby.cmns.api.math.MathTools;
-import com.jfixby.cmns.api.math.VectorTool;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
+import com.jfixby.scarabei.api.math.MathTools;
+import com.jfixby.scarabei.api.math.VectorTool;
 
 public class CropperElement {
 

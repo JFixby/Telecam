@@ -1,10 +1,10 @@
 
 package com.jfixby.telecam.ui.input.slider;
 
-import com.jfixby.cmns.api.geometry.CanvasPosition;
-import com.jfixby.cmns.api.geometry.Rectangle;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
+import com.jfixby.scarabei.api.geometry.CanvasPosition;
+import com.jfixby.scarabei.api.geometry.Rectangle;
 import com.jfixby.telecam.ui.BackgroundGray;
 
 public class DotWorm extends DotComponent {

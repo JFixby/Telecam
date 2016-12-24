@@ -1,12 +1,6 @@
 
 package com.jfixby.telecam.ui;
 
-import com.jfixby.cmns.api.assets.ID;
-import com.jfixby.cmns.api.assets.Names;
-import com.jfixby.cmns.api.floatn.FixedFloat2;
-import com.jfixby.cmns.api.geometry.Geometry;
-import com.jfixby.cmns.api.geometry.Rectangle;
-import com.jfixby.cmns.api.log.L;
 import com.jfixby.r3.api.ui.AnimationsMachine;
 import com.jfixby.r3.api.ui.InputManager;
 import com.jfixby.r3.api.ui.UI;
@@ -23,6 +17,12 @@ import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.ext.api.scene2d.Scene;
 import com.jfixby.r3.ext.api.scene2d.Scene2D;
 import com.jfixby.r3.ext.api.scene2d.Scene2DSpawningConfig;
+import com.jfixby.scarabei.api.assets.ID;
+import com.jfixby.scarabei.api.assets.Names;
+import com.jfixby.scarabei.api.floatn.FixedFloat2;
+import com.jfixby.scarabei.api.geometry.Geometry;
+import com.jfixby.scarabei.api.geometry.Rectangle;
+import com.jfixby.scarabei.api.log.L;
 import com.jfixby.telecam.api.TelecamUI;
 import com.jfixby.telecam.ui.actions.TelecamUIAction;
 

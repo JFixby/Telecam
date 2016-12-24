@@ -1,10 +1,10 @@
 
 package com.jfixby.telecam.ui.input.slider;
 
-import com.jfixby.cmns.api.sys.Sys;
 import com.jfixby.r3.api.ui.unit.animation.OnAnimationDoneListener;
 import com.jfixby.r3.api.ui.unit.update.UnitClocks;
 import com.jfixby.r3.api.ui.unit.user.UpdateListener;
+import com.jfixby.scarabei.api.sys.Sys;
 import com.jfixby.telecam.ui.BackgroundGray;
 import com.jfixby.telecam.ui.TelecamUnit;
 import com.jfixby.telecam.ui.input.blue.BlueButton;

@@ -1,12 +1,12 @@
 
 package com.jfixby.telecam.ui.input.cropper;
 
-import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_HORIZONTAL;
-import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_VERTICAL;
-import com.jfixby.cmns.api.geometry.Rectangle;
 import com.jfixby.r3.api.ui.unit.input.CustomInput;
 import com.jfixby.r3.api.ui.unit.input.TouchArea;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
+import com.jfixby.scarabei.api.geometry.ORIGIN_RELATIVE_HORIZONTAL;
+import com.jfixby.scarabei.api.geometry.ORIGIN_RELATIVE_VERTICAL;
+import com.jfixby.scarabei.api.geometry.Rectangle;
 
 public class CropperButtonRotate {
 

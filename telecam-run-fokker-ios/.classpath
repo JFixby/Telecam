@@ -10,8 +10,8 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/telecam-api"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/telecam-ui"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/telecam-run-fokker"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/jfixby-cmns-api"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/jfixby-cmns-red"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/scarabei-api"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/scarabei-red"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/rana-api"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/rana-asset-red"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/red-triplane-fonts-api"/>

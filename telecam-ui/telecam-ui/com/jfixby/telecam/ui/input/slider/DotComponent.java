@@ -1,14 +1,14 @@
 
 package com.jfixby.telecam.ui.input.slider;
 
-import com.jfixby.cmns.api.floatn.FixedFloat2;
-import com.jfixby.cmns.api.floatn.Float2;
-import com.jfixby.cmns.api.geometry.CanvasPosition;
-import com.jfixby.cmns.api.geometry.Geometry;
-import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_HORIZONTAL;
-import com.jfixby.cmns.api.geometry.ORIGIN_RELATIVE_VERTICAL;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
+import com.jfixby.scarabei.api.floatn.FixedFloat2;
+import com.jfixby.scarabei.api.floatn.Float2;
+import com.jfixby.scarabei.api.geometry.CanvasPosition;
+import com.jfixby.scarabei.api.geometry.Geometry;
+import com.jfixby.scarabei.api.geometry.ORIGIN_RELATIVE_HORIZONTAL;
+import com.jfixby.scarabei.api.geometry.ORIGIN_RELATIVE_VERTICAL;
 
 public class DotComponent {
 

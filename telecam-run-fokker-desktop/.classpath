@@ -10,10 +10,10 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/telecam-api"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/telecam-ui"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/telecam-run-fokker"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/jfixby-cmns-red-gdx"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/jfixby-cmns-api"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/jfixby-cmns-red"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/jfixby-cmns-red-desktop"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/scarabei-red-gdx"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/scarabei-api"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/scarabei-red"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/scarabei-red-desktop"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/red-triplane-fonts-api"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/red-triplane-scene2d-api"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/red-triplane-scene2d-red"/>
@@ -24,6 +24,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/gdx-backend-headless"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/telecam-core"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/gdx-backend-lwjgl"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/jfixby-cmns-api-desktop"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/scarabei-api-desktop"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

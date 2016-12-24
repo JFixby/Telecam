@@ -1,10 +1,10 @@
 
 package com.jfixby.telecam.ui.input.cropper;
 
-import com.jfixby.cmns.api.floatn.FixedFloat2;
-import com.jfixby.cmns.api.geometry.Rectangle;
 import com.jfixby.r3.api.ui.unit.input.CustomInput;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
+import com.jfixby.scarabei.api.floatn.FixedFloat2;
+import com.jfixby.scarabei.api.geometry.Rectangle;
 import com.jfixby.telecam.ui.FontSettings;
 import com.jfixby.telecam.ui.UserInputBar;
 import com.jfixby.telecam.ui.input.cropper.rotator.Rotator;
