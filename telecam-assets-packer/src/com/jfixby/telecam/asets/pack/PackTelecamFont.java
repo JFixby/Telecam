@@ -12,7 +12,7 @@ import com.jfixby.scarabei.api.assets.Names;
 import com.jfixby.scarabei.api.collections.Collections;
 import com.jfixby.scarabei.api.collections.List;
 import com.jfixby.scarabei.api.desktop.DesktopSetup;
-import com.jfixby.scarabei.api.file.ChildrenList;
+import com.jfixby.scarabei.api.file.FilesList;
 import com.jfixby.scarabei.api.file.File;
 import com.jfixby.scarabei.api.file.LocalFileSystem;
 import com.jfixby.scarabei.api.json.Json;
@@ -47,7 +47,7 @@ public class PackTelecamFont {
 		final PackerSpecs specs = new PackerSpecs();
 		specs.setPackageFolder(package_folder);
 
-		final ChildrenList files = input_font_folder.listDirectChildren();
+		final FilesList files = input_font_folder.listDirectChildren();
 		specs.addPackedFiles(files);
 
 		final ID package_name = Names.newID(package_name_string);

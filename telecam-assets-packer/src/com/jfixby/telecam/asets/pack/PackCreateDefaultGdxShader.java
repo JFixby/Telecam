@@ -17,7 +17,7 @@ import com.jfixby.scarabei.api.assets.Names;
 import com.jfixby.scarabei.api.collections.Collections;
 import com.jfixby.scarabei.api.collections.List;
 import com.jfixby.scarabei.api.desktop.DesktopSetup;
-import com.jfixby.scarabei.api.file.ChildrenList;
+import com.jfixby.scarabei.api.file.FilesList;
 import com.jfixby.scarabei.api.file.File;
 import com.jfixby.scarabei.api.file.LocalFileSystem;
 import com.jfixby.scarabei.api.io.IO;
@@ -49,7 +49,7 @@ public class PackCreateDefaultGdxShader {
 		final PackerSpecs specs = new PackerSpecs();
 		specs.setPackageFolder(asset_folder);
 
-		final ChildrenList files = folder.listDirectChildren();
+		final FilesList files = folder.listDirectChildren();
 		specs.addPackedFiles(files);
 
 		specs.setRootFileName(R3_SHADER_SETTINGS.ROOT_FILE_NAME);
@@ -81,7 +81,7 @@ public class PackCreateDefaultGdxShader {
 
 		final File bank = LocalFileSystem.ApplicationHome().parent().child("telecam-assets").child("content").child("bank-r3");
 		final File shaders = LocalFileSystem.ApplicationHome().child("shaders");
-		final ChildrenList folders_list = shaders.listDirectChildren();
+		final FilesList folders_list = shaders.listDirectChildren();
 		for (int i = 0; i < folders_list.size(); i++) {
 			final File folder = folders_list.getElementAt(i);
 			try {
