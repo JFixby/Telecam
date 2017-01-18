@@ -35,6 +35,7 @@ import com.jfixby.rana.api.pkg.ResourcesManager;
 import com.jfixby.red.engine.core.resources.RedAssetsManager;
 import com.jfixby.red.engine.scene2d.RedScene2D;
 import com.jfixby.red.triplane.resources.fsbased.RedResourcesManager;
+import com.jfixby.red.triplane.resources.fsbased.RedResourcesManagerSpecs;
 import com.jfixby.scarabei.api.collisions.Collisions;
 import com.jfixby.scarabei.api.file.File;
 import com.jfixby.scarabei.api.file.FileSystemSandBox;
@@ -136,7 +137,8 @@ public class TelecamDesktopAssembler implements FokkerEngineAssembler {
 		SystemSettings.setStringParameter(Assets.ASSET_INFO_TAG, "" + dev_assets_home);
 		this.printAssetsInfo(dev_assets_home);
 
-		final RedResourcesManager res_manager = new RedResourcesManager();
+		final RedResourcesManagerSpecs specs = new RedResourcesManagerSpecs();
+		final RedResourcesManager res_manager = new RedResourcesManager(specs);
 		ResourcesManager.installComponent(res_manager);
 
 		// dev_assets_home = preload(dev_assets_home);
