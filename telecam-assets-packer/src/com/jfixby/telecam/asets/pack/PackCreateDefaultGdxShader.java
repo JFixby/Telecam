@@ -11,14 +11,14 @@ import com.jfixby.r3.api.shader.srlz.ShadersContainer;
 import com.jfixby.rana.api.pkg.StandardPackageFormats;
 import com.jfixby.red.engine.core.resources.PackageUtils;
 import com.jfixby.red.engine.core.resources.PackerSpecs;
-import com.jfixby.scarabei.adopted.gdx.json.RedJson;
+import com.jfixby.scarabei.adopted.gdx.json.GoogleGson;
 import com.jfixby.scarabei.api.assets.ID;
 import com.jfixby.scarabei.api.assets.Names;
 import com.jfixby.scarabei.api.collections.Collections;
 import com.jfixby.scarabei.api.collections.List;
 import com.jfixby.scarabei.api.desktop.DesktopSetup;
-import com.jfixby.scarabei.api.file.FilesList;
 import com.jfixby.scarabei.api.file.File;
+import com.jfixby.scarabei.api.file.FilesList;
 import com.jfixby.scarabei.api.file.LocalFileSystem;
 import com.jfixby.scarabei.api.io.IO;
 import com.jfixby.scarabei.api.json.Json;
@@ -33,7 +33,7 @@ public class PackCreateDefaultGdxShader {
 
 		DesktopSetup.deploy();
 		PSDUnpacker.installComponent(new RedPSDUnpacker());
-		Json.installComponent(new RedJson());
+		Json.installComponent(new GoogleGson());
 		TexturePacker.installComponent(new GdxTexturePacker());
 		TextureSlicer.installComponent(new RedTextureSlicer());
 		// TexturePacker.installComponent(new RedTexturePacker());

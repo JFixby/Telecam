@@ -7,14 +7,14 @@ import com.github.wrebecca.bleed.RebeccaTextureBleeder;
 import com.jfixby.psd.unpacker.api.PSDUnpacker;
 import com.jfixby.psd.unpacker.core.RedPSDUnpacker;
 import com.jfixby.rana.api.pkg.fs.PackageDescriptor;
-import com.jfixby.scarabei.adopted.gdx.json.RedJson;
+import com.jfixby.scarabei.adopted.gdx.json.GoogleGson;
 import com.jfixby.scarabei.api.assets.ID;
 import com.jfixby.scarabei.api.assets.Names;
 import com.jfixby.scarabei.api.collections.Collection;
 import com.jfixby.scarabei.api.desktop.DesktopSetup;
-import com.jfixby.scarabei.api.file.FilesList;
 import com.jfixby.scarabei.api.file.File;
 import com.jfixby.scarabei.api.file.FileFilter;
+import com.jfixby.scarabei.api.file.FilesList;
 import com.jfixby.scarabei.api.file.LocalFileSystem;
 import com.jfixby.scarabei.api.json.Json;
 import com.jfixby.scarabei.api.log.L;
@@ -35,7 +35,7 @@ public class RepackTelecamPSD {
 	public static void main (final String[] args) throws IOException {
 		DesktopSetup.deploy();
 		PSDUnpacker.installComponent(new RedPSDUnpacker());
-		Json.installComponent(new RedJson());
+		Json.installComponent(new GoogleGson());
 		TexturePacker.installComponent(new GdxTexturePacker());
 		TextureSlicer.installComponent(new RedTextureSlicer());
 		TextureBleed.installComponent(new RebeccaTextureBleeder());

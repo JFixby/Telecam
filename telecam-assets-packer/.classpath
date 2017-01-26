@@ -17,7 +17,7 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/jfixby-util-filesystem-packing-base64-red"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/red-triplane-fokker-core"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/jfixby-tool-psd-unpacker-red"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/scarabei-red-gdx"/>
+		<classpathentry combineaccessrules="false" kind="src" path="/scarabei-gson"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/red-triplane-scene2d-api"/>
 	<classpathentry kind="lib" path="/libs/lombok/lombok-small.jar"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/red-triplane-fonts-api"/>

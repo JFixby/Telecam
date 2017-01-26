@@ -6,14 +6,14 @@ import java.io.IOException;
 import com.jfixby.rana.api.pkg.StandardPackageFormats;
 import com.jfixby.red.engine.core.resources.PackageUtils;
 import com.jfixby.red.engine.core.resources.PackerSpecs;
-import com.jfixby.scarabei.adopted.gdx.json.RedJson;
+import com.jfixby.scarabei.adopted.gdx.json.GoogleGson;
 import com.jfixby.scarabei.api.assets.ID;
 import com.jfixby.scarabei.api.assets.Names;
 import com.jfixby.scarabei.api.collections.Collections;
 import com.jfixby.scarabei.api.collections.List;
 import com.jfixby.scarabei.api.desktop.DesktopSetup;
-import com.jfixby.scarabei.api.file.FilesList;
 import com.jfixby.scarabei.api.file.File;
+import com.jfixby.scarabei.api.file.FilesList;
 import com.jfixby.scarabei.api.file.LocalFileSystem;
 import com.jfixby.scarabei.api.json.Json;
 import com.jfixby.tools.gdx.texturepacker.api.indexed.IndexedCompressor;
@@ -25,7 +25,7 @@ public class PackTelecamFont {
 	public static void main (final String[] args) throws IOException {
 		if (args != null) {
 			DesktopSetup.deploy();
-			Json.installComponent(new RedJson());
+			Json.installComponent(new GoogleGson());
 			IndexedCompressor.installComponent(new RedIndexedCompressor());
 		}
 
