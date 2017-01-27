@@ -15,7 +15,7 @@ import com.jfixby.scarabei.api.geometry.ORIGIN_RELATIVE_VERTICAL;
 import com.jfixby.scarabei.api.geometry.Rectangle;
 import com.jfixby.telecam.ui.actions.TelecamUIAction;
 
-public class CropperButtonCancel implements MouseInputEventListener {
+public class CropperButtonCancel extends MouseInputEventListener {
 
 	private CustomInput btn;
 	private final Cropper master;

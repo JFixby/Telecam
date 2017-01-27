@@ -25,7 +25,7 @@ import com.jfixby.scarabei.api.sys.Sys;
 import com.jfixby.telecam.ui.UserInputBar;
 import com.jfixby.telecam.ui.actions.TelecamUIAction;
 
-public class BlueButton implements MouseInputEventListener, CollectionScanner<TouchArea> {
+public class BlueButton extends MouseInputEventListener implements CollectionScanner<TouchArea> {
 
 	private Layer root;
 	private CustomInput input;

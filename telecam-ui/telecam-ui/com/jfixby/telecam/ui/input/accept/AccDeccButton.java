@@ -14,7 +14,7 @@ import com.jfixby.scarabei.api.geometry.ORIGIN_RELATIVE_HORIZONTAL;
 import com.jfixby.scarabei.api.geometry.ORIGIN_RELATIVE_VERTICAL;
 import com.jfixby.scarabei.api.geometry.Rectangle;
 
-public abstract class AccDeccButton implements MouseInputEventListener, CollectionScanner<TouchArea> {
+public abstract class AccDeccButton extends MouseInputEventListener implements CollectionScanner<TouchArea> {
 	private final AcceptDecline master;
 	private Layer root;
 	private CustomInput input;

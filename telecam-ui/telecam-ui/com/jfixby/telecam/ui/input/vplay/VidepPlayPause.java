@@ -21,7 +21,7 @@ import com.jfixby.telecam.ui.UserInputBar;
 import com.jfixby.telecam.ui.VideoPlayer;
 import com.jfixby.telecam.ui.VideoPlayerState;
 
-public class VidepPlayPause implements MouseInputEventListener, CollectionScanner<TouchArea> {
+public class VidepPlayPause extends MouseInputEventListener implements CollectionScanner<TouchArea> {
 
 	private static final String PAUSED = "PAUSED";
 	private static final String PLAYING = "PLAYING";

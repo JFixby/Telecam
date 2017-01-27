@@ -14,7 +14,7 @@ import com.jfixby.scarabei.api.geometry.ORIGIN_RELATIVE_VERTICAL;
 import com.jfixby.scarabei.api.geometry.Rectangle;
 import com.jfixby.scarabei.api.log.L;
 
-public class CropTouch implements MouseInputEventListener {
+public class CropTouch extends MouseInputEventListener {
 	CustomInput input;
 	private final Cropper master;
 	private double baseOffsetY;

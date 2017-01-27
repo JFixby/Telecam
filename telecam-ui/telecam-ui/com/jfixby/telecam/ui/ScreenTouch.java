@@ -14,7 +14,7 @@ import com.jfixby.scarabei.api.geometry.ORIGIN_RELATIVE_VERTICAL;
 import com.jfixby.scarabei.api.geometry.Rectangle;
 import com.jfixby.scarabei.api.log.L;
 
-public class ScreenTouch implements MouseInputEventListener {
+public class ScreenTouch extends MouseInputEventListener {
 	CustomInput input;
 	private final UserInputBar master;
 	private double baseOffsetY;

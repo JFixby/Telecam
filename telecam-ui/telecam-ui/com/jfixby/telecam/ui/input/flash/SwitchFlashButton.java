@@ -21,7 +21,7 @@ import com.jfixby.scarabei.api.geometry.Rectangle;
 import com.jfixby.telecam.ui.UserInputBar;
 import com.jfixby.telecam.ui.actions.TelecamUIAction;
 
-public class SwitchFlashButton implements MouseInputEventListener, CollectionScanner<TouchArea> {
+public class SwitchFlashButton extends MouseInputEventListener implements CollectionScanner<TouchArea> {
 
 	private Layer root;
 	private CustomInput input;

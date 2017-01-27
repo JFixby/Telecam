@@ -23,7 +23,7 @@ import com.jfixby.telecam.ui.actions.TelecamUIAction;
 import com.jfixby.telecam.ui.input.blue.BlueButton;
 import com.jfixby.telecam.ui.input.red.RedButton;
 
-public class SwitchCameraButton implements MouseInputEventListener, CollectionScanner<TouchArea> {
+public class SwitchCameraButton extends MouseInputEventListener implements CollectionScanner<TouchArea> {
 
 	private Layer root;
 	private CustomInput input;

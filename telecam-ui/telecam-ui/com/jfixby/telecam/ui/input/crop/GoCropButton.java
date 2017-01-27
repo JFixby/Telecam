@@ -20,7 +20,7 @@ import com.jfixby.scarabei.api.geometry.ORIGIN_RELATIVE_VERTICAL;
 import com.jfixby.telecam.ui.UserInputBar;
 import com.jfixby.telecam.ui.actions.TelecamUIAction;
 
-public class GoCropButton implements MouseInputEventListener, CollectionScanner<TouchArea> {
+public class GoCropButton extends MouseInputEventListener implements CollectionScanner<TouchArea> {
 
 	private Layer root;
 	private CustomInput input;

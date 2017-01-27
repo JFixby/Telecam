@@ -3,14 +3,9 @@ package com.jfixby.telecam.ui.input.slider;
 
 import com.jfixby.r3.api.ui.unit.animation.OnAnimationDoneListener;
 import com.jfixby.r3.api.ui.unit.input.CustomInput;
-import com.jfixby.r3.api.ui.unit.input.MouseMovedEvent;
 import com.jfixby.r3.api.ui.unit.input.TouchArea;
-import com.jfixby.r3.api.ui.unit.input.TouchDownEvent;
-import com.jfixby.r3.api.ui.unit.input.TouchDraggedEvent;
-import com.jfixby.r3.api.ui.unit.input.TouchUpEvent;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
-import com.jfixby.r3.api.ui.unit.user.MouseInputEventListener;
 import com.jfixby.scarabei.api.collections.Collection;
 import com.jfixby.scarabei.api.collections.CollectionScanner;
 import com.jfixby.scarabei.api.floatn.FixedFloat2;
@@ -19,16 +14,15 @@ import com.jfixby.scarabei.api.geometry.Geometry;
 import com.jfixby.scarabei.api.geometry.Rectangle;
 import com.jfixby.telecam.ui.BackgroundGray;
 import com.jfixby.telecam.ui.UserInputBar;
-import com.jfixby.telecam.ui.actions.TelecamUIAction;
 import com.jfixby.telecam.ui.input.blue.BlueButton;
 import com.jfixby.telecam.ui.input.flash.SwitchFlashButton;
 import com.jfixby.telecam.ui.input.red.RedButton;
 import com.jfixby.telecam.ui.input.swcam.SwitchCameraButton;
 
-public class Slider implements MouseInputEventListener, CollectionScanner<TouchArea> {
+public class Slider implements CollectionScanner<TouchArea> {
 
-	private static final String PHOTO = "PHOTO";
-	private static final String VIDEO = "VIDEO";
+	public static final String PHOTO = "PHOTO";
+	public static final String VIDEO = "VIDEO";
 	private Layer root;
 	private CustomInput input;
 	private final DotLeft left = new DotLeft(this);
@@ -44,6 +38,8 @@ public class Slider implements MouseInputEventListener, CollectionScanner<TouchA
 
 	private Collection<TouchArea> touchAreas;
 	private final CollectionScanner<TouchArea> touchAreasAligner = this;
+
+	private final SliderInput sliderInput = new SliderInput(this);
 
 	private final UserInputBar master;
 	private final FixedFloat2 originalSceneDimentions;
@@ -76,7 +72,7 @@ public class Slider implements MouseInputEventListener, CollectionScanner<TouchA
 
 		this.input = (CustomInput)root.listChildren().getElementAt(0);
 		this.position.setPosition(this.input.getPosition());
-		this.input.setInputListener(this);
+		this.input.setInputListener(this.sliderInput);
 		this.input.setDebugRenderFlag(false);
 
 		this.rasterlayer = root.findComponent("raster");
@@ -166,34 +162,6 @@ public class Slider implements MouseInputEventListener, CollectionScanner<TouchA
 		element.shape().setPosition(this.position);
 		element.shape().setPositionY(this.screen.getHeight() - this.baseOffset.getY());
 
-	}
-
-	@Override
-	public boolean onMouseMoved (final MouseMovedEvent input_event) {
-		return false;
-	}
-
-	@Override
-	public boolean onTouchDown (final TouchDownEvent input_event) {
-		TelecamUIAction.disableInput.submit();
-		if (this.state == PHOTO) {
-			TelecamUIAction.switchToVideoShoot.submit();
-		} else {
-			TelecamUIAction.switchToPhotoShoot.submit();
-		}
-		TelecamUIAction.enableInput.submit();
-		return true;
-	}
-
-	@Override
-	public boolean onTouchUp (final TouchUpEvent input_event) {
-
-		return false;
-	}
-
-	@Override
-	public boolean onTouchDragged (final TouchDraggedEvent input_event) {
-		return false;
 	}
 
 	public void hide () {
