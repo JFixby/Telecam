@@ -3,7 +3,7 @@ package com.jfixby.telecam.ui.input.cropper.tool;
 
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
-import com.jfixby.scarabei.api.floatn.FixedFloat2;
+import com.jfixby.scarabei.api.floatn.ReadOnlyFloat2;
 import com.jfixby.scarabei.api.geometry.ORIGIN_RELATIVE_HORIZONTAL;
 import com.jfixby.scarabei.api.geometry.ORIGIN_RELATIVE_VERTICAL;
 import com.jfixby.scarabei.api.math.CustomAngle;
@@ -11,7 +11,7 @@ import com.jfixby.scarabei.api.math.FloatMath;
 
 public class Corner extends CropperElement {
 
-	private final FixedFloat2 rectangleCorner;
+	private final ReadOnlyFloat2 rectangleCorner;
 	private final CustomAngle directionOffset;
 	private Raster wing2;
 	private Raster wing1;
@@ -23,7 +23,7 @@ public class Corner extends CropperElement {
 		return "Corner" + this.rectangleCorner + "";
 	}
 
-	public Corner (final CropperTool cropperTool, final FixedFloat2 rectangleCorner, final CustomAngle directionOffset) {
+	public Corner (final CropperTool cropperTool, final ReadOnlyFloat2 rectangleCorner, final CustomAngle directionOffset) {
 		super(cropperTool);
 		this.rectangleCorner = rectangleCorner;
 		this.directionOffset = directionOffset;

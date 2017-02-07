@@ -3,7 +3,7 @@ package com.jfixby.telecam.ui.input.red;
 
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
-import com.jfixby.scarabei.api.floatn.FixedFloat2;
+import com.jfixby.scarabei.api.floatn.ReadOnlyFloat2;
 import com.jfixby.scarabei.api.floatn.Float2;
 import com.jfixby.scarabei.api.geometry.CanvasPosition;
 import com.jfixby.scarabei.api.geometry.Geometry;
@@ -48,7 +48,7 @@ public class RasterOffsetComponent {
 		this.tmp = Geometry.newCanvasPosition();
 	}
 
-	public FixedFloat2 getOriginalOffset () {
+	public ReadOnlyFloat2 getOriginalOffset () {
 		return this.originalOffset;
 	}
 
@@ -97,7 +97,7 @@ public class RasterOffsetComponent {
 		return this.currentOffset.getY();
 	}
 
-	public FixedFloat2 getCenter () {
+	public ReadOnlyFloat2 getCenter () {
 		return this.currentCenter;
 	}
 

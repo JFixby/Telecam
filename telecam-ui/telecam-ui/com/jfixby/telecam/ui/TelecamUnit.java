@@ -19,7 +19,7 @@ import com.jfixby.r3.ext.api.scene2d.Scene2D;
 import com.jfixby.r3.ext.api.scene2d.Scene2DSpawningConfig;
 import com.jfixby.scarabei.api.assets.ID;
 import com.jfixby.scarabei.api.assets.Names;
-import com.jfixby.scarabei.api.floatn.FixedFloat2;
+import com.jfixby.scarabei.api.floatn.ReadOnlyFloat2;
 import com.jfixby.scarabei.api.geometry.Geometry;
 import com.jfixby.scarabei.api.geometry.Rectangle;
 import com.jfixby.scarabei.api.log.L;
@@ -37,7 +37,7 @@ public class TelecamUnit extends DefaultUnit implements TelecamUI, InputManager,
 	private UserInputBar userPanel;
 	private final ScreenChangeListener screenChangeListener = this;
 	Rectangle screenDimentions = Geometry.newRectangle();
-	FixedFloat2 sceneOriginalDimentions;
+	ReadOnlyFloat2 sceneOriginalDimentions;
 
 	private Camera camera;
 
@@ -90,7 +90,7 @@ public class TelecamUnit extends DefaultUnit implements TelecamUI, InputManager,
 		this.userPanel.updateScreen(this.screenDimentions);
 	}
 
-	public FixedFloat2 getOriginalSceneDimentions () {
+	public ReadOnlyFloat2 getOriginalSceneDimentions () {
 		return this.sceneOriginalDimentions;
 	}
 

@@ -8,7 +8,7 @@ import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
 import com.jfixby.scarabei.api.collections.Collection;
 import com.jfixby.scarabei.api.collections.CollectionScanner;
-import com.jfixby.scarabei.api.floatn.FixedFloat2;
+import com.jfixby.scarabei.api.floatn.ReadOnlyFloat2;
 import com.jfixby.scarabei.api.geometry.CanvasPosition;
 import com.jfixby.scarabei.api.geometry.Geometry;
 import com.jfixby.scarabei.api.geometry.Rectangle;
@@ -42,7 +42,7 @@ public class Slider implements CollectionScanner<TouchArea> {
 	private final SliderInput sliderInput = new SliderInput(this);
 
 	private final UserInputBar master;
-	private final FixedFloat2 originalSceneDimentions;
+	private final ReadOnlyFloat2 originalSceneDimentions;
 	private final CanvasPosition position = Geometry.newCanvasPosition();
 	private final CanvasPosition baseOffset;
 	private Rectangle screen;

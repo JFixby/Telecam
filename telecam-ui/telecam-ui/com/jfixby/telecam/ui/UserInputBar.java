@@ -5,7 +5,7 @@ import com.jfixby.r3.api.ui.UIAction;
 import com.jfixby.r3.api.ui.unit.animation.OnAnimationDoneListener;
 import com.jfixby.r3.api.ui.unit.camera.Camera;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
-import com.jfixby.scarabei.api.floatn.FixedFloat2;
+import com.jfixby.scarabei.api.floatn.ReadOnlyFloat2;
 import com.jfixby.scarabei.api.geometry.Rectangle;
 import com.jfixby.telecam.ui.input.accept.AcceptDecline;
 import com.jfixby.telecam.ui.input.blue.BlueButton;
@@ -154,7 +154,7 @@ public class UserInputBar {
 
 	}
 
-	public FixedFloat2 getOriginalSceneDimentions () {
+	public ReadOnlyFloat2 getOriginalSceneDimentions () {
 		return this.master.getOriginalSceneDimentions();
 	}
 

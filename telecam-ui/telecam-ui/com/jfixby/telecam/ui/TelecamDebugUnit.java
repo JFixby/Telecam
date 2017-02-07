@@ -13,7 +13,7 @@ import com.jfixby.r3.api.ui.unit.raster.Raster;
 import com.jfixby.r3.api.ui.unit.user.ScreenChangeListener;
 import com.jfixby.scarabei.api.assets.ID;
 import com.jfixby.scarabei.api.assets.Names;
-import com.jfixby.scarabei.api.floatn.FixedFloat2;
+import com.jfixby.scarabei.api.floatn.ReadOnlyFloat2;
 import com.jfixby.scarabei.api.geometry.Geometry;
 import com.jfixby.scarabei.api.geometry.Rectangle;
 import com.jfixby.scarabei.api.log.L;
@@ -25,7 +25,7 @@ public class TelecamDebugUnit extends DefaultUnit implements InputManager, Scree
 	final AnimationsMachine animations_machine = UI.newAnimationsMachine();
 	private final ScreenChangeListener screenChangeListener = this;
 	Rectangle screenDimentions = Geometry.newRectangle();
-	FixedFloat2 sceneOriginalDimentions;
+	ReadOnlyFloat2 sceneOriginalDimentions;
 
 	@Override
 	public void onCreate (final UnitManager unitManager) {
@@ -57,7 +57,7 @@ public class TelecamDebugUnit extends DefaultUnit implements InputManager, Scree
 
 	}
 
-	public FixedFloat2 getOriginalSceneDimentions () {
+	public ReadOnlyFloat2 getOriginalSceneDimentions () {
 		return this.sceneOriginalDimentions;
 	}
 

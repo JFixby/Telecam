@@ -14,7 +14,7 @@ import com.jfixby.r3.api.ui.unit.raster.Raster;
 import com.jfixby.r3.api.ui.unit.user.MouseInputEventListener;
 import com.jfixby.scarabei.api.collections.Collection;
 import com.jfixby.scarabei.api.collections.CollectionScanner;
-import com.jfixby.scarabei.api.floatn.FixedFloat2;
+import com.jfixby.scarabei.api.floatn.ReadOnlyFloat2;
 import com.jfixby.scarabei.api.geometry.CanvasPosition;
 import com.jfixby.scarabei.api.geometry.Geometry;
 import com.jfixby.scarabei.api.geometry.Rectangle;
@@ -33,7 +33,7 @@ public class SwitchFlashButton extends MouseInputEventListener implements Collec
 	private final CollectionScanner<TouchArea> touchAreasAligner = this;
 	private final CanvasPosition baseOffset;
 	private final UserInputBar master;
-	private final FixedFloat2 originalSceneDimentions;
+	private final ReadOnlyFloat2 originalSceneDimentions;
 	private Rectangle screen;
 
 	SwitchFlashButtonAnimator animator = new SwitchFlashButtonAnimator(this);
