@@ -4,17 +4,17 @@ package com.jfixby.telecam.ui.input.slider;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
 import com.jfixby.r3.api.ui.unit.update.UnitClocks;
-import com.jfixby.r3.api.ui.unit.user.UpdateListener;
+import com.jfixby.r3.api.ui.unit.update.OnUpdateListener;
 import com.jfixby.scarabei.api.floatn.ReadOnlyFloat2;
 import com.jfixby.scarabei.api.geometry.CanvasPosition;
 import com.jfixby.scarabei.api.geometry.Geometry;
 import com.jfixby.scarabei.api.sys.Sys;
 
-public class DotIndicator extends DotComponent implements UpdateListener {
+public class DotIndicator extends DotComponent implements OnUpdateListener {
 
 	private final ReadOnlyFloat2 leftOffset;
 	private final ReadOnlyFloat2 rightOffset;
-	UpdateListener animator = this;
+	OnUpdateListener animator = this;
 	private final CanvasPosition tmp;
 	private double componentWidth;
 

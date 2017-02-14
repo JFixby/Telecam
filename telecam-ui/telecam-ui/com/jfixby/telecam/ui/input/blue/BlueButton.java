@@ -11,8 +11,8 @@ import com.jfixby.r3.api.ui.unit.input.TouchUpEvent;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
 import com.jfixby.r3.api.ui.unit.update.UnitClocks;
+import com.jfixby.r3.api.ui.unit.update.OnUpdateListener;
 import com.jfixby.r3.api.ui.unit.user.MouseInputEventListener;
-import com.jfixby.r3.api.ui.unit.user.UpdateListener;
 import com.jfixby.scarabei.api.collections.Collection;
 import com.jfixby.scarabei.api.collections.CollectionScanner;
 import com.jfixby.scarabei.api.collections.Collections;
@@ -100,7 +100,7 @@ public class BlueButton extends MouseInputEventListener implements CollectionSca
 		return true;
 	}
 
-	final UpdateListener updater = new UpdateListener() {
+	final OnUpdateListener updater = new OnUpdateListener() {
 		@Override
 		public void onUpdate (final UnitClocks unit_clock) {
 			BlueButton.this.touchCurrentTime = Sys.SystemTime().currentTimeMillis();

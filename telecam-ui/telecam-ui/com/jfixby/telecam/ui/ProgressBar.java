@@ -4,17 +4,17 @@ package com.jfixby.telecam.ui;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
 import com.jfixby.r3.api.ui.unit.update.UnitClocks;
-import com.jfixby.r3.api.ui.unit.user.UpdateListener;
+import com.jfixby.r3.api.ui.unit.update.OnUpdateListener;
 import com.jfixby.scarabei.api.geometry.ORIGIN_RELATIVE_HORIZONTAL;
 import com.jfixby.scarabei.api.geometry.ORIGIN_RELATIVE_VERTICAL;
 import com.jfixby.scarabei.api.util.JUtils;
 import com.jfixby.scarabei.api.util.ProgressIndicator;
 import com.jfixby.telecam.ui.input.vplay.VidepPlayPause;
 
-public class ProgressBar implements UpdateListener {
+public class ProgressBar implements OnUpdateListener {
 
 	private Layer root;
-	UpdateListener updater = this;
+	OnUpdateListener updater = this;
 
 	private Raster line;
 

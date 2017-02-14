@@ -4,13 +4,13 @@ package com.jfixby.telecam.ui.input.flash;
 import com.jfixby.r3.api.ui.unit.animation.OnAnimationDoneListener;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.update.UnitClocks;
-import com.jfixby.r3.api.ui.unit.user.UpdateListener;
+import com.jfixby.r3.api.ui.unit.update.OnUpdateListener;
 import com.jfixby.scarabei.api.collections.Collections;
 import com.jfixby.scarabei.api.collections.Set;
 import com.jfixby.scarabei.api.sys.Sys;
 import com.jfixby.telecam.ui.TelecamUnit;
 
-public class SwitchFlashButtonAnimator implements UpdateListener {
+public class SwitchFlashButtonAnimator implements OnUpdateListener {
 
 	private static final int INDEX_OFFSET = 0;
 	final Set<FlashIconWrapper> list = Collections.newSet();
@@ -23,7 +23,7 @@ public class SwitchFlashButtonAnimator implements UpdateListener {
 
 	}
 
-	UpdateListener animator = this;
+	OnUpdateListener animator = this;
 	private long currentTime;
 	private double progress;
 

@@ -5,14 +5,14 @@ import com.jfixby.r3.api.ui.UIAction;
 import com.jfixby.r3.api.ui.unit.animation.OnAnimationDoneListener;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.update.UnitClocks;
-import com.jfixby.r3.api.ui.unit.user.UpdateListener;
+import com.jfixby.r3.api.ui.unit.update.OnUpdateListener;
 import com.jfixby.scarabei.api.geometry.CanvasPosition;
 import com.jfixby.scarabei.api.geometry.Rectangle;
 import com.jfixby.scarabei.api.sys.Sys;
 import com.jfixby.telecam.ui.TelecamUnit;
 import com.jfixby.telecam.ui.UserInputBar;
 
-public class AcceptDecline implements UpdateListener {
+public class AcceptDecline implements OnUpdateListener {
 	private Layer root;
 	private final AcceptButton acceptButton;
 	private final DeclineButton declineButton;
@@ -81,7 +81,7 @@ public class AcceptDecline implements UpdateListener {
 	private boolean animating;
 	private double beginRoll;
 	private double current_roll = 0;
-	UpdateListener animator = this;
+	OnUpdateListener animator = this;
 	private long currentTime;
 	private double progress;
 

@@ -5,11 +5,11 @@ import com.jfixby.r3.api.ui.unit.animation.OnAnimationDoneListener;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.r3.api.ui.unit.raster.Raster;
 import com.jfixby.r3.api.ui.unit.update.UnitClocks;
-import com.jfixby.r3.api.ui.unit.user.UpdateListener;
+import com.jfixby.r3.api.ui.unit.update.OnUpdateListener;
 import com.jfixby.scarabei.api.sys.Sys;
 import com.jfixby.telecam.ui.TelecamUnit;
 
-public class SwitchCamButtonAnimator implements UpdateListener {
+public class SwitchCamButtonAnimator implements OnUpdateListener {
 
 	private static final String SELFIE = "SELFIE";
 	private static final String REGULAR = "REGULAR";
@@ -35,7 +35,7 @@ public class SwitchCamButtonAnimator implements UpdateListener {
 	}
 
 	int current_roll = 0;
-	UpdateListener animator = this;
+	OnUpdateListener animator = this;
 	private long currentTime;
 	private double progress;
 	private Raster roll;
