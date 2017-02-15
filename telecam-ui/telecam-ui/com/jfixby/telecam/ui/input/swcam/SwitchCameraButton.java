@@ -1,7 +1,7 @@
 
 package com.jfixby.telecam.ui.input.swcam;
 
-import com.jfixby.r3.api.ui.unit.animation.OnAnimationDoneListener;
+import com.jfixby.r3.api.ui.unit.animation.AnimationLifecycleListener;
 import com.jfixby.r3.api.ui.unit.input.CustomInput;
 import com.jfixby.r3.api.ui.unit.input.MouseMovedEvent;
 import com.jfixby.r3.api.ui.unit.input.TouchArea;
@@ -119,7 +119,7 @@ public class SwitchCameraButton extends MouseInputEventListener implements Colle
 		this.root.show();
 	}
 
-	public void switchCamera (final OnAnimationDoneListener animation_done_listener) {
+	public void switchCamera (final AnimationLifecycleListener animation_done_listener) {
 		this.animator.roll(animation_done_listener);
 	}
 

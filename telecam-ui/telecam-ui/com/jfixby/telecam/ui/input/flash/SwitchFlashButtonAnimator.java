@@ -1,10 +1,10 @@
 
 package com.jfixby.telecam.ui.input.flash;
 
-import com.jfixby.r3.api.ui.unit.animation.OnAnimationDoneListener;
+import com.jfixby.r3.api.ui.unit.animation.AnimationLifecycleListener;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
-import com.jfixby.r3.api.ui.unit.update.UnitClocks;
 import com.jfixby.r3.api.ui.unit.update.OnUpdateListener;
+import com.jfixby.r3.api.ui.unit.update.UnitClocks;
 import com.jfixby.scarabei.api.collections.Collections;
 import com.jfixby.scarabei.api.collections.Set;
 import com.jfixby.scarabei.api.sys.Sys;
@@ -56,7 +56,7 @@ public class SwitchFlashButtonAnimator implements OnUpdateListener {
 
 		if (this.progress > 1) {
 			this.animating = false;
-			this.animation_done_listener.onAnimationDone(null);
+			this.animation_done_listener.onAnimationDone(null, 0);
 			this.current_roll++;
 			this.roll(this.current_roll);
 			return;
@@ -78,11 +78,11 @@ public class SwitchFlashButtonAnimator implements OnUpdateListener {
 	long delta = TelecamUnit.ANIMATION_DELTA;
 	private long begin;
 	private long end;
-	private OnAnimationDoneListener animation_done_listener;
+	private AnimationLifecycleListener animation_done_listener;
 	private boolean animating;
 	private int beginRoll;
 
-	public void animate (final OnAnimationDoneListener animation_done_listener) {
+	public void animate (final AnimationLifecycleListener animation_done_listener) {
 		this.begin = Sys.SystemTime().currentTimeMillis();
 		this.end = this.begin + this.delta;
 		this.animation_done_listener = animation_done_listener;

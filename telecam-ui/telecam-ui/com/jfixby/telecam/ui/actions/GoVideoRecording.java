@@ -2,11 +2,11 @@
 package com.jfixby.telecam.ui.actions;
 
 import com.jfixby.r3.api.ui.unit.animation.Animation;
-import com.jfixby.r3.api.ui.unit.animation.OnAnimationDoneListener;
+import com.jfixby.r3.api.ui.unit.animation.AnimationLifecycleListener;
 import com.jfixby.telecam.ui.TelecamUnit;
 
-public class GoVideoRecording extends TelecamUIAction implements OnAnimationDoneListener {
-	final OnAnimationDoneListener animation_done_listener = this;
+public class GoVideoRecording extends TelecamUIAction implements AnimationLifecycleListener {
+	final AnimationLifecycleListener animation_done_listener = this;
 	private boolean done;
 
 	@Override
@@ -31,9 +31,17 @@ public class GoVideoRecording extends TelecamUIAction implements OnAnimationDone
 	}
 
 	@Override
-	public void onAnimationDone (final Animation animation) {
+	public void onAnimationDone (final Animation animation, final int loopIndex) {
 		this.done = true;
 
+	}
+
+	@Override
+	public void onAnimationStart (final Animation animation) {
+	}
+
+	@Override
+	public void onLoop (final Animation animation, final int loopIndex) {
 	}
 
 }

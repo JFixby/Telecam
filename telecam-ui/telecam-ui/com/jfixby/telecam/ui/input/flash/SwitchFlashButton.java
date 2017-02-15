@@ -2,7 +2,7 @@
 package com.jfixby.telecam.ui.input.flash;
 
 import com.jfixby.r3.api.ui.UI;
-import com.jfixby.r3.api.ui.unit.animation.OnAnimationDoneListener;
+import com.jfixby.r3.api.ui.unit.animation.AnimationLifecycleListener;
 import com.jfixby.r3.api.ui.unit.input.CustomInput;
 import com.jfixby.r3.api.ui.unit.input.MouseMovedEvent;
 import com.jfixby.r3.api.ui.unit.input.TouchArea;
@@ -89,7 +89,7 @@ public class SwitchFlashButton extends MouseInputEventListener implements Collec
 		return this.input.getPositionY();
 	}
 
-	private void animateIcons (final OnAnimationDoneListener animation_done_listener) {
+	private void animateIcons (final AnimationLifecycleListener animation_done_listener) {
 		this.animator.animate(animation_done_listener);
 
 	}
@@ -137,7 +137,7 @@ public class SwitchFlashButton extends MouseInputEventListener implements Collec
 		return this.input.getPositionY();
 	}
 
-	public void switchFlashMode (final OnAnimationDoneListener animation_done_listener) {
+	public void switchFlashMode (final AnimationLifecycleListener animation_done_listener) {
 		this.animateIcons(animation_done_listener);
 	}
 

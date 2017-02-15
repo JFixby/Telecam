@@ -1,7 +1,7 @@
 
 package com.jfixby.telecam.ui.input.slider;
 
-import com.jfixby.r3.api.ui.unit.animation.OnAnimationDoneListener;
+import com.jfixby.r3.api.ui.unit.animation.AnimationLifecycleListener;
 import com.jfixby.r3.api.ui.unit.input.CustomInput;
 import com.jfixby.r3.api.ui.unit.input.TouchArea;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
@@ -97,7 +97,7 @@ public class Slider implements CollectionScanner<TouchArea> {
 // this.setVideoMode();
 	}
 
-	public void sendSliderToVideo (final OnAnimationDoneListener animation_done_listener) {
+	public void sendSliderToVideo (final AnimationLifecycleListener animation_done_listener) {
 		this.animator.sendSliderToVideo(animation_done_listener);
 		this.state = VIDEO;
 		this.switchFlashButton.hide();
@@ -106,7 +106,7 @@ public class Slider implements CollectionScanner<TouchArea> {
 // this.switchCameraButton.hide();
 	}
 
-	public void sendSliderToPhoto (final OnAnimationDoneListener animation_done_listener) {
+	public void sendSliderToPhoto (final AnimationLifecycleListener animation_done_listener) {
 		this.animator.sendSliderToPhoto(animation_done_listener);
 		this.state = PHOTO;
 		this.switchFlashButton.show();

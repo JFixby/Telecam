@@ -9,7 +9,7 @@ import com.jfixby.r3.api.ui.unit.ComponentsFactory;
 import com.jfixby.r3.api.ui.unit.RootLayer;
 import com.jfixby.r3.api.ui.unit.DefaultUnit;
 import com.jfixby.r3.api.ui.unit.UnitManager;
-import com.jfixby.r3.api.ui.unit.animation.OnAnimationDoneListener;
+import com.jfixby.r3.api.ui.unit.animation.AnimationLifecycleListener;
 import com.jfixby.r3.api.ui.unit.camera.Camera;
 import com.jfixby.r3.api.ui.unit.camera.ScreenDimentions;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
@@ -127,31 +127,31 @@ public class TelecamUnit extends DefaultUnit implements TelecamUI, InputManager,
 		this.userPanel.goCropper();
 	}
 
-	public void switchFlashMode (final OnAnimationDoneListener animation_done_listener) {
+	public void switchFlashMode (final AnimationLifecycleListener animation_done_listener) {
 		this.userPanel.switchFlashMode(animation_done_listener);
 	}
 
-	public void switchCamera (final OnAnimationDoneListener animation_done_listener) {
+	public void switchCamera (final AnimationLifecycleListener animation_done_listener) {
 		this.userPanel.switchCamera(animation_done_listener);
 	}
 
-	public void animateAcceptDecline (final OnAnimationDoneListener animation_done_listener) {
+	public void animateAcceptDecline (final AnimationLifecycleListener animation_done_listener) {
 		this.userPanel.animateAcceptDecline(animation_done_listener);
 	}
 
-	public void sendSliderToVideo (final OnAnimationDoneListener animation_done_listener) {
+	public void sendSliderToVideo (final AnimationLifecycleListener animation_done_listener) {
 		this.userPanel.sendSliderToVideo(animation_done_listener);
 	}
 
-	public void sendSliderToPhoto (final OnAnimationDoneListener animation_done_listener) {
+	public void sendSliderToPhoto (final AnimationLifecycleListener animation_done_listener) {
 		this.userPanel.sendSliderToPhoto(animation_done_listener);
 	}
 
-	public void goVideoRecording (final OnAnimationDoneListener animation_done_listener) {
+	public void goVideoRecording (final AnimationLifecycleListener animation_done_listener) {
 		this.userPanel.goVideoRecording(animation_done_listener);
 	}
 
-	public void goVideoIdle (final OnAnimationDoneListener animation_done_listener) {
+	public void goVideoIdle (final AnimationLifecycleListener animation_done_listener) {
 		this.userPanel.goVideoIdle(animation_done_listener);
 	}
 

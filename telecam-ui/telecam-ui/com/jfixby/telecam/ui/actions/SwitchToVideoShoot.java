@@ -2,12 +2,12 @@
 package com.jfixby.telecam.ui.actions;
 
 import com.jfixby.r3.api.ui.unit.animation.Animation;
-import com.jfixby.r3.api.ui.unit.animation.OnAnimationDoneListener;
+import com.jfixby.r3.api.ui.unit.animation.AnimationLifecycleListener;
 import com.jfixby.telecam.ui.TelecamUnit;
 
-public class SwitchToVideoShoot extends TelecamUIAction implements OnAnimationDoneListener {
+public class SwitchToVideoShoot extends TelecamUIAction implements AnimationLifecycleListener {
 
-	final OnAnimationDoneListener animation_done_listener = this;
+	final AnimationLifecycleListener animation_done_listener = this;
 	private boolean done;
 
 	@Override
@@ -30,8 +30,16 @@ public class SwitchToVideoShoot extends TelecamUIAction implements OnAnimationDo
 	}
 
 	@Override
-	public void onAnimationDone (final Animation animation) {
+	public void onAnimationDone (final Animation animation, final int loopIndex) {
 		this.done = true;
+	}
+
+	@Override
+	public void onAnimationStart (final Animation animation) {
+	}
+
+	@Override
+	public void onLoop (final Animation animation, final int loopIndex) {
 	}
 
 }

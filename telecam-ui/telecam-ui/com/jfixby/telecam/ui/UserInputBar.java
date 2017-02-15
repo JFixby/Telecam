@@ -2,7 +2,7 @@
 package com.jfixby.telecam.ui;
 
 import com.jfixby.r3.api.ui.UIAction;
-import com.jfixby.r3.api.ui.unit.animation.OnAnimationDoneListener;
+import com.jfixby.r3.api.ui.unit.animation.AnimationLifecycleListener;
 import com.jfixby.r3.api.ui.unit.camera.Camera;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
 import com.jfixby.scarabei.api.floatn.ReadOnlyFloat2;
@@ -211,15 +211,15 @@ public class UserInputBar {
 		this.cropper.resetCroppingArea();
 	}
 
-	public void switchFlashMode (final OnAnimationDoneListener animation_done_listener) {
+	public void switchFlashMode (final AnimationLifecycleListener animation_done_listener) {
 		this.switchFlashButton.switchFlashMode(animation_done_listener);
 	}
 
-	public void switchCamera (final OnAnimationDoneListener animation_done_listener) {
+	public void switchCamera (final AnimationLifecycleListener animation_done_listener) {
 		this.switchCameraButton.switchCamera(animation_done_listener);
 	}
 
-	public void animateAcceptDecline (final OnAnimationDoneListener animation_done_listener) {
+	public void animateAcceptDecline (final AnimationLifecycleListener animation_done_listener) {
 		this.hideAll();
 
 		this.screenTouch.show();
@@ -228,14 +228,14 @@ public class UserInputBar {
 		this.acceptDecline.animate(animation_done_listener);
 	}
 
-	public void sendSliderToVideo (final OnAnimationDoneListener animation_done_listener) {
+	public void sendSliderToVideo (final AnimationLifecycleListener animation_done_listener) {
 // this.goPhoto();
 		this.blueButton.hide();
 		this.redButton.show();
 		this.slider.sendSliderToVideo(animation_done_listener);
 	}
 
-	public void sendSliderToPhoto (final OnAnimationDoneListener animation_done_listener) {
+	public void sendSliderToPhoto (final AnimationLifecycleListener animation_done_listener) {
 		this.slider.sendSliderToPhoto(animation_done_listener);
 		this.blueButton.show();
 		this.redButton.hide();
@@ -254,14 +254,14 @@ public class UserInputBar {
 		return this.redButton;
 	}
 
-	public void goVideoRecording (final OnAnimationDoneListener animation_done_listener) {
+	public void goVideoRecording (final AnimationLifecycleListener animation_done_listener) {
 		this.goVideoRecordingAnimator.goVideoRecording(animation_done_listener);
 		this.switchCameraButton.hide();
 		this.slider.hide();
 // this.redButton.setMode();
 	}
 
-	public void goVideoIdle (final OnAnimationDoneListener animation_done_listener) {
+	public void goVideoIdle (final AnimationLifecycleListener animation_done_listener) {
 		this.slider.show();
 		this.switchCameraButton.show();
 		this.goVideoRecordingAnimator.goVideoIdle(animation_done_listener);

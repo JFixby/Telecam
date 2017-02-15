@@ -1,9 +1,9 @@
 
 package com.jfixby.telecam.ui.input.slider;
 
-import com.jfixby.r3.api.ui.unit.animation.OnAnimationDoneListener;
-import com.jfixby.r3.api.ui.unit.update.UnitClocks;
+import com.jfixby.r3.api.ui.unit.animation.AnimationLifecycleListener;
 import com.jfixby.r3.api.ui.unit.update.OnUpdateListener;
+import com.jfixby.r3.api.ui.unit.update.UnitClocks;
 import com.jfixby.scarabei.api.sys.Sys;
 import com.jfixby.telecam.ui.BackgroundGray;
 import com.jfixby.telecam.ui.TelecamUnit;
@@ -27,7 +27,7 @@ public class SliderAnimator implements OnUpdateListener {
 	private boolean animating;
 	private double progress;
 	private final DotIndicator indicator;
-	private OnAnimationDoneListener animation_done_listener;
+	private AnimationLifecycleListener animation_done_listener;
 	private final DotWorm worm;
 	private boolean animatingHead;
 	private long delta;
@@ -79,29 +79,29 @@ public class SliderAnimator implements OnUpdateListener {
 				this.send(this.animation_done_listener, this.targetPosition, this.beginPosition, false, this.delta);
 			} else {
 				if (this.animation_done_listener != null) {
-					this.animation_done_listener.onAnimationDone(null);
+					this.animation_done_listener.onAnimationDone(null, 0);
 				}
 			}
 		}
 	}
 
-	public void sendSliderToPhoto (final OnAnimationDoneListener animation_done_listener) {
+	public void sendSliderToPhoto (final AnimationLifecycleListener animation_done_listener) {
 		this.master.setVideoMode();
 		this.send(animation_done_listener, +1, -1, true);
 	}
 
-	public void sendSliderToVideo (final OnAnimationDoneListener animation_done_listener) {
+	public void sendSliderToVideo (final AnimationLifecycleListener animation_done_listener) {
 		this.master.setPhotoMode();
 		this.send(animation_done_listener, -1, +1, true);
 	}
 
-	private void send (final OnAnimationDoneListener animation_done_listener, final double beginPosition,
+	private void send (final AnimationLifecycleListener animation_done_listener, final double beginPosition,
 		final double targetPosition, final boolean head) {
 		this.send(animation_done_listener, beginPosition, targetPosition, head, DELTA);
 
 	}
 
-	private void send (final OnAnimationDoneListener animation_done_listener, final double beginPosition,
+	private void send (final AnimationLifecycleListener animation_done_listener, final double beginPosition,
 		final double targetPosition, final boolean head, final long delta) {
 		this.animation_done_listener = animation_done_listener;
 		this.beginTime = Sys.SystemTime().currentTimeMillis();

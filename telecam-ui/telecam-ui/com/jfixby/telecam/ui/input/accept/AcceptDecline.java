@@ -2,10 +2,10 @@
 package com.jfixby.telecam.ui.input.accept;
 
 import com.jfixby.r3.api.ui.UIAction;
-import com.jfixby.r3.api.ui.unit.animation.OnAnimationDoneListener;
+import com.jfixby.r3.api.ui.unit.animation.AnimationLifecycleListener;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
-import com.jfixby.r3.api.ui.unit.update.UnitClocks;
 import com.jfixby.r3.api.ui.unit.update.OnUpdateListener;
+import com.jfixby.r3.api.ui.unit.update.UnitClocks;
 import com.jfixby.scarabei.api.geometry.CanvasPosition;
 import com.jfixby.scarabei.api.geometry.Rectangle;
 import com.jfixby.scarabei.api.sys.Sys;
@@ -77,7 +77,7 @@ public class AcceptDecline implements OnUpdateListener {
 	long delta = TelecamUnit.ANIMATION_DELTA;
 	private long begin;
 	private long end;
-	private OnAnimationDoneListener animation_done_listener;
+	private AnimationLifecycleListener animation_done_listener;
 	private boolean animating;
 	private double beginRoll;
 	private double current_roll = 0;
@@ -85,7 +85,7 @@ public class AcceptDecline implements OnUpdateListener {
 	private long currentTime;
 	private double progress;
 
-	public void animate (final OnAnimationDoneListener animation_done_listener) {
+	public void animate (final AnimationLifecycleListener animation_done_listener) {
 		this.current_roll = 0;
 		this.begin = Sys.SystemTime().currentTimeMillis();
 		this.end = this.begin + this.delta;
@@ -106,7 +106,7 @@ public class AcceptDecline implements OnUpdateListener {
 
 		if (this.progress > 1) {
 			this.animating = false;
-			this.animation_done_listener.onAnimationDone(null);
+			this.animation_done_listener.onAnimationDone(null, 0);
 			this.current_roll = 1;
 			this.roll(this.current_roll);
 			return;

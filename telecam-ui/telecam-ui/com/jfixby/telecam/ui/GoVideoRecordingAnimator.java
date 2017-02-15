@@ -1,10 +1,10 @@
 
 package com.jfixby.telecam.ui;
 
-import com.jfixby.r3.api.ui.unit.animation.OnAnimationDoneListener;
+import com.jfixby.r3.api.ui.unit.animation.AnimationLifecycleListener;
 import com.jfixby.r3.api.ui.unit.layer.Layer;
-import com.jfixby.r3.api.ui.unit.update.UnitClocks;
 import com.jfixby.r3.api.ui.unit.update.OnUpdateListener;
+import com.jfixby.r3.api.ui.unit.update.UnitClocks;
 import com.jfixby.scarabei.api.sys.Sys;
 import com.jfixby.telecam.ui.input.red.RedButton;
 
@@ -12,7 +12,7 @@ public class GoVideoRecordingAnimator implements OnUpdateListener {
 
 	private static final boolean RECORDING = false;
 	private static final boolean IDLE = !RECORDING;
-	private OnAnimationDoneListener animation_done_listener;
+	private AnimationLifecycleListener animation_done_listener;
 	private final long delta = TelecamUnit.ANIMATION_DELTA;
 	private long begin;
 	private long end;
@@ -28,7 +28,7 @@ public class GoVideoRecordingAnimator implements OnUpdateListener {
 
 	boolean target = RECORDING;
 
-	public void goVideoRecording (final OnAnimationDoneListener animation_done_listener) {
+	public void goVideoRecording (final AnimationLifecycleListener animation_done_listener) {
 		this.animation_done_listener = animation_done_listener;
 		this.begin = Sys.SystemTime().currentTimeMillis();
 		this.end = this.begin + this.delta;
@@ -37,7 +37,7 @@ public class GoVideoRecordingAnimator implements OnUpdateListener {
 		this.target = RECORDING;
 	}
 
-	public void goVideoIdle (final OnAnimationDoneListener animation_done_listener) {
+	public void goVideoIdle (final AnimationLifecycleListener animation_done_listener) {
 		this.animation_done_listener = animation_done_listener;
 		this.begin = Sys.SystemTime().currentTimeMillis();
 		this.end = this.begin + this.delta;
@@ -84,7 +84,7 @@ public class GoVideoRecordingAnimator implements OnUpdateListener {
 				red.convertBack(1);
 			}
 
-			this.animation_done_listener.onAnimationDone(null);
+			this.animation_done_listener.onAnimationDone(null, 0);
 		}
 	}
 
