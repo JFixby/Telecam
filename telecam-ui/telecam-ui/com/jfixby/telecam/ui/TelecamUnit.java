@@ -6,8 +6,8 @@ import com.jfixby.r3.api.ui.InputManager;
 import com.jfixby.r3.api.ui.UI;
 import com.jfixby.r3.api.ui.UIAction;
 import com.jfixby.r3.api.ui.unit.ComponentsFactory;
-import com.jfixby.r3.api.ui.unit.RootLayer;
 import com.jfixby.r3.api.ui.unit.DefaultUnit;
+import com.jfixby.r3.api.ui.unit.RootLayer;
 import com.jfixby.r3.api.ui.unit.UnitManager;
 import com.jfixby.r3.api.ui.unit.animation.AnimationLifecycleListener;
 import com.jfixby.r3.api.ui.unit.camera.Camera;
@@ -56,6 +56,7 @@ public class TelecamUnit extends DefaultUnit implements TelecamUI, InputManager,
 		config.setStructureID(scene_asset_id);
 
 		this.scene = Scene2D.spawnScene(components_factory, config);
+		this.scene.startAllAnimations();
 		this.camera = this.scene.getCamera();
 		this.root.attachComponent(this.scene);
 
