@@ -6,7 +6,7 @@ import java.io.IOException;
 import com.jfixby.r3.fokker.fs.AssetsInfo;
 import com.jfixby.r3.fokker.fs.GdxAssetsFileSystemPacker;
 import com.jfixby.scarabei.adopted.gdx.json.GoogleGson;
-import com.jfixby.scarabei.api.desktop.DesktopSetup;
+import com.jfixby.scarabei.api.desktop.ScarabeiDesktop;
 import com.jfixby.scarabei.api.file.File;
 import com.jfixby.scarabei.api.file.LocalFileSystem;
 import com.jfixby.scarabei.api.io.IO;
@@ -19,7 +19,7 @@ public class PackTelecamAndroidAssets {
 
 	public static void main (final String[] args) throws IOException {
 		if (args != null) {
-			DesktopSetup.deploy();
+			ScarabeiDesktop.deploy();
 			Json.installComponent(new GoogleGson());
 			IndexedCompressor.installComponent(new RedIndexedCompressor());
 		}

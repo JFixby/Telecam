@@ -16,7 +16,7 @@ import com.jfixby.scarabei.api.assets.ID;
 import com.jfixby.scarabei.api.assets.Names;
 import com.jfixby.scarabei.api.collections.Collections;
 import com.jfixby.scarabei.api.collections.List;
-import com.jfixby.scarabei.api.desktop.DesktopSetup;
+import com.jfixby.scarabei.api.desktop.ScarabeiDesktop;
 import com.jfixby.scarabei.api.file.File;
 import com.jfixby.scarabei.api.file.FilesList;
 import com.jfixby.scarabei.api.file.LocalFileSystem;
@@ -31,7 +31,7 @@ public class PackCreateDefaultGdxShader {
 
 	public static void main (final String[] args) throws IOException {
 
-		DesktopSetup.deploy();
+		ScarabeiDesktop.deploy();
 		PSDUnpacker.installComponent(new RedPSDUnpacker());
 		Json.installComponent(new GoogleGson());
 		TexturePacker.installComponent(new GdxTexturePacker());

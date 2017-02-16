@@ -11,7 +11,7 @@ import com.jfixby.scarabei.adopted.gdx.json.GoogleGson;
 import com.jfixby.scarabei.api.assets.ID;
 import com.jfixby.scarabei.api.assets.Names;
 import com.jfixby.scarabei.api.collections.Collection;
-import com.jfixby.scarabei.api.desktop.DesktopSetup;
+import com.jfixby.scarabei.api.desktop.ScarabeiDesktop;
 import com.jfixby.scarabei.api.file.File;
 import com.jfixby.scarabei.api.file.FileFilter;
 import com.jfixby.scarabei.api.file.FilesList;
@@ -33,7 +33,7 @@ public class RepackTelecamPSD {
 	private static boolean deleteGarbage = false;
 
 	public static void main (final String[] args) throws IOException {
-		DesktopSetup.deploy();
+		ScarabeiDesktop.deploy();
 		PSDUnpacker.installComponent(new RedPSDUnpacker());
 		Json.installComponent(new GoogleGson());
 		TexturePacker.installComponent(new GdxTexturePacker());

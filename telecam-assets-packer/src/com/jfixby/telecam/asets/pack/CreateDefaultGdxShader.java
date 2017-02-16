@@ -9,7 +9,7 @@ import com.jfixby.r3.api.shader.srlz.ShaderInfo;
 import com.jfixby.r3.api.shader.srlz.ShadersContainer;
 import com.jfixby.r3.engine.core.unit.raster.FOKKER_SYSTEM_ASSETS;
 import com.jfixby.scarabei.api.assets.ID;
-import com.jfixby.scarabei.api.desktop.DesktopSetup;
+import com.jfixby.scarabei.api.desktop.ScarabeiDesktop;
 import com.jfixby.scarabei.api.file.File;
 import com.jfixby.scarabei.api.file.LocalFileSystem;
 import com.jfixby.scarabei.api.io.IO;
@@ -49,7 +49,7 @@ public class CreateDefaultGdxShader {
 		+ "}";
 
 	public static void main (final String[] args) throws IOException {
-		DesktopSetup.deploy();
+		ScarabeiDesktop.deploy();
 		Json.installComponent("com.jfixby.cmns.adopted.gdx.json.RedJson");
 		L.d("creating shader", FOKKER_SYSTEM_ASSETS.SHADER_GDX_DEFAULT);
 		final File output_folder = LocalFileSystem.ApplicationHome().child("shaders")
