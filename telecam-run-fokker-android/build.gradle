@@ -1,0 +1,55 @@
+apply plugin: "java"
+apply plugin: "maven"
+
+sourceCompatibility = 1.8
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+
+dependencies {
+      compile project(":box2d-api")
+      compile project(":gdx")
+      compile project(":gdx-backend-android")
+      compile project(":gdx-box2d")
+      compile project(":gdx-freetype")
+      compile project(":gdx-jnigen")
+      compile project(":jbox2d-double")
+      compile project(":jfixby-cmns-api")
+      compile project(":jfixby-cmns-api-android")
+      compile project(":jfixby-cmns-red")
+      compile project(":jfixby-cmns-red-android")
+      compile project(":jfixby-cmns-red-gdx")
+      compile project(":jfixby-tool-texture-slicer-api")
+      compile project(":jfixby-tool-texture-slicer-red")
+      compile project(":jfixby-util-pizza-api")
+      compile project(":jfixby-util-pizza-red")
+      compile project(":rana-api")
+      compile project(":rana-asset-red")
+      compile project(":red-triplane-api")
+      compile project(":red-triplane-box2d-api")
+      compile project(":red-triplane-box2d-red")
+      compile project(":red-triplane-fokker-api")
+      compile project(":red-triplane-fokker-backend")
+      compile project(":red-triplane-fokker-backend-android")
+      compile project(":red-triplane-fokker-core")
+      compile project(":red-triplane-fonts-api")
+      compile project(":red-triplane-pizza-api")
+      compile project(":red-triplane-pizza-red")
+      compile project(":red-triplane-scene2d-api")
+      compile project(":red-triplane-scene2d-red")
+      compile project(":red-triplane-shader-api")
+      compile project(":telecam-api")
+      compile project(":telecam-core")
+      compile project(":telecam-run-fokker")
+      compile project(":telecam-ui")
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['gen/','telecam-run-fokker-android/']
+        }
+        resources {
+            
+        }
+    }
+}

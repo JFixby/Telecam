@@ -1,0 +1,26 @@
+apply plugin: "java"
+apply plugin: "maven"
+
+sourceCompatibility = 1.8
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+
+dependencies {
+      compile project(":rana-api")
+      compile project(":red-triplane-api")
+      compile project(":red-triplane-scene2d-api")
+      compile project(":scarabei-api")
+      compile project(":scarabei-api-android")
+      compile project(":telecam-api")
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['telecam-ui/']
+        }
+        resources {
+            
+        }
+    }
+}

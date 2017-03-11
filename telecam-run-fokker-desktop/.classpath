@@ -20,6 +20,7 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/rana-api"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/rana-asset-red"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/red-triplane-shader-api"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/red-triplane-ui-api"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/gdx"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/gdx-backend-headless"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/telecam-core"/>
