@@ -11,12 +11,12 @@
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/rana-api"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/rana-asset-red"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/red-triplane-api"/>
-	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/red-triplane-fokker-api"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/red-triplane-api-fokker"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/red-triplane-fokker-backend"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/red-triplane-fokker-core"/>
-	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/red-triplane-fonts-api"/>
-	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/red-triplane-scene2d-api"/>
-	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/red-triplane-shader-api"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/red-triplane-api-fonts"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/red-triplane-api-scene2d"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/red-triplane-api-shader"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/telecam-api"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/telecam-run-fokker"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/telecam-ui"/>
@@ -26,9 +26,9 @@
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/jbox2d-double"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/jfixby-util-pizza-api"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/jfixby-util-pizza-red"/>
-	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/red-triplane-box2d-api"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/red-triplane-api-box2d"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/red-triplane-box2d-red"/>
-	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/red-triplane-pizza-api"/>
+	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/red-triplane-api-pizza"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/red-triplane-pizza-red"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/jfixby-tool-texture-slicer-api"/>
 	<classpathentry combineaccessrules="false" exported="true" kind="src" path="/jfixby-tool-texture-slicer-red"/>

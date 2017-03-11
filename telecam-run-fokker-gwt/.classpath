@@ -3,7 +3,7 @@
 	<classpathentry kind="src" path="telecam-run-gwt"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/telecam-run-fokker"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/red-triplane-api"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/red-triplane-fokker-api"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/red-triplane-api-fokker"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/red-triplane-fokker-backend"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/red-triplane-fokker-backend-gwt"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/red-triplane-fokker-core"/>
@@ -13,9 +13,9 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/scarabei-red"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/rana-api"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/rana-asset-red"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/red-triplane-box2d-api"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/red-triplane-fonts-api"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/red-triplane-scene2d-api"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/red-triplane-api-box2d"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/red-triplane-api-fonts"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/red-triplane-api-scene2d"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/red-triplane-scene2d-red"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/scarabei-red-gwt"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>

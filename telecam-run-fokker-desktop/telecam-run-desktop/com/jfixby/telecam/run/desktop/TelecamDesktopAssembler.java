@@ -8,14 +8,12 @@ import com.jfixby.r3.api.EngineParams;
 import com.jfixby.r3.api.EngineParams.Assets;
 import com.jfixby.r3.api.EngineParams.Settings;
 import com.jfixby.r3.api.RedTriplane;
-import com.jfixby.r3.api.logic.BusinessLogic;
 import com.jfixby.r3.api.shader.R3Shader;
 import com.jfixby.r3.api.ui.UI;
-import com.jfixby.r3.api.ui.UIStarter;
+import com.jfixby.r3.api.ui.FokkerUIManager;
 import com.jfixby.r3.api.ui.unit.layer.LayerUtils;
 import com.jfixby.r3.collide.RedCollisionsAlgebra;
 import com.jfixby.r3.engine.core.Fokker;
-import com.jfixby.r3.engine.core.unit.UnitsSpawner;
 import com.jfixby.r3.engine.core.unit.layers.RedLayerUtils;
 import com.jfixby.r3.engine.core.unit.shader.R3FokkerShader;
 import com.jfixby.r3.ext.api.scene2d.Scene2D;
@@ -24,6 +22,7 @@ import com.jfixby.r3.ext.text.red.RedTriplaneText;
 import com.jfixby.r3.fokker.api.FokkerEngineAssembler;
 import com.jfixby.r3.fokker.api.FokkerEngineParams;
 import com.jfixby.r3.fokker.api.assets.FokkerTextureLoader;
+import com.jfixby.r3.fokker.api.unit.UnitsSpawner;
 import com.jfixby.r3.fokker.assets.RedFokkerTextureLoader;
 import com.jfixby.r3.fokker.backend.RedUnitSpawner;
 import com.jfixby.r3.fokker.filesystem.assets.GdxFileSystem;
@@ -92,9 +91,9 @@ public class TelecamDesktopAssembler implements FokkerEngineAssembler {
 		ResourcesManager.registerPackageReader(R3Shader.getPackageReader());
 
 		final RedUIManager telecam_ui_starter = new RedUIManager();
-		UIStarter.installComponent(telecam_ui_starter);
+		FokkerUIManager.installComponent(telecam_ui_starter);
 		UI.installComponent(telecam_ui_starter);
-		BusinessLogic.installComponent(new TelecamCore());
+		RedTriplane.setGameStarter(new TelecamCore());
 
 		Collisions.installComponent(new RedCollisionsAlgebra());
 		RedTriplane.installComponent(new Fokker());
