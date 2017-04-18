@@ -1,27 +1,28 @@
+
 package com.jfixby.telecam.run.fokker;
 
-import java.util.Vector;
+import java.util.ArrayList;
 
 public class Bob {
 
 	@Override
-	public String toString() {
-		return "Bob [string=" + string + ", test=" + test + "]";
+	public String toString () {
+		return "Bob [string=" + this.string + ", test=" + this.test + "]";
 	}
 
 	private String string;
 
-	public Bob() {
+	public Bob () {
 	}
 
-	public Bob(String string) {
+	public Bob (final String string) {
 		this.string = string;
 	}
 
-	public Vector<Bob> test = new Vector<Bob>();
+	public ArrayList<Bob> test = new ArrayList<Bob>();
 
-	public void add(String string) {
-		test.add(new Bob(string));
+	public void add (final String string) {
+		this.test.add(new Bob(string));
 	}
 
 }
